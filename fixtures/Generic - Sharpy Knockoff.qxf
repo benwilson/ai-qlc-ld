@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE FixtureDefinition>
+<FixtureDefinition xmlns="http://www.qlcplus.org/FixtureDefinition">
+ <Creator>
+  <Name>Q Light Controller Plus</Name>
+  <Version>5.0.1</Version>
+  <Author>Ben Wilson</Author>
+ </Creator>
+ <Manufacturer>Generic</Manufacturer>
+ <Model>Sharpy Knockoff</Model>
+ <Type>Moving Head</Type>
+ <Channel Name="Pan" Preset="PositionPan"/>
+ <Channel Name="Tilt" Preset="PositionTilt"/>
+ <Channel Name="Pan fine" Preset="PositionPanFine"/>
+ <Channel Name="Tilt fine" Preset="PositionTiltFine"/>
+ <Channel Name="7 color" Preset="ColorWheel"/>
+ <Channel Name="Frost">
+  <Group Byte="0">Beam</Group>
+  <Capability Min="0" Max="255">?</Capability>
+ </Channel>
+ <Channel Name="Strobe">
+  <Group Byte="0">Shutter</Group>
+  <Capability Min="0" Max="0" Preset="ShutterClose">Closed</Capability>
+  <Capability Min="1" Max="1">Reserved</Capability>
+  <Capability Min="2" Max="127" Preset="StrobeSlowToFast">Strobe slow to fast</Capability>
+  <Capability Min="128" Max="192" Preset="StrobeSlowToFast">Strobe slow to fast (fade out)</Capability>
+  <Capability Min="193" Max="251">Reserved</Capability>
+  <Capability Min="252" Max="255" Preset="ShutterOpen">Open</Capability>
+ </Channel>
+ <Channel Name="Dimmer" Preset="IntensityMasterDimmer"/>
+ <Channel Name="Color macro" Preset="ColorMacro"/>
+ <Channel Name="Gobo" Preset="GoboWheel"/>
+ <Channel Name="Prism 1" Preset="PrismRotationSlowFast"/>
+ <Channel Name="Prism 1.r" Preset="PrismRotationSlowFast"/>
+ <Channel Name="Prism 2" Preset="PrismRotationSlowFast"/>
+ <Channel Name="Prism 2.r" Preset="PrismRotationSlowFast"/>
+ <Channel Name="Focus" Preset="BeamFocusNearFar"/>
+ <Channel Name="Reset">
+  <Group Byte="0">Intensity</Group>
+  <Capability Min="0" Max="255">?</Capability>
+ </Channel>
+ <Channel Name="Pan/Tilt speed" Preset="SpeedPanTiltFastSlow"/>
+ <Channel Name="Color fine" Preset="ColorWheelFine"/>
+ <Mode Name="16 channel">
+  <Channel Number="0">Pan</Channel>
+  <Channel Number="1">Tilt</Channel>
+  <Channel Number="2">Pan fine</Channel>
+  <Channel Number="3">Tilt fine</Channel>
+  <Channel Number="4">7 color</Channel>
+  <Channel Number="5">Frost</Channel>
+  <Channel Number="6">Strobe</Channel>
+  <Channel Number="7">Dimmer</Channel>
+  <Channel Number="8">Color macro</Channel>
+  <Channel Number="9">Gobo</Channel>
+  <Channel Number="10">Prism 1</Channel>
+  <Channel Number="11">Prism 1.r</Channel>
+  <Channel Number="12">Prism 2</Channel>
+  <Channel Number="13">Prism 2.r</Channel>
+  <Channel Number="14">Focus</Channel>
+  <Channel Number="15">Reset</Channel>
+  <Head>
+   <Channel>0</Channel>
+   <Channel>1</Channel>
+  </Head>
+ </Mode>
+ <Mode Name="18 channel">
+  <Channel Number="0">Pan</Channel>
+  <Channel Number="1">Tilt</Channel>
+  <Channel Number="2">Pan fine</Channel>
+  <Channel Number="3">Tilt fine</Channel>
+  <Channel Number="4">Pan/Tilt speed</Channel>
+  <Channel Number="5">Frost</Channel>
+  <Channel Number="6">Strobe</Channel>
+  <Channel Number="7">Dimmer</Channel>
+  <Channel Number="8">Color macro</Channel>
+  <Channel Number="9">Color fine</Channel>
+  <Channel Number="10">Gobo</Channel>
+  <Channel Number="11">Prism 1</Channel>
+  <Channel Number="12">Prism 1.r</Channel>
+  <Channel Number="13">Prism 2</Channel>
+  <Channel Number="14">Prism 2.r</Channel>
+  <Channel Number="15">Focus</Channel>
+  <Channel Number="16">7 color</Channel>
+  <Channel Number="17">Reset</Channel>
+ </Mode>
+ <Physical>
+  <Bulb Type="LED" Lumens="0" ColourTemperature="0"/>
+  <Dimensions Weight="0" Width="290" Height="452" Depth="256"/>
+  <Lens Name="Other" DegreesMin="0" DegreesMax="3"/>
+  <Focus Type="Head" PanMax="0" TiltMax="0"/>
+  <Technical PowerConsumption="170" DmxConnector="3-pin"/>
+ </Physical>
+</FixtureDefinition>

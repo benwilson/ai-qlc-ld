@@ -1,0 +1,968 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Workspace>
+<Workspace xmlns="http://www.qlcplus.org/Workspace" CurrentWindow="VC">
+ <Creator>
+  <Name>Q Light Controller Plus</Name>
+  <Version>5.0.1</Version>
+  <Author>Ben Wilson</Author>
+ </Creator>
+ <Engine>
+  <InputOutputMap>
+   <BeatGenerator BeatType="Internal" BPM="174"/>
+   <Universe Name="Universe 1" ID="0">
+    <Output Plugin="ArtNet" UID="10.0.0.7" Line="0"/>
+   </Universe>
+  </InputOutputMap>
+  <Fixture>
+   <Manufacturer>Generic</Manufacturer>
+   <Model>Beam Spot Wash 3 in 1</Model>
+   <Mode>20 channel</Mode>
+   <ID>1</ID>
+   <Name>BSW 3-in-1</Name>
+   <Universe>0</Universe>
+   <Address>144</Address>
+   <Channels>20</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Chauvet</Manufacturer>
+   <Model>4BAR</Model>
+   <Mode>15 Channel</Mode>
+   <ID>2</ID>
+   <Name>Chauvet 4BAR</Name>
+   <Universe>0</Universe>
+   <Address>0</Address>
+   <Channels>15</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Generic</Manufacturer>
+   <Model>Nausea Inducer 3000</Model>
+   <Mode>19 channel</Mode>
+   <ID>3</ID>
+   <Name>Nausea Inducer 3000</Name>
+   <Universe>0</Universe>
+   <Address>240</Address>
+   <Channels>19</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Generic</Manufacturer>
+   <Model>Profile Knockoff</Model>
+   <Mode>14 channel</Mode>
+   <ID>4</ID>
+   <Name>Profile Knockoff</Name>
+   <Universe>0</Universe>
+   <Address>192</Address>
+   <Channels>14</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Missyee</Manufacturer>
+   <Model>36 RGB LED</Model>
+   <Mode>7 channel</Mode>
+   <ID>5</ID>
+   <Name>Missyee 36 RGB LED #1</Name>
+   <Universe>0</Universe>
+   <Address>48</Address>
+   <Channels>7</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Missyee</Manufacturer>
+   <Model>36 RGB LED</Model>
+   <Mode>7 channel</Mode>
+   <ID>6</ID>
+   <Name>Missyee 36 RGB LED #2</Name>
+   <Universe>0</Universe>
+   <Address>56</Address>
+   <Channels>7</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Generic</Manufacturer>
+   <Model>Sharpy Knockoff</Model>
+   <Mode>18 channel</Mode>
+   <ID>8</ID>
+   <Name>Sharpy Knockoff</Name>
+   <Universe>0</Universe>
+   <Address>96</Address>
+   <Channels>18</Channels>
+  </Fixture>
+
+  <!-- ============================================================ -->
+  <!-- BLACKOUT (ID 0) -->
+  <!-- ============================================================ -->
+  <Function ID="0" Type="Scene" Name="Blackout" Path="Utility">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,128,1,0,2,128,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,128,3,128,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,128,1,128,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
+  </Function>
+
+  <!-- ============================================================ -->
+  <!-- 4BAR SCENES (IDs 1-12) -->
+  <!-- Ch0=Prog(0), Ch1=Master, Ch2=Strobe, Ch3-5=P1 RGB, Ch6-8=P2, Ch9-11=P3, Ch12-14=P4 -->
+  <!-- ============================================================ -->
+  <Function ID="1" Type="Scene" Name="4BAR - Red" Path="Test/4BAR/Colors">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,255,4,0,5,0,6,255,7,0,8,0,9,255,10,0,11,0,12,255,13,0,14,0</FixtureVal>
+  </Function>
+  <Function ID="2" Type="Scene" Name="4BAR - Green" Path="Test/4BAR/Colors">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,0,4,255,5,0,6,0,7,255,8,0,9,0,10,255,11,0,12,0,13,255,14,0</FixtureVal>
+  </Function>
+  <Function ID="3" Type="Scene" Name="4BAR - Blue" Path="Test/4BAR/Colors">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,0,4,0,5,255,6,0,7,0,8,255,9,0,10,0,11,255,12,0,13,0,14,255</FixtureVal>
+  </Function>
+  <Function ID="4" Type="Scene" Name="4BAR - White" Path="Test/4BAR/Colors">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255,13,255,14,255</FixtureVal>
+  </Function>
+  <Function ID="5" Type="Scene" Name="4BAR - Cyan" Path="Test/4BAR/Colors">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,0,4,255,5,255,6,0,7,255,8,255,9,0,10,255,11,255,12,0,13,255,14,255</FixtureVal>
+  </Function>
+  <Function ID="6" Type="Scene" Name="4BAR - Magenta" Path="Test/4BAR/Colors">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,255,4,0,5,255,6,255,7,0,8,255,9,255,10,0,11,255,12,255,13,0,14,255</FixtureVal>
+  </Function>
+  <Function ID="7" Type="Scene" Name="4BAR - Yellow" Path="Test/4BAR/Colors">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,255,4,255,5,0,6,255,7,255,8,0,9,255,10,255,11,0,12,255,13,255,14,0</FixtureVal>
+  </Function>
+  <Function ID="8" Type="Scene" Name="4BAR - P1 Only" Path="Test/4BAR/Pars">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,255,4,255,5,255,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+  </Function>
+  <Function ID="9" Type="Scene" Name="4BAR - P2 Only" Path="Test/4BAR/Pars">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,0,4,0,5,0,6,255,7,255,8,255,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+  </Function>
+  <Function ID="10" Type="Scene" Name="4BAR - P3 Only" Path="Test/4BAR/Pars">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,255,10,255,11,255,12,0,13,0,14,0</FixtureVal>
+  </Function>
+  <Function ID="11" Type="Scene" Name="4BAR - P4 Only" Path="Test/4BAR/Pars">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,255,13,255,14,255</FixtureVal>
+  </Function>
+  <Function ID="12" Type="Scene" Name="4BAR - Strobe" Path="Test/4BAR">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="2">0,0,1,255,2,128,3,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255,13,255,14,255</FixtureVal>
+  </Function>
+
+  <!-- ============================================================ -->
+  <!-- MISSYEE #1 SCENES (IDs 20-26) -->
+  <!-- Ch0=Master, Ch1=R, Ch2=G, Ch3=B, Ch4=Strobe(0), Ch5=Effect(0), Ch6=Color(0) -->
+  <!-- ============================================================ -->
+  <Function ID="20" Type="Scene" Name="Missyee1 - Red" Path="Test/Missyee1">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">0,255,1,255,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+  </Function>
+  <Function ID="21" Type="Scene" Name="Missyee1 - Green" Path="Test/Missyee1">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">0,255,1,0,2,255,3,0,4,0,5,0,6,0</FixtureVal>
+  </Function>
+  <Function ID="22" Type="Scene" Name="Missyee1 - Blue" Path="Test/Missyee1">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">0,255,1,0,2,0,3,255,4,0,5,0,6,0</FixtureVal>
+  </Function>
+  <Function ID="23" Type="Scene" Name="Missyee1 - White" Path="Test/Missyee1">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">0,255,1,255,2,255,3,255,4,0,5,0,6,0</FixtureVal>
+  </Function>
+  <Function ID="24" Type="Scene" Name="Missyee1 - Cyan" Path="Test/Missyee1">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">0,255,1,0,2,255,3,255,4,0,5,0,6,0</FixtureVal>
+  </Function>
+  <Function ID="25" Type="Scene" Name="Missyee1 - Magenta" Path="Test/Missyee1">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">0,255,1,255,2,0,3,255,4,0,5,0,6,0</FixtureVal>
+  </Function>
+  <Function ID="26" Type="Scene" Name="Missyee1 - Yellow" Path="Test/Missyee1">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">0,255,1,255,2,255,3,0,4,0,5,0,6,0</FixtureVal>
+  </Function>
+
+  <!-- ============================================================ -->
+  <!-- MISSYEE #2 SCENES (IDs 30-36) -->
+  <!-- ============================================================ -->
+  <Function ID="30" Type="Scene" Name="Missyee2 - Red" Path="Test/Missyee2">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="6">0,255,1,255,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+  </Function>
+  <Function ID="31" Type="Scene" Name="Missyee2 - Green" Path="Test/Missyee2">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="6">0,255,1,0,2,255,3,0,4,0,5,0,6,0</FixtureVal>
+  </Function>
+  <Function ID="32" Type="Scene" Name="Missyee2 - Blue" Path="Test/Missyee2">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="6">0,255,1,0,2,0,3,255,4,0,5,0,6,0</FixtureVal>
+  </Function>
+  <Function ID="33" Type="Scene" Name="Missyee2 - White" Path="Test/Missyee2">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="6">0,255,1,255,2,255,3,255,4,0,5,0,6,0</FixtureVal>
+  </Function>
+  <Function ID="34" Type="Scene" Name="Missyee2 - Cyan" Path="Test/Missyee2">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="6">0,255,1,0,2,255,3,255,4,0,5,0,6,0</FixtureVal>
+  </Function>
+  <Function ID="35" Type="Scene" Name="Missyee2 - Magenta" Path="Test/Missyee2">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="6">0,255,1,255,2,0,3,255,4,0,5,0,6,0</FixtureVal>
+  </Function>
+  <Function ID="36" Type="Scene" Name="Missyee2 - Yellow" Path="Test/Missyee2">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="6">0,255,1,255,2,255,3,0,4,0,5,0,6,0</FixtureVal>
+  </Function>
+
+  <!-- ============================================================ -->
+  <!-- SHARPY SCENES (IDs 40-59) -->
+  <!-- 18ch: Ch0=Pan, Ch1=Tilt, Ch2=PanF, Ch3=TiltF, Ch4=PTSpd, Ch5=Frost, -->
+  <!-- Ch6=Strobe(8=open), Ch7=Dim, Ch8=ColMacro, Ch9=ColFine, Ch10=Gobo, -->
+  <!-- Ch11=Prism1, Ch12=Prism1r, Ch13=Prism2, Ch14=Prism2r, Ch15=Focus, Ch16=7color, Ch17=Reset -->
+  <!-- ============================================================ -->
+  <!-- Colors via 7color wheel (Ch16) -->
+  <Function ID="40" Type="Scene" Name="Sharpy - White" Path="Test/Sharpy/Colors">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="8">0,128,1,128,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="41" Type="Scene" Name="Sharpy - Color 1" Path="Test/Sharpy/Colors">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="8">0,128,1,128,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,36,17,0</FixtureVal>
+  </Function>
+  <Function ID="42" Type="Scene" Name="Sharpy - Color 2" Path="Test/Sharpy/Colors">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="8">0,128,1,128,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,72,17,0</FixtureVal>
+  </Function>
+  <Function ID="43" Type="Scene" Name="Sharpy - Color 3" Path="Test/Sharpy/Colors">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="8">0,128,1,128,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,108,17,0</FixtureVal>
+  </Function>
+  <Function ID="44" Type="Scene" Name="Sharpy - Color 4" Path="Test/Sharpy/Colors">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="8">0,128,1,128,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,144,17,0</FixtureVal>
+  </Function>
+  <!-- Gobos (Ch10) -->
+  <Function ID="45" Type="Scene" Name="Sharpy - Gobo 1" Path="Test/Sharpy/Gobos">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="8">0,128,1,128,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,20,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="46" Type="Scene" Name="Sharpy - Gobo 2" Path="Test/Sharpy/Gobos">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="8">0,128,1,128,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,40,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="47" Type="Scene" Name="Sharpy - Gobo 3" Path="Test/Sharpy/Gobos">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="8">0,128,1,128,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,60,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="48" Type="Scene" Name="Sharpy - Gobo 4" Path="Test/Sharpy/Gobos">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="8">0,128,1,128,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,80,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <!-- Prisms -->
+  <Function ID="49" Type="Scene" Name="Sharpy - Prism1 Static" Path="Test/Sharpy/Prisms">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="8">0,128,1,128,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,128,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="50" Type="Scene" Name="Sharpy - Prism1 Spin" Path="Test/Sharpy/Prisms">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="8">0,128,1,128,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="51" Type="Scene" Name="Sharpy - Prism2 Static" Path="Test/Sharpy/Prisms">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="8">0,128,1,128,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,0,12,0,13,128,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="52" Type="Scene" Name="Sharpy - Prism2 Spin" Path="Test/Sharpy/Prisms">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="8">0,128,1,128,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,0,12,0,13,128,14,200,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <!-- Beam -->
+  <Function ID="53" Type="Scene" Name="Sharpy - Frost" Path="Test/Sharpy/Beam">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="8">0,128,1,128,2,0,3,0,4,0,5,200,6,252,7,255,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="54" Type="Scene" Name="Sharpy - Focus Near" Path="Test/Sharpy/Beam">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="8">0,128,1,128,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="55" Type="Scene" Name="Sharpy - Focus Far" Path="Test/Sharpy/Beam">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="8">0,128,1,128,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,255,16,0,17,0</FixtureVal>
+  </Function>
+  <!-- Movement -->
+  <Function ID="56" Type="Scene" Name="Sharpy - Pan Left" Path="Test/Sharpy/Move">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="8">0,0,1,128,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="57" Type="Scene" Name="Sharpy - Pan Right" Path="Test/Sharpy/Move">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="8">0,255,1,128,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="58" Type="Scene" Name="Sharpy - Tilt Up" Path="Test/Sharpy/Move">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="8">0,128,1,0,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="59" Type="Scene" Name="Sharpy - Tilt Down" Path="Test/Sharpy/Move">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="8">0,128,1,255,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+
+  <!-- ============================================================ -->
+  <!-- BSW SCENES (IDs 60-80) -->
+  <!-- 20ch: Ch0=Pan, Ch1=PanF, Ch2=Tilt, Ch3=TiltF, Ch4=PTSpd, Ch5=ShowMode(0), -->
+  <!-- Ch6=PTMacro(0), Ch7=PTMacroSpd, Ch8=Color, Ch9=Gobo1, Ch10=Gobo2, Ch11=Gobo2rot, -->
+  <!-- Ch12=Angle/Frost, Ch13=Prism, Ch14=PrismRot, Ch15=Focus, Ch16=Shutter(8=open), -->
+  <!-- Ch17=Dimmer, Ch18=DimF, Ch19=Special(0) -->
+  <!-- ============================================================ -->
+  <!-- Colors (Ch8): White=0, Red=20, Orange=26, Green=38, Blue=44, Mag=50 -->
+  <Function ID="60" Type="Scene" Name="BSW - White" Path="Test/BSW/Colors">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,128,1,0,2,128,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+  </Function>
+  <Function ID="61" Type="Scene" Name="BSW - Red" Path="Test/BSW/Colors">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,128,1,0,2,128,3,0,4,0,5,0,6,0,7,0,8,20,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+  </Function>
+  <Function ID="62" Type="Scene" Name="BSW - Orange" Path="Test/BSW/Colors">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,128,1,0,2,128,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+  </Function>
+  <Function ID="63" Type="Scene" Name="BSW - Green" Path="Test/BSW/Colors">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,128,1,0,2,128,3,0,4,0,5,0,6,0,7,0,8,38,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+  </Function>
+  <Function ID="64" Type="Scene" Name="BSW - Blue" Path="Test/BSW/Colors">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,128,1,0,2,128,3,0,4,0,5,0,6,0,7,0,8,44,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+  </Function>
+  <Function ID="65" Type="Scene" Name="BSW - Magenta" Path="Test/BSW/Colors">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,128,1,0,2,128,3,0,4,0,5,0,6,0,7,0,8,50,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+  </Function>
+  <!-- Gobos -->
+  <Function ID="66" Type="Scene" Name="BSW - Gobo1-1" Path="Test/BSW/Gobos">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,128,1,0,2,128,3,0,4,0,5,0,6,0,7,0,8,0,9,12,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+  </Function>
+  <Function ID="67" Type="Scene" Name="BSW - Gobo1-3" Path="Test/BSW/Gobos">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,128,1,0,2,128,3,0,4,0,5,0,6,0,7,0,8,0,9,30,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+  </Function>
+  <Function ID="68" Type="Scene" Name="BSW - Gobo1-5" Path="Test/BSW/Gobos">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,128,1,0,2,128,3,0,4,0,5,0,6,0,7,0,8,0,9,48,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+  </Function>
+  <Function ID="69" Type="Scene" Name="BSW - Gobo2-1" Path="Test/BSW/Gobos">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,128,1,0,2,128,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,12,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+  </Function>
+  <Function ID="70" Type="Scene" Name="BSW - Gobo2-3" Path="Test/BSW/Gobos">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,128,1,0,2,128,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,30,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+  </Function>
+  <Function ID="71" Type="Scene" Name="BSW - Gobo2 Spin" Path="Test/BSW/Gobos">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,128,1,0,2,128,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,12,11,200,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+  </Function>
+  <!-- Prism -->
+  <Function ID="72" Type="Scene" Name="BSW - Prism On" Path="Test/BSW/Prism">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,128,1,0,2,128,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,128,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+  </Function>
+  <Function ID="73" Type="Scene" Name="BSW - Prism Spin" Path="Test/BSW/Prism">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,128,1,0,2,128,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,128,14,200,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+  </Function>
+  <!-- Beam -->
+  <Function ID="74" Type="Scene" Name="BSW - Frost" Path="Test/BSW/Beam">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,128,1,0,2,128,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,200,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+  </Function>
+  <Function ID="75" Type="Scene" Name="BSW - Focus Near" Path="Test/BSW/Beam">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,128,1,0,2,128,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,8,17,255,18,0,19,0</FixtureVal>
+  </Function>
+  <Function ID="76" Type="Scene" Name="BSW - Focus Far" Path="Test/BSW/Beam">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,128,1,0,2,128,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,255,16,8,17,255,18,0,19,0</FixtureVal>
+  </Function>
+  <!-- Movement -->
+  <Function ID="77" Type="Scene" Name="BSW - Pan Left" Path="Test/BSW/Move">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,0,1,0,2,128,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+  </Function>
+  <Function ID="78" Type="Scene" Name="BSW - Pan Right" Path="Test/BSW/Move">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,255,1,0,2,128,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+  </Function>
+  <Function ID="79" Type="Scene" Name="BSW - Tilt Up" Path="Test/BSW/Move">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,128,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+  </Function>
+  <Function ID="80" Type="Scene" Name="BSW - Tilt Down" Path="Test/BSW/Move">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,128,1,0,2,255,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+  </Function>
+
+  <!-- ============================================================ -->
+  <!-- PROFILE SCENES (IDs 81-97) -->
+  <!-- 14ch: Ch0=Dim, Ch1=Strobe(0), Ch2=Pan, Ch3=Tilt, Ch4=PTSpd, Ch5=Color, -->
+  <!-- Ch6=Gobo, Ch7=Gobo1, Ch8=Gobo1Rot, Ch9=Prism, Ch10=Focus, Ch11=PanF, Ch12=TiltF, Ch13=Reset -->
+  <!-- ============================================================ -->
+  <!-- Colors (Ch5 = ColorMacro preset) -->
+  <Function ID="81" Type="Scene" Name="Profile - White" Path="Test/Profile/Colors">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="4">0,255,1,0,2,128,3,128,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+  </Function>
+  <Function ID="82" Type="Scene" Name="Profile - Color 1" Path="Test/Profile/Colors">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="4">0,255,1,0,2,128,3,128,4,0,5,20,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+  </Function>
+  <Function ID="83" Type="Scene" Name="Profile - Color 2" Path="Test/Profile/Colors">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="4">0,255,1,0,2,128,3,128,4,0,5,60,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+  </Function>
+  <Function ID="84" Type="Scene" Name="Profile - Color 3" Path="Test/Profile/Colors">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="4">0,255,1,0,2,128,3,128,4,0,5,100,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+  </Function>
+  <Function ID="85" Type="Scene" Name="Profile - Color 4" Path="Test/Profile/Colors">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="4">0,255,1,0,2,128,3,128,4,0,5,140,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+  </Function>
+  <!-- Gobos -->
+  <Function ID="86" Type="Scene" Name="Profile - Gobo 1" Path="Test/Profile/Gobos">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="4">0,255,1,0,2,128,3,128,4,0,5,0,6,20,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+  </Function>
+  <Function ID="87" Type="Scene" Name="Profile - Gobo 2" Path="Test/Profile/Gobos">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="4">0,255,1,0,2,128,3,128,4,0,5,0,6,50,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+  </Function>
+  <Function ID="88" Type="Scene" Name="Profile - Gobo1 Pos1" Path="Test/Profile/Gobos">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="4">0,255,1,0,2,128,3,128,4,0,5,0,6,0,7,20,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+  </Function>
+  <Function ID="89" Type="Scene" Name="Profile - Gobo1 Pos2" Path="Test/Profile/Gobos">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="4">0,255,1,0,2,128,3,128,4,0,5,0,6,0,7,50,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+  </Function>
+  <Function ID="90" Type="Scene" Name="Profile - Gobo1 Spin" Path="Test/Profile/Gobos">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="4">0,255,1,0,2,128,3,128,4,0,5,0,6,0,7,20,8,128,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+  </Function>
+  <!-- Prism -->
+  <Function ID="91" Type="Scene" Name="Profile - Prism" Path="Test/Profile/Prism">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="4">0,255,1,0,2,128,3,128,4,0,5,0,6,0,7,0,8,0,9,128,10,128,11,0,12,0,13,0</FixtureVal>
+  </Function>
+  <!-- Beam -->
+  <Function ID="92" Type="Scene" Name="Profile - Focus Near" Path="Test/Profile/Beam">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="4">0,255,1,0,2,128,3,128,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+  </Function>
+  <Function ID="93" Type="Scene" Name="Profile - Focus Far" Path="Test/Profile/Beam">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="4">0,255,1,0,2,128,3,128,4,0,5,0,6,0,7,0,8,0,9,0,10,255,11,0,12,0,13,0</FixtureVal>
+  </Function>
+  <!-- Movement -->
+  <Function ID="94" Type="Scene" Name="Profile - Pan Left" Path="Test/Profile/Move">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="4">0,255,1,0,2,0,3,128,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+  </Function>
+  <Function ID="95" Type="Scene" Name="Profile - Pan Right" Path="Test/Profile/Move">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="4">0,255,1,0,2,255,3,128,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+  </Function>
+  <Function ID="96" Type="Scene" Name="Profile - Tilt Up" Path="Test/Profile/Move">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="4">0,255,1,0,2,128,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+  </Function>
+  <Function ID="97" Type="Scene" Name="Profile - Tilt Down" Path="Test/Profile/Move">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="4">0,255,1,0,2,128,3,255,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+  </Function>
+
+  <!-- ============================================================ -->
+  <!-- NI3K SCENES (IDs 100-119) -->
+  <!-- 19ch: Ch0=Pan, Ch1=T1, Ch2=T2, Ch3=T3, Ch4=PTSpd, Ch5=Dim, Ch6=Strobe(0=on), -->
+  <!-- Ch7=R, Ch8=G, Ch9=B, Ch10=W, Ch11=LEDeff, Ch12=MotorEff, Ch13=EffSpd, -->
+  <!-- Ch14=RLaser, Ch15=GLaser, Ch16=BLaser, Ch17=Halo, Ch18=Reset -->
+  <!-- ============================================================ -->
+  <!-- Colors -->
+  <Function ID="100" Type="Scene" Name="NI3K - Red" Path="Test/NI3K/Colors">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,255,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+  </Function>
+  <Function ID="101" Type="Scene" Name="NI3K - Green" Path="Test/NI3K/Colors">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,0,8,255,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+  </Function>
+  <Function ID="102" Type="Scene" Name="NI3K - Blue" Path="Test/NI3K/Colors">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,0,8,0,9,255,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+  </Function>
+  <Function ID="103" Type="Scene" Name="NI3K - White" Path="Test/NI3K/Colors">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,0,8,0,9,0,10,255,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+  </Function>
+  <Function ID="104" Type="Scene" Name="NI3K - Cyan" Path="Test/NI3K/Colors">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,0,8,255,9,255,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+  </Function>
+  <Function ID="105" Type="Scene" Name="NI3K - Magenta" Path="Test/NI3K/Colors">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,255,8,0,9,255,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+  </Function>
+  <Function ID="106" Type="Scene" Name="NI3K - Yellow" Path="Test/NI3K/Colors">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,255,8,255,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+  </Function>
+  <Function ID="107" Type="Scene" Name="NI3K - RGBW Full" Path="Test/NI3K/Colors">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,255,8,255,9,255,10,255,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+  </Function>
+  <!-- Lasers (on=255) -->
+  <Function ID="108" Type="Scene" Name="NI3K - Red Laser" Path="Test/NI3K/Lasers">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,255,15,0,16,0,17,0,18,0</FixtureVal>
+  </Function>
+  <Function ID="109" Type="Scene" Name="NI3K - Green Laser" Path="Test/NI3K/Lasers">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,255,16,0,17,0,18,0</FixtureVal>
+  </Function>
+  <Function ID="110" Type="Scene" Name="NI3K - Blue Laser" Path="Test/NI3K/Lasers">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,255,17,0,18,0</FixtureVal>
+  </Function>
+  <Function ID="111" Type="Scene" Name="NI3K - All Lasers" Path="Test/NI3K/Lasers">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,255,15,255,16,255,17,0,18,0</FixtureVal>
+  </Function>
+  <!-- Halo LED -->
+  <Function ID="112" Type="Scene" Name="NI3K - Halo Red" Path="Test/NI3K/Halo">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,24,18,0</FixtureVal>
+  </Function>
+  <Function ID="113" Type="Scene" Name="NI3K - Halo Green" Path="Test/NI3K/Halo">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,40,18,0</FixtureVal>
+  </Function>
+  <Function ID="114" Type="Scene" Name="NI3K - Halo Blue" Path="Test/NI3K/Halo">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,56,18,0</FixtureVal>
+  </Function>
+  <Function ID="115" Type="Scene" Name="NI3K - Halo RGB" Path="Test/NI3K/Halo">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,120,18,0</FixtureVal>
+  </Function>
+  <!-- Movement -->
+  <Function ID="116" Type="Scene" Name="NI3K - Pan Left" Path="Test/NI3K/Move">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="3">0,0,1,64,2,64,3,64,4,0,5,255,6,0,7,255,8,255,9,255,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+  </Function>
+  <Function ID="117" Type="Scene" Name="NI3K - Pan Right" Path="Test/NI3K/Move">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="3">0,255,1,64,2,64,3,64,4,0,5,255,6,0,7,255,8,255,9,255,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+  </Function>
+  <Function ID="118" Type="Scene" Name="NI3K - Tilts Spread" Path="Test/NI3K/Move">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="3">0,128,1,0,2,64,3,127,4,0,5,255,6,0,7,255,8,255,9,255,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+  </Function>
+  <Function ID="119" Type="Scene" Name="NI3K - Tilts Up" Path="Test/NI3K/Move">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="3">0,128,1,0,2,0,3,0,4,0,5,255,6,0,7,255,8,255,9,255,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+  </Function>
+
+  <!-- ============================================================ -->
+  <!-- PER-FIXTURE CHASERS (IDs 200-206) -->
+  <!-- 3s hold, 500ms fades — slow enough to visually confirm each scene -->
+  <!-- ============================================================ -->
+  <Function ID="200" Type="Chaser" Name="Test: 4BAR Full" Path="Per-Fixture">
+   <Speed FadeIn="500" FadeOut="500" Duration="3000"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">1</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">2</Step>
+   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">3</Step>
+   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">4</Step>
+   <Step Number="4" FadeIn="0" Hold="0" FadeOut="0">5</Step>
+   <Step Number="5" FadeIn="0" Hold="0" FadeOut="0">6</Step>
+   <Step Number="6" FadeIn="0" Hold="0" FadeOut="0">7</Step>
+   <Step Number="7" FadeIn="0" Hold="0" FadeOut="0">8</Step>
+   <Step Number="8" FadeIn="0" Hold="0" FadeOut="0">9</Step>
+   <Step Number="9" FadeIn="0" Hold="0" FadeOut="0">10</Step>
+   <Step Number="10" FadeIn="0" Hold="0" FadeOut="0">11</Step>
+   <Step Number="11" FadeIn="0" Hold="0" FadeOut="0">12</Step>
+  </Function>
+
+  <Function ID="201" Type="Chaser" Name="Test: Missyee #1 Full" Path="Per-Fixture">
+   <Speed FadeIn="500" FadeOut="500" Duration="3000"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">20</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">21</Step>
+   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">22</Step>
+   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">23</Step>
+   <Step Number="4" FadeIn="0" Hold="0" FadeOut="0">24</Step>
+   <Step Number="5" FadeIn="0" Hold="0" FadeOut="0">25</Step>
+   <Step Number="6" FadeIn="0" Hold="0" FadeOut="0">26</Step>
+  </Function>
+
+  <Function ID="202" Type="Chaser" Name="Test: Missyee #2 Full" Path="Per-Fixture">
+   <Speed FadeIn="500" FadeOut="500" Duration="3000"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">30</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">31</Step>
+   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">32</Step>
+   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">33</Step>
+   <Step Number="4" FadeIn="0" Hold="0" FadeOut="0">34</Step>
+   <Step Number="5" FadeIn="0" Hold="0" FadeOut="0">35</Step>
+   <Step Number="6" FadeIn="0" Hold="0" FadeOut="0">36</Step>
+  </Function>
+
+  <Function ID="203" Type="Chaser" Name="Test: Sharpy Full" Path="Per-Fixture">
+   <Speed FadeIn="500" FadeOut="500" Duration="3000"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">40</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">41</Step>
+   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">42</Step>
+   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">43</Step>
+   <Step Number="4" FadeIn="0" Hold="0" FadeOut="0">44</Step>
+   <Step Number="5" FadeIn="0" Hold="0" FadeOut="0">45</Step>
+   <Step Number="6" FadeIn="0" Hold="0" FadeOut="0">46</Step>
+   <Step Number="7" FadeIn="0" Hold="0" FadeOut="0">47</Step>
+   <Step Number="8" FadeIn="0" Hold="0" FadeOut="0">48</Step>
+   <Step Number="9" FadeIn="0" Hold="0" FadeOut="0">49</Step>
+   <Step Number="10" FadeIn="0" Hold="0" FadeOut="0">50</Step>
+   <Step Number="11" FadeIn="0" Hold="0" FadeOut="0">51</Step>
+   <Step Number="12" FadeIn="0" Hold="0" FadeOut="0">52</Step>
+   <Step Number="13" FadeIn="0" Hold="0" FadeOut="0">53</Step>
+   <Step Number="14" FadeIn="0" Hold="0" FadeOut="0">54</Step>
+   <Step Number="15" FadeIn="0" Hold="0" FadeOut="0">55</Step>
+   <Step Number="16" FadeIn="0" Hold="0" FadeOut="0">56</Step>
+   <Step Number="17" FadeIn="0" Hold="0" FadeOut="0">57</Step>
+   <Step Number="18" FadeIn="0" Hold="0" FadeOut="0">58</Step>
+   <Step Number="19" FadeIn="0" Hold="0" FadeOut="0">59</Step>
+  </Function>
+
+  <Function ID="204" Type="Chaser" Name="Test: BSW Full" Path="Per-Fixture">
+   <Speed FadeIn="500" FadeOut="500" Duration="3000"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">60</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">61</Step>
+   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">62</Step>
+   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">63</Step>
+   <Step Number="4" FadeIn="0" Hold="0" FadeOut="0">64</Step>
+   <Step Number="5" FadeIn="0" Hold="0" FadeOut="0">65</Step>
+   <Step Number="6" FadeIn="0" Hold="0" FadeOut="0">66</Step>
+   <Step Number="7" FadeIn="0" Hold="0" FadeOut="0">67</Step>
+   <Step Number="8" FadeIn="0" Hold="0" FadeOut="0">68</Step>
+   <Step Number="9" FadeIn="0" Hold="0" FadeOut="0">69</Step>
+   <Step Number="10" FadeIn="0" Hold="0" FadeOut="0">70</Step>
+   <Step Number="11" FadeIn="0" Hold="0" FadeOut="0">71</Step>
+   <Step Number="12" FadeIn="0" Hold="0" FadeOut="0">72</Step>
+   <Step Number="13" FadeIn="0" Hold="0" FadeOut="0">73</Step>
+   <Step Number="14" FadeIn="0" Hold="0" FadeOut="0">74</Step>
+   <Step Number="15" FadeIn="0" Hold="0" FadeOut="0">75</Step>
+   <Step Number="16" FadeIn="0" Hold="0" FadeOut="0">76</Step>
+   <Step Number="17" FadeIn="0" Hold="0" FadeOut="0">77</Step>
+   <Step Number="18" FadeIn="0" Hold="0" FadeOut="0">78</Step>
+   <Step Number="19" FadeIn="0" Hold="0" FadeOut="0">79</Step>
+   <Step Number="20" FadeIn="0" Hold="0" FadeOut="0">80</Step>
+  </Function>
+
+  <Function ID="205" Type="Chaser" Name="Test: Profile Full" Path="Per-Fixture">
+   <Speed FadeIn="500" FadeOut="500" Duration="3000"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">81</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">82</Step>
+   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">83</Step>
+   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">84</Step>
+   <Step Number="4" FadeIn="0" Hold="0" FadeOut="0">85</Step>
+   <Step Number="5" FadeIn="0" Hold="0" FadeOut="0">86</Step>
+   <Step Number="6" FadeIn="0" Hold="0" FadeOut="0">87</Step>
+   <Step Number="7" FadeIn="0" Hold="0" FadeOut="0">88</Step>
+   <Step Number="8" FadeIn="0" Hold="0" FadeOut="0">89</Step>
+   <Step Number="9" FadeIn="0" Hold="0" FadeOut="0">90</Step>
+   <Step Number="10" FadeIn="0" Hold="0" FadeOut="0">91</Step>
+   <Step Number="11" FadeIn="0" Hold="0" FadeOut="0">92</Step>
+   <Step Number="12" FadeIn="0" Hold="0" FadeOut="0">93</Step>
+   <Step Number="13" FadeIn="0" Hold="0" FadeOut="0">94</Step>
+   <Step Number="14" FadeIn="0" Hold="0" FadeOut="0">95</Step>
+   <Step Number="15" FadeIn="0" Hold="0" FadeOut="0">96</Step>
+   <Step Number="16" FadeIn="0" Hold="0" FadeOut="0">97</Step>
+  </Function>
+
+  <Function ID="206" Type="Chaser" Name="Test: NI3K Full" Path="Per-Fixture">
+   <Speed FadeIn="500" FadeOut="500" Duration="3000"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">100</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">101</Step>
+   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">102</Step>
+   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">103</Step>
+   <Step Number="4" FadeIn="0" Hold="0" FadeOut="0">104</Step>
+   <Step Number="5" FadeIn="0" Hold="0" FadeOut="0">105</Step>
+   <Step Number="6" FadeIn="0" Hold="0" FadeOut="0">106</Step>
+   <Step Number="7" FadeIn="0" Hold="0" FadeOut="0">107</Step>
+   <Step Number="8" FadeIn="0" Hold="0" FadeOut="0">108</Step>
+   <Step Number="9" FadeIn="0" Hold="0" FadeOut="0">109</Step>
+   <Step Number="10" FadeIn="0" Hold="0" FadeOut="0">110</Step>
+   <Step Number="11" FadeIn="0" Hold="0" FadeOut="0">111</Step>
+   <Step Number="12" FadeIn="0" Hold="0" FadeOut="0">112</Step>
+   <Step Number="13" FadeIn="0" Hold="0" FadeOut="0">113</Step>
+   <Step Number="14" FadeIn="0" Hold="0" FadeOut="0">114</Step>
+   <Step Number="15" FadeIn="0" Hold="0" FadeOut="0">115</Step>
+   <Step Number="16" FadeIn="0" Hold="0" FadeOut="0">116</Step>
+   <Step Number="17" FadeIn="0" Hold="0" FadeOut="0">117</Step>
+   <Step Number="18" FadeIn="0" Hold="0" FadeOut="0">118</Step>
+   <Step Number="19" FadeIn="0" Hold="0" FadeOut="0">119</Step>
+  </Function>
+
+  <!-- ============================================================ -->
+  <!-- CATEGORY CHASERS (IDs 210-214) -->
+  <!-- ============================================================ -->
+  <!-- White from each fixture to confirm all respond -->
+  <Function ID="210" Type="Chaser" Name="Test: All Colors" Path="By Category">
+   <Speed FadeIn="500" FadeOut="500" Duration="3000"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">4</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">23</Step>
+   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">33</Step>
+   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">40</Step>
+   <Step Number="4" FadeIn="0" Hold="0" FadeOut="0">60</Step>
+   <Step Number="5" FadeIn="0" Hold="0" FadeOut="0">81</Step>
+   <Step Number="6" FadeIn="0" Hold="0" FadeOut="0">103</Step>
+  </Function>
+
+  <!-- Gobos from Sharpy, BSW, Profile -->
+  <Function ID="211" Type="Chaser" Name="Test: All Gobos" Path="By Category">
+   <Speed FadeIn="500" FadeOut="500" Duration="3000"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">45</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">46</Step>
+   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">47</Step>
+   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">48</Step>
+   <Step Number="4" FadeIn="0" Hold="0" FadeOut="0">66</Step>
+   <Step Number="5" FadeIn="0" Hold="0" FadeOut="0">67</Step>
+   <Step Number="6" FadeIn="0" Hold="0" FadeOut="0">68</Step>
+   <Step Number="7" FadeIn="0" Hold="0" FadeOut="0">69</Step>
+   <Step Number="8" FadeIn="0" Hold="0" FadeOut="0">70</Step>
+   <Step Number="9" FadeIn="0" Hold="0" FadeOut="0">86</Step>
+   <Step Number="10" FadeIn="0" Hold="0" FadeOut="0">87</Step>
+   <Step Number="11" FadeIn="0" Hold="0" FadeOut="0">88</Step>
+   <Step Number="12" FadeIn="0" Hold="0" FadeOut="0">89</Step>
+  </Function>
+
+  <!-- Movement from all movers -->
+  <Function ID="212" Type="Chaser" Name="Test: All Movement" Path="By Category">
+   <Speed FadeIn="0" FadeOut="0" Duration="3000"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">56</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">57</Step>
+   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">58</Step>
+   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">59</Step>
+   <Step Number="4" FadeIn="0" Hold="0" FadeOut="0">77</Step>
+   <Step Number="5" FadeIn="0" Hold="0" FadeOut="0">78</Step>
+   <Step Number="6" FadeIn="0" Hold="0" FadeOut="0">79</Step>
+   <Step Number="7" FadeIn="0" Hold="0" FadeOut="0">80</Step>
+   <Step Number="8" FadeIn="0" Hold="0" FadeOut="0">94</Step>
+   <Step Number="9" FadeIn="0" Hold="0" FadeOut="0">95</Step>
+   <Step Number="10" FadeIn="0" Hold="0" FadeOut="0">96</Step>
+   <Step Number="11" FadeIn="0" Hold="0" FadeOut="0">97</Step>
+   <Step Number="12" FadeIn="0" Hold="0" FadeOut="0">116</Step>
+   <Step Number="13" FadeIn="0" Hold="0" FadeOut="0">117</Step>
+   <Step Number="14" FadeIn="0" Hold="0" FadeOut="0">118</Step>
+   <Step Number="15" FadeIn="0" Hold="0" FadeOut="0">119</Step>
+  </Function>
+
+  <!-- Prisms from Sharpy, BSW, Profile -->
+  <Function ID="213" Type="Chaser" Name="Test: All Prisms" Path="By Category">
+   <Speed FadeIn="500" FadeOut="500" Duration="3000"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">49</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">50</Step>
+   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">51</Step>
+   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">52</Step>
+   <Step Number="4" FadeIn="0" Hold="0" FadeOut="0">72</Step>
+   <Step Number="5" FadeIn="0" Hold="0" FadeOut="0">73</Step>
+   <Step Number="6" FadeIn="0" Hold="0" FadeOut="0">91</Step>
+  </Function>
+
+  <!-- NI3K specials: lasers + halo -->
+  <Function ID="214" Type="Chaser" Name="Test: NI3K Specials" Path="By Category">
+   <Speed FadeIn="500" FadeOut="500" Duration="3000"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">108</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">109</Step>
+   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">110</Step>
+   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">111</Step>
+   <Step Number="4" FadeIn="0" Hold="0" FadeOut="0">112</Step>
+   <Step Number="5" FadeIn="0" Hold="0" FadeOut="0">113</Step>
+   <Step Number="6" FadeIn="0" Hold="0" FadeOut="0">114</Step>
+   <Step Number="7" FadeIn="0" Hold="0" FadeOut="0">115</Step>
+  </Function>
+
+  <Monitor DisplayMode="0" ShowLabels="0">
+   <Font>Arial,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1</Font>
+   <ChannelStyle>0</ChannelStyle>
+   <ValueStyle>0</ValueStyle>
+   <Grid Width="5" Height="3" Depth="5" Units="0" POV="1"/>
+   <StageItem>0</StageItem>
+   <FxItem ID="1" XPos="386.582" YPos="1000" ZPos="287.18"/>
+   <FxItem ID="2" XPos="1961.2" YPos="1000" ZPos="386.889"/>
+   <FxItem ID="3" XPos="3355.38" YPos="1000" ZPos="335.202"/>
+   <FxItem ID="4" XPos="2342.48" YPos="1000" ZPos="4250.46"/>
+   <FxItem ID="5" XPos="25.06" YPos="1000" ZPos="1519.79"/>
+   <FxItem ID="6" XPos="22.4348" YPos="1000" ZPos="1012.91"/>
+   <FxItem ID="8" XPos="4341.8" YPos="1000" ZPos="345.539"/>
+  </Monitor>
+ </Engine>
+ <VirtualConsole>
+  <Frame Caption="Thorough Fixture Test" ID="0">
+   <Appearance>
+    <Font>Roboto Condensed,16,-1,5,400,0,0,0,0,0,0,0,0,0,0,1</Font>
+   </Appearance>
+   <WindowState Visible="True" X="0" Y="0" Width="950" Height="300"/>
+   <AllowResize>False</AllowResize>
+   <ShowHeader>False</ShowHeader>
+   <ShowEnableButton>True</ShowEnableButton>
+   <Collapsed>False</Collapsed>
+   <Disabled>False</Disabled>
+
+   <!-- Row 1: Per-fixture test chasers -->
+   <Button Caption="4BAR" ID="1">
+    <WindowState Visible="True" X="10" Y="10" Width="120" Height="50"/>
+    <Appearance>
+     <BackgroundColor>4294940672</BackgroundColor>
+    </Appearance>
+    <Function ID="200"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Missyee #1" ID="2">
+    <WindowState Visible="True" X="140" Y="10" Width="120" Height="50"/>
+    <Appearance>
+     <BackgroundColor>4294940672</BackgroundColor>
+    </Appearance>
+    <Function ID="201"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Missyee #2" ID="3">
+    <WindowState Visible="True" X="270" Y="10" Width="120" Height="50"/>
+    <Appearance>
+     <BackgroundColor>4294940672</BackgroundColor>
+    </Appearance>
+    <Function ID="202"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Sharpy" ID="4">
+    <WindowState Visible="True" X="400" Y="10" Width="120" Height="50"/>
+    <Appearance>
+     <BackgroundColor>4278230783</BackgroundColor>
+    </Appearance>
+    <Function ID="203"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="BSW" ID="5">
+    <WindowState Visible="True" X="530" Y="10" Width="120" Height="50"/>
+    <Appearance>
+     <BackgroundColor>4278230783</BackgroundColor>
+    </Appearance>
+    <Function ID="204"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Profile" ID="6">
+    <WindowState Visible="True" X="660" Y="10" Width="120" Height="50"/>
+    <Appearance>
+     <BackgroundColor>4278230783</BackgroundColor>
+    </Appearance>
+    <Function ID="205"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="NI3K" ID="7">
+    <WindowState Visible="True" X="790" Y="10" Width="120" Height="50"/>
+    <Appearance>
+     <BackgroundColor>4286578816</BackgroundColor>
+    </Appearance>
+    <Function ID="206"/>
+    <Action>Toggle</Action>
+   </Button>
+
+   <!-- Row 2: Category test chasers -->
+   <Button Caption="All Colors" ID="10">
+    <WindowState Visible="True" X="10" Y="70" Width="175" Height="50"/>
+    <Appearance>
+     <BackgroundColor>4278222976</BackgroundColor>
+    </Appearance>
+    <Function ID="210"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="All Gobos" ID="11">
+    <WindowState Visible="True" X="195" Y="70" Width="175" Height="50"/>
+    <Appearance>
+     <BackgroundColor>4278222976</BackgroundColor>
+    </Appearance>
+    <Function ID="211"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="All Movement" ID="12">
+    <WindowState Visible="True" X="380" Y="70" Width="175" Height="50"/>
+    <Appearance>
+     <BackgroundColor>4278222976</BackgroundColor>
+    </Appearance>
+    <Function ID="212"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="All Prisms" ID="13">
+    <WindowState Visible="True" X="565" Y="70" Width="175" Height="50"/>
+    <Appearance>
+     <BackgroundColor>4278222976</BackgroundColor>
+    </Appearance>
+    <Function ID="213"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="NI3K Specials" ID="14">
+    <WindowState Visible="True" X="750" Y="70" Width="160" Height="50"/>
+    <Appearance>
+     <BackgroundColor>4286578816</BackgroundColor>
+    </Appearance>
+    <Function ID="214"/>
+    <Action>Toggle</Action>
+   </Button>
+
+   <!-- Row 3: Blackout -->
+   <Button Caption="BLACKOUT" ID="20">
+    <WindowState Visible="True" X="10" Y="130" Width="900" Height="50"/>
+    <Appearance>
+     <ForegroundColor>4294901760</ForegroundColor>
+     <BackgroundColor>4278190080</BackgroundColor>
+    </Appearance>
+    <Function ID="0"/>
+    <Action>Toggle</Action>
+   </Button>
+  </Frame>
+ </VirtualConsole>
+</Workspace>

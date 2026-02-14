@@ -1,0 +1,738 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Workspace>
+<Workspace xmlns="http://www.qlcplus.org/Workspace" CurrentWindow="VC">
+ <Creator>
+  <Name>Q Light Controller Plus</Name>
+  <Version>5.0.1</Version>
+  <Author>Ben Wilson</Author>
+ </Creator>
+ <Engine>
+  <InputOutputMap>
+   <BeatGenerator BeatType="Internal" BPM="174"/>
+   <Universe Name="Universe 1" ID="0">
+    <Output Plugin="ArtNet" UID="10.0.0.7" Line="0"/>
+   </Universe>
+  </InputOutputMap>
+  <Fixture>
+   <Manufacturer>Chauvet</Manufacturer>
+   <Model>4BAR</Model>
+   <Mode>15 Channel</Mode>
+   <ID>0</ID>
+   <Name>Chauvet 4BAR</Name>
+   <Universe>0</Universe>
+   <Address>0</Address>
+   <Channels>15</Channels>
+  </Fixture>
+  <!-- ============================================================ -->
+  <!-- 174 BPM TIMING REFERENCE:                                     -->
+  <!--   1/4 beat =  86ms   1/2 beat = 172ms   1 beat  = 345ms      -->
+  <!--   1 bar    = 1379ms  2 bars   = 2759ms  4 bars  = 5517ms     -->
+  <!--   8 bars   = 11034ms                                          -->
+  <!-- CHANNEL MAP: 0=Prog 1=Master 2=Strobe                        -->
+  <!--   3=R1 4=G1 5=B1  6=R2 7=G2 8=B2                             -->
+  <!--   9=R3 10=G3 11=B3  12=R4 13=G4 14=B4                        -->
+  <!-- ============================================================ -->
+
+  <!-- ==================== BASE COLORS (all pars) ================= -->
+  <Function ID="0" Type="Scene" Name="All Red" Path="Base">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,255,4,0,5,0,6,255,7,0,8,0,9,255,10,0,11,0,12,255,13,0,14,0</FixtureVal>
+  </Function>
+  <Function ID="1" Type="Scene" Name="All Orange" Path="Base">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,255,4,128,5,0,6,255,7,128,8,0,9,255,10,128,11,0,12,255,13,128,14,0</FixtureVal>
+  </Function>
+  <Function ID="2" Type="Scene" Name="All Yellow" Path="Base">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,255,4,255,5,0,6,255,7,255,8,0,9,255,10,255,11,0,12,255,13,255,14,0</FixtureVal>
+  </Function>
+  <Function ID="3" Type="Scene" Name="All Green" Path="Base">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,0,4,255,5,0,6,0,7,255,8,0,9,0,10,255,11,0,12,0,13,255,14,0</FixtureVal>
+  </Function>
+  <Function ID="4" Type="Scene" Name="All Cyan" Path="Base">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,0,4,255,5,255,6,0,7,255,8,255,9,0,10,255,11,255,12,0,13,255,14,255</FixtureVal>
+  </Function>
+  <Function ID="5" Type="Scene" Name="All Blue" Path="Base">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,0,4,0,5,255,6,0,7,0,8,255,9,0,10,0,11,255,12,0,13,0,14,255</FixtureVal>
+  </Function>
+  <Function ID="6" Type="Scene" Name="All Purple" Path="Base">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,128,4,0,5,255,6,128,7,0,8,255,9,128,10,0,11,255,12,128,13,0,14,255</FixtureVal>
+  </Function>
+  <Function ID="7" Type="Scene" Name="All Magenta" Path="Base">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,255,4,0,5,255,6,255,7,0,8,255,9,255,10,0,11,255,12,255,13,0,14,255</FixtureVal>
+  </Function>
+  <Function ID="8" Type="Scene" Name="All White" Path="Base">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255,13,255,14,255</FixtureVal>
+  </Function>
+  <Function ID="9" Type="Scene" Name="Blackout" Path="Base">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+  </Function>
+
+  <!-- ==================== DEEP / DARK COLORS ===================== -->
+  <Function ID="10" Type="Scene" Name="Deep Blue" Path="Deep">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,0,4,0,5,160,6,0,7,0,8,160,9,0,10,0,11,160,12,0,13,0,14,160</FixtureVal>
+  </Function>
+  <Function ID="11" Type="Scene" Name="Deep Purple" Path="Deep">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,80,4,0,5,160,6,80,7,0,8,160,9,80,10,0,11,160,12,80,13,0,14,160</FixtureVal>
+  </Function>
+  <Function ID="12" Type="Scene" Name="Dark Red" Path="Deep">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,160,4,0,5,0,6,160,7,0,8,0,9,160,10,0,11,0,12,160,13,0,14,0</FixtureVal>
+  </Function>
+  <Function ID="13" Type="Scene" Name="Deep Teal" Path="Deep">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,0,4,80,5,100,6,0,7,80,8,100,9,0,10,80,11,100,12,0,13,80,14,100</FixtureVal>
+  </Function>
+  <Function ID="14" Type="Scene" Name="Indigo" Path="Deep">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,40,4,0,5,200,6,40,7,0,8,200,9,40,10,0,11,200,12,40,13,0,14,200</FixtureVal>
+  </Function>
+  <Function ID="15" Type="Scene" Name="Very Dark Purple" Path="Deep">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,20,4,0,5,40,6,20,7,0,8,40,9,20,10,0,11,40,12,20,13,0,14,40</FixtureVal>
+  </Function>
+
+  <!-- ==================== WARM COLORS ============================ -->
+  <Function ID="16" Type="Scene" Name="Warm Amber" Path="Warm">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,255,4,140,5,20,6,255,7,140,8,20,9,255,10,140,11,20,12,255,13,140,14,20</FixtureVal>
+  </Function>
+  <Function ID="17" Type="Scene" Name="Soft Gold" Path="Warm">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,200,4,180,5,50,6,200,7,180,8,50,9,200,10,180,11,50,12,200,13,180,14,50</FixtureVal>
+  </Function>
+  <Function ID="18" Type="Scene" Name="Warm Pink" Path="Warm">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,200,4,80,5,100,6,200,7,80,8,100,9,200,10,80,11,100,12,200,13,80,14,100</FixtureVal>
+  </Function>
+  <Function ID="19" Type="Scene" Name="Pale Lavender" Path="Warm">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,120,4,100,5,200,6,120,7,100,8,200,9,120,10,100,11,200,12,120,13,100,14,200</FixtureVal>
+  </Function>
+
+  <!-- ==================== NEON COLORS ============================ -->
+  <Function ID="20" Type="Scene" Name="Neon Pink" Path="Neon">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,255,4,0,5,150,6,255,7,0,8,150,9,255,10,0,11,150,12,255,13,0,14,150</FixtureVal>
+  </Function>
+  <Function ID="21" Type="Scene" Name="Neon Green" Path="Neon">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,0,4,255,5,50,6,0,7,255,8,50,9,0,10,255,11,50,12,0,13,255,14,50</FixtureVal>
+  </Function>
+  <Function ID="22" Type="Scene" Name="Electric Blue" Path="Neon">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,0,4,50,5,255,6,0,7,50,8,255,9,0,10,50,11,255,12,0,13,50,14,255</FixtureVal>
+  </Function>
+  <Function ID="23" Type="Scene" Name="Neon Orange" Path="Neon">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,255,4,80,5,0,6,255,7,80,8,0,9,255,10,80,11,0,12,255,13,80,14,0</FixtureVal>
+  </Function>
+
+  <!-- ==================== WHITE SWEEP (single par) =============== -->
+  <Function ID="24" Type="Scene" Name="White Par1" Path="Sweep">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,255,4,255,5,255,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+  </Function>
+  <Function ID="25" Type="Scene" Name="White Par2" Path="Sweep">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,0,4,0,5,0,6,255,7,255,8,255,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+  </Function>
+  <Function ID="26" Type="Scene" Name="White Par3" Path="Sweep">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,255,10,255,11,255,12,0,13,0,14,0</FixtureVal>
+  </Function>
+  <Function ID="27" Type="Scene" Name="White Par4" Path="Sweep">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,255,13,255,14,255</FixtureVal>
+  </Function>
+
+  <!-- ==================== DEEP BLUE SWEEP (single par) =========== -->
+  <Function ID="28" Type="Scene" Name="DeepBlue Par1" Path="Sweep">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,0,4,0,5,160,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+  </Function>
+  <Function ID="29" Type="Scene" Name="DeepBlue Par2" Path="Sweep">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,0,4,0,5,0,6,0,7,0,8,160,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+  </Function>
+  <Function ID="30" Type="Scene" Name="DeepBlue Par3" Path="Sweep">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,160,12,0,13,0,14,0</FixtureVal>
+  </Function>
+  <Function ID="31" Type="Scene" Name="DeepBlue Par4" Path="Sweep">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,160</FixtureVal>
+  </Function>
+
+  <!-- ==================== PAR COMBOS (strobe patterns) =========== -->
+  <Function ID="32" Type="Scene" Name="Pars 1+3 White" Path="Combo">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,255,4,255,5,255,6,0,7,0,8,0,9,255,10,255,11,255,12,0,13,0,14,0</FixtureVal>
+  </Function>
+  <Function ID="33" Type="Scene" Name="Pars 2+4 White" Path="Combo">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,0,4,0,5,0,6,255,7,255,8,255,9,0,10,0,11,0,12,255,13,255,14,255</FixtureVal>
+  </Function>
+
+  <!-- ==================== WHITE BUILD (progressive) ============== -->
+  <Function ID="34" Type="Scene" Name="White P1+P2" Path="Build">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,255,4,255,5,255,6,255,7,255,8,255,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+  </Function>
+  <Function ID="35" Type="Scene" Name="White P1+P2+P3" Path="Build">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,0,13,0,14,0</FixtureVal>
+  </Function>
+
+  <!-- ==================== COLOR STACK BUILD ====================== -->
+  <Function ID="36" Type="Scene" Name="Stack P1 Red" Path="Build">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,255,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+  </Function>
+  <Function ID="37" Type="Scene" Name="Stack P1R P2B" Path="Build">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,255,4,0,5,0,6,0,7,0,8,255,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+  </Function>
+  <Function ID="38" Type="Scene" Name="Stack P1R P2B P3G" Path="Build">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,255,4,0,5,0,6,0,7,0,8,255,9,0,10,255,11,0,12,0,13,0,14,0</FixtureVal>
+  </Function>
+  <Function ID="39" Type="Scene" Name="Stack All RBGW" Path="Build">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,255,4,0,5,0,6,0,7,0,8,255,9,0,10,255,11,0,12,255,13,255,14,255</FixtureVal>
+  </Function>
+
+  <!-- ==================== INTENSITY LEVELS ======================= -->
+  <Function ID="40" Type="Scene" Name="Dim 25%" Path="Dimmer">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,64,2,0,3,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255,13,255,14,255</FixtureVal>
+  </Function>
+  <Function ID="41" Type="Scene" Name="Dim 50%" Path="Dimmer">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,128,2,0,3,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255,13,255,14,255</FixtureVal>
+  </Function>
+  <Function ID="42" Type="Scene" Name="Dim 80%" Path="Dimmer">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,204,2,0,3,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255,13,255,14,255</FixtureVal>
+  </Function>
+
+  <!-- ==================== MIDNIGHT FLOW OFFSETS ================== -->
+  <!-- Rotating: DeepBlue(0,0,160) Indigo(40,0,200) DeepPurple(80,0,160) DeepTeal(0,80,100) -->
+  <Function ID="43" Type="Scene" Name="MidFlow Step1" Path="MidFlow">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,0,4,0,5,160,6,40,7,0,8,200,9,80,10,0,11,160,12,0,13,80,14,100</FixtureVal>
+  </Function>
+  <Function ID="44" Type="Scene" Name="MidFlow Step2" Path="MidFlow">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,40,4,0,5,200,6,80,7,0,8,160,9,0,10,80,11,100,12,0,13,0,14,160</FixtureVal>
+  </Function>
+  <Function ID="45" Type="Scene" Name="MidFlow Step3" Path="MidFlow">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,80,4,0,5,160,6,0,7,80,8,100,9,0,10,0,11,160,12,40,13,0,14,200</FixtureVal>
+  </Function>
+  <Function ID="46" Type="Scene" Name="MidFlow Step4" Path="MidFlow">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,0,4,80,5,100,6,0,7,0,8,160,9,40,10,0,11,200,12,80,13,0,14,160</FixtureVal>
+  </Function>
+
+  <!-- ==================== RAINBOW OFFSETS ======================== -->
+  <!-- Rotating: Red Yellow Green Cyan Blue Magenta -->
+  <Function ID="47" Type="Scene" Name="Rainbow Step1" Path="Rainbow">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,255,4,0,5,0,6,255,7,255,8,0,9,0,10,255,11,0,12,0,13,255,14,255</FixtureVal>
+  </Function>
+  <Function ID="48" Type="Scene" Name="Rainbow Step2" Path="Rainbow">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,255,4,255,5,0,6,0,7,255,8,0,9,0,10,255,11,255,12,0,13,0,14,255</FixtureVal>
+  </Function>
+  <Function ID="49" Type="Scene" Name="Rainbow Step3" Path="Rainbow">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,0,4,255,5,0,6,0,7,255,8,255,9,0,10,0,11,255,12,255,13,0,14,255</FixtureVal>
+  </Function>
+  <Function ID="50" Type="Scene" Name="Rainbow Step4" Path="Rainbow">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,0,4,255,5,255,6,0,7,0,8,255,9,255,10,0,11,255,12,255,13,0,14,0</FixtureVal>
+  </Function>
+  <Function ID="51" Type="Scene" Name="Rainbow Step5" Path="Rainbow">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,0,4,0,5,255,6,255,7,0,8,255,9,255,10,0,11,0,12,255,13,255,14,0</FixtureVal>
+  </Function>
+  <Function ID="52" Type="Scene" Name="Rainbow Step6" Path="Rainbow">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,255,2,0,3,255,4,0,5,255,6,255,7,0,8,0,9,255,10,255,11,0,12,0,13,255,14,0</FixtureVal>
+  </Function>
+
+  <!-- ==================== SOFT BREATHE LEVELS ==================== -->
+  <Function ID="53" Type="Scene" Name="Amber Dim 30%" Path="Warm">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,77,2,0,3,255,4,140,5,20,6,255,7,140,8,20,9,255,10,140,11,20,12,255,13,140,14,20</FixtureVal>
+  </Function>
+  <Function ID="54" Type="Scene" Name="Amber Dim 60%" Path="Warm">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,153,2,0,3,255,4,140,5,20,6,255,7,140,8,20,9,255,10,140,11,20,12,255,13,140,14,20</FixtureVal>
+  </Function>
+
+  <!-- ============================================================ -->
+  <!-- ============================================================ -->
+  <!-- CHASERS - ALL SYNCED TO 174 BPM                              -->
+  <!-- ============================================================ -->
+  <!-- ============================================================ -->
+
+  <!-- ==================== HIGH ENERGY (4) ======================== -->
+
+  <!-- 1/16th note white strobe - pure aggression -->
+  <Function ID="100" Type="Chaser" Name="HE: Strobe Snap" Path="High Energy">
+   <Speed FadeIn="0" FadeOut="0" Duration="86"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">8</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">9</Step>
+  </Function>
+
+  <!-- 1/8th note white sweep across pars - Amen break energy -->
+  <Function ID="101" Type="Chaser" Name="HE: Rapid Fire" Path="High Energy">
+   <Speed FadeIn="0" FadeOut="0" Duration="172"/>
+   <Direction>Forward</Direction>
+   <RunOrder>PingPong</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">24</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">25</Step>
+   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">26</Step>
+   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">27</Step>
+  </Function>
+
+  <!-- 1/8th alternating pars 1+3 vs 2+4 - double-time feel -->
+  <Function ID="102" Type="Chaser" Name="HE: Alt Flash" Path="High Energy">
+   <Speed FadeIn="0" FadeOut="0" Duration="172"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">32</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">33</Step>
+  </Function>
+
+  <!-- 1/4 beat color blitz - jump-up madness -->
+  <Function ID="103" Type="Chaser" Name="HE: Color Blitz" Path="High Energy">
+   <Speed FadeIn="0" FadeOut="0" Duration="86"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">0</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">5</Step>
+   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">3</Step>
+   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">7</Step>
+   <Step Number="4" FadeIn="0" Hold="0" FadeOut="0">4</Step>
+   <Step Number="5" FadeIn="0" Hold="0" FadeOut="0">2</Step>
+  </Function>
+
+  <!-- ==================== DEEP ROLLING BASS (4) ================== -->
+
+  <!-- 1-bar deep blue sweep - rolling sub bass feel -->
+  <Function ID="104" Type="Chaser" Name="DR: Blue Roll" Path="Deep Rolling">
+   <Speed FadeIn="1034" FadeOut="0" Duration="1379"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">28</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">29</Step>
+   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">30</Step>
+   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">31</Step>
+  </Function>
+
+  <!-- 2-beat purple breathe - Reese bass pulse -->
+  <Function ID="105" Type="Chaser" Name="DR: Purple Pulse" Path="Deep Rolling">
+   <Speed FadeIn="520" FadeOut="0" Duration="690"/>
+   <Direction>Forward</Direction>
+   <RunOrder>PingPong</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">11</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">15</Step>
+  </Function>
+
+  <!-- 2-bar deep color cycle - dark liquid vibes -->
+  <Function ID="106" Type="Chaser" Name="DR: Dark Wave" Path="Deep Rolling">
+   <Speed FadeIn="2069" FadeOut="0" Duration="2759"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">10</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">14</Step>
+   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">11</Step>
+   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">13</Step>
+  </Function>
+
+  <!-- 1-bar rolling offset deep colors - techstep movement -->
+  <Function ID="107" Type="Chaser" Name="DR: Midnight Flow" Path="Deep Rolling">
+   <Speed FadeIn="1034" FadeOut="0" Duration="1379"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">43</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">44</Step>
+   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">45</Step>
+   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">46</Step>
+  </Function>
+
+  <!-- ==================== COLOR SHIFTS (4) ======================= -->
+
+  <!-- 4-bar full spectrum - atmospheric pads -->
+  <Function ID="108" Type="Chaser" Name="CS: Spectrum Drift" Path="Color Shifts">
+   <Speed FadeIn="4138" FadeOut="0" Duration="5517"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">0</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">1</Step>
+   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">2</Step>
+   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">3</Step>
+   <Step Number="4" FadeIn="0" Hold="0" FadeOut="0">4</Step>
+   <Step Number="5" FadeIn="0" Hold="0" FadeOut="0">5</Step>
+   <Step Number="6" FadeIn="0" Hold="0" FadeOut="0">6</Step>
+   <Step Number="7" FadeIn="0" Hold="0" FadeOut="0">7</Step>
+  </Function>
+
+  <!-- 2-bar warm-to-cool shift - tension builder -->
+  <Function ID="109" Type="Chaser" Name="CS: Warm to Cool" Path="Color Shifts">
+   <Speed FadeIn="2069" FadeOut="0" Duration="2759"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">16</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">1</Step>
+   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">0</Step>
+   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">7</Step>
+   <Step Number="4" FadeIn="0" Hold="0" FadeOut="0">6</Step>
+   <Step Number="5" FadeIn="0" Hold="0" FadeOut="0">5</Step>
+   <Step Number="6" FadeIn="0" Hold="0" FadeOut="0">4</Step>
+  </Function>
+
+  <!-- 1-bar rainbow cascade with par offsets - liquid funk -->
+  <Function ID="110" Type="Chaser" Name="CS: Rainbow Cascade" Path="Color Shifts">
+   <Speed FadeIn="1034" FadeOut="0" Duration="1379"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">47</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">48</Step>
+   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">49</Step>
+   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">50</Step>
+   <Step Number="4" FadeIn="0" Hold="0" FadeOut="0">51</Step>
+   <Step Number="5" FadeIn="0" Hold="0" FadeOut="0">52</Step>
+  </Function>
+
+  <!-- 2-beat neon color pulse - jump-up party vibes -->
+  <Function ID="111" Type="Chaser" Name="CS: Neon Pulse" Path="Color Shifts">
+   <Speed FadeIn="345" FadeOut="0" Duration="690"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">20</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">21</Step>
+   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">22</Step>
+   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">23</Step>
+  </Function>
+
+  <!-- ==================== QUIET MOMENTS (4) ====================== -->
+
+  <!-- 8-bar ultra slow amber/gold - intro/outro warmth -->
+  <Function ID="112" Type="Chaser" Name="QM: Amber Glow" Path="Quiet">
+   <Speed FadeIn="8276" FadeOut="0" Duration="11034"/>
+   <Direction>Forward</Direction>
+   <RunOrder>PingPong</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">16</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">17</Step>
+  </Function>
+
+  <!-- 4-bar gentle amber breathe - vocal sections -->
+  <Function ID="113" Type="Chaser" Name="QM: Soft Breathe" Path="Quiet">
+   <Speed FadeIn="4138" FadeOut="0" Duration="5517"/>
+   <Direction>Forward</Direction>
+   <RunOrder>PingPong</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">53</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">54</Step>
+   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">16</Step>
+  </Function>
+
+  <!-- 4-bar slow blue/purple drift - atmospheric breakdown -->
+  <Function ID="114" Type="Chaser" Name="QM: Twilight" Path="Quiet">
+   <Speed FadeIn="4138" FadeOut="0" Duration="5517"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">10</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">14</Step>
+   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">19</Step>
+   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">11</Step>
+  </Function>
+
+  <!-- 2-bar gentle warm variation - melodic sections -->
+  <Function ID="115" Type="Chaser" Name="QM: Candle Flicker" Path="Quiet">
+   <Speed FadeIn="2069" FadeOut="0" Duration="2759"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">16</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">18</Step>
+   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">17</Step>
+  </Function>
+
+  <!-- ==================== BUILDS (4) ============================= -->
+
+  <!-- 2-bar per step par build - drop builder -->
+  <Function ID="116" Type="Chaser" Name="BLD: Par Build" Path="Builds">
+   <Speed FadeIn="1379" FadeOut="0" Duration="2759"/>
+   <Direction>Forward</Direction>
+   <RunOrder>SingleShot</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">9</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">24</Step>
+   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">34</Step>
+   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">35</Step>
+   <Step Number="4" FadeIn="0" Hold="0" FadeOut="0">8</Step>
+  </Function>
+
+  <!-- 4-bar per step intensity riser - 16-bar total build -->
+  <Function ID="117" Type="Chaser" Name="BLD: Intensity Riser" Path="Builds">
+   <Speed FadeIn="4138" FadeOut="0" Duration="5517"/>
+   <Direction>Forward</Direction>
+   <RunOrder>SingleShot</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">9</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">40</Step>
+   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">41</Step>
+   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">42</Step>
+   <Step Number="4" FadeIn="0" Hold="0" FadeOut="0">8</Step>
+  </Function>
+
+  <!-- 2-bar per step color stack - additive color build -->
+  <Function ID="118" Type="Chaser" Name="BLD: Color Stack" Path="Builds">
+   <Speed FadeIn="1379" FadeOut="0" Duration="2759"/>
+   <Direction>Forward</Direction>
+   <RunOrder>SingleShot</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">9</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">36</Step>
+   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">37</Step>
+   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">38</Step>
+   <Step Number="4" FadeIn="0" Hold="0" FadeOut="0">39</Step>
+  </Function>
+
+  <!-- Accelerating strobe - per-step timing, 1bar→2beat→1beat→half→quarter -->
+  <Function ID="119" Type="Chaser" Name="BLD: Strobe Accel" Path="Builds">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <Direction>Forward</Direction>
+   <RunOrder>SingleShot</RunOrder>
+   <SpeedModes FadeIn="PerStep" FadeOut="PerStep" Duration="PerStep"/>
+   <Step Number="0" FadeIn="0" Hold="1379" FadeOut="0">8</Step>
+   <Step Number="1" FadeIn="0" Hold="1379" FadeOut="0">9</Step>
+   <Step Number="2" FadeIn="0" Hold="690" FadeOut="0">8</Step>
+   <Step Number="3" FadeIn="0" Hold="690" FadeOut="0">9</Step>
+   <Step Number="4" FadeIn="0" Hold="345" FadeOut="0">8</Step>
+   <Step Number="5" FadeIn="0" Hold="345" FadeOut="0">9</Step>
+   <Step Number="6" FadeIn="0" Hold="172" FadeOut="0">8</Step>
+   <Step Number="7" FadeIn="0" Hold="172" FadeOut="0">9</Step>
+   <Step Number="8" FadeIn="0" Hold="86" FadeOut="0">8</Step>
+   <Step Number="9" FadeIn="0" Hold="86" FadeOut="0">9</Step>
+  </Function>
+
+  <Monitor DisplayMode="0" ShowLabels="0">
+   <Font>Arial,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1</Font>
+   <ChannelStyle>0</ChannelStyle>
+   <ValueStyle>0</ValueStyle>
+   <Grid Width="5" Height="3" Depth="5" Units="0" POV="1"/>
+   <StageItem>0</StageItem>
+   <FxItem ID="0" XPos="1979.44" YPos="1000" ZPos="867.503"/>
+  </Monitor>
+ </Engine>
+ <VirtualConsole>
+  <Frame Caption="DnB @ 174 BPM" ID="0">
+   <Appearance>
+    <Font>Roboto Condensed,16,-1,5,400,0,0,0,0,0,0,0,0,0,0,1</Font>
+   </Appearance>
+   <WindowState Visible="True" X="0" Y="0" Width="920" Height="350"/>
+   <AllowResize>False</AllowResize>
+   <ShowHeader>False</ShowHeader>
+   <ShowEnableButton>True</ShowEnableButton>
+   <Collapsed>False</Collapsed>
+   <Disabled>False</Disabled>
+   <!-- Row 1: HIGH ENERGY -->
+   <Label Caption="HIGH ENERGY" ID="50">
+    <WindowState Visible="True" X="10" Y="10" Width="120" Height="20"/>
+   </Label>
+   <Button Caption="Strobe Snap" ID="1">
+    <WindowState Visible="True" X="10" Y="35" Width="120" Height="45"/>
+    <Appearance>
+     <BackgroundColor>4294901760</BackgroundColor>
+    </Appearance>
+    <Function ID="100"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Rapid Fire" ID="2">
+    <WindowState Visible="True" X="140" Y="35" Width="120" Height="45"/>
+    <Appearance>
+     <BackgroundColor>4294901760</BackgroundColor>
+    </Appearance>
+    <Function ID="101"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Alt Flash" ID="3">
+    <WindowState Visible="True" X="270" Y="35" Width="120" Height="45"/>
+    <Appearance>
+     <BackgroundColor>4294901760</BackgroundColor>
+    </Appearance>
+    <Function ID="102"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Color Blitz" ID="4">
+    <WindowState Visible="True" X="400" Y="35" Width="120" Height="45"/>
+    <Appearance>
+     <BackgroundColor>4294901760</BackgroundColor>
+    </Appearance>
+    <Function ID="103"/>
+    <Action>Toggle</Action>
+   </Button>
+   <!-- Row 2: DEEP ROLLING -->
+   <Label Caption="DEEP ROLLING" ID="51">
+    <WindowState Visible="True" X="10" Y="85" Width="120" Height="20"/>
+   </Label>
+   <Button Caption="Blue Roll" ID="5">
+    <WindowState Visible="True" X="10" Y="110" Width="120" Height="45"/>
+    <Appearance>
+     <BackgroundColor>4278190182</BackgroundColor>
+    </Appearance>
+    <Function ID="104"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Purple Pulse" ID="6">
+    <WindowState Visible="True" X="140" Y="110" Width="120" Height="45"/>
+    <Appearance>
+     <BackgroundColor>4278190182</BackgroundColor>
+    </Appearance>
+    <Function ID="105"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Dark Wave" ID="7">
+    <WindowState Visible="True" X="270" Y="110" Width="120" Height="45"/>
+    <Appearance>
+     <BackgroundColor>4278190182</BackgroundColor>
+    </Appearance>
+    <Function ID="106"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Midnight Flow" ID="8">
+    <WindowState Visible="True" X="400" Y="110" Width="120" Height="45"/>
+    <Appearance>
+     <BackgroundColor>4278190182</BackgroundColor>
+    </Appearance>
+    <Function ID="107"/>
+    <Action>Toggle</Action>
+   </Button>
+   <!-- Row 3: COLOR SHIFTS -->
+   <Label Caption="COLOR SHIFTS" ID="52">
+    <WindowState Visible="True" X="10" Y="160" Width="120" Height="20"/>
+   </Label>
+   <Button Caption="Spectrum Drift" ID="9">
+    <WindowState Visible="True" X="10" Y="185" Width="120" Height="45"/>
+    <Function ID="108"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Warm to Cool" ID="10">
+    <WindowState Visible="True" X="140" Y="185" Width="120" Height="45"/>
+    <Function ID="109"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Rainbow Cascade" ID="11">
+    <WindowState Visible="True" X="270" Y="185" Width="120" Height="45"/>
+    <Function ID="110"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Neon Pulse" ID="12">
+    <WindowState Visible="True" X="400" Y="185" Width="120" Height="45"/>
+    <Function ID="111"/>
+    <Action>Toggle</Action>
+   </Button>
+   <!-- Row 4: QUIET MOMENTS -->
+   <Label Caption="QUIET MOMENTS" ID="53">
+    <WindowState Visible="True" X="540" Y="10" Width="130" Height="20"/>
+   </Label>
+   <Button Caption="Amber Glow" ID="13">
+    <WindowState Visible="True" X="540" Y="35" Width="120" Height="45"/>
+    <Function ID="112"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Soft Breathe" ID="14">
+    <WindowState Visible="True" X="670" Y="35" Width="120" Height="45"/>
+    <Function ID="113"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Twilight" ID="15">
+    <WindowState Visible="True" X="540" Y="85" Width="120" Height="45"/>
+    <Function ID="114"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Candle Flicker" ID="16">
+    <WindowState Visible="True" X="670" Y="85" Width="120" Height="45"/>
+    <Function ID="115"/>
+    <Action>Toggle</Action>
+   </Button>
+   <!-- Row 5: BUILDS -->
+   <Label Caption="BUILDS" ID="54">
+    <WindowState Visible="True" X="540" Y="140" Width="120" Height="20"/>
+   </Label>
+   <Button Caption="Par Build" ID="17">
+    <WindowState Visible="True" X="540" Y="165" Width="120" Height="45"/>
+    <Appearance>
+     <BackgroundColor>4278233600</BackgroundColor>
+    </Appearance>
+    <Function ID="116"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Intensity Riser" ID="18">
+    <WindowState Visible="True" X="670" Y="165" Width="120" Height="45"/>
+    <Appearance>
+     <BackgroundColor>4278233600</BackgroundColor>
+    </Appearance>
+    <Function ID="117"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Color Stack" ID="19">
+    <WindowState Visible="True" X="540" Y="215" Width="120" Height="45"/>
+    <Appearance>
+     <BackgroundColor>4278233600</BackgroundColor>
+    </Appearance>
+    <Function ID="118"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Strobe Accel" ID="20">
+    <WindowState Visible="True" X="670" Y="215" Width="120" Height="45"/>
+    <Appearance>
+     <BackgroundColor>4278233600</BackgroundColor>
+    </Appearance>
+    <Function ID="119"/>
+    <Action>Toggle</Action>
+   </Button>
+   <!-- BLACKOUT -->
+   <Button Caption="BLACKOUT" ID="21">
+    <WindowState Visible="True" X="10" Y="240" Width="510" Height="40"/>
+    <Appearance>
+     <ForegroundColor>4294967295</ForegroundColor>
+     <BackgroundColor>4278190080</BackgroundColor>
+    </Appearance>
+    <Function ID="9"/>
+    <Action>Toggle</Action>
+   </Button>
+  </Frame>
+ </VirtualConsole>
+</Workspace>
