@@ -35,15 +35,7 @@ Results land in `songs-data/` as JSON. Onset timestamps give you the exact time 
 
 ## Fixtures
 
-| Fixture | ID | DMX Address | Type |
-|---------|-----|-------------|------|
-| Generic BSW 3-in-1 | 1 | 145–164 | Moving Head (20ch) |
-| Chauvet 4BAR | 2 | 1–15 | 4-par RGB bar (15ch) |
-| Generic Nausea Inducer 3000 | 3 | 241–259 | Flower/laser/halo (19ch) |
-| Generic Profile Knockoff | 4 | 193–206 | Moving Head spot (14ch) |
-| Missyee 36 RGB LED #1 | 5 | 49–55 | RGB par (7ch) |
-| Missyee 36 RGB LED #2 | 6 | 57–63 | RGB par (7ch) |
-| Generic Sharpy Knockoff | 8 | 97–114 | Moving Head beam (18ch) |
+DMX addressing, fixture IDs, and channel modes are in each venue's `patch.md` (e.g., `venue/home-studio/patch.md`). Fixture definitions (.qxf) are in `fixtures/`.
 
 ## Project Structure
 
@@ -52,6 +44,7 @@ Results land in `songs-data/` as JSON. Onset timestamps give you the exact time 
 ├── venue/                  # Venue directories (shows, generators, plots per venue)
 │   └── home-studio/
 │       ├── plot.md         # Fixture positions in 3D space
+│       ├── patch.md        # DMX patch (IDs, addresses, modes)
 │       ├── shows/          # Generated .qxw workspace files
 │       │   ├── Template-Base.qxw  # Auto-generated from plot.md
 │       │   └── notes/      # Show design notes (one .md per show)
