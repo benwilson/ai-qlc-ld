@@ -35,7 +35,7 @@ if [ $# -gt 0 ]; then
     for f in "$@"; do
         FILES+=("/workspace/songs/$f")
     done
-    docker run --rm --platform linux/amd64 \
+    docker run --rm \
         -v "$SONGS_DIR:/workspace/songs:ro" \
         -v "$DATA_DIR:/workspace/songs-data" \
         "$IMAGE" \
@@ -68,7 +68,7 @@ else
     fi
 
     echo "Analyzing ${#FILES[@]} file(s)..."
-    docker run --rm --platform linux/amd64 \
+    docker run --rm \
         -v "$SONGS_DIR:/workspace/songs:ro" \
         -v "$DATA_DIR:/workspace/songs-data" \
         "$IMAGE" \
