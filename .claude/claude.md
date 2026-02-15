@@ -301,3 +301,32 @@ Square room. Positions described from DJ booth perspective:
 - Always include a BLACKOUT button in the Virtual Console
 - **Use `showlib.py`** for generating workspace files — it handles fixture channel maps, XML formatting, and VC layout automatically
 - **Write show notes** in `shows/notes/` for every show — capture creative brief, palette, fixture roles, positions, section breakdown, and techniques. Read existing notes before modifying a show.
+
+## Show Generator Lessons Learned
+
+### Timing Calculations
+- When mixing `beat_step()` (FadeIn=0, Hold=ms) and `smooth_step()` (FadeIn=ms, Hold=0), total duration must sum `FadeIn + Hold` for each step, not just Hold. The PhatAdam generator only summed Hold because all steps were snaps — that formula breaks for smooth crossfade steps.
+- `smooth(bpm, bars)` returns `(FadeIn=full_duration, Hold=0)` — the entire step is crossfade time. This creates flowing mover sweeps where the motion IS the crossfade between positions.
+
+### Pre-Beat Silence
+- Analysis data segments may start at 0.0s, but the first beat often doesn't land until several seconds in (e.g., 11s for Guardian Angel). Account for this by splitting the first segment into an "ambient intro" section (pre-beat bars) and the actual verse. The DJ starts the chaser at song start, so those pre-beat bars need to be programmed as atmosphere/dark.
+
+### NI3K Lasers-Only Mode
+- To use NI3K as a laser-only fixture: `dim=0` (kills RGBW LEDs), `halo=H_OFF`, `r=0, g=0, b=0, w=0`. Only set `rl`, `gl`, `bl` for laser control.
+- NI3K tilt channels (ch1-3): values 0-127 = position, 128-191 = forward rotation, 192-255 = reverse rotation. "High movement values" means using the rotation range (160-250) for dramatic continuous motion.
+
+### Forward-Facing Mover Positions
+- Profile (front center): Tilt 0 = backward at wall. Keep tilt ≥ 85 to stay forward-facing. Tilt 123 = center, higher = more toward audience.
+- Sharpy (back left): Pan 153 = center. Safe range ~90-220 for forward-facing.
+- BSW (back right): Pan 7 = center. Safe range ~0-200 for forward-facing.
+- When user says "never point behind," define all positions with these bounds and verify each one.
+
+### Scene Dedup Behavior
+- Beat-level shows (1 scene per beat) with varied NI3K tilt modulation typically produce 0 dedup hits because the tilt math (`beat % N * offset`) creates unique values per beat. Dedup is more effective when sections reuse identical looks (e.g., repeated bar patterns, common blackout scenes).
+
+### Par Cohesion Patterns
+- `par_wash()` (all 6 pars same color) = maximum visual unity. Best for ethereal/unified aesthetics.
+- `par_chase()` (one par cycling) = energetic but fragmented. Best for party/neon shows.
+- `par_pairs()` (P1+P3 vs P2+P4 + missyees split) = balanced texture. Good for verses/builds.
+- `par_gradient()` (4BAR gradient + missyees split) = subtle depth. Good for building sections.
+- When user asks for "cohesive and uniform" pars, default to `par_wash()` for drops and `par_gradient()` for builds.

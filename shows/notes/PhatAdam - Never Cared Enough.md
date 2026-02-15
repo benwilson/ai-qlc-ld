@@ -1,7 +1,7 @@
 # PhatAdam - Never Cared Enough — Show Design Notes
 
 ## Overview
-- **BPM**: 133
+- **BPM**: 134
 - **Duration**: ~2:28 (82 bars)
 - **Genre**: Happy / upbeat electronic
 - **Generator**: `generators/PhatAdam - Never Cared Enough.py`
