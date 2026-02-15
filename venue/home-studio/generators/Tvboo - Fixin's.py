@@ -31,7 +31,11 @@ Song Structure (from allin1 analysis, corrected to 144 BPM):
 """
 
 import os, sys
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+VENUE_DIR = os.path.dirname(SCRIPT_DIR)
+PROJECT_ROOT = os.path.dirname(os.path.dirname(VENUE_DIR))
+sys.path.insert(0, PROJECT_ROOT)
 from showlib import *
 
 BPM = 144
@@ -794,5 +798,5 @@ vc_buttons = [
      "color": "#FF0000", "action": "Toggle"},
 ]
 
-write_workspace("shows/Tvboo - Fixin's.qxw", scenes, [main_chaser],
-                bpm=BPM, vc_buttons=vc_buttons)
+write_workspace(os.path.join(VENUE_DIR, "shows", "Tvboo - Fixin's.qxw"),
+                scenes, [main_chaser], bpm=BPM, vc_buttons=vc_buttons)

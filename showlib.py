@@ -22,6 +22,8 @@ Usage:
     write_workspace("shows/My-Show.qxw", scenes, [chaser], bpm=174)
 """
 
+import os
+import re
 import xml.etree.ElementTree as ET
 from typing import List, Tuple, Dict, Optional, Any
 
@@ -778,6 +780,95 @@ def print_structure(structure: list, bpm: int):
         time_offset += duration_ms
     print("-" * 80)
     print(f"  Total: {total_ms/1000:.1f}s")
+
+
+# =============================================================================
+# VENUE TEMPLATE GENERATOR
+# =============================================================================
+
+def generate_venue_template(venue_dir: str, bpm: int = 128):
+    """Generate a Template-Base.qxw for a venue from its plot.md.
+
+    Reads venue/<name>/plot.md to identify which fixtures are placed,
+    maps them to FIXTURE_DEFS, and writes a blank workspace with all
+    placed fixtures, ArtNet output, and a BLACKOUT button.
+
+    Args:
+        venue_dir: Path to the venue directory (e.g. "venue/home-studio")
+        bpm: Default BPM for the beat generator
+    """
+    plot_path = os.path.join(venue_dir, "plot.md")
+    shows_dir = os.path.join(venue_dir, "shows")
+    os.makedirs(shows_dir, exist_ok=True)
+
+    with open(plot_path) as f:
+        plot_content = f.read()
+
+    # Parse fixture table rows: | Name | Type | X | Y | Z | Orientation |
+    fixture_rows = re.findall(
+        r'^\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|\s*[\d.]+\s*\|\s*[\d.]+\s*\|\s*[\d.]+\s*\|\s*([^|]+?)\s*\|',
+        plot_content, re.MULTILINE
+    )
+
+    # Build lookup from model/name to list of FIXTURE_DEFS entries
+    # (multiple fixtures can share a model, e.g. two Missyee pars)
+    model_lookup: Dict[str, List[dict]] = {}
+    for fx in FIXTURE_DEFS:
+        for key in [fx["model"].lower(), fx["name"].lower()]:
+            entries = model_lookup.setdefault(key, [])
+            if fx["id"] not in [e["id"] for e in entries]:
+                entries.append(fx)
+
+    # Match plot fixture types to FIXTURE_DEFS
+    # Count how many of each type appear in the plot to pull the right
+    # number of fixtures from FIXTURE_DEFS
+    from collections import Counter
+    type_counts: Counter = Counter()
+    placed_fixture_ids = set()
+    for name, ftype, orientation in fixture_rows:
+        ftype_lower = ftype.strip().lower()
+        if ftype_lower in model_lookup:
+            entries = model_lookup[ftype_lower]
+            idx = min(type_counts[ftype_lower], len(entries) - 1)
+            placed_fixture_ids.add(entries[idx]["id"])
+            type_counts[ftype_lower] += 1
+
+    if not placed_fixture_ids:
+        print(f"Warning: No known fixtures found in {plot_path}")
+        # Fall back to all fixtures
+        placed_fixture_ids = {fx["id"] for fx in FIXTURE_DEFS}
+
+    # Filter FIXTURE_DEFS to only placed fixtures
+    placed_defs = [fx for fx in FIXTURE_DEFS if fx["id"] in placed_fixture_ids]
+
+    # Build blackout scene for placed fixtures
+    blackout_fixtures = []
+    for fx in placed_defs:
+        blackout_fixtures.append(blackout(fx["id"], fx["ch"]))
+
+    scenes = [scene("BLACKOUT", *blackout_fixtures)]
+    output_path = os.path.join(shows_dir, "Template-Base.qxw")
+
+    # Write workspace with only the placed fixtures
+    # (write_workspace uses FIXTURE_DEFS globally, so we temporarily swap)
+    original_defs = list(FIXTURE_DEFS)
+    FIXTURE_DEFS.clear()
+    FIXTURE_DEFS.extend(placed_defs)
+
+    # Also filter STAGE_POSITIONS
+    original_positions = list(STAGE_POSITIONS)
+    STAGE_POSITIONS.clear()
+    STAGE_POSITIONS.extend([p for p in original_positions if p[0] in placed_fixture_ids])
+
+    write_workspace(output_path, scenes, [], bpm=bpm)
+
+    # Restore
+    FIXTURE_DEFS.clear()
+    FIXTURE_DEFS.extend(original_defs)
+    STAGE_POSITIONS.clear()
+    STAGE_POSITIONS.extend(original_positions)
+
+    print(f"  Fixtures: {', '.join(fx['name'] for fx in placed_defs)}")
 
 
 if __name__ == "__main__":

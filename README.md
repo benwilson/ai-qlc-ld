@@ -49,14 +49,13 @@ Results land in `songs-data/` as JSON. Onset timestamps give you the exact time 
 
 ```
 ├── showlib.py              # Show generator library (fixtures, colors, timing, XML)
-├── generators/             # Per-song generator scripts
-│   ├── Lorn - Acid Rain (Skeler Remix).py
-│   └── gen_deep_currents.py
-├── shows/                  # Generated .qxw workspace files
-│   ├── Template-Base.qxw   # Blank starting point
-│   └── ...
-├── venue/                  # Venue fixture plots (physical positions in 3D space)
-│   └── home-studio/plot.md # Current rig layout
+├── venue/                  # Venue directories (shows, generators, plots per venue)
+│   └── home-studio/
+│       ├── plot.md         # Fixture positions in 3D space
+│       ├── shows/          # Generated .qxw workspace files
+│       │   ├── Template-Base.qxw  # Auto-generated from plot.md
+│       │   └── notes/      # Show design notes (one .md per show)
+│       └── generators/     # Per-song generator scripts
 ├── fixtures/               # QLC+ fixture definitions (.qxf)
 ├── songs/                  # Audio files for analysis
 ├── songs-data/             # Analysis output (JSON — structure + energy + onsets)
@@ -70,11 +69,14 @@ Results land in `songs-data/` as JSON. Onset timestamps give you the exact time 
 
 ## Writing a Show Generator
 
-Generator scripts live in `generators/` and are named to match their song file. Each one imports `showlib` and builds scenes programmatically:
+Generator scripts live in `venue/<name>/generators/` and are named to match their song file. Each one imports `showlib` and writes output to the venue's `shows/` directory:
 
 ```python
 import os, sys
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+VENUE_DIR = os.path.dirname(SCRIPT_DIR)
+PROJECT_ROOT = os.path.dirname(os.path.dirname(VENUE_DIR))
+sys.path.insert(0, PROJECT_ROOT)
 from showlib import *
 
 scenes = [
@@ -90,13 +92,13 @@ scenes = [
 ]
 
 chaser = make_chaser("Main", [0, 1], [hold(115), smooth(115, 4)])
-write_workspace("shows/My-Show.qxw", scenes, [chaser], bpm=115)
+write_workspace(os.path.join(VENUE_DIR, "shows", "My-Show.qxw"), scenes, [chaser], bpm=115)
 ```
 
 Run from the project root:
 
 ```bash
-python3 "generators/Lorn - Acid Rain (Skeler Remix).py"
+python3 "venue/home-studio/generators/Lorn - Acid Rain (Skeler Remix).py"
 ```
 
 ### showlib.py Provides
@@ -113,7 +115,9 @@ python3 "generators/Lorn - Acid Rain (Skeler Remix).py"
 
 **Genre templates**: `structure_dnb()`, `structure_melodic_house()`, `structure_dubstep()`, `structure_party()`
 
-## Shows
+**Venue template**: `generate_venue_template(venue_dir, bpm)` — reads a venue's `plot.md` and generates a `Template-Base.qxw` with only the fixtures placed in that venue
+
+## Shows (venue/home-studio)
 
 | Show | BPM | Description |
 |------|-----|-------------|

@@ -38,16 +38,18 @@ import json
 import os
 import sys
 import bisect
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+VENUE_DIR = os.path.dirname(SCRIPT_DIR)
+PROJECT_ROOT = os.path.dirname(os.path.dirname(VENUE_DIR))
+sys.path.insert(0, PROJECT_ROOT)
 from showlib import *
 
 # =============================================================================
 # LOAD ANALYSIS DATA
 # =============================================================================
 
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_DIR = os.path.dirname(SCRIPT_DIR)
-DATA_PATH = os.path.join(PROJECT_DIR, "songs-data", "Lorn - Acid Rain (Skeler Remix).json")
+DATA_PATH = os.path.join(PROJECT_ROOT, "songs-data", "Lorn - Acid Rain (Skeler Remix).json")
 
 with open(DATA_PATH) as f:
     data = json.load(f)
@@ -801,5 +803,5 @@ vc_buttons = [
      "color": "#FF0000", "action": "Toggle"},
 ]
 
-write_workspace("shows/Lorn - Acid Rain (Skeler Remix).qxw", scenes, [main_chaser],
-                bpm=BPM, vc_buttons=vc_buttons)
+write_workspace(os.path.join(VENUE_DIR, "shows", "Lorn - Acid Rain (Skeler Remix).qxw"),
+                scenes, [main_chaser], bpm=BPM, vc_buttons=vc_buttons)

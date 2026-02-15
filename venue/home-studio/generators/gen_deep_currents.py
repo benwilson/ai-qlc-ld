@@ -22,7 +22,11 @@ Structure (64 bars = 120s):
 """
 
 import sys, os
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+VENUE_DIR = os.path.dirname(SCRIPT_DIR)
+PROJECT_ROOT = os.path.dirname(os.path.dirname(VENUE_DIR))
+sys.path.insert(0, PROJECT_ROOT)
 from showlib import *
 
 BPM = 128
@@ -557,4 +561,5 @@ print(f"Scenes: {len(scenes)}, Chaser steps: {len(steps)}")
 chaser = make_chaser("Deep Currents", steps, timings,
                      run_order="Loop", path=PATH)
 
-write_workspace("shows/Deep-Currents.qxw", scenes, [chaser], bpm=BPM)
+write_workspace(os.path.join(VENUE_DIR, "shows", "Deep-Currents.qxw"),
+                scenes, [chaser], bpm=BPM)

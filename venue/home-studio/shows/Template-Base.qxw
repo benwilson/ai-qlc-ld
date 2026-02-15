@@ -8,7 +8,7 @@
  </Creator>
  <Engine>
   <InputOutputMap>
-   <BeatGenerator BeatType="Internal" BPM="174"/>
+   <BeatGenerator BeatType="Internal" BPM="128"/>
    <Universe Name="Universe 1" ID="0">
     <Output Plugin="ArtNet" UID="10.0.0.7" Line="0"/>
    </Universe>
@@ -83,8 +83,7 @@
    <Address>96</Address>
    <Channels>18</Channels>
   </Fixture>
-  <!-- BLACKOUT SCENE - Always ID 0 -->
-  <Function ID="0" Type="Scene" Name="Blackout">
+  <Function ID="0" Type="Scene" Name="BLACKOUT" Path="Show">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
    <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
@@ -94,7 +93,6 @@
    <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
    <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
   </Function>
-  <!-- Add scenes starting at ID 1 -->
  </Engine>
  <VirtualConsole>
   <Frame Caption="">

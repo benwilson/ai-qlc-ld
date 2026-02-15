@@ -83,7 +83,12 @@ When the user wants a new venue:
 
 1. Ask for the venue name (if not provided). Sanitize it for use as a directory name (lowercase, hyphens for spaces).
 2. Ask about the room — rough dimensions and shape are helpful but not required. If provided, add the Dimensions table.
-3. Create `venue/<name>/plot.md` with the header, description, optional dimensions, and an empty fixtures table.
+3. Create the full venue directory structure:
+   - `venue/<name>/plot.md` — the fixture plot
+   - `venue/<name>/shows/` — workspace files for this venue
+   - `venue/<name>/shows/notes/` — show design notes
+   - `venue/<name>/generators/` — generator scripts for this venue
+4. After adding fixtures, run `generate_venue_template(venue_dir)` from showlib.py to create a `Template-Base.qxw` with the venue's fixtures.
 
 If the user gives fixture placements in the same breath, add them immediately.
 
@@ -134,8 +139,15 @@ For direct instructions like "add the Sharpy at 0.5, 2.8, 0.3 aimed at center" �
 
 ## Important Notes
 
-- The `venue/` directory lives at the project root (same level as `shows/`, `fixtures/`, `showlib.py`).
-- Each venue is its own subdirectory: `venue/basement/plot.md`, `venue/main-stage/plot.md`, etc.
+- The `venue/` directory lives at the project root (same level as `fixtures/`, `showlib.py`).
+- Each venue is a self-contained subdirectory with its own plot, shows, notes, and generators:
+  ```
+  venue/<name>/
+  ├── plot.md          # Fixture positions
+  ├── shows/           # .qxw workspace files
+  │   └── notes/       # Show design notes
+  └── generators/      # Python show generator scripts
+  ```
 - Always read the existing plot file before modifying it — don't clobber existing fixtures.
 - When multiple fixtures of the same type exist, the unique name is what distinguishes them (not QLC+ IDs — those are a show concern, not a plot concern).
 - The plot is about physical placement only. DMX addresses, channel modes, and QLC+ IDs are handled elsewhere (showlib.py, workspace files). Don't include them in the plot.
