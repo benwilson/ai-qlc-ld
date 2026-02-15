@@ -128,9 +128,29 @@ SHARPY_STROBE_SLOW = 10
 SHARPY_STROBE_MED  = 64
 SHARPY_STROBE_FAST = 120
 
-# 7-color wheel (Ch16) - UNVERIFIED, needs physical testing
-# These are estimates; actual positions TBD
-SHARPY_7C_WHITE = 0   # Confirmed
+# Color Macro wheel (Ch8) - VERIFIED via physical testing
+SHARPY_WHITE      = 0
+SHARPY_RED        = 10
+SHARPY_YELLOW     = 20
+SHARPY_BLUE       = 30
+SHARPY_GREEN      = 40
+SHARPY_PURPLE     = 50
+SHARPY_PINK       = 60
+SHARPY_TEAL       = 70
+SHARPY_AMBER      = 80
+SHARPY_ORANGE     = 90
+SHARPY_DARK_YEL   = 100
+SHARPY_LIME       = 110
+SHARPY_GREY       = 120
+# 5,15,25... = split colors (half positions between adjacent colors)
+# 150-211 = CW rotation fast→slow
+# 211-255 = CCW rotation slow→fast
+SHARPY_SPIN_CW    = 180   # Medium CW spin
+SHARPY_SPIN_CCW   = 235   # Medium CCW spin
+
+# Color filter (Ch16) - NOT a color wheel
+# 0=open/white, gradually overlays a color filter. Leave at 0.
+SHARPY_FILTER_OPEN = 0
 
 # =============================================================================
 # BSW SHUTTER CONSTANTS (Ch16)
@@ -142,12 +162,26 @@ BSW_SHUT_STROBE_SLOW = 20
 BSW_SHUT_STROBE_FAST = 128
 
 # =============================================================================
-# PROFILE STROBE (Ch1) - UNVERIFIED, needs physical testing
-# Uses ShutterStrobeSlowFast preset; actual ranges TBD
-# Currently using 0=no strobe (assumed safe)
+# PROFILE STROBE (Ch1) - 0=open (verified), exact strobe ranges TBD
 # =============================================================================
 
 PROFILE_STROBE_OFF = 0
+
+# =============================================================================
+# PROFILE COLOR WHEEL (Ch5) - VERIFIED via physical testing
+# =============================================================================
+
+PROF_WHITE  = 0
+PROF_RED    = 5
+PROF_YELLOW = 10
+PROF_BLUE   = 15
+PROF_GREEN  = 20
+PROF_ORANGE = 25
+PROF_PINK   = 30
+PROF_TEAL   = 35
+# 40-78: split colors (white/red, red/yellow, yellow/blue, etc.)
+# 79-255: wheel rotation slow→fast
+PROF_SPIN   = 160   # Medium rotation speed
 
 # =============================================================================
 # FIXTURE HELPER FUNCTIONS

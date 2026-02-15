@@ -22,7 +22,7 @@ Structure (64 bars = 120s):
 """
 
 import sys, os
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from showlib import *
 
 BPM = 128
@@ -68,17 +68,17 @@ PR_SR = dict(pan=10,  tilt=121)
 # DARK FIXTURE HELPERS (positioned but dark)
 # Keep shutter/strobe at "open" so crossfades don't pass through strobe ranges
 # =========================================================================
-def dark_sharpy(**pos):
+def dark_sharpy(colormacro=SHARPY_WHITE, **pos):
     kw = {**SH_C, **pos}
-    return sharpy(dim=0, strobe=SHARPY_OPEN, **kw)
+    return sharpy(dim=0, strobe=SHARPY_OPEN, colormacro=colormacro, **kw)
 
 def dark_bsw(**pos):
     kw = {**BSW_C, **pos}
     return bsw(dim=0, shutter=BSW_SHUT_OPEN, **kw)
 
-def dark_profile(**pos):
+def dark_profile(color=PROF_WHITE, **pos):
     kw = {**PR_C, **pos}
-    return profile(dim=0, **kw)
+    return profile(dim=0, color=color, **kw)
 
 def dark_ni3k():
     return ni3k(dim=0, r=0, g=0, b=0, w=0,
@@ -140,7 +140,7 @@ scenes.append(scene("Emergence - Sharpy Follows",
     dark_ni3k(),
     dark_profile(**PR_SL),
     *miss_both(0, 0, 180),
-    sharpy(**SH_R, dim=120),
+    sharpy(**SH_R, dim=120, colormacro=SHARPY_BLUE),
     path=PATH))
 
 # -------------------------------------------------------------------
@@ -155,7 +155,7 @@ scenes.append(scene("Swell 1 - Rising Teal",
     dark_ni3k(),
     dark_profile(**PR_C),
     *miss_both(*WASH_TEAL),
-    sharpy(**SH_CR, dim=200),
+    sharpy(**SH_CR, dim=200, colormacro=SHARPY_TEAL),
     path=PATH))
 
 # S5: Building, BSW→center-left, Sharpy→center
@@ -165,7 +165,7 @@ scenes.append(scene("Swell 1 - Building",
     dark_ni3k(),
     dark_profile(**PR_C),
     *miss_both(*WASH_TEAL),
-    sharpy(**SH_C, dim=255),
+    sharpy(**SH_C, dim=255, colormacro=SHARPY_TEAL),
     path=PATH))
 
 # S6: POSITION SNAP — movers jump to opposite side, cyan flash on wash
@@ -173,9 +173,9 @@ scenes.append(scene("Swell 1 - POSITION SNAP",
     bsw(**BSW_R, color=BSW_TEAL, dim=255),
     fourbar_solid(*WASH_CYAN),
     dark_ni3k(),
-    profile(**PR_SR, dim=180),
+    profile(**PR_SR, dim=180, color=PROF_TEAL),
     *miss_both(*WASH_CYAN),
-    sharpy(**SH_L, dim=255),
+    sharpy(**SH_L, dim=255, colormacro=SHARPY_TEAL),
     path=PATH))
 
 # S7: Post-snap flow, movers resume slow sweep from new positions
@@ -183,9 +183,9 @@ scenes.append(scene("Swell 1 - Post-Snap Flow",
     bsw(**BSW_CL, color=BSW_TEAL, dim=240),
     fourbar_solid(*WASH_TEAL),
     dark_ni3k(),
-    profile(**PR_C, dim=120),
+    profile(**PR_C, dim=120, color=PROF_TEAL),
     *miss_both(*WASH_TEAL),
-    sharpy(**SH_CL, dim=240),
+    sharpy(**SH_CL, dim=240, colormacro=SHARPY_TEAL),
     path=PATH))
 
 # -------------------------------------------------------------------
@@ -198,9 +198,9 @@ scenes.append(scene("Valley - Retreat",
     bsw(**BSW_C, color=BSW_MAG, dim=180),
     fourbar_solid(*WASH_PURPLE, master=180),
     dark_ni3k(),
-    profile(**PR_C, dim=80),
+    profile(**PR_C, dim=80, color=PROF_PINK),
     *miss_both(*WASH_PURPLE, master=120),
-    sharpy(**SH_C, dim=60),
+    sharpy(**SH_C, dim=60, colormacro=SHARPY_PURPLE),
     path=PATH))
 
 # S9: BSW alone + dim pars purple
@@ -218,10 +218,10 @@ scenes.append(scene("Valley - Profile Appears",
     dark_bsw(**BSW_CL),
     fourbar_solid(*DIM_BLUE, master=60),
     dark_ni3k(),
-    profile(**PR_SL, dim=120),
+    profile(**PR_SL, dim=120, color=PROF_BLUE),
     miss1(0, 0, 60),
     miss2(0, 0, 0),
-    dark_sharpy(**SH_CL),
+    dark_sharpy(colormacro=SHARPY_BLUE, **SH_CL),
     path=PATH))
 
 # S11: Near darkness — just Profile thin beam + one dim missyee
@@ -229,10 +229,10 @@ scenes.append(scene("Valley - Deep Stillness",
     dark_bsw(**BSW_C),
     dark_4bar(),
     dark_ni3k(),
-    profile(**PR_C, dim=80),
+    profile(**PR_C, dim=80, color=PROF_BLUE),
     miss1(0, 0, 40),
     miss2(0, 0, 0),
-    dark_sharpy(**SH_CL),
+    dark_sharpy(colormacro=SHARPY_BLUE, **SH_CL),
     path=PATH))
 
 # -------------------------------------------------------------------
@@ -247,9 +247,9 @@ scenes.append(scene("Build 2 - Resurface",
     dark_bsw(**BSW_CR),
     fourbar_solid(*BUILD_CYAN, master=120),
     dark_ni3k(),
-    profile(**PR_SR, dim=160),
+    profile(**PR_SR, dim=160, color=PROF_TEAL),
     *miss_both(*BUILD_CYAN, master=100),
-    dark_sharpy(**SH_CR),
+    dark_sharpy(colormacro=SHARPY_TEAL, **SH_CR),
     path=PATH))
 
 # S13: BSW follows Profile, wash building
@@ -257,9 +257,9 @@ scenes.append(scene("Build 2 - Chains Form",
     bsw(**BSW_CR, color=BSW_TEAL, dim=160),
     fourbar_solid(0, 120, 180, master=160),
     dark_ni3k(),
-    profile(**PR_C, dim=200),
+    profile(**PR_C, dim=200, color=PROF_TEAL),
     *miss_both(0, 120, 180, master=140),
-    dark_sharpy(**SH_R),
+    dark_sharpy(colormacro=SHARPY_TEAL, **SH_R),
     path=PATH))
 
 # S14: All 3 movers in leader/follower chain
@@ -267,9 +267,9 @@ scenes.append(scene("Build 2 - Full Chain",
     bsw(**BSW_C, color=BSW_TEAL, dim=200),
     fourbar_solid(*WASH_TEAL, master=200),
     dark_ni3k(),
-    profile(**PR_SL, dim=220),
+    profile(**PR_SL, dim=220, color=PROF_TEAL),
     *miss_both(*WASH_TEAL, master=180),
-    sharpy(**SH_CR, dim=160),
+    sharpy(**SH_CR, dim=160, colormacro=SHARPY_TEAL),
     path=PATH))
 
 # S15: *** NI3K REVEAL #1 ***
@@ -279,9 +279,9 @@ scenes.append(scene("Build 2 - NI3K Emerges",
     bsw(**BSW_CL, color=BSW_BLUE, dim=220),
     fourbar_solid(*DEEP_BLUE, master=200),
     ni3k(r=0, g=0, b=180, w=0, dim=160, halo=H_CYN),
-    profile(**PR_C, dim=220),
+    profile(**PR_C, dim=220, color=PROF_BLUE),
     *miss_both(*DEEP_BLUE, master=180),
-    sharpy(**SH_C, dim=200),
+    sharpy(**SH_C, dim=200, colormacro=SHARPY_BLUE),
     path=PATH))
 
 # S16: NI3K presence intensifies, all movers building
@@ -289,9 +289,9 @@ scenes.append(scene("Build 2 - Tension Peaks",
     bsw(**BSW_L, color=BSW_TEAL, dim=255),
     fourbar_solid(*WASH_TEAL, master=240),
     ni3k(r=0, g=40, b=255, w=0, dim=200, halo=H_BLU),
-    profile(**PR_SR, dim=255),
+    profile(**PR_SR, dim=255, color=PROF_TEAL),
     *miss_both(*WASH_TEAL, master=220),
-    sharpy(**SH_CL, dim=255),
+    sharpy(**SH_CL, dim=255, colormacro=SHARPY_TEAL),
     path=PATH))
 
 # -------------------------------------------------------------------
@@ -305,9 +305,9 @@ scenes.append(scene("Peak - Full Bloom",
     bsw(**BSW_C, color=BSW_TEAL, dim=255),
     fourbar_solid(*WASH_CYAN),
     ni3k(r=0, g=100, b=255, w=80, dim=255, halo=H_CYN),
-    profile(**PR_C, dim=255),
+    profile(**PR_C, dim=255, color=PROF_TEAL),
     *miss_both(*WASH_CYAN),
-    sharpy(**SH_C, dim=255),
+    sharpy(**SH_C, dim=255, colormacro=SHARPY_TEAL),
     path=PATH))
 
 # S18: WHITE FLASH — all fixtures blast white via color, not strobe channels
@@ -326,9 +326,9 @@ scenes.append(scene("Peak - Prism Fracture",
     bsw(**BSW_L, color=BSW_TEAL, dim=255, prism=128, prot=180),
     fourbar_solid(*WASH_CYAN),
     ni3k(r=0, g=80, b=255, w=0, dim=200, halo=H_CYN),
-    profile(**PR_SL, dim=255),
+    profile(**PR_SL, dim=255, color=PROF_TEAL),
     *miss_both(*WASH_CYAN),
-    sharpy(**SH_L, dim=255),
+    sharpy(**SH_L, dim=255, colormacro=SHARPY_TEAL),
     path=PATH))
 
 # S20: GOBO PUNCH — gobo + purple shift, movers jump positions
@@ -336,9 +336,9 @@ scenes.append(scene("Peak - GOBO PUNCH",
     bsw(**BSW_R, color=BSW_MAG, dim=255, gobo1=BSW_G1_3, prism=128, prot=200),
     fourbar_solid(*WASH_PURPLE),
     ni3k(r=80, g=0, b=180, w=0, dim=200, halo=H_PNK),
-    profile(**PR_SR, dim=255, gobo=20),
+    profile(**PR_SR, dim=255, gobo=20, color=PROF_PINK),
     *miss_both(*WASH_PURPLE),
-    sharpy(**SH_R, dim=255, gobo=40),
+    sharpy(**SH_R, dim=255, gobo=40, colormacro=SHARPY_PURPLE),
     path=PATH))
 
 # S21: Riding out — back to flowing teal, prism/gobo off
@@ -346,9 +346,9 @@ scenes.append(scene("Peak - Riding Out",
     bsw(**BSW_CL, color=BSW_TEAL, dim=240),
     fourbar_solid(*WASH_TEAL, master=240),
     ni3k(r=0, g=40, b=200, w=0, dim=140, halo=H_BLU),
-    profile(**PR_C, dim=240),
+    profile(**PR_C, dim=240, color=PROF_TEAL),
     *miss_both(*WASH_TEAL, master=220),
-    sharpy(**SH_CL, dim=240),
+    sharpy(**SH_CL, dim=240, colormacro=SHARPY_TEAL),
     path=PATH))
 
 # -------------------------------------------------------------------
@@ -362,9 +362,9 @@ scenes.append(scene("Breakdown - Pulling Back",
     bsw(**BSW_C, color=BSW_BLUE, dim=180),
     fourbar_solid(*DEEP_BLUE, master=180),
     ni3k(r=0, g=0, b=80, w=0, dim=60, halo=H_OFF),
-    profile(**PR_C, dim=160),
+    profile(**PR_C, dim=160, color=PROF_BLUE),
     *miss_both(*DEEP_BLUE, master=150),
-    sharpy(**SH_C, dim=140),
+    sharpy(**SH_C, dim=140, colormacro=SHARPY_BLUE),
     path=PATH))
 
 # S23: Sparse — just BSW + pars deep blue
@@ -450,9 +450,9 @@ scenes.append(scene("Return - Movers Rejoin",
     bsw(**BSW_CR, color=BSW_BLUE, dim=200),
     fourbar_solid(*DEEP_BLUE, master=180),
     dark_ni3k(),
-    profile(**PR_C, dim=120),
+    profile(**PR_C, dim=120, color=PROF_BLUE),
     *miss_both(*DEEP_BLUE, master=160),
-    sharpy(**SH_R, dim=120),
+    sharpy(**SH_R, dim=120, colormacro=SHARPY_BLUE),
     path=PATH))
 
 # S31: Settling — dimming, movers centering
@@ -460,9 +460,9 @@ scenes.append(scene("Return - Settling",
     bsw(**BSW_C, color=BSW_BLUE, dim=120),
     fourbar_solid(*DIM_BLUE, master=100),
     dark_ni3k(),
-    profile(**PR_C, dim=60),
+    profile(**PR_C, dim=60, color=PROF_BLUE),
     *miss_both(*DIM_BLUE, master=80),
-    sharpy(**SH_CR, dim=60),
+    sharpy(**SH_CR, dim=60, colormacro=SHARPY_BLUE),
     path=PATH))
 
 # S32: Loop point — matches S0 for seamless loop back

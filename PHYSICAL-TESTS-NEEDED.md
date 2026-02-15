@@ -5,16 +5,16 @@ Check items off as completed and note the results.
 
 ## Sharpy Knockoff (ID 8)
 
-- [ ] **7-color wheel positions (Ch16)**: Slowly sweep Ch16 from 0-255 and note what colors appear at what DMX values. Currently using estimated values.
+- [x] **Color filter (Ch16)**: NOT a 7-color wheel. It's a single variable color filter — 0=open/white, gradually overlays filter to 255=full. Leave at 0.
 - [ ] **Gobo wheel positions (Ch10)**: Sweep and note each gobo position. Currently using arbitrary values (20, 40, 60, 80).
 - [ ] **Prism engagement thresholds**: What's the minimum Ch11/Ch13 value that actually engages the prism? Currently using 128.
 - [ ] **Frost range (Ch5)**: Is it linear 0-255? Or does it engage at a specific threshold?
-- [ ] **Color Macro (Ch8) vs 7-color (Ch16)**: Do they interact or are they independent? Can both be used at once?
+- [x] **Color Macro (Ch8)**: Verified full color wheel — White(0), Red(10), Yellow(20), Blue(30), Green(40), Purple(50), Pink(60), Teal(70), Amber(80), Orange(90), DkYellow(100), Lime(110), Grey(120). Odd values (5,15,25...) are split colors. 150-211=CW rotation fast→slow, 211-255=CCW slow→fast. Ch16 is independent (color filter, not wheel).
 
 ## Profile Knockoff (ID 4)
 
-- [ ] **Strobe channel (Ch1)**: Uses ShutterStrobeSlowFast preset — what are the actual ranges? Is 0=closed or 0=open? What value gives steady open with no strobe?
-- [ ] **Color wheel positions (Ch5)**: Sweep and note colors at each DMX value. Uses ColorMacro preset.
+- [x] **Strobe channel (Ch1)**: 0=open (light output confirmed with dimmer at 255). Exact strobe ranges still TBD.
+- [x] **Color wheel positions (Ch5)**: Verified — White(0), Red(5), Yellow(10), Blue(15), Green(20), Orange(25), Pink(30), Teal(35). 40-78=split colors. 79-255=wheel rotation slow→fast.
 - [ ] **Gobo positions (Ch6, Ch7)**: Two gobo channels — sweep each and note positions.
 - [ ] **Prism range (Ch9)**: 0-255 with no defined capabilities. What values engage/disengage?
 

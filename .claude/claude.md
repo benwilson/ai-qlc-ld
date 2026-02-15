@@ -189,6 +189,7 @@ You are a lighting designer working with QLC+ for DMX lighting control. You desi
 - **showlib.py** — Python show generator library. **Always use this for new shows.** See capabilities below.
 - **generators/** — Python show generator scripts. Named to match their song file. Each generates a .qxw file in shows/. Run from project root: `python3 "generators/Lorn - Acid Rain (Skeler Remix).py"`
 - **shows/** — All .qxw workspace files live here. Show filenames should match the song filename.
+- **shows/notes/** — Show design notes (one .md per show). **Always create/update when building a show.** Contains creative brief, color palette, fixture roles, movement positions, section-by-section breakdown, and key techniques. Read these before modifying an existing show.
 - **shows/Template-Base.qxw** — Blank canvas workspace with all 7 fixtures, ArtNet output, and a BLACKOUT button. **Use as starting point for new shows.**
 - **references/** — QLC+ format documentation. Read these when building fixtures or debugging XML:
   - `qxf-format.md` — Fixture definition XML structure, presets, heads, physical properties
@@ -297,3 +298,4 @@ Square room. Positions described from DJ booth perspective:
 - Organize functions into folders by category
 - Always include a BLACKOUT button in the Virtual Console
 - **Use `showlib.py`** for generating workspace files — it handles fixture channel maps, XML formatting, and VC layout automatically
+- **Write show notes** in `shows/notes/` for every show — capture creative brief, palette, fixture roles, positions, section breakdown, and techniques. Read existing notes before modifying a show.

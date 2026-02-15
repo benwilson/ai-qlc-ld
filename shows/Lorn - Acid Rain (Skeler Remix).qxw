@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Workspace>
+<Workspace xmlns="http://www.qlcplus.org/Workspace" CurrentWindow="VC">
+ <Creator>
+  <Name>Q Light Controller Plus</Name>
+  <Version>5.0.1</Version>
+  <Author>Ben Wilson</Author>
+ </Creator>
+ <Engine>
+  <InputOutputMap>
+   <BeatGenerator BeatType="Internal" BPM="115"/>
+   <Universe Name="Universe 1" ID="0">
+    <Output Plugin="ArtNet" UID="10.0.0.7" Line="0"/>
+   </Universe>
+  </InputOutputMap>
+  <Fixture>
+   <Manufacturer>Generic</Manufacturer>
+   <Model>Beam Spot Wash 3 in 1</Model>
+   <Mode>20 channel</Mode>
+   <ID>1</ID>
+   <Name>Beam Spot Wash 3 in 1</Name>
+   <Universe>0</Universe>
+   <Address>144</Address>
+   <Channels>20</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Chauvet</Manufacturer>
+   <Model>4BAR</Model>
+   <Mode>15 Channel</Mode>
+   <ID>2</ID>
+   <Name>4BAR</Name>
+   <Universe>0</Universe>
+   <Address>0</Address>
+   <Channels>15</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Generic</Manufacturer>
+   <Model>Nausea Inducer 3000</Model>
+   <Mode>19 channel</Mode>
+   <ID>3</ID>
+   <Name>Nausea Inducer 3000</Name>
+   <Universe>0</Universe>
+   <Address>240</Address>
+   <Channels>19</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Generic</Manufacturer>
+   <Model>Profile Knockoff</Model>
+   <Mode>14 channel</Mode>
+   <ID>4</ID>
+   <Name>Profile Knockoff</Name>
+   <Universe>0</Universe>
+   <Address>192</Address>
+   <Channels>14</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Missyee</Manufacturer>
+   <Model>36 RGB LED</Model>
+   <Mode>7 channel</Mode>
+   <ID>5</ID>
+   <Name>36 RGB LED</Name>
+   <Universe>0</Universe>
+   <Address>48</Address>
+   <Channels>7</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Missyee</Manufacturer>
+   <Model>36 RGB LED</Model>
+   <Mode>7 channel</Mode>
+   <ID>6</ID>
+   <Name>36 RGB LED #2</Name>
+   <Universe>0</Universe>
+   <Address>56</Address>
+   <Channels>7</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Generic</Manufacturer>
+   <Model>Sharpy Knockoff</Model>
+   <Mode>18 channel</Mode>
+   <ID>8</ID>
+   <Name>Sharpy Knockoff</Name>
+   <Universe>0</Universe>
+   <Address>96</Address>
+   <Channels>18</Channels>
+  </Fixture>
+  <Function ID="0" Type="Scene" Name="Blackout" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="1" Type="Scene" Name="Calm 1A - Blue Serenity" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,7,1,0,2,19,3,0,4,0,5,0,6,0,7,0,8,44,9,0,10,0,11,0,12,200,13,0,14,0,15,128,16,8,17,60,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,80,2,0,3,40,4,80,5,180,6,40,7,80,8,180,9,40,10,80,11,180,12,40,13,80,14,180</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,80,6,0,7,20,8,40,9,120,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,56,18,0</FixtureVal>
+   <FixtureVal ID="4">0,40,1,0,2,0,3,123,4,0,5,15,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,60,1,20,2,100,3,140,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,60,1,20,2,100,3,140,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,0,2,0,3,0,4,0,5,200,6,252,7,60,8,30,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="2" Type="Scene" Name="Calm 1B - Drift" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,15,1,0,2,22,3,0,4,0,5,0,6,0,7,0,8,44,9,0,10,0,11,0,12,180,13,0,14,0,15,128,16,8,17,70,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,90,2,0,3,40,4,80,5,180,6,30,7,90,8,160,9,25,10,95,11,150,12,20,13,100,14,140</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,90,6,0,7,15,8,50,9,140,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,56,18,0</FixtureVal>
+   <FixtureVal ID="4">0,50,1,0,2,10,3,120,4,0,5,15,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,70,1,40,2,80,3,180,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,70,1,40,2,80,3,180,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,160,1,5,2,0,3,0,4,0,5,180,6,252,7,70,8,30,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="3" Type="Scene" Name="Corrupt 2A - Teal Drains" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,20,1,0,2,25,3,0,4,0,5,0,6,0,7,0,8,56,9,0,10,0,11,0,12,120,13,0,14,0,15,128,16,8,17,80,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,100,2,0,3,20,4,100,5,140,6,60,7,140,8,20,9,20,10,100,11,140,12,60,13,140,14,20</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,100,6,0,7,30,8,80,9,60,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,104,18,0</FixtureVal>
+   <FixtureVal ID="4">0,60,1,0,2,15,3,118,4,0,5,35,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,80,1,60,2,140,3,20,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,80,1,20,2,100,3,140,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,145,1,8,2,0,3,0,4,0,5,120,6,252,7,80,8,70,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="4" Type="Scene" Name="Corrupt 2B - Amber Seeps" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,30,1,0,2,15,3,0,4,0,5,0,6,0,7,0,8,38,9,0,10,0,11,0,12,80,13,0,14,0,15,128,16,8,17,90,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,110,2,0,3,60,4,140,5,20,6,180,7,100,8,10,9,60,10,140,11,20,12,180,13,100,14,10</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,100,6,0,7,80,8,60,9,15,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,72,18,0</FixtureVal>
+   <FixtureVal ID="4">0,70,1,0,2,25,3,115,4,0,5,20,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,90,1,180,2,100,3,10,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,80,1,60,2,140,3,20,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,170,1,12,2,0,3,0,4,0,5,80,6,252,7,90,8,40,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="5" Type="Scene" Name="Corrupt 3A - Bruise" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,40,1,0,2,10,3,0,4,0,5,0,6,0,7,0,8,50,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,100,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,120,2,0,3,90,4,10,5,120,6,90,7,10,8,120,9,90,10,10,11,120,12,90,13,10,14,120</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,120,6,0,7,90,8,10,9,80,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,88,18,0</FixtureVal>
+   <FixtureVal ID="4">0,80,1,0,2,35,3,110,4,0,5,30,6,0,7,0,8,0,9,60,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,100,1,180,2,100,3,10,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,100,1,180,2,100,3,10,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,130,1,20,2,0,3,0,4,0,5,40,6,252,7,120,8,50,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="6" Type="Scene" Name="Corrupt 3B - Twitch" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,50,1,0,2,28,3,0,4,0,5,0,6,0,7,0,8,20,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,110,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,130,2,0,3,90,4,10,5,120,6,120,7,0,8,10,9,90,10,10,11,120,12,120,13,0,14,10</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,130,6,0,7,120,8,0,9,60,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,24,18,0</FixtureVal>
+   <FixtureVal ID="4">0,90,1,0,2,230,3,130,4,0,5,5,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,110,1,90,2,10,3,120,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,100,1,120,2,0,3,10,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,180,1,3,2,0,3,0,4,0,5,0,6,252,7,130,8,10,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="7" Type="Scene" Name="Corrupt 3C - Laser Stab" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,7,1,0,2,19,3,0,4,0,5,0,6,0,7,0,8,20,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,180,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,180,2,0,3,180,4,0,5,0,6,180,7,0,8,0,9,180,10,0,11,0,12,180,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,200,6,0,7,180,8,0,9,30,10,0,11,0,12,0,13,0,14,255,15,0,16,0,17,24,18,0</FixtureVal>
+   <FixtureVal ID="4">0,150,1,0,2,0,3,123,4,0,5,5,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,150,1,120,2,0,3,10,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,150,1,120,2,0,3,10,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,0,2,0,3,0,4,0,5,0,6,252,7,200,8,10,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="8" Type="Scene" Name="Ch1 Stalk A - Creep Right" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,200,1,0,2,5,3,0,4,0,5,0,6,0,7,0,8,20,9,21,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,160,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,120,4,0,5,10,6,0,7,0,8,0,9,120,10,0,11,10,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,100,6,0,7,80,8,0,9,10,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,24,18,0</FixtureVal>
+   <FixtureVal ID="4">0,140,1,0,2,200,3,100,4,0,5,5,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,60,1,120,2,0,3,10,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,255,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,220,1,15,2,0,3,0,4,0,5,0,6,252,7,180,8,10,9,0,10,30,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="9" Type="Scene" Name="Ch1 Snap Center - Strobe" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,7,1,0,2,19,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,128,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,200,4,200,5,220,6,200,7,200,8,220,9,200,10,200,11,220,12,200,13,200,14,220</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,255,8,255,9,255,10,200,11,0,12,0,13,0,14,0,15,0,16,0,17,120,18,0</FixtureVal>
+   <FixtureVal ID="4">0,255,1,0,2,0,3,123,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,255,1,200,2,200,3,220,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,255,1,200,2,200,3,220,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,0,2,0,3,0,4,0,5,0,6,120,7,255,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="10" Type="Scene" Name="Ch1 Stalk B - Creep Left" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,80,1,0,2,30,3,0,4,0,5,0,6,0,7,0,8,20,9,21,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,160,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,0,4,0,5,0,6,120,7,0,8,10,9,0,10,0,11,0,12,120,13,0,14,10</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,100,6,0,7,80,8,0,9,10,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,140,1,0,2,60,3,100,4,0,5,5,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,255,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,60,1,120,2,0,3,10,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,80,1,15,2,0,3,0,4,0,5,0,6,252,7,180,8,10,9,0,10,30,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="11" Type="Scene" Name="Ch1 Snap Cross - Red Flash" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,200,1,0,2,10,3,0,4,0,5,0,6,0,7,0,8,20,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,180,4,0,5,0,6,180,7,0,8,0,9,180,10,0,11,0,12,180,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,255,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,24,18,0</FixtureVal>
+   <FixtureVal ID="4">0,255,1,0,2,180,3,100,4,0,5,5,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,255,1,180,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,255,1,180,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,80,1,10,2,0,3,0,4,0,5,0,6,252,7,255,8,10,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="12" Type="Scene" Name="Ch2 Sweep A - Wide Left" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,80,1,0,2,30,3,0,4,0,5,0,6,0,7,0,8,44,9,0,10,0,11,0,12,0,13,80,14,160,15,128,16,8,17,180,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,140,2,0,3,0,4,10,5,80,6,50,7,5,8,130,9,75,10,2,11,155,12,100,13,0,14,180</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,140,6,0,7,30,8,0,9,150,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,56,18,0</FixtureVal>
+   <FixtureVal ID="4">0,160,1,0,2,50,3,90,4,0,5,15,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,100,1,0,2,10,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,80,1,100,2,0,3,180,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,220,1,20,2,0,3,0,4,0,5,0,6,252,7,200,8,30,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="13" Type="Scene" Name="Ch2 Sweep B - Cross Center" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,200,1,0,2,10,3,0,4,0,5,0,6,0,7,0,8,50,9,0,10,0,11,0,12,0,13,80,14,180,15,128,16,8,17,200,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,160,2,0,3,100,4,0,5,180,6,0,7,10,8,80,9,100,10,0,11,180,12,0,13,10,14,80</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,160,6,0,7,60,8,0,9,120,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,88,18,0</FixtureVal>
+   <FixtureVal ID="4">0,180,1,0,2,180,3,100,4,0,5,30,6,0,7,0,8,0,9,40,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,100,1,100,2,0,3,180,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,100,1,0,2,10,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,80,1,10,2,0,3,0,4,0,5,0,6,252,7,220,8,50,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="14" Type="Scene" Name="Ch2 Sweep C - Wide Right" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,200,1,0,2,5,3,0,4,0,5,0,6,0,7,0,8,44,9,0,10,0,11,0,12,0,13,80,14,200,15,128,16,8,17,180,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,140,2,0,3,100,4,0,5,180,6,50,7,5,8,130,9,25,10,7,11,105,12,0,13,10,14,80</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,140,6,0,7,30,8,0,9,150,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,56,18,0</FixtureVal>
+   <FixtureVal ID="4">0,160,1,0,2,200,3,100,4,0,5,15,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,80,1,100,2,0,3,180,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,100,1,0,2,10,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,80,1,20,2,0,3,0,4,0,5,0,6,252,7,200,8,30,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="15" Type="Scene" Name="Ch2 Snap Silent - Converge" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,7,1,0,2,19,3,0,4,0,5,0,6,0,7,0,8,50,9,0,10,0,11,0,12,0,13,128,14,200,15,128,16,8,17,220,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,200,2,0,3,100,4,0,5,180,6,100,7,0,8,180,9,100,10,0,11,180,12,100,13,0,14,180</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,200,6,0,7,100,8,0,9,200,10,0,11,0,12,0,13,0,14,245,15,0,16,245,17,88,18,0</FixtureVal>
+   <FixtureVal ID="4">0,200,1,0,2,0,3,123,4,0,5,30,6,0,7,0,8,0,9,60,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,160,1,100,2,0,3,180,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,160,1,100,2,0,3,180,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,0,2,0,3,0,4,0,5,0,6,252,7,240,8,50,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="16" Type="Scene" Name="Ch3 Whip A - Scatter High" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,7,1,0,2,5,3,0,4,0,5,0,6,0,7,0,8,38,9,39,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,200,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,0,4,100,5,20,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,160,6,0,7,0,8,120,9,30,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,40,18,0</FixtureVal>
+   <FixtureVal ID="4">0,180,1,0,2,0,3,80,4,0,5,20,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,120,1,0,2,100,3,20,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,255,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,40,2,0,3,0,4,0,5,0,6,252,7,220,8,40,9,0,10,48,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="17" Type="Scene" Name="Ch3 Whip B - Scatter Low" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,7,1,0,2,50,3,0,4,0,5,0,6,0,7,0,8,38,9,39,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,200,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,100,11,20,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,160,6,0,7,0,8,100,9,40,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,180,1,0,2,0,3,160,4,0,5,20,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,255,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,120,1,0,2,100,3,20,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,245,2,0,3,0,4,0,5,0,6,252,7,220,8,40,9,0,10,48,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="18" Type="Scene" Name="Ch3 Whip C - Cross Snap" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,200,1,0,2,10,3,0,4,0,5,0,6,0,7,0,8,56,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,220,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,0,4,0,5,0,6,0,7,80,8,100,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,180,6,0,7,0,8,80,9,100,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,104,18,0</FixtureVal>
+   <FixtureVal ID="4">0,200,1,0,2,180,3,100,4,0,5,35,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,140,1,0,2,80,3,100,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,140,1,0,2,80,3,100,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,80,1,10,2,0,3,0,4,0,5,0,6,252,7,240,8,70,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="19" Type="Scene" Name="Ch3 Snap - Strobe Burst" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,7,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,128,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,200,4,200,5,220,6,200,7,200,8,220,9,200,10,200,11,220,12,200,13,200,14,220</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,255,8,255,9,255,10,255,11,0,12,0,13,0,14,255,15,255,16,255,17,120,18,0</FixtureVal>
+   <FixtureVal ID="4">0,255,1,0,2,0,3,150,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,255,1,200,2,200,3,220,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,255,1,200,2,200,3,220,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,230,2,0,3,0,4,0,5,0,6,120,7,255,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="20" Type="Scene" Name="Break - Isolation A" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,100,1,0,2,40,3,0,4,0,5,0,6,0,7,0,8,44,9,0,10,30,11,140,12,100,13,0,14,0,15,128,16,8,17,60,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,30,6,0,7,5,8,0,9,20,10,0,11,0,12,0,13,0,14,20,15,0,16,20,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,123,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,255,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,255,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,0,2,0,3,0,4,0,5,0,6,252,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="21" Type="Scene" Name="Break - Isolation B" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,170,1,0,2,10,3,0,4,0,5,0,6,0,7,0,8,50,9,0,10,30,11,180,12,120,13,0,14,0,15,128,16,8,17,50,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,20,6,0,7,10,8,0,9,15,10,0,11,0,12,0,13,0,14,0,15,20,16,0,17,56,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,123,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,20,1,10,2,5,3,30,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,255,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,0,2,0,3,0,4,0,5,0,6,252,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="22" Type="Scene" Name="Break - Isolation C" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,30,1,0,2,35,3,0,4,0,5,0,6,0,7,0,8,56,9,0,10,48,11,160,12,150,13,0,14,0,15,128,16,8,17,40,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,15,6,0,7,0,8,5,9,20,10,0,11,0,12,0,13,0,14,20,15,20,16,20,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,123,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,255,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,15,1,10,2,5,3,30,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,0,2,0,3,0,4,0,5,0,6,252,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="23" Type="Scene" Name="Ch4 Entry - Laser Stab" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,7,1,0,2,19,3,0,4,0,5,0,6,0,7,0,8,20,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,180,4,0,5,0,6,180,7,0,8,0,9,180,10,0,11,0,12,180,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,255,8,0,9,0,10,100,11,0,12,0,13,0,14,255,15,255,16,255,17,24,18,0</FixtureVal>
+   <FixtureVal ID="4">0,255,1,0,2,0,3,123,4,0,5,5,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,200,1,180,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,200,1,180,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,0,2,0,3,0,4,0,5,0,6,252,7,255,8,10,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="24" Type="Scene" Name="Ch4 Lock A - All Right" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,200,1,0,2,5,3,0,4,0,5,0,6,0,7,0,8,20,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,200,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,180,4,0,5,0,6,120,7,0,8,10,9,180,10,0,11,0,12,120,13,0,14,10</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,180,6,0,7,150,8,0,9,20,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,24,18,0</FixtureVal>
+   <FixtureVal ID="4">0,180,1,0,2,200,3,100,4,0,5,5,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,120,1,120,2,0,3,10,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,80,1,180,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,220,1,15,2,0,3,0,4,0,5,0,6,252,7,220,8,10,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="25" Type="Scene" Name="Ch4 Lock B - All Left" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,80,1,0,2,30,3,0,4,0,5,0,6,0,7,0,8,20,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,200,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,120,4,0,5,10,6,180,7,0,8,0,9,120,10,0,11,10,12,180,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,180,6,0,7,150,8,0,9,20,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,180,1,0,2,60,3,100,4,0,5,5,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,80,1,180,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,120,1,120,2,0,3,10,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,80,1,15,2,0,3,0,4,0,5,0,6,252,7,220,8,10,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="26" Type="Scene" Name="Ch4 Lock Snap - Violet Converge" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,7,1,0,2,19,3,0,4,0,5,0,6,0,7,0,8,50,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,100,4,0,5,180,6,100,7,0,8,180,9,100,10,0,11,180,12,100,13,0,14,180</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,120,8,0,9,200,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,88,18,0</FixtureVal>
+   <FixtureVal ID="4">0,255,1,0,2,0,3,123,4,0,5,30,6,0,7,0,8,0,9,80,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,200,1,100,2,0,3,180,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,200,1,100,2,0,3,180,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,0,2,0,3,0,4,0,5,0,6,252,7,255,8,50,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="27" Type="Scene" Name="Ch4 Lock C - All Wide" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,80,1,0,2,30,3,0,4,0,5,0,6,0,7,0,8,20,9,0,10,0,11,0,12,0,13,80,14,0,15,128,16,8,17,200,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,120,4,0,5,10,6,0,7,0,8,0,9,120,10,0,11,10,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,160,6,0,7,120,8,0,9,30,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,24,18,0</FixtureVal>
+   <FixtureVal ID="4">0,180,1,0,2,50,3,90,4,0,5,5,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,255,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,100,1,120,2,0,3,10,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,220,1,20,2,0,3,0,4,0,5,0,6,252,7,220,8,10,9,0,10,0,11,128,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="28" Type="Scene" Name="Ch5 Hunt A - Low Prowl" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,7,1,0,2,5,3,0,4,0,5,0,6,0,7,0,8,56,9,30,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,160,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,120,2,0,3,0,4,80,5,100,6,0,7,45,8,90,9,0,10,27,11,85,12,0,13,10,14,80</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,120,6,0,7,0,8,60,9,80,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,104,18,0</FixtureVal>
+   <FixtureVal ID="4">0,140,1,0,2,0,3,160,4,0,5,35,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,80,1,0,2,80,3,100,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,60,1,0,2,10,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,245,2,0,3,0,4,0,5,0,6,252,7,180,8,70,9,0,10,21,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="29" Type="Scene" Name="Ch5 Hunt B - High Lunge" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,7,1,0,2,50,3,0,4,0,5,0,6,0,7,0,8,44,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,220,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,160,2,0,3,0,4,10,5,80,6,0,7,45,8,90,9,0,10,62,11,95,12,0,13,80,14,100</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,140,6,0,7,0,8,40,9,100,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,56,18,0</FixtureVal>
+   <FixtureVal ID="4">0,200,1,0,2,0,3,80,4,0,5,15,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,60,1,0,2,10,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,80,1,0,2,80,3,100,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,40,2,0,3,0,4,0,5,0,6,252,7,240,8,30,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="30" Type="Scene" Name="Ch5 Snap - Cyan Strobe" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,7,1,0,2,19,3,0,4,0,5,0,6,0,7,0,8,56,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,128,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,0,4,80,5,100,6,0,7,80,8,100,9,0,10,80,11,100,12,0,13,80,14,100</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,0,8,200,9,255,10,100,11,0,12,0,13,0,14,0,15,255,16,255,17,104,18,0</FixtureVal>
+   <FixtureVal ID="4">0,255,1,0,2,0,3,123,4,0,5,35,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,255,1,0,2,80,3,100,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,255,1,0,2,80,3,100,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,0,2,0,3,0,4,0,5,0,6,64,7,255,8,70,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="31" Type="Scene" Name="Ch6 Push A - Prism Assault Left" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,80,1,0,2,30,3,0,4,0,5,0,6,0,7,0,8,50,9,0,10,0,11,0,12,0,13,200,14,180,15,128,16,8,17,220,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,100,4,0,5,180,6,180,7,0,8,0,9,100,10,0,11,180,12,180,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,30,2,90,3,50,4,0,5,200,6,0,7,120,8,0,9,180,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,88,18,0</FixtureVal>
+   <FixtureVal ID="4">0,200,1,0,2,60,3,100,4,0,5,30,6,0,7,0,8,0,9,120,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,160,1,100,2,0,3,180,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,120,1,180,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,80,1,15,2,0,3,0,4,0,5,0,6,252,7,240,8,50,9,0,10,0,11,128,12,200,13,128,14,200,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="32" Type="Scene" Name="Ch6 Push B - Prism Assault Right" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,200,1,0,2,5,3,0,4,0,5,0,6,0,7,0,8,20,9,0,10,0,11,0,12,0,13,200,14,200,15,128,16,8,17,220,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,180,4,0,5,0,6,100,7,0,8,180,9,180,10,0,11,0,12,100,13,0,14,180</FixtureVal>
+   <FixtureVal ID="3">0,128,1,90,2,30,3,70,4,0,5,200,6,0,7,180,8,0,9,120,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,24,18,0</FixtureVal>
+   <FixtureVal ID="4">0,200,1,0,2,200,3,100,4,0,5,5,6,0,7,0,8,0,9,120,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,120,1,180,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,160,1,100,2,0,3,180,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,220,1,15,2,0,3,0,4,0,5,0,6,252,7,240,8,10,9,0,10,0,11,128,12,200,13,128,14,200,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="33" Type="Scene" Name="Ch7 Unhinged A - Full Send Left" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,200,1,0,2,10,3,0,4,0,5,0,6,0,7,0,8,20,9,39,10,0,11,0,12,0,13,200,14,200,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,180,4,0,5,0,6,180,7,0,8,0,9,180,10,0,11,0,12,180,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,130,2,160,3,140,4,0,5,255,6,0,7,200,8,0,9,50,10,50,11,0,12,0,13,0,14,255,15,0,16,255,17,24,18,0</FixtureVal>
+   <FixtureVal ID="4">0,240,1,0,2,50,3,90,4,0,5,5,6,0,7,0,8,0,9,150,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,200,1,120,2,0,3,10,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,200,1,120,2,0,3,10,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,80,1,15,2,0,3,0,4,0,5,0,6,252,7,255,8,10,9,0,10,48,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="34" Type="Scene" Name="Ch7 Unhinged B - Full Send Right" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,80,1,0,2,30,3,0,4,0,5,0,6,0,7,0,8,50,9,39,10,0,11,0,12,0,13,200,14,200,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,100,4,0,5,180,6,100,7,0,8,180,9,100,10,0,11,180,12,100,13,0,14,180</FixtureVal>
+   <FixtureVal ID="3">0,128,1,160,2,130,3,170,4,0,5,255,6,0,7,150,8,0,9,200,10,30,11,0,12,0,13,0,14,255,15,255,16,255,17,88,18,0</FixtureVal>
+   <FixtureVal ID="4">0,240,1,0,2,180,3,100,4,0,5,30,6,0,7,0,8,0,9,150,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,200,1,90,2,10,3,120,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,200,1,90,2,10,3,120,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,220,1,15,2,0,3,0,4,0,5,0,6,252,7,255,8,50,9,0,10,48,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="35" Type="Scene" Name="Ch7 Unhinged Snap - White Obliteration" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,7,1,0,2,19,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,200,14,200,15,128,16,128,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,200,4,200,5,220,6,200,7,200,8,220,9,200,10,200,11,220,12,200,13,200,14,220</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,255,8,255,9,255,10,255,11,0,12,0,13,0,14,255,15,255,16,255,17,120,18,0</FixtureVal>
+   <FixtureVal ID="4">0,255,1,0,2,0,3,123,4,0,5,0,6,0,7,0,8,0,9,200,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,255,1,200,2,200,3,220,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,255,1,200,2,200,3,220,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,0,2,0,3,0,4,0,5,0,6,120,7,255,8,0,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="36" Type="Scene" Name="Outro A - Dead Blue" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,7,1,0,2,19,3,0,4,0,5,0,6,0,7,0,8,44,9,0,10,0,11,0,12,200,13,0,14,0,15,128,16,8,17,30,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,50,2,0,3,15,4,30,5,60,6,15,7,30,8,60,9,15,10,30,11,60,12,15,13,30,14,60</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,40,6,0,7,8,8,15,9,40,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,56,18,0</FixtureVal>
+   <FixtureVal ID="4">0,20,1,0,2,0,3,123,4,0,5,15,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,30,1,8,2,40,3,50,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,30,1,8,2,40,3,50,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,0,2,0,3,0,4,0,5,200,6,252,7,40,8,30,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="37" Type="Scene" Name="Outro B - Fading Memory" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,15,1,0,2,22,3,0,4,0,5,0,6,0,7,0,8,44,9,0,10,0,11,0,12,220,13,0,14,0,15,128,16,8,17,20,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,30,2,0,3,15,4,30,5,60,6,15,7,30,8,60,9,15,10,30,11,60,12,15,13,30,14,60</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,20,6,0,7,5,8,10,9,25,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,15,1,0,2,10,3,120,4,0,5,15,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,15,1,8,2,40,3,50,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,15,1,8,2,40,3,50,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,160,1,5,2,0,3,0,4,0,5,220,6,252,7,25,8,30,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="38" Type="Scene" Name="Outro C - Almost Gone" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,7,1,0,2,19,3,0,4,0,5,0,6,0,7,0,8,44,9,0,10,0,11,0,12,255,13,0,14,0,15,128,16,8,17,8,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,10,2,0,3,15,4,30,5,60,6,15,7,30,8,60,9,15,10,30,11,60,12,15,13,30,14,60</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,8,6,0,7,2,8,5,9,12,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,5,1,0,2,0,3,123,4,0,5,15,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,255,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,255,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,0,2,0,3,0,4,0,5,255,6,252,7,10,8,30,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="39" Type="Chaser" Name="Acid Rain" Path="Acid Rain">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <Direction>Forward</Direction>
+   <RunOrder>SingleShot</RunOrder>
+   <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="PerStep"/>
+   <Step Number="0" FadeIn="10435" Hold="0" FadeOut="0">1</Step>
+   <Step Number="1" FadeIn="8348" Hold="0" FadeOut="0">2</Step>
+   <Step Number="2" FadeIn="10435" Hold="0" FadeOut="0">3</Step>
+   <Step Number="3" FadeIn="8348" Hold="0" FadeOut="0">4</Step>
+   <Step Number="4" FadeIn="8348" Hold="0" FadeOut="0">5</Step>
+   <Step Number="5" FadeIn="50" Hold="8298" FadeOut="0">6</Step>
+   <Step Number="6" FadeIn="0" Hold="2087" FadeOut="0">7</Step>
+   <Step Number="7" FadeIn="6261" Hold="0" FadeOut="0">8</Step>
+   <Step Number="8" FadeIn="0" Hold="1043" FadeOut="0">9</Step>
+   <Step Number="9" FadeIn="6261" Hold="0" FadeOut="0">10</Step>
+   <Step Number="10" FadeIn="0" Hold="1043" FadeOut="0">11</Step>
+   <Step Number="11" FadeIn="4174" Hold="0" FadeOut="0">8</Step>
+   <Step Number="12" FadeIn="8348" Hold="0" FadeOut="0">12</Step>
+   <Step Number="13" FadeIn="6261" Hold="0" FadeOut="0">13</Step>
+   <Step Number="14" FadeIn="0" Hold="2087" FadeOut="0">15</Step>
+   <Step Number="15" FadeIn="8348" Hold="0" FadeOut="0">14</Step>
+   <Step Number="16" FadeIn="6261" Hold="0" FadeOut="0">13</Step>
+   <Step Number="17" FadeIn="0" Hold="2087" FadeOut="0">15</Step>
+   <Step Number="18" FadeIn="50" Hold="4124" FadeOut="0">16</Step>
+   <Step Number="19" FadeIn="50" Hold="4124" FadeOut="0">17</Step>
+   <Step Number="20" FadeIn="0" Hold="3130" FadeOut="0">18</Step>
+   <Step Number="21" FadeIn="50" Hold="3080" FadeOut="0">16</Step>
+   <Step Number="22" FadeIn="50" Hold="3080" FadeOut="0">17</Step>
+   <Step Number="23" FadeIn="0" Hold="1043" FadeOut="0">19</Step>
+   <Step Number="24" FadeIn="50" Hold="4124" FadeOut="0">18</Step>
+   <Step Number="25" FadeIn="0" Hold="1043" FadeOut="0">0</Step>
+   <Step Number="26" FadeIn="6261" Hold="0" FadeOut="0">20</Step>
+   <Step Number="27" FadeIn="5217" Hold="0" FadeOut="0">21</Step>
+   <Step Number="28" FadeIn="4174" Hold="0" FadeOut="0">22</Step>
+   <Step Number="29" FadeIn="0" Hold="2087" FadeOut="0">23</Step>
+   <Step Number="30" FadeIn="50" Hold="4124" FadeOut="0">24</Step>
+   <Step Number="31" FadeIn="50" Hold="4124" FadeOut="0">25</Step>
+   <Step Number="32" FadeIn="0" Hold="2087" FadeOut="0">26</Step>
+   <Step Number="33" FadeIn="50" Hold="4124" FadeOut="0">27</Step>
+   <Step Number="34" FadeIn="50" Hold="4124" FadeOut="0">24</Step>
+   <Step Number="35" FadeIn="50" Hold="4124" FadeOut="0">25</Step>
+   <Step Number="36" FadeIn="0" Hold="2087" FadeOut="0">26</Step>
+   <Step Number="37" FadeIn="50" Hold="4124" FadeOut="0">27</Step>
+   <Step Number="38" FadeIn="8348" Hold="0" FadeOut="0">28</Step>
+   <Step Number="39" FadeIn="0" Hold="1043" FadeOut="0">30</Step>
+   <Step Number="40" FadeIn="8348" Hold="0" FadeOut="0">29</Step>
+   <Step Number="41" FadeIn="0" Hold="1043" FadeOut="0">30</Step>
+   <Step Number="42" FadeIn="6261" Hold="0" FadeOut="0">28</Step>
+   <Step Number="43" FadeIn="50" Hold="4124" FadeOut="0">31</Step>
+   <Step Number="44" FadeIn="50" Hold="4124" FadeOut="0">32</Step>
+   <Step Number="45" FadeIn="50" Hold="4124" FadeOut="0">31</Step>
+   <Step Number="46" FadeIn="50" Hold="4124" FadeOut="0">32</Step>
+   <Step Number="47" FadeIn="50" Hold="4124" FadeOut="0">33</Step>
+   <Step Number="48" FadeIn="50" Hold="4124" FadeOut="0">34</Step>
+   <Step Number="49" FadeIn="0" Hold="1043" FadeOut="0">35</Step>
+   <Step Number="50" FadeIn="50" Hold="3080" FadeOut="0">33</Step>
+   <Step Number="51" FadeIn="50" Hold="3080" FadeOut="0">34</Step>
+   <Step Number="52" FadeIn="0" Hold="1043" FadeOut="0">35</Step>
+   <Step Number="53" FadeIn="50" Hold="2037" FadeOut="0">33</Step>
+   <Step Number="54" FadeIn="50" Hold="2037" FadeOut="0">34</Step>
+   <Step Number="55" FadeIn="12522" Hold="0" FadeOut="0">36</Step>
+   <Step Number="56" FadeIn="10435" Hold="0" FadeOut="0">37</Step>
+   <Step Number="57" FadeIn="6261" Hold="0" FadeOut="0">38</Step>
+   <Step Number="58" FadeIn="2087" Hold="0" FadeOut="0">0</Step>
+  </Function>
+ </Engine>
+ <VirtualConsole>
+  <Frame Caption="">
+   <Appearance>
+    <FrameStyle>None</FrameStyle>
+    <ForegroundColor>Default</ForegroundColor>
+    <BackgroundColor>Default</BackgroundColor>
+    <BackgroundImage>None</BackgroundImage>
+    <Font>Default</Font>
+   </Appearance>
+   <Button Caption="▶ ACID RAIN" ID="0" Icon="">
+    <WindowState Visible="True" X="10" Y="10" Width="470" Height="100"/>
+    <Appearance>
+     <BackgroundColor>#880000</BackgroundColor>
+    </Appearance>
+    <Function ID="39"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="BLACKOUT" ID="1" Icon="">
+    <WindowState Visible="True" X="10" Y="120" Width="470" Height="80"/>
+    <Appearance>
+     <BackgroundColor>#FF0000</BackgroundColor>
+    </Appearance>
+    <Function ID="0"/>
+    <Action>Toggle</Action>
+   </Button>
+  </Frame>
+  <Properties>
+   <Size Width="1920" Height="1080"/>
+   <GrandMaster ChannelMode="Intensity" ValueMode="Reduce" SliderMode="Normal"/>
+  </Properties>
+ </VirtualConsole>
+ <Monitor DisplayMode="0" ShowLabels="0">
+  <Font>Arial,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1</Font>
+  <ChannelStyle>0</ChannelStyle>
+  <ValueStyle>0</ValueStyle>
+  <Grid Width="5" Height="3" Depth="5" Units="0"/>
+  <StageItem>0</StageItem>
+  <FxItem ID="1" XPos="386.582" YPos="1000" ZPos="287.18"/>
+  <FxItem ID="2" XPos="1961.2" YPos="1000" ZPos="386.889"/>
+  <FxItem ID="3" XPos="3355.38" YPos="1000" ZPos="335.202"/>
+  <FxItem ID="4" XPos="2342.48" YPos="1000" ZPos="4250.46"/>
+  <FxItem ID="5" XPos="25.06" YPos="1000" ZPos="1519.79"/>
+  <FxItem ID="6" XPos="22.4348" YPos="1000" ZPos="1012.91"/>
+  <FxItem ID="8" XPos="4341.8" YPos="1000" ZPos="345.539"/>
+ </Monitor>
+</Workspace>
