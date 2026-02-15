@@ -1,32 +1,43 @@
 #!/usr/bin/env python3
 """
-Show Generator: Dimension & Karen Harding - Guardian Angel
-==========================================================
-BPM: 174 | Duration: ~3:44 | Genre: Drum & Bass (euphoric/liquid)
+Show Generator: Dimension & Karen Harding - Guardian Angel (v2)
+================================================================
+BPM: 174 | Duration: ~3:44 (162 bars) | Genre: Drum & Bass (euphoric/liquid)
+
+v2 Improvements over v1:
+  - Focus-positions grid (9-point stage + specials) replaces custom 7-position set
+  - NI3K uses subtle RGBW/halo in quiet sections, not just lasers-only
+  - BSW gobo escalation across drops (none → G1_3 → G1_4 → G1_5)
+  - Laser strobe tease in builds (STROBE_SLOW → MED → solid ON)
+  - White downbeat blast technique on Triple #3
+  - Prime-number NI3K tilt math for more chaotic rotation
+  - Proper 8-bar cool down + 4-bar fade instead of snap to black
+  - Mover strobe ramp through builds (open → SLOW → MED → FAST)
+  - Audience Blinder position for brief drop accents
 
 Creative Direction:
   - Theme: Angels, heaven, clouds, feeling a rush
   - Palette: Ethereal & pure — white, gold, ice blue, soft teal
   - Every sound pops — beat-level scene changes in drops
   - Breakdowns: wide, sweeping, luxurious slow continuous mover sweeps
-  - Movers: NEVER point behind themselves — forward, left, right, up, down only
-  - Pars: Cohesive but dynamic — fade out in quiet parts, go crazy during builds
-  - Par patterns: wash (drops), gradient (verses), pairs (transitions), chase (builds)
-  - NI3K: Lasers ONLY (no RGBW, no halo), high movement channel values
+  - Movers: NEVER point behind themselves — forward only
+  - Pars: Cohesive — wash for unity, gradient/pairs for texture, chase for builds
+  - NI3K: Subtle atmosphere in verses (dim RGBW + halo), lasers in drops
   - Laser progression: blue only → blue+green → all 3 by final drops
-  - Triple drop staircase: each drop adds prisms, wider movement, more lasers
+  - Triple drop staircase: each drop adds prisms, gobos, wider movement, more lasers
+  - Gobo staircase: none (Drop 1) → G1_3 (Drop 2) → G1_4 (T1) → G1_5 (T2/T3)
 
 Song Structure (from allin1 analysis @ 174 BPM):
-  0:00 - 0:11  verse     (8 bars)   "Ambient Intro" — pre-beat, dark, atmosphere
+  0:00 - 0:11  intro     (8 bars)   "Ambient Intro" — pre-beat, dark, atmosphere
   0:11 - 0:44  verse     (24 bars)  "Verse 1" — vocals build, pars+movers fade in
   0:44 - 1:06  chorus    (16 bars)  "Drop 1" — first chorus, full energy, blue laser
   1:06 - 1:28  bridge    (16 bars)  "Bridge" — dreamy sweeps, gold/white, single laser
   1:28 - 2:01  chorus    (24 bars)  "Drop 2" — bigger, wider, blue+green lasers
   2:01 - 2:35  verse     (24 bars)  "Verse 2" — luxurious sweeps, green laser
   2:35 - 2:57  chorus    (16 bars)  "Triple #1" — strong, clean, blue+green lasers
-  2:57 - 3:18  chorus    (16 bars)  "Triple #2" — prisms, wider, all 3 lasers
-  3:18 - 3:40  chorus    (16 bars)  "Triple #3" — EVERYTHING maxed, all lasers, strobes
-  3:40 - 3:43  end       (2 bars)   "End" — snap to black
+  2:57 - 3:18  chorus    (16 bars)  "Triple #2" — prisms+gobos, wider, all 3 lasers
+  3:18 - 3:40  chorus    (16 bars)  "Triple #3" — EVERYTHING maxed, all lasers, white blasts
+  3:40 - 3:44  end       (4 bars)   "Cool Down" — fade to black
 """
 
 import os, sys
@@ -68,26 +79,40 @@ PROF_FOR = {
 }
 
 # =============================================================================
-# MOVER POSITIONS — Forward-facing only (never behind fixtures)
+# FOCUS POSITIONS — 9-point stage grid + specials
+# From venue/home-studio/focus-positions.md
 # (sharpy_pan, sharpy_tilt, bsw_pan, bsw_tilt, prof_pan, prof_tilt)
 # =============================================================================
 
 POS = {
-    "C":  (153, 0,   7,   19,  0,   123),   # Center floor
-    "L":  (115, 8,   65,  22,  40,  118),   # Left
-    "R":  (195, 8,   190, 15,  210, 118),   # Right
-    "UP": (153, 30,  7,   42,  0,   90),    # High/ceiling
-    "W":  (210, 12,  75,  25,  45,  100),   # Wide spread
-    "FW": (153, 15,  7,   28,  0,   138),   # Forward (audience)
-    "X":  (100, 5,   195, 18,  200, 125),   # Cross (swapped sides)
+    # Stage grid
+    "C":   (153, 0,   7,   19,  0,   123),  # Center (verified)
+    "DSC": (153, 9,   7,   10,  0,   136),  # Downstage center (near audience)
+    "USC": (153, 0,   7,   27,  0,   109),  # Upstage center (near DJ)
+    "SL":  (90,  0,   79,  19,  29,  123),  # Stage left
+    "SR":  (220, 0,   0,   19,  0,   123),  # Stage right
+    "DSL": (90,  9,   79,  10,  29,  136),  # Downstage left
+    "DSR": (220, 9,   0,   10,  0,   136),  # Downstage right
+    "USL": (90,  0,   79,  27,  29,  109),  # Upstage left
+    "USR": (220, 0,   0,   27,  0,   109),  # Upstage right
+    # Specials
+    "CEIL": (153, 0,  7,   40,  0,   85),   # Ceiling hit (beams up)
+    "AUD":  (153, 15, 7,   5,   0,   155),  # Audience blinder (BRIEF ONLY)
+    "WALL": (220, 0,  0,   25,  0,   115),  # Par wall highlight
+    "DJ":   (153, 0,  7,   33,  0,   100),  # DJ booth
 }
 
-# Position sequences
-POS_SWEEP = ["C", "L", "UP", "R", "FW", "W", "C", "X"]
-POS_DROP  = ["C", "L", "R", "W", "X", "UP", "FW", "C"]
-POS_WIDE  = ["W", "X", "FW", "UP", "W", "L", "R", "X"]
-POS_BIG   = ["C", "W", "X", "FW", "UP", "L", "R", "C",
-             "X", "W", "UP", "FW", "L", "R", "C", "W"]
+# Position sequences — use stage grid names for clarity
+POS_SWEEP   = ["C", "SL", "CEIL", "SR", "DSC", "USL", "C", "DSR"]   # dreamy sweep for breakdowns
+POS_DROP    = ["C", "SL", "SR", "DSL", "DSR", "CEIL", "DSC", "C"]    # standard drop movement
+POS_WIDE    = ["DSL", "DSR", "USL", "USR", "DSC", "SL", "SR", "DSR"] # widest moves for Triple #2
+POS_BIG     = ["C", "DSL", "DSR", "USL", "USR", "DSC", "CEIL", "C",  # 16 positions for Triple #3
+               "SL", "SR", "DSL", "AUD", "USR", "DSC", "USL", "DSR"]
+
+# Sweep paths for smooth breakdowns (from focus-positions.md)
+SWEEP_LR    = ["SL", "C", "SR"]              # narrow left-right
+SWEEP_DIAG  = ["USR", "C", "DSL"]            # diagonal
+SWEEP_FRONT = ["USC", "C", "DSC"]            # front-back push
 
 # =============================================================================
 # SCENE BUILDING WITH DEDUP
@@ -200,12 +225,31 @@ def par_off():
             miss2(0, 0, 0, master=0))
 
 
-def mk_ni3k(rl=LASER_OFF, gl=LASER_OFF, bl=LASER_OFF,
-            pan=200, t1=170, t2=190, t3=210):
-    """NI3K lasers only — no RGBW, no halo, high movement values."""
+def mk_ni3k_laser(rl=LASER_OFF, gl=LASER_OFF, bl=LASER_OFF,
+                   pan=200, t1=170, t2=190, t3=210):
+    """NI3K lasers only — no RGBW, no halo, high movement values.
+    Used in drops where lasers carry the NI3K role."""
     return ni3k(pan=pan, t1=t1, t2=t2, t3=t3,
                 r=0, g=0, b=0, w=0, dim=0,
                 halo=H_OFF, rl=rl, gl=gl, bl=bl)
+
+
+def mk_ni3k_atmo(color=ICE_BLUE, dim=40, halo=H_BLU, pan=128,
+                  t1=64, t2=64, t3=64,
+                  rl=LASER_OFF, gl=LASER_OFF, bl=LASER_OFF):
+    """NI3K in atmosphere mode — subtle RGBW glow + halo for quiet sections.
+    v2 improvement: NI3K contributes ambient light instead of being dark."""
+    r, g, b = color
+    return ni3k(pan=pan, t1=t1, t2=t2, t3=t3,
+                r=r, g=g, b=b, w=0, dim=dim,
+                halo=halo, rl=rl, gl=gl, bl=bl)
+
+
+# NI3K palette → halo mapping
+HALO_FOR = {
+    ICE_BLUE: H_BLU, PURE_WHITE: H_RGB,
+    GOLD: H_YEL, SOFT_TEAL: H_CYN,
+}
 
 
 # =============================================================================
@@ -218,7 +262,7 @@ add_scene("Blackout", *blackout_all())
 # =============================================================================
 # AMBIENT INTRO — 8 bars, 4-beat steps
 # Pre-beat atmosphere. Pars barely visible, fading up from black.
-# Movers dark. NI3K dark.
+# Movers dark. NI3K provides subtle blue atmosphere (v2: was dark).
 # =============================================================================
 
 for bar in range(8):
@@ -228,7 +272,10 @@ for bar in range(8):
     else:
         fb, m1, m2 = par_wash(ICE_BLUE, master=master)
     s, b, p = mkvrs("C", ICE_BLUE, dim=0)
-    n = mk_ni3k()  # dark
+    # v2: NI3K provides subtle blue atmosphere instead of total darkness
+    ni_dim = bar * 5  # 0 → 35 (very subtle glow building)
+    n = mk_ni3k_atmo(ICE_BLUE, dim=ni_dim, halo=H_BLU if bar >= 2 else H_OFF,
+                      pan=128, t1=64, t2=64, t3=64)
     idx = add_scene(f"Amb-{bar+1}", s, b, p, fb, m1, m2, n)
     beat_step(idx, beats=4)
 
@@ -236,10 +283,10 @@ for bar in range(8):
 # =============================================================================
 # VERSE 1A — 12 bars, 4-beat steps (gentle build)
 # Vocals enter. Pars fade in with gradients, building from dim.
-# Movers slowly appear, frosted.
+# Movers slowly appear, frosted. NI3K halo syncs to palette.
 # =============================================================================
 
-v1a_positions = ["C", "C", "C", "L", "L", "C", "R", "R", "C", "UP", "C", "C"]
+v1a_positions = ["C", "C", "C", "SL", "SL", "C", "SR", "SR", "C", "CEIL", "C", "C"]
 
 for bar in range(12):
     c1 = ETHEREAL_3[bar % 3]
@@ -249,7 +296,10 @@ for bar in range(12):
     pos = v1a_positions[bar]
     mover_dim = min(255, bar * 18)  # 0 → 198
     s, b, p = mkvrs(pos, PURE_WHITE, dim=mover_dim, frost=180, focus=200)
-    n = mk_ni3k()  # still dark
+    # v2: NI3K halo tracks palette color, subtle RGBW glow building
+    ni_dim = 30 + bar * 6  # 30 → 96 (gentle build)
+    halo = HALO_FOR.get(c1, H_BLU)
+    n = mk_ni3k_atmo(c1, dim=ni_dim, halo=halo, pan=128, t1=64, t2=64, t3=64)
     idx = add_scene(f"V1A-{bar+1}", s, b, p, fb, m1, m2, n)
     beat_step(idx, beats=4)
 
@@ -257,8 +307,7 @@ for bar in range(12):
 # =============================================================================
 # VERSE 1B — 12 bars, 2-beat steps (building to drop)
 # Pars go CRAZY during this build: gradient → pairs → chase
-# First 4 bars: gradients. Next 4: pairs flipping. Last 4: chase cycling.
-# Master ramps hard: 140 → 255. This is the buildup — pars should feel urgent.
+# v2: Laser strobe tease in last 4 bars, mover strobe ramp in last 2
 # =============================================================================
 
 v1b_positions = POS_SWEEP[:8] + POS_SWEEP[:4]  # 12 positions for 12 bars
@@ -271,20 +320,38 @@ for i in range(24):
     master = 140 + bar * 10  # 140 → 250
 
     if bar < 4:
-        # Bars 1-4: gradients cycling — gentle start
         fb, m1, m2 = par_gradient(c1, c2, master=master)
     elif bar < 8:
-        # Bars 5-8: pairs flipping each half-bar — more movement
         fb, m1, m2 = par_pairs(c1, c2, flip=(half == 1), master=master)
     else:
-        # Bars 9-12: chase pattern — one par at a time, urgent energy
         fb, m1, m2 = par_chase(c1, i, master=master)
 
     pos = v1b_positions[bar]
     mover_dim = 180 + bar * 6  # 180 → 246
     frost_val = max(0, 160 - bar * 14)  # 160 → 6
-    s, b, p = mkvrs(pos, c1, dim=mover_dim, frost=frost_val, focus=160)
-    n = mk_ni3k()  # still dark — saving laser reveal for drop
+
+    # v2: Mover strobe ramp in last 2 bars of build
+    if bar >= 10:
+        s_str = SHARPY_STROBE_SLOW + (bar - 10) * 25  # SLOW → approaching MED
+        b_str = 20 + (bar - 10) * 20
+    else:
+        s_str = SHARPY_OPEN
+        b_str = BSW_SHUT_OPEN
+
+    s, b, p = mkvrs(pos, c1, dim=mover_dim, frost=frost_val, focus=160,
+                     s_strobe=s_str, b_shutter=b_str)
+
+    # v2: Laser strobe tease in last 4 bars (blue laser only)
+    if bar >= 8:
+        laser_spd = LASER_STROBE_SLOW + (bar - 8) * 50  # slow → medium strobe
+        n = mk_ni3k_atmo(c1, dim=80, halo=HALO_FOR.get(c1, H_BLU),
+                          pan=128, t1=64, t2=64, t3=64,
+                          bl=laser_spd)
+    else:
+        ni_dim = 60 + bar * 8  # 60 → 116
+        n = mk_ni3k_atmo(c1, dim=ni_dim, halo=HALO_FOR.get(c1, H_BLU),
+                          pan=128, t1=64, t2=64, t3=64)
+
     idx = add_scene(f"V1B-{bar+1}{chr(65+half)}", s, b, p, fb, m1, m2, n)
     beat_step(idx, beats=2)
 
@@ -292,8 +359,7 @@ for i in range(24):
 # =============================================================================
 # DROP 1 — 16 bars, 1-beat steps (64 beats)
 # First chorus! Full energy. Beat-synced color snaps.
-# Pars alternate wash + pairs every 2 bars for texture.
-# Movers reposition every bar. Blue laser reveal on NI3K.
+# Blue laser reveal on NI3K. No gobos yet (staircase level 0).
 # =============================================================================
 
 for beat in range(64):
@@ -303,10 +369,10 @@ for beat in range(64):
     c2 = ETHEREAL_4[(beat + 2) % 4]
     pos = POS_DROP[bar % len(POS_DROP)]
 
-    # NI3K movement — rotating tilts, high values
-    t1 = 160 + (beat % 5) * 8   # 160-192
-    t2 = 175 + (beat % 3) * 10  # 175-195
-    t3 = 185 + (beat % 7) * 5   # 185-215
+    # v2: Prime-number tilt math for more chaotic rotation
+    t1 = 160 + (beat * 7 % 37)    # 160-196, prime scatter
+    t2 = 175 + (beat * 11 % 29)   # 175-203
+    t3 = 185 + (beat * 13 % 31)   # 185-215
 
     # Strobe accent on beat 1 every 4 bars — white flash
     if bib == 0 and bar % 4 == 0:
@@ -315,25 +381,24 @@ for beat in range(64):
                          s_strobe=SHARPY_STROBE_MED,
                          b_shutter=BSW_SHUT_STROBE_FAST)
     else:
-        # Alternate: wash on even bars, pairs on odd bars
         if (bar // 2) % 2 == 0:
             fb, m1, m2 = par_wash(c)
         else:
             fb, m1, m2 = par_pairs(c, c2, flip=(bib % 2 == 1))
         s, b, p = mkvrs(pos, c)
 
-    n = mk_ni3k(bl=LASER_ON, pan=200, t1=t1, t2=t2, t3=t3)
+    n = mk_ni3k_laser(bl=LASER_ON, pan=200, t1=t1, t2=t2, t3=t3)
     idx = add_scene(f"D1-{bar+1}.{bib+1}", s, b, p, fb, m1, m2, n)
     beat_step(idx, beats=1)
 
 
 # =============================================================================
 # BRIDGE — 16 bars, 2-bar smooth crossfades (8 steps)
-# Dreamy. Pars fade out to near-dark — let the movers and laser carry it.
-# Slow continuous mover sweeps. Frosted. Gold → ice blue evolution.
+# Dreamy. Pars fade out to near-dark — movers and laser carry it.
+# v2: NI3K atmosphere mode with subtle RGBW glow matching palette
 # =============================================================================
 
-bridge_sweep = ["C", "L", "UP", "R", "FW", "W", "X", "C"]
+bridge_sweep = ["C", "SL", "CEIL", "SR", "DSC", "USL", "C", "DSR"]
 bridge_colors = [GOLD, ICE_BLUE, PURE_WHITE, SOFT_TEAL,
                  GOLD, ICE_BLUE, PURE_WHITE, SOFT_TEAL]
 
@@ -343,7 +408,11 @@ for i in range(8):
     master = max(10, 80 - i * 10)  # 80 → 10 (fading to near-dark)
     fb, m1, m2 = par_wash(c, master=master)
     s, b, p = mkvrs(pos, c, dim=180, frost=200, focus=200)
-    n = mk_ni3k(bl=LASER_ON, pan=190 + i * 5, t1=165, t2=180, t3=200)
+    # v2: NI3K provides atmosphere glow + halo during bridge
+    halo = HALO_FOR.get(c, H_BLU)
+    n = mk_ni3k_atmo(c, dim=60, halo=halo,
+                      pan=190 + i * 5, t1=64, t2=64, t3=64,
+                      bl=LASER_ON)  # blue laser sustains
     idx = add_scene(f"Br-{i+1}", s, b, p, fb, m1, m2, n)
     smooth_step(idx, bars=2)
 
@@ -351,8 +420,7 @@ for i in range(8):
 # =============================================================================
 # DROP 2 — 24 bars, 1-beat steps (96 beats)
 # Bigger than Drop 1. Wider positions. Color changes every beat.
-# Par patterns rotate every 4 bars: wash → pairs → chase → wash...
-# Blue + green lasers. Strobe accents every 4 bars.
+# v2: BSW gobo G1_3 for beam texture, blue + green lasers.
 # =============================================================================
 
 drop2_positions = POS_DROP + POS_WIDE + POS_DROP  # 24 positions for 24 bars
@@ -364,20 +432,21 @@ for beat in range(96):
     c2 = ETHEREAL_4[(beat + 2) % 4]
     pos = drop2_positions[bar % len(drop2_positions)]
 
-    t1 = 160 + (beat % 7) * 6   # 160-196
-    t2 = 170 + (beat % 5) * 8   # 170-202
-    t3 = 180 + (beat % 3) * 12  # 180-204
+    # v2: Prime tilt math
+    t1 = 160 + (beat * 7 % 41)    # 160-200
+    t2 = 170 + (beat * 11 % 37)   # 170-206
+    t3 = 180 + (beat * 13 % 29)   # 180-208
 
     # Strobe accent on beat 1 every 4 bars — white solid hit
     if bib == 0 and bar % 4 == 0:
         fb, m1, m2 = par_wash(PURE_WHITE)
         s, b, p = mkvrs(pos, PURE_WHITE,
+                         gobo_b=BSW_G1_3,  # v2: gobo texture
                          s_strobe=SHARPY_STROBE_FAST,
                          b_shutter=BSW_SHUT_STROBE_FAST)
-        n = mk_ni3k(bl=LASER_ON, gl=LASER_ON,
-                     pan=210, t1=t1, t2=t2, t3=t3)
+        n = mk_ni3k_laser(bl=LASER_ON, gl=LASER_ON,
+                           pan=210, t1=t1, t2=t2, t3=t3)
     else:
-        # Rotate par patterns: wash (4 bars) → pairs (4 bars) → chase (4 bars)
         pat = (bar // 4) % 3
         if pat == 0:
             fb, m1, m2 = par_wash(c)
@@ -385,9 +454,9 @@ for beat in range(96):
             fb, m1, m2 = par_pairs(c, c2, flip=(bib % 2 == 1))
         else:
             fb, m1, m2 = par_chase(c, beat)
-        s, b, p = mkvrs(pos, c)
-        n = mk_ni3k(bl=LASER_ON, gl=LASER_ON,
-                     pan=200, t1=t1, t2=t2, t3=t3)
+        s, b, p = mkvrs(pos, c, gobo_b=BSW_G1_3)  # v2: gobo texture
+        n = mk_ni3k_laser(bl=LASER_ON, gl=LASER_ON,
+                           pan=200, t1=t1, t2=t2, t3=t3)
 
     idx = add_scene(f"D2-{bar+1}.{bib+1}", s, b, p, fb, m1, m2, n)
     beat_step(idx, beats=1)
@@ -395,11 +464,11 @@ for beat in range(96):
 
 # =============================================================================
 # VERSE 2A — 16 bars, 2-bar smooth crossfades (8 steps)
-# Luxurious sweeps. Pars nearly off — barely a whisper of color.
-# Movers and green laser carry the vibe.
+# Luxurious sweeps. Pars nearly off — whisper of color.
+# v2: NI3K atmosphere mode with green tint, halo matching palette
 # =============================================================================
 
-v2a_sweep = ["C", "R", "UP", "L", "FW", "W", "X", "C"]
+v2a_sweep = ["C", "SR", "CEIL", "SL", "DSC", "USR", "DSR", "C"]
 v2a_colors = [ICE_BLUE, SOFT_TEAL, PURE_WHITE, GOLD,
               ICE_BLUE, SOFT_TEAL, PURE_WHITE, GOLD]
 
@@ -409,15 +478,19 @@ for i in range(8):
     master = 15 + i * 5  # 15 → 50 (whisper-level, slowly returning)
     fb, m1, m2 = par_wash(c, master=master)
     s, b, p = mkvrs(pos, c, dim=160, frost=200, focus=200)
-    n = mk_ni3k(gl=LASER_ON, pan=195 + i * 3, t1=168, t2=185, t3=195)
+    # v2: NI3K atmosphere with green laser sustain
+    halo = HALO_FOR.get(c, H_CYN)
+    n = mk_ni3k_atmo(c, dim=50, halo=halo,
+                      pan=195 + i * 3, t1=64, t2=64, t3=64,
+                      gl=LASER_ON)
     idx = add_scene(f"V2A-{i+1}", s, b, p, fb, m1, m2, n)
     smooth_step(idx, bars=2)
 
 
 # =============================================================================
 # VERSE 2B — 8 bars, 2-beat steps (16 steps)
-# Building back up HARD. Pars go from gradient → pairs → chase.
-# Master ramps 50 → 255. This build should feel like a rocket launch.
+# Building back up HARD. gradient → pairs → chase. Master 50 → 253.
+# v2: Laser strobe tease (green → green+blue), mover strobe ramp
 # =============================================================================
 
 v2b_positions = POS_SWEEP  # 8 positions for 8 bars
@@ -430,22 +503,37 @@ for i in range(16):
     master = 50 + bar * 29  # 50 → 253
 
     if bar < 3:
-        # Bars 1-3: gradients, easing in from the quiet
         fb, m1, m2 = par_gradient(c1, c2, master=master)
     elif bar < 6:
-        # Bars 4-6: pairs flipping, building energy
         fb, m1, m2 = par_pairs(c1, c2, flip=(half == 1), master=master)
     else:
-        # Bars 7-8: chase cycling, full urgency
         fb, m1, m2 = par_chase(c1, i, master=master)
 
     pos = v2b_positions[bar % len(v2b_positions)]
     mover_dim = 180 + bar * 9  # 180 → 243
     frost_val = max(0, 150 - bar * 20)  # 150 → 10
-    s, b, p = mkvrs(pos, c1, dim=mover_dim, frost=frost_val, focus=150)
 
-    # Green laser sustains from Verse 2A
-    n = mk_ni3k(gl=LASER_ON, pan=200, t1=170, t2=185, t3=200)
+    # v2: Mover strobe ramp in last 2 bars
+    if bar >= 6:
+        s_str = SHARPY_STROBE_SLOW + (bar - 6) * 25
+        b_str = 20 + (bar - 6) * 20
+    else:
+        s_str = SHARPY_OPEN
+        b_str = BSW_SHUT_OPEN
+
+    s, b, p = mkvrs(pos, c1, dim=mover_dim, frost=frost_val, focus=150,
+                     s_strobe=s_str, b_shutter=b_str)
+
+    # v2: Laser strobe tease — green sustains, blue strobes in
+    if bar >= 4:
+        bl_spd = LASER_STROBE_SLOW + (bar - 4) * 50  # slow → medium strobe
+        n = mk_ni3k_atmo(c1, dim=80, halo=HALO_FOR.get(c1, H_CYN),
+                          pan=200, t1=64, t2=64, t3=64,
+                          gl=LASER_ON, bl=bl_spd)
+    else:
+        n = mk_ni3k_atmo(c1, dim=60, halo=HALO_FOR.get(c1, H_CYN),
+                          pan=200, t1=64, t2=64, t3=64,
+                          gl=LASER_ON)
 
     idx = add_scene(f"V2B-{bar+1}{chr(65+half)}", s, b, p, fb, m1, m2, n)
     beat_step(idx, beats=2)
@@ -454,7 +542,7 @@ for i in range(16):
 # =============================================================================
 # TRIPLE #1 — 16 bars, 1-beat (64 beats)
 # Staircase Level 1: Strong but not maxed. Clean beams. No prisms.
-# Blue + green lasers. Standard drop positions.
+# v2: BSW gobo G1_4 for beam texture, blue + green lasers.
 # =============================================================================
 
 for beat in range(64):
@@ -463,9 +551,10 @@ for beat in range(64):
     c = ETHEREAL_4[beat % 4]
     pos = POS_DROP[bar % len(POS_DROP)]
 
-    t1 = 165 + (beat % 5) * 7   # 165-193
-    t2 = 178 + (beat % 3) * 9   # 178-196
-    t3 = 188 + (beat % 7) * 5   # 188-218
+    # v2: Prime tilt math
+    t1 = 165 + (beat * 7 % 31)    # 165-195
+    t2 = 178 + (beat * 11 % 23)   # 178-200
+    t3 = 188 + (beat * 13 % 37)   # 188-224
 
     # Alternate wash and pairs every 2 bars
     if (bar // 2) % 2 == 0:
@@ -473,9 +562,10 @@ for beat in range(64):
     else:
         c2 = ETHEREAL_4[(beat + 2) % 4]
         fb, m1, m2 = par_pairs(c, c2, flip=(bib % 2 == 1))
-    s, b, p = mkvrs(pos, c)
-    n = mk_ni3k(bl=LASER_ON, gl=LASER_ON,
-                 pan=205, t1=t1, t2=t2, t3=t3)
+
+    s, b, p = mkvrs(pos, c, gobo_b=BSW_G1_4)  # v2: gobo escalation
+    n = mk_ni3k_laser(bl=LASER_ON, gl=LASER_ON,
+                       pan=205, t1=t1, t2=t2, t3=t3)
 
     idx = add_scene(f"T1-{bar+1}.{bib+1}", s, b, p, fb, m1, m2, n)
     beat_step(idx, beats=1)
@@ -483,8 +573,8 @@ for beat in range(64):
 
 # =============================================================================
 # TRIPLE #2 — 16 bars, 1-beat (64 beats)
-# Staircase Level 2: Add prisms. Wider positions. All 3 lasers.
-# Pars rotate: wash → chase → pairs every 4 bars. Strobe every 4 bars.
+# Staircase Level 2: Add prisms + gobos. Wider positions. All 3 lasers.
+# v2: BSW gobo G1_5, rotating par patterns, strobe accents.
 # =============================================================================
 
 for beat in range(64):
@@ -494,9 +584,10 @@ for beat in range(64):
     c2 = ETHEREAL_4[(beat + 2) % 4]
     pos = POS_WIDE[bar % len(POS_WIDE)]
 
-    t1 = 170 + (beat % 5) * 8   # 170-202
-    t2 = 180 + (beat % 3) * 10  # 180-200
-    t3 = 190 + (beat % 7) * 6   # 190-226
+    # v2: Prime tilt math — wider range
+    t1 = 170 + (beat * 7 % 43)    # 170-212
+    t2 = 180 + (beat * 11 % 31)   # 180-210
+    t3 = 190 + (beat * 13 % 47)   # 190-236
 
     # Strobe accent on beat 1 every 4 bars — white flash with prisms
     if bib == 0 and bar % 4 == 0:
@@ -504,6 +595,7 @@ for beat in range(64):
         s, b, p = mkvrs(pos, PURE_WHITE,
                          prism_s=128, p1r_s=200,
                          prism_b=80, prot_b=180, prism_p=60,
+                         gobo_b=BSW_G1_5,  # v2: gobo escalation
                          s_strobe=SHARPY_STROBE_FAST,
                          b_shutter=BSW_SHUT_STROBE_FAST)
     else:
@@ -517,10 +609,11 @@ for beat in range(64):
             fb, m1, m2 = par_pairs(c, c2, flip=(bib % 2 == 1))
         s, b, p = mkvrs(pos, c,
                          prism_s=128, p1r_s=200,
-                         prism_b=80, prot_b=180, prism_p=60)
+                         prism_b=80, prot_b=180, prism_p=60,
+                         gobo_b=BSW_G1_5)  # v2: gobo escalation
 
-    n = mk_ni3k(rl=LASER_ON, gl=LASER_ON, bl=LASER_ON,
-                 pan=215, t1=t1, t2=t2, t3=t3)
+    n = mk_ni3k_laser(rl=LASER_ON, gl=LASER_ON, bl=LASER_ON,
+                       pan=215, t1=t1, t2=t2, t3=t3)
 
     idx = add_scene(f"T2-{bar+1}.{bib+1}", s, b, p, fb, m1, m2, n)
     beat_step(idx, beats=1)
@@ -529,9 +622,8 @@ for beat in range(64):
 # =============================================================================
 # TRIPLE #3 — 16 bars, 1-beat (64 beats)
 # Staircase Level 3: EVERYTHING MAXED. Full blowout.
-# Dual prisms. Widest 16-position cycle. All lasers. Fastest rotation.
-# Pars: chase every beat with solid white hits on strobes.
-# Strobe accents every 2 bars (double frequency).
+# v2: White downbeat blast every bar, BSW gobo G1_5, AUD position in mix,
+#     dual prisms, 16-position cycle, all lasers, fastest rotation.
 # =============================================================================
 
 for beat in range(64):
@@ -540,39 +632,74 @@ for beat in range(64):
     c = ETHEREAL_4[beat % 4]
     pos = POS_BIG[bar % len(POS_BIG)]
 
-    t1 = 175 + (beat % 5) * 9   # 175-211
-    t2 = 185 + (beat % 3) * 12  # 185-209
-    t3 = 195 + (beat % 7) * 7   # 195-237
+    # v2: Prime tilt math — maximum range and chaos
+    t1 = 175 + (beat * 7 % 47)    # 175-221
+    t2 = 185 + (beat * 11 % 37)   # 185-221
+    t3 = 195 + (beat * 13 % 53)   # 195-247
 
-    # Strobe accent on beat 1 every 2 bars — solid white hit
-    if bib == 0 and bar % 2 == 0:
+    # v2: WHITE DOWNBEAT BLAST on beat 1 of every bar (not just strobe accents)
+    if bib == 0:
         fb, m1, m2 = par_wash(PURE_WHITE)
+        # Every bar gets white blast; every 2 bars adds strobe
+        if bar % 2 == 0:
+            s_str = SHARPY_STROBE_FAST
+            b_str = BSW_SHUT_STROBE_FAST
+        else:
+            s_str = SHARPY_OPEN
+            b_str = BSW_SHUT_OPEN
         s, b, p = mkvrs(pos, PURE_WHITE,
                          prism_s=128, p1r_s=200,
                          prism2_s=128, p2r_s=200,
                          prism_b=128, prot_b=200, prism_p=120,
-                         s_strobe=SHARPY_STROBE_FAST,
-                         b_shutter=BSW_SHUT_STROBE_FAST)
+                         gobo_b=BSW_G1_5,
+                         s_strobe=s_str,
+                         b_shutter=b_str)
     else:
-        # Chase on every non-strobe beat — maximum par activity
+        # Chase on every non-blast beat — maximum par activity
         fb, m1, m2 = par_chase(c, beat)
         s, b, p = mkvrs(pos, c,
                          prism_s=128, p1r_s=200,
                          prism2_s=128, p2r_s=200,
-                         prism_b=128, prot_b=200, prism_p=120)
+                         prism_b=128, prot_b=200, prism_p=120,
+                         gobo_b=BSW_G1_5)
 
-    n = mk_ni3k(rl=LASER_ON, gl=LASER_ON, bl=LASER_ON,
-                 pan=220, t1=t1, t2=t2, t3=t3)
+    n = mk_ni3k_laser(rl=LASER_ON, gl=LASER_ON, bl=LASER_ON,
+                       pan=220, t1=t1, t2=t2, t3=t3)
 
     idx = add_scene(f"T3-{bar+1}.{bib+1}", s, b, p, fb, m1, m2, n)
     beat_step(idx, beats=1)
 
 
 # =============================================================================
-# END — snap to black, hold 2 bars
+# COOL DOWN — 4 bars, 2-beat smooth crossfades (4 steps)
+# v2: Instead of snap-to-black, we get a breathing-out moment.
+# Movers converge to center, frost up, dim down. Pars fade.
+# NI3K returns to soft atmosphere mode. Lasers off.
 # =============================================================================
 
-beat_step(0, beats=8)
+cooldown_colors = [ICE_BLUE, PURE_WHITE, SOFT_TEAL, ICE_BLUE]
+cooldown_pos    = ["C", "C", "C", "C"]
+
+for i in range(4):
+    c = cooldown_colors[i]
+    pos = cooldown_pos[i]
+    # Everything fading
+    mover_dim = max(0, 120 - i * 35)   # 120 → 15
+    par_master = max(0, 100 - i * 30)   # 100 → 10
+    frost_val = 150 + i * 25            # 150 → 225
+    ni_dim = max(0, 50 - i * 15)        # 50 → 5
+
+    fb, m1, m2 = par_wash(c, master=par_master)
+    s, b, p = mkvrs(pos, c, dim=mover_dim, frost=frost_val, focus=200)
+    halo = HALO_FOR.get(c, H_BLU)
+    n = mk_ni3k_atmo(c, dim=ni_dim, halo=halo if ni_dim > 0 else H_OFF,
+                      pan=128, t1=64, t2=64, t3=64)
+
+    idx = add_scene(f"Cool-{i+1}", s, b, p, fb, m1, m2, n)
+    smooth_step(idx, bars=1)
+
+# Final blackout
+beat_step(0, beats=4)
 
 
 # =============================================================================
@@ -600,7 +727,8 @@ sections = [
     ("Triple #1",  64),
     ("Triple #2",  64),
     ("Triple #3",  64),
-    ("End",        1),
+    ("Cool Down",  4),
+    ("Blackout",   1),
 ]
 offset = 0
 for name, count in sections:
