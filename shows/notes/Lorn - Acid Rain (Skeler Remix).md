@@ -1,168 +1,189 @@
-# Lorn - Acid Rain (Skeler Remix) — Show Design Notes
+# Lorn - Acid Rain (Skeler Remix) — Show Design Notes (v3 Data-Driven)
 
 ## Overview
 - **BPM**: 115
-- **Duration**: ~4:33 (131 bars)
+- **Duration**: ~4:42 (282s generated, ~263s track)
 - **Genre**: Dark electronic / wave
-- **Generator**: `generators/Lorn - Acid Rain (Skeler Remix).py`
+- **Generator**: `generators/Lorn - Acid Rain (Skeler Remix).py` (v3 — fully data-driven)
 - **Output**: `shows/Lorn - Acid Rain (Skeler Remix).qxw`
 - **Run Order**: SingleShot
 - **Analysis**: `songs-data/Lorn - Acid Rain (Skeler Remix).json`
 
 ## Creative Brief
-- False calm intro: cool blue wash that corrupts over 3 intro sections
-- Distinct solo chapters: each with unique movement pattern and personality
-- Predatory hunting: slow stalk punctuated by violent snaps
-- Mixed snap accents: strobes, color flashes, and silence (3 types)
-- Break: eerie isolation (single fixture, unsettling movement)
-- Lasers: punctuation marks at transitions + sustained during break
-- Static fixtures: counter-rhythm against movers (4BAR alternating patterns)
-- Outro: echo of the false calm, darker and emptier
+- **Every bass hit** triggers a visible reaction (strobe snap, color flash, position converge)
+- **Quiet sections**: individual synth/piano onsets fire single fixtures, rotating which mover leads
+- **Energy curves** drive dimmer levels, frost (inverse of energy), prism/gobo activation
+- **4BAR + Missyees** snap colors on every beat (beat-reactive, alternating primary/accent)
+- **NI3K** halo follows segment palette, lasers reserved for peak sub-bass moments (>0.8)
+- **Movers** react to overall energy: low energy = center/tight, high = extreme positions
+- **Color palette** shifts per segment (cool → corrupt → aggressive → eerie → assault → echo)
+
+## Architecture: Data-Driven Generation
+
+Unlike v1/v2 which hand-crafted every scene, v3 reads the analysis JSON and generates scenes dynamically:
+
+1. **Energy at each beat** drives dimmer, frost, prism activation, position selection
+2. **Per-stem onsets** trigger individual light cues (bass → converge snap, synth → single-fixture spot)
+3. **Segment type** determines strategy: sparse, building, melodic, peak, or outro
+4. **Scene caching** (`get_or_create_scene()`) prevents duplicate scenes in the workspace
+
+### Section Strategies
+- **Sparse** (quiet intros, break): Walk through individual onset timestamps. Each synth note fires one fixture, rotating lead between Sharpy/BSW/Profile. Gaps between notes hold darkness.
+- **Building** (intro with energy): 2-bar chunks. Bass hits within get snap reactions, otherwise smooth crossfade.
+- **Melodic** (solos): 1-2 bar steps based on energy. Bass hits get strobe snaps. Prism/gobo activate above energy thresholds.
+- **Peak** (choruses): 2-beat steps for maximum reactivity. Every bass hit = strobe snap. Prisms and gobos always on. Lasers when sub-bass > 0.8.
+- **Outro**: 3-bar chunks, progressively darker. Forced dimmer decay from 120 → 0. Ends with blackout crossfade.
 
 ## Color Palettes
 
-### False Calm (Intro 1)
-| Name | RGB | Usage |
-|------|-----|-------|
-| Calm Blue | (40, 80, 180) | Serene opening wash |
-| Calm Teal | (20, 100, 140) | Subtle secondary |
-
-### Corruption (Intro 2-3)
-| Name | RGB | Usage |
-|------|-----|-------|
-| Sick Green | (60, 140, 20) | Colors going wrong |
-| Sick Amber | (180, 100, 10) | Warmth invading |
-| Bruise Purple | (90, 10, 120) | Fully corrupt |
-
-### Dark Aggressive (Solo Chapters)
-| Name | RGB | Usage |
-|------|-----|-------|
-| Blood Red | (180, 0, 0) | Primary aggression |
-| Deep Red | (120, 0, 10) | Secondary/accent |
-| Void Blue | (0, 10, 80) | Chapters 2, 5 |
-| Poison Green | (0, 100, 20) | Chapter 3: Erratic |
-| Cold White | (200, 200, 220) | Strobe flash accents |
-| Violet | (100, 0, 180) | Chapter 2, 4, 6 |
-| Dark Cyan | (0, 80, 100) | Chapters 3, 5 |
-
-### Outro
-| Name | RGB | Usage |
-|------|-----|-------|
-| Dead Blue | (15, 30, 60) | Corrupted memory |
-| Dead Teal | (8, 40, 50) | Fading to nothing |
-
-### Mover Color Mapping
-BSW → Sharpy mapping: WHITE→WHITE, RED→RED, BLUE→BLUE, GREEN→GREEN, MAG→PURPLE, TEAL→TEAL, ORANGE→ORANGE, YELLOW→YELLOW, PINK→PINK
-
-BSW → Profile mapping: WHITE→WHITE, RED→RED, BLUE→BLUE, GREEN→GREEN, MAG→PINK, TEAL→TEAL, ORANGE→ORANGE, YELLOW→YELLOW, PINK→PINK
+### Per-Segment Mapping (14 segments)
+| Seg | Time | Label | Primary RGB | Accent RGB | Mover Color | Halo |
+|-----|------|-------|-------------|------------|-------------|------|
+| 0 | 0:00 | start | Calm Blue (40,80,180) | Calm Teal (20,100,140) | Blue | Blue |
+| 1 | 0:00–0:19 | intro | Calm Blue | Calm Teal | Blue | Blue |
+| 2 | 0:19–0:37 | intro | Calm Teal | Sick Green (60,140,20) | Teal | Cyan |
+| 3 | 0:37–0:56 | intro | Sick Green | Bruise Purple (90,10,120) | Green | Green |
+| 4 | 0:56–1:23 | solo | Blood Red (180,0,0) | Deep Red (120,0,10) | Red | Red |
+| 5 | 1:23–1:35 | solo | Violet (100,0,180) | Blood Red | Magenta | Pink |
+| 6 | 1:35–1:52 | chorus | Cold White (200,200,220) | Blood Red | White | RGB |
+| 7 | 1:52–2:08 | solo | Dark Cyan (0,80,100) | Void Blue (0,10,80) | Teal | Cyan |
+| 8 | 2:08–2:32 | break | Eerie Dim (10,5,30) | Black (0,0,0) | Blue | Off |
+| 9 | 2:32–3:01 | solo | Deep Red | Poison Green (0,100,20) | Red | Red |
+| 10 | 3:01–3:25 | solo | Violet | Dark Cyan | Magenta | Pink |
+| 11 | 3:25–3:43 | solo | Blood Red | Violet | Red | Red |
+| 12 | 3:43–4:02 | chorus | Cold White | Blood Red | White | RGB |
+| 13 | 4:02–4:23 | outro | Dead Blue (15,30,60) | Dead Teal (8,40,50) | Blue | Blue |
 
 ## Fixture Roles
-- **All 3 Movers**: Predatory hunting vocabulary — creeping, snapping, lunging, crossing.
-- **4BAR (ID 2)**: Counter-rhythm patterns. chase_a/chase_b alternate odd/even pars. bar_sweep_lr does single-par sweeps. Creates visual push-pull against mover movement.
-- **Missyee 1+2 (ID 5, 6)**: Often split — one on, one off. Creates directional feel that shifts with mover positions.
-- **NI3K (ID 3)**: Laser punctuation at transitions. Break section has slow laser strobes for eeriness. Chapter 7 gets all lasers for maximum chaos. Halo matches section palette.
 
-## Movement Vocabulary
+### Movers (Sharpy ID 8, BSW ID 1, Profile ID 4)
+- **Position**: Selected from 10-position vocabulary based on energy level + beat index for variety
+- **Dimmer**: Direct map from RMS energy (40–255)
+- **Frost**: Inverse of energy (high energy = sharp beams, low = soft wash)
+- **Prism**: Activates when RMS > 0.7 (or forced in peak sections)
+- **Gobo**: BSW G1_3 when RMS > 0.5 and alternating beats
+- **Strobe**: Only on bass hit accent scenes in peak sections
 
-### Position Library (12 positions)
-- Center: S_C (153,0), B_C (7,19), P_C (0,123)
-- Far Left: S_FAR_L (80,15), B_FAR_L (80,30), P_FAR_L (60,100)
-- Far Right: S_FAR_R (220,15), B_FAR_R (200,5), P_FAR_R (200,100)
-- High: S_HIGH (153,40), B_HIGH (7,50), P_HIGH (0,80)
-- Low: S_LOW (153,245), B_LOW (7,5), P_LOW (0,160)
-- Cross (swap sides): S_CROSS (80,10), B_CROSS (200,10), P_CROSS (180,100)
-- Wide: S_WIDE (220,20), B_WIDE (80,30), P_WIDE (50,90)
-- Audience: S_AUD (153,230), B_AUD (7,0), P_AUD (0,150)
+### 4BAR (ID 2) + Missyees (ID 5, 6)
+- **Beat-reactive**: Colors alternate between primary/accent on even/odd beats
+- **4BAR uses pairs pattern**: Pars 1+3 = one color, Pars 2+4 = other color, swaps each beat
+- **Missyees split**: Miss1 = primary on even beats, Miss2 = accent on odd beats
+- **Accent scenes**: All go cold white for bass hit impact
+- **Master**: Direct map from RMS energy
 
-### Movement Patterns by Chapter
-- **Chapter 1 (Stalk)**: Slow creep to far positions → violent SNAP to center → creep opposite direction → SNAP again
-- **Chapter 2 (Sweeps)**: Wide sweeping across room. Prisms on. Silent converge snaps (no strobe, just sudden position change).
-- **Chapter 3 (Erratic Whip)**: Fast unpredictable — high/low scatter, cross snaps. Gobos on. Ends with strobe burst aimed at audience.
-- **Chapter 4 (Lockstep)**: All 3 movers hit positions in UNISON. Coordinated aggression. Laser stab entry.
-- **Chapter 5 (Renewed Hunt)**: Return to stalking but more aggressive. Low prowl / high lunge pattern. Cyan strobe snaps.
-- **Chapter 6 (Final Push)**: Dual prisms on all movers. Left/right prism assault alternating. NI3K tilts spread.
-- **Chapter 7 (Unhinged)**: Everything at once. Maximum aggression. Full send left/right alternating, ends with white obliteration.
+### NI3K (ID 3)
+- **RGBW**: Follows segment primary color
+- **Halo**: Matches segment palette
+- **Lasers**: OFF by default. Only activate in peak sections when sub-bass > 0.8
+- **Dimmer**: Energy-driven
+
+## Movement Vocabulary (10 Positions)
+
+| # | Name | Sharpy | BSW | Profile |
+|---|------|--------|-----|---------|
+| 0 | Center | 153,0 | 7,19 | 0,123 |
+| 1 | Spread Left | 220,15 | 80,30 | 60,100 |
+| 2 | Spread Right | 80,15 | 200,5 | 200,100 |
+| 3 | Cross | 80,10 | 200,10 | 180,100 |
+| 4 | Wide | 220,20 | 80,30 | 50,90 |
+| 5 | High | 153,40 | 7,50 | 0,80 |
+| 6 | Low/Audience | 153,245 | 7,5 | 0,160 |
+| 7 | Tight Cluster | 130,20 | 40,10 | 35,110 |
+| 8 | All Right | 200,30 | 200,25 | 200,95 |
+| 9 | All Left | 100,30 | 100,25 | 100,95 |
+
+### Position Selection Logic
+- RMS < 0.15: Center or Tight Cluster (alternating)
+- RMS 0.15–0.4: Spread Left/Right, Cross, Tight (cycling)
+- RMS 0.4–0.7: Wide, High, Low, Cross, All Right/Left (cycling)
+- RMS > 0.7: Wide, Low, All Right/Left, High, Cross (cycling)
 
 ## Section-by-Section Breakdown
 
-### Intro 1: False Calm (bars 1-9, 2 scenes)
-- Serene blue wash. Movers positioned but subdued.
-- Gentle frost (200) on all movers, soft NI3K blue halo.
-- 5-bar + 4-bar smooth crossfades.
+### Seg 1: Silent Start (0:00, ~0 bars)
+- Click/silence. Skipped (duration < 0.1s).
 
-### Intro 2: Corruption Begins (bars 10-18, 2 scenes)
-- Colors shift sickly: teal→green→amber.
-- Pars split to contrasting sick colors (pairs pattern).
-- NI3K halo shifts cyan→yellow.
+### Seg 1: Quiet Intro (0:00–0:19, 9 bars, rms=0.09)
+- **Strategy**: Sparse — 27 synth onsets trigger individual fixtures
+- Each piano/synth note lights one mover (rotating Sharpy→BSW→Profile)
+- Dark gaps between notes. NI3K blue halo barely visible.
+- No bass, no drums — pure ambient triggers.
 
-### Intro 3: Fully Corrupt (bars 19-27, 3 scenes)
-- Movement gets twitchy. Colors wrong.
-- Bruise purple dominates. Movers start jumping positions.
-- **Laser stab** at transition into solo (red laser only, 1 bar).
+### Seg 2: Building Intro (0:19–0:37, 9 bars, rms=0.44)
+- **Strategy**: Building — 2-bar chunks, 7 bass hits get snap reactions
+- Colors shift to teal/sick green. Energy starting to build.
+- Bass hits (7 total) trigger accent scenes with white flash.
 
-### Chapter 1: The Stalk (bars 28-36, 5 steps using 4 scenes)
-- Slow deliberate creep right → **STROBE SNAP** to center → creep left → **RED FLASH SNAP** to cross positions → resume creep
-- 4BAR: alternating chase_a/chase_b patterns
-- Gobos on Sharpy (G1_3) and BSW (G1_2)
-- 3 snap accent types demonstrated: strobe burst, color flash, position-only
+### Seg 3: Corrupt Intro (0:37–0:56, 9 bars, rms=0.41)
+- **Strategy**: Building — 48 melody onsets, 10 bass hits
+- Sick green/bruise purple palette. Dense melodic activity.
+- Drums enter (23 onsets). Movers start moving more.
 
-### Chapter 2: Cross-Room Sweeps (bars 37-52, 6 steps using 4 scenes)
-- Wide Left → Cross Center → **SILENT SNAP converge** → Wide Right → Cross Center → **SILENT SNAP**
-- Prisms spinning on all movers (Sharpy prism1=128, BSW prism=80)
-- NI3K laser strobe (red+blue) on converge snaps
-- 4BAR: gradient patterns
+### Seg 4: First Solo (0:56–1:23, 13 bars, rms=0.57)
+- **Strategy**: Melodic — 1.5-bar steps, blood red palette
+- 12 bass hits trigger converge-center snaps with strobe on peaks > 0.7
+- Prism activates on high-energy moments. Gobos when > 0.5.
 
-### Chapter 3: Erratic Whip (bars 53-63, 7 steps using 4 scenes)
-- Fast scatter: high/low/cross, unpredictable
-- Poison green palette. Gobos on (G1_4, G1_5).
-- Single-par 4BAR sweep (bar_sweep_lr)
-- Ends with **STROBE BURST** aimed at audience (S_AUD, B_AUD, P_AUD). All lasers ON.
+### Seg 5: Melodic Climax (1:23–1:35, 6 bars, rms=0.60)
+- **Strategy**: Melodic — 1.5-bar steps, violet/blood red
+- Continued high energy. Prism and gobo active most of the time.
 
-### Break: Eerie Isolation (bars 64-71, 4 steps using 4 scenes)
-- Hard cut to blackout. Then only BSW active.
-- BSW: gobo2 rotating, frosted, slowly creeping through 3 positions
-- All other fixtures dead. One dim missyee alternating.
-- NI3K: very dim, slow laser strobes (red+blue, then green, then all 3)
+### Seg 6: First Chorus (1:35–1:52, 8 bars, rms=0.61, peak=1.00)
+- **Strategy**: Peak — 2-beat steps for maximum reactivity
+- Cold white/blood red palette. Strobes on every bass hit (8 total).
+- Prisms + gobos always on. Lasers when sub-bass > 0.8.
+- **This is the absolute peak energy of the track** (rms peak = 1.00).
 
-### Chapter 4: Lockstep Assault (bars 72-86, 9 steps using 5 scenes)
-- **Laser stab** entry from break (all 3 lasers ON)
-- All movers move in UNISON: All Right → All Left → Violet Converge → All Wide
-- Blood red palette with violet snap accents
-- 4BAR chase patterns alternating. NI3K red halo.
+### Seg 7: Post-Chorus Solo (1:52–2:08, 8 bars, rms=0.60)
+- **Strategy**: Melodic — dark cyan/void blue palette
+- Still high energy, movers reactive. 11 bass hits with snaps.
 
-### Chapter 5: Renewed Hunt (bars 87-98, 5 steps using 3 scenes)
-- Return to stalking: Low Prowl (slow) → **Cyan Strobe** snap → High Lunge (slow) → **Cyan Strobe** snap → Low Prowl
-- Dark cyan/void blue palette. Gobos on.
-- NI3K cyan halo, green+blue lasers on snap moments.
+### Seg 8: The Break (2:08–2:32, 11 bars, rms=0.39)
+- **Strategy**: Sparse — only 4 melody onsets + 10 bass hits
+- Eerie dim palette (10,5,30). NI3K halo off.
+- Individual onsets fire single fixtures. Long dark gaps between events.
+- Minimal drum activity (6 hits) — mostly silence.
 
-### Chapter 6: Final Push (bars 99-106, 4 steps using 2 scenes)
-- Left/right alternating prism assaults
-- DUAL prisms on Sharpy (prism1 + prism2 both 128)
-- BSW prism=200. Profile prism=120.
-- Violet/Blood Red alternating. NI3K tilts spread (30/90/50 → 90/30/70).
+### Seg 9: Extended Solo (2:32–3:01, 14 bars, rms=0.28)
+- **Strategy**: Melodic — 2-bar steps (lower energy)
+- Deep red/poison green. Sub-bass present but energy moderate.
+- 47 melody onsets drive varied looks. 11 bass snaps.
 
-### Chapter 7: Unhinged (bars 107-116, 8 steps using 3 scenes)
-- Maximum aggression. Everything at once.
-- Full Send Left → Full Send Right → **WHITE OBLITERATION** (repeat with decreasing bar count: 2+2+0.5 → 1.5+1.5+0.5 → 1+1)
-- Accelerating pace creates increasing panic.
-- All lasers ON. NI3K tilts auto-rotating (130-170 range). Prisms + gobos on all movers.
+### Seg 10: Synth Exploration (3:01–3:25, 12 bars, rms=0.34)
+- **Strategy**: Melodic — 2-bar steps, violet/dark cyan
+- Building energy. Drums returning (7 hits).
 
-### Outro: Echo of the Calm (bars 117-131, 4 steps using 4 scenes)
-- Return to blue wash but darker, emptier.
-- Dead Blue/Dead Teal palette. Heavy frost (200-255).
-- Everything dim (40→25→10→0). Slow 6+5+3+1 bar crossfades.
+### Seg 11: Heavy Build (3:25–3:43, 9 bars, rms=0.66)
+- **Strategy**: Melodic — 1-bar steps (high energy)
+- Blood red/violet. 77 drum hits, 14 bass hits.
+- Prism and gobo nearly constant. Strobe snaps on peaks.
+
+### Seg 12: Final Chorus (3:43–4:02, 9 bars, rms=0.64, peak=0.87)
+- **Strategy**: Peak — 2-beat steps
+- Cold white/blood red. 90 drum hits, 15 bass hits.
+- Maximum strobe, prism, gobo. Lasers on sub-bass peaks.
+
+### Seg 13: Outro (4:02–4:23, 10 bars, rms=0.23)
+- **Strategy**: Outro — 3-bar chunks, progressive fade
+- Dead blue/dead teal. Forced dimmer decay 120→0.
+- Heavy frost (200). Movers return to center.
+
+### Seg 14: Silence (4:23–4:33, 5 bars, rms=0.00)
+- **Strategy**: Outro — final blackout crossfade
 
 ## Key Techniques
-- **Dark helpers with fixed strobe**: `dark_sharpy()`, `dark_bsw()`, `dark_profile()` keep shutter/strobe at "open" values (SHARPY_OPEN, BSW_SHUT_OPEN, PROFILE_STROBE_OFF) to avoid crossfade artifacts.
-- **3 snap accent types**: Strobe burst (Ch1 Snap Center), color flash (Ch1 Snap Cross), silent position (Ch2 Snap Silent). Variety prevents audience from anticipating hits.
-- **Counter-rhythm 4BAR**: chase_a/chase_b, bar_sweep_lr, gradient patterns create visual tension against mover movement.
-- **Isolation break**: Single fixture (BSW) with gobo2 rotation + frost creates unsettling focal point before explosive Chapter 4.
-- **Accelerating repetition**: Chapter 7 repeats a 3-scene pattern (L/R/White) at decreasing durations (2+2+0.5 → 1.5+1.5+0.5 → 1+1) for increasing panic.
+- **Scene caching**: `get_or_create_scene(key, create_fn)` prevents duplicate scenes when similar energy levels produce identical looks. 162 scenes total, 149 unique.
+- **Per-onset triggering**: In sparse sections, each synth timestamp from the analysis JSON fires a dedicated scene with a single lead fixture.
+- **Energy-driven everything**: Dimmers, frost, prism activation, gobo activation, position selection, and master levels all derive from the beat-indexed energy arrays.
+- **Bass hit convergence**: Every bass onset during a step window triggers a converge-center snap — all movers aim center simultaneously.
+- **Forced outro decay**: Outro ignores energy data and forces progressively lower dimmers based on position within the section (0%→100% progress = 120→0 dimmer).
 
 ## Custom VC Layout
-- ▶ ACID RAIN (toggle, red, 470×100) — starts main chaser
-- BLACKOUT (toggle, red, 470×80)
+- ▶ ACID RAIN (toggle, dark red #880000, 470×100) — starts main chaser
+- BLACKOUT (toggle, red #FF0000, 470×80)
 
 ## Stats
-- 39 scenes (+ blackout), 59 chaser steps
-- Total: ~273s (131 bars), target ~263s track length
+- 162 scenes (+ blackout = scene 0), 163 chaser steps
+- 149 unique scene fingerprints (13 legitimate duplicates from similar energy levels)
+- Total generated duration: 282s (target ~263s track length)
+- Analysis data: 509 beats, 15 segments, 113 bass / 369 drum / 65 vocal / 256 other onsets
