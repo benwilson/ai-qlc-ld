@@ -14,7 +14,26 @@
  <Channel Name="Pan" Preset="PositionPan"/>
  <Channel Name="Tilt" Preset="PositionTilt"/>
  <Channel Name="Pan/Tilt speed" Preset="SpeedPanTiltSlowFast"/>
- <Channel Name="Color" Preset="ColorMacro"/>
+ <Channel Name="Color">
+  <Group Byte="0">Colour</Group>
+  <Capability Min="0" Max="4" Preset="ColorMacro" Res1="#ffffff">White</Capability>
+  <Capability Min="5" Max="9" Preset="ColorMacro" Res1="#ff0000">Red</Capability>
+  <Capability Min="10" Max="14" Preset="ColorMacro" Res1="#ffff00">Yellow</Capability>
+  <Capability Min="15" Max="19" Preset="ColorMacro" Res1="#0000ff">Blue</Capability>
+  <Capability Min="20" Max="24" Preset="ColorMacro" Res1="#00ff00">Green</Capability>
+  <Capability Min="25" Max="29" Preset="ColorMacro" Res1="#ff8000">Orange</Capability>
+  <Capability Min="30" Max="34" Preset="ColorMacro" Res1="#ff40a0">Pink</Capability>
+  <Capability Min="35" Max="39" Preset="ColorMacro" Res1="#00ff80">Teal</Capability>
+  <Capability Min="40" Max="44" Preset="ColorDoubleMacro" Res1="#ffffff" Res2="#ff0000">White/Red</Capability>
+  <Capability Min="45" Max="49" Preset="ColorDoubleMacro" Res1="#ff0000" Res2="#ffff00">Red/Yellow</Capability>
+  <Capability Min="50" Max="54" Preset="ColorDoubleMacro" Res1="#ffff00" Res2="#0000ff">Yellow/Blue</Capability>
+  <Capability Min="55" Max="59" Preset="ColorDoubleMacro" Res1="#0000ff" Res2="#00ff00">Blue/Green</Capability>
+  <Capability Min="60" Max="64" Preset="ColorDoubleMacro" Res1="#00ff00" Res2="#ff8000">Green/Orange</Capability>
+  <Capability Min="65" Max="69" Preset="ColorDoubleMacro" Res1="#ff8000" Res2="#ff40a0">Orange/Pink</Capability>
+  <Capability Min="70" Max="74" Preset="ColorDoubleMacro" Res1="#ff40a0" Res2="#00ff80">Pink/Teal</Capability>
+  <Capability Min="75" Max="78" Preset="ColorDoubleMacro" Res1="#00ff80" Res2="#ffffff">Teal/White</Capability>
+  <Capability Min="79" Max="255" Preset="RotationClockwiseSlowToFast">Wheel rotation slow to fast</Capability>
+ </Channel>
  <Channel Name="Gobo" Preset="GoboIndex"/>
  <Channel Name="Gobo 1" Preset="GoboWheel"/>
  <Channel Name="Gobo 1 Rotation">

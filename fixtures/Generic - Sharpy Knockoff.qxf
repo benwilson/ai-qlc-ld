@@ -13,7 +13,11 @@
  <Channel Name="Tilt" Preset="PositionTilt"/>
  <Channel Name="Pan fine" Preset="PositionPanFine"/>
  <Channel Name="Tilt fine" Preset="PositionTiltFine"/>
- <Channel Name="7 color" Preset="ColorWheel"/>
+ <Channel Name="Color filter">
+  <Group Byte="0">Colour</Group>
+  <Capability Min="0" Max="0" Preset="ColorMacro" Res1="#ffffff">Open (white)</Capability>
+  <Capability Min="1" Max="255">Variable color filter overlay (increasing saturation)</Capability>
+ </Channel>
  <Channel Name="Frost">
   <Group Byte="0">Beam</Group>
   <Capability Min="0" Max="255">?</Capability>
@@ -28,7 +32,38 @@
   <Capability Min="252" Max="255" Preset="ShutterOpen">Open</Capability>
  </Channel>
  <Channel Name="Dimmer" Preset="IntensityMasterDimmer"/>
- <Channel Name="Color macro" Preset="ColorMacro"/>
+ <Channel Name="Color macro">
+  <Group Byte="0">Colour</Group>
+  <Capability Min="0" Max="4" Preset="ColorMacro" Res1="#ffffff">White</Capability>
+  <Capability Min="5" Max="9" Preset="ColorDoubleMacro" Res1="#ffffff" Res2="#ff0000">White/Red</Capability>
+  <Capability Min="10" Max="14" Preset="ColorMacro" Res1="#ff0000">Red</Capability>
+  <Capability Min="15" Max="19" Preset="ColorDoubleMacro" Res1="#ff0000" Res2="#ffff00">Red/Yellow</Capability>
+  <Capability Min="20" Max="24" Preset="ColorMacro" Res1="#ffff00">Yellow</Capability>
+  <Capability Min="25" Max="29" Preset="ColorDoubleMacro" Res1="#ffff00" Res2="#0000ff">Yellow/Blue</Capability>
+  <Capability Min="30" Max="34" Preset="ColorMacro" Res1="#0000ff">Blue</Capability>
+  <Capability Min="35" Max="39" Preset="ColorDoubleMacro" Res1="#0000ff" Res2="#00ff00">Blue/Green</Capability>
+  <Capability Min="40" Max="44" Preset="ColorMacro" Res1="#00ff00">Green</Capability>
+  <Capability Min="45" Max="49" Preset="ColorDoubleMacro" Res1="#00ff00" Res2="#8000ff">Green/Purple</Capability>
+  <Capability Min="50" Max="54" Preset="ColorMacro" Res1="#8000ff">Purple</Capability>
+  <Capability Min="55" Max="59" Preset="ColorDoubleMacro" Res1="#8000ff" Res2="#ff40a0">Purple/Pink</Capability>
+  <Capability Min="60" Max="64" Preset="ColorMacro" Res1="#ff40a0">Pink</Capability>
+  <Capability Min="65" Max="69" Preset="ColorDoubleMacro" Res1="#ff40a0" Res2="#00ff80">Pink/Teal</Capability>
+  <Capability Min="70" Max="74" Preset="ColorMacro" Res1="#00ff80">Teal</Capability>
+  <Capability Min="75" Max="79" Preset="ColorDoubleMacro" Res1="#00ff80" Res2="#ff8000">Teal/Amber</Capability>
+  <Capability Min="80" Max="84" Preset="ColorMacro" Res1="#ff8000">Amber</Capability>
+  <Capability Min="85" Max="89" Preset="ColorDoubleMacro" Res1="#ff8000" Res2="#ff4000">Amber/Orange</Capability>
+  <Capability Min="90" Max="94" Preset="ColorMacro" Res1="#ff4000">Orange</Capability>
+  <Capability Min="95" Max="99" Preset="ColorDoubleMacro" Res1="#ff4000" Res2="#cccc00">Orange/Dark Yellow</Capability>
+  <Capability Min="100" Max="104" Preset="ColorMacro" Res1="#cccc00">Dark Yellow</Capability>
+  <Capability Min="105" Max="109" Preset="ColorDoubleMacro" Res1="#cccc00" Res2="#80ff00">Dark Yellow/Lime Green</Capability>
+  <Capability Min="110" Max="114" Preset="ColorMacro" Res1="#80ff00">Lime Green</Capability>
+  <Capability Min="115" Max="119" Preset="ColorDoubleMacro" Res1="#80ff00" Res2="#808080">Lime Green/Grey</Capability>
+  <Capability Min="120" Max="124" Preset="ColorMacro" Res1="#808080">Grey</Capability>
+  <Capability Min="125" Max="129" Preset="ColorDoubleMacro" Res1="#808080" Res2="#0000ff">Grey/Blue</Capability>
+  <Capability Min="130" Max="149">Unknown</Capability>
+  <Capability Min="150" Max="211" Preset="RotationClockwiseFastToSlow">CW rotation fast to slow</Capability>
+  <Capability Min="212" Max="255" Preset="RotationCounterClockwiseSlowToFast">CCW rotation slow to fast</Capability>
+ </Channel>
  <Channel Name="Gobo" Preset="GoboWheel"/>
  <Channel Name="Prism 1" Preset="PrismRotationSlowFast"/>
  <Channel Name="Prism 1.r" Preset="PrismRotationSlowFast"/>
@@ -46,7 +81,7 @@
   <Channel Number="1">Tilt</Channel>
   <Channel Number="2">Pan fine</Channel>
   <Channel Number="3">Tilt fine</Channel>
-  <Channel Number="4">7 color</Channel>
+  <Channel Number="4">Color filter</Channel>
   <Channel Number="5">Frost</Channel>
   <Channel Number="6">Strobe</Channel>
   <Channel Number="7">Dimmer</Channel>
@@ -80,7 +115,7 @@
   <Channel Number="13">Prism 2</Channel>
   <Channel Number="14">Prism 2.r</Channel>
   <Channel Number="15">Focus</Channel>
-  <Channel Number="16">7 color</Channel>
+  <Channel Number="16">Color filter</Channel>
   <Channel Number="17">Reset</Channel>
  </Mode>
  <Physical>
