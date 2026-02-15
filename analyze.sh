@@ -1,10 +1,18 @@
 #!/bin/bash
-# Analyze audio files in songs/ using the allin1 Docker image.
+# Analyze audio files in songs/ using the analysis pipeline Docker image.
 # Results are written to songs-data/ as JSON files.
+#
+# The pipeline runs:
+#   1. allin1 — structure, beats, BPM, downbeats, segments
+#   2. Feature extraction — per-stem energy envelopes + onset timestamps
+#
+# Demucs stems are generated once (by allin1) and reused for feature
+# extraction, then cleaned up to save disk space.
 #
 # Usage:
 #   ./analyze.sh                       # analyze all songs without existing results
 #   ./analyze.sh "specific file.flac"  # analyze one file (even if results exist)
+#   ./analyze.sh --keep-stems "file"   # keep demucs WAV stems after analysis
 #
 # The Docker image is built automatically on first run.
 
@@ -14,6 +22,23 @@ IMAGE="allin1"
 BASE_DIR="$(cd "$(dirname "$0")" && pwd)"
 SONGS_DIR="$BASE_DIR/songs"
 DATA_DIR="$BASE_DIR/songs-data"
+
+# Parse flags
+KEEP_STEMS=""
+POSITIONAL=()
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --keep-stems)
+            KEEP_STEMS="--keep-stems"
+            shift
+            ;;
+        *)
+            POSITIONAL+=("$1")
+            shift
+            ;;
+    esac
+done
+set -- "${POSITIONAL[@]+"${POSITIONAL[@]}"}"
 
 # Require Docker
 if ! command -v docker &>/dev/null; then
@@ -41,7 +66,8 @@ if [ $# -gt 0 ]; then
         "$IMAGE" \
         "${FILES[@]}" \
         -o /workspace/songs-data \
-        -d cpu
+        -d cpu \
+        $KEEP_STEMS
 else
     # Analyze songs that don't already have results
     FILES=()
@@ -49,7 +75,7 @@ else
     for f in "$SONGS_DIR"/*; do
         [ -f "$f" ] || continue
         BASENAME="$(basename "$f")"
-        # allin1 outputs JSON named after the input file (without extension)
+        # Output JSON named after the input file (without extension)
         STEM="${BASENAME%.*}"
         if [ -f "$DATA_DIR/${STEM}.json" ]; then
             SKIPPED=$((SKIPPED + 1))
@@ -74,7 +100,8 @@ else
         "$IMAGE" \
         "${FILES[@]}" \
         -o /workspace/songs-data \
-        -d cpu
+        -d cpu \
+        $KEEP_STEMS
 fi
 
 echo "Done. Results in songs-data/"

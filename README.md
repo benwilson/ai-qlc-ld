@@ -5,8 +5,8 @@ AI-assisted lighting design with QLC+. Uses Claude as a lighting designer to cre
 ## How It Works
 
 1. Drop audio files in `songs/`
-2. Run `./analyze.sh` to extract BPM, beats, downbeats, and song structure via [all-in-one](https://github.com/mir-aidj/all-in-one)
-3. Write a Python generator script that uses `showlib.py` to build scenes and chasers synced to the song structure
+2. Run `./analyze.sh` to analyze tracks — extracts BPM, beats, song structure, per-stem energy envelopes, onset timestamps, and spectral dynamics
+3. Write a Python generator script that uses `showlib.py` to build scenes and chasers synced to the analysis data
 4. Load the generated `.qxw` file in QLC+ and hit play
 
 ## Setup
@@ -21,9 +21,17 @@ AI-assisted lighting design with QLC+. Uses Claude as a lighting designer to cre
 
 # Or analyze a specific file
 ./analyze.sh "Artist - Title.flac"
+
+# Keep demucs WAV stems after analysis
+./analyze.sh --keep-stems "Artist - Title.flac"
 ```
 
-Results land in `songs-data/` as JSON with BPM, beat timestamps, downbeat timestamps, and labeled song segments (intro, verse, chorus, solo, break, outro, etc.).
+The analysis pipeline runs two stages in a single pass:
+
+1. **allin1** — BPM, beat/downbeat timestamps, song structure segments (intro, verse, chorus, break, etc.), and demucs source separation
+2. **Feature extraction** — per-stem (bass, drums, vocals, other) energy envelopes and onset timestamps, frequency band energy (sub-bass through high), spectral centroid/flux, and onset strength
+
+Results land in `songs-data/` as JSON. Onset timestamps give you the exact time of every individual note/hit per stem — during a quiet breakdown, you get timestamps for each piano or synth note, which generators can map directly to light cues.
 
 ## Fixtures
 
@@ -49,11 +57,13 @@ Results land in `songs-data/` as JSON with BPM, beat timestamps, downbeat timest
 │   └── ...
 ├── fixtures/               # QLC+ fixture definitions (.qxf)
 ├── songs/                  # Audio files for analysis
-├── songs-data/             # Analysis output (JSON)
+├── songs-data/             # Analysis output (JSON — structure + energy + onsets)
 ├── references/             # QLC+ format documentation
-├── analyze.sh              # Song analysis wrapper (Docker)
-├── Dockerfile              # allin1 Docker image
-└── DOCKERFILE.md           # Docker build notes and pitfalls
+├── analyze.sh              # Analysis pipeline wrapper (Docker)
+├── pipeline.py             # Docker entrypoint — orchestrates allin1 + feature extraction
+├── extract_features.py     # Stem energy envelopes + onset detection (librosa)
+├── Dockerfile              # Analysis pipeline Docker image
+└── dockerfile.md           # Docker build notes, output format, and pitfalls
 ```
 
 ## Writing a Show Generator
@@ -109,8 +119,12 @@ python3 "generators/Lorn - Acid Rain (Skeler Remix).py"
 | PhatAdam - Never Cared Enough | 133 | Song-synced — neon pop palette, building choruses, strobe buildup, climax with strobes + lasers |
 | Deep Currents | 128 | 2-min loop — cool/deep palette, leader/follower movers, NI3K dramatic reveals |
 
-## Docker Image (allin1)
+## Analysis Pipeline (Docker)
 
-The `Dockerfile` builds a CPU-only image for [all-in-one](https://github.com/mir-aidj/all-in-one) music structure analysis. It runs natively on Apple Silicon (ARM64) and x86_64 Linux. See `DOCKERFILE.md` for build details, dependency pinning, and pitfalls.
+The `Dockerfile` builds a CPU-only image that combines [all-in-one](https://github.com/mir-aidj/all-in-one) (structure/beats), [demucs](https://github.com/facebookresearch/demucs) (source separation), and [librosa](https://librosa.org/) (feature extraction). Demucs runs once — allin1 uses it for structure analysis, and the stems are reused for feature extraction before being cleaned up.
+
+Tuned for electronic music (house, DnB, dubstep): frequency bands target sub-bass (20–80Hz) through highs (2k+), and onset detection parameters are calibrated per stem type (sensitive for synth/piano, sustained for bass, transient for drums).
+
+Runs natively on Apple Silicon (ARM64) and x86_64 Linux. See `dockerfile.md` for build details, dependency pinning, output format, and pitfalls.
 
 Tested on: Apple M1 Pro (MacBook Pro 18,3), Docker Desktop for Mac.
