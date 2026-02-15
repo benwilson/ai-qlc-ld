@@ -8,7 +8,7 @@
  </Creator>
  <Engine>
   <InputOutputMap>
-   <BeatGenerator BeatType="Internal" BPM="174"/>
+   <BeatGenerator BeatType="Internal" BPM="120"/>
    <Universe Name="Universe 1" ID="0">
     <Output Plugin="ArtNet" UID="10.0.0.7" Line="0"/>
    </Universe>
@@ -18,7 +18,7 @@
    <Model>Beam Spot Wash 3 in 1</Model>
    <Mode>20 channel</Mode>
    <ID>1</ID>
-   <Name>BSW 3-in-1</Name>
+   <Name>Beam Spot Wash 3 in 1</Name>
    <Universe>0</Universe>
    <Address>144</Address>
    <Channels>20</Channels>
@@ -28,7 +28,7 @@
    <Model>4BAR</Model>
    <Mode>15 Channel</Mode>
    <ID>2</ID>
-   <Name>Chauvet 4BAR</Name>
+   <Name>4BAR</Name>
    <Universe>0</Universe>
    <Address>0</Address>
    <Channels>15</Channels>
@@ -58,7 +58,7 @@
    <Model>36 RGB LED</Model>
    <Mode>7 channel</Mode>
    <ID>5</ID>
-   <Name>Missyee 36 RGB LED #1</Name>
+   <Name>36 RGB LED</Name>
    <Universe>0</Universe>
    <Address>48</Address>
    <Channels>7</Channels>
@@ -68,7 +68,7 @@
    <Model>36 RGB LED</Model>
    <Mode>7 channel</Mode>
    <ID>6</ID>
-   <Name>Missyee 36 RGB LED #2</Name>
+   <Name>36 RGB LED #2</Name>
    <Universe>0</Universe>
    <Address>56</Address>
    <Channels>7</Channels>
@@ -83,361 +83,834 @@
    <Address>96</Address>
    <Channels>18</Channels>
   </Fixture>
-  <Function ID="0" Type="Scene" Name="Blackout" Path="Utility">
+  <Function ID="0" Type="Scene" Name="BLACKOUT" Path="Utility">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
    <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
    <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
    <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
-   <FixtureVal ID="8">0,128,1,128,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
-   <FixtureVal ID="1">0,128,1,0,2,128,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
-   <FixtureVal ID="4">0,0,1,0,2,128,3,128,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
-   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="1" Type="Scene" Name="4BAR - Red" Path="Test/4BAR">
+  <Function ID="1" Type="Scene" Name="4BAR: All White" Path="Tests/4BAR">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="2">0,0,1,255,2,0,3,255,4,0,5,0,6,255,7,0,8,0,9,255,10,0,11,0,12,255,13,0,14,0</FixtureVal>
-  </Function>
-  <Function ID="2" Type="Scene" Name="4BAR - Green" Path="Test/4BAR">
-   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="2">0,0,1,255,2,0,3,0,4,255,5,0,6,0,7,255,8,0,9,0,10,255,11,0,12,0,13,255,14,0</FixtureVal>
-  </Function>
-  <Function ID="3" Type="Scene" Name="4BAR - Blue" Path="Test/4BAR">
-   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="2">0,0,1,255,2,0,3,0,4,0,5,255,6,0,7,0,8,255,9,0,10,0,11,255,12,0,13,0,14,255</FixtureVal>
-  </Function>
-  <Function ID="4" Type="Scene" Name="4BAR - White" Path="Test/4BAR">
-   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
    <FixtureVal ID="2">0,0,1,255,2,0,3,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255,13,255,14,255</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="5" Type="Scene" Name="4BAR - Sweep" Path="Test/4BAR">
+  <Function ID="2" Type="Scene" Name="4BAR: RGBW Split" Path="Tests/4BAR">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="2">0,0,1,255,2,0,3,255,4,0,5,0,6,0,7,255,8,0,9,0,10,0,11,255,12,0,13,0,14,255</FixtureVal>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,255,4,0,5,0,6,0,7,255,8,0,9,0,10,0,11,255,12,255,13,255,14,255</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="10" Type="Scene" Name="Missyee #1 - Red" Path="Test/Missyee #1">
+  <Function ID="3" Type="Scene" Name="4BAR: Strobe" Path="Tests/4BAR">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="5">0,255,1,255,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,255,2,128,3,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255,13,255,14,255</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="11" Type="Scene" Name="Missyee #1 - Green" Path="Test/Missyee #1">
+  <Function ID="4" Type="Scene" Name="Miss: Both White" Path="Tests/Missyee">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="5">0,255,1,0,2,255,3,0,4,0,5,0,6,0</FixtureVal>
-  </Function>
-  <Function ID="12" Type="Scene" Name="Missyee #1 - Blue" Path="Test/Missyee #1">
-   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="5">0,255,1,0,2,0,3,255,4,0,5,0,6,0</FixtureVal>
-  </Function>
-  <Function ID="13" Type="Scene" Name="Missyee #1 - White" Path="Test/Missyee #1">
-   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
    <FixtureVal ID="5">0,255,1,255,2,255,3,255,4,0,5,0,6,0</FixtureVal>
-  </Function>
-  <Function ID="14" Type="Scene" Name="Missyee #2 - Red" Path="Test/Missyee #2">
-   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="6">0,255,1,255,2,0,3,0,4,0,5,0,6,0</FixtureVal>
-  </Function>
-  <Function ID="15" Type="Scene" Name="Missyee #2 - Green" Path="Test/Missyee #2">
-   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="6">0,255,1,0,2,255,3,0,4,0,5,0,6,0</FixtureVal>
-  </Function>
-  <Function ID="16" Type="Scene" Name="Missyee #2 - Blue" Path="Test/Missyee #2">
-   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="6">0,255,1,0,2,0,3,255,4,0,5,0,6,0</FixtureVal>
-  </Function>
-  <Function ID="17" Type="Scene" Name="Missyee #2 - White" Path="Test/Missyee #2">
-   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="6">0,255,1,255,2,255,3,255,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="20" Type="Scene" Name="Sharpy - White Center" Path="Test/Sharpy">
+  <Function ID="5" Type="Scene" Name="Miss: Split RB" Path="Tests/Missyee">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="8">0,128,1,128,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,255,1,255,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,255,1,0,2,0,3,255,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="21" Type="Scene" Name="Sharpy - Red Center" Path="Test/Sharpy">
+  <Function ID="6" Type="Scene" Name="Sharpy: Center White" Path="Tests/Sharpy">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="8">0,128,1,128,2,0,3,0,4,0,5,0,6,252,7,255,8,19,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,0,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="22" Type="Scene" Name="Sharpy - Green Center" Path="Test/Sharpy">
+  <Function ID="7" Type="Scene" Name="Sharpy: Red" Path="Tests/Sharpy">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="8">0,128,1,128,2,0,3,0,4,0,5,0,6,252,7,255,8,37,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,0,2,0,3,0,4,0,5,0,6,252,7,255,8,10,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="23" Type="Scene" Name="Sharpy - Blue Center" Path="Test/Sharpy">
+  <Function ID="8" Type="Scene" Name="Sharpy: Blue" Path="Tests/Sharpy">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="8">0,128,1,128,2,0,3,0,4,0,5,0,6,252,7,255,8,43,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,0,2,0,3,0,4,0,5,0,6,252,7,255,8,30,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="24" Type="Scene" Name="Sharpy - Gobo Center" Path="Test/Sharpy">
+  <Function ID="9" Type="Scene" Name="Sharpy: Pan Left" Path="Tests/Sharpy">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="8">0,128,1,128,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,20,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,90,1,0,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="25" Type="Scene" Name="Sharpy - Prism Center" Path="Test/Sharpy">
+  <Function ID="10" Type="Scene" Name="Sharpy: Pan Right" Path="Tests/Sharpy">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="8">0,128,1,128,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,128,12,128,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,220,1,0,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="30" Type="Scene" Name="BSW - White Center" Path="Test/BSW">
+  <Function ID="11" Type="Scene" Name="Sharpy: Prism 1" Path="Tests/Sharpy">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="1">0,128,1,0,2,128,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,0,2,0,3,0,4,0,5,0,6,252,7,255,8,30,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="31" Type="Scene" Name="BSW - Red Center" Path="Test/BSW">
+  <Function ID="12" Type="Scene" Name="Sharpy: Strobe" Path="Tests/Sharpy">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="1">0,128,1,0,2,128,3,0,4,0,5,0,6,0,7,0,8,19,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,0,2,0,3,0,4,0,5,0,6,64,7,255,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="32" Type="Scene" Name="BSW - Green Center" Path="Test/BSW">
+  <Function ID="13" Type="Scene" Name="Sharpy: Frost" Path="Tests/Sharpy">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="1">0,128,1,0,2,128,3,0,4,0,5,0,6,0,7,0,8,37,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,0,2,0,3,0,4,0,5,200,6,252,7,255,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="33" Type="Scene" Name="BSW - Blue Center" Path="Test/BSW">
+  <Function ID="14" Type="Scene" Name="BSW: Center White" Path="Tests/BSW">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="1">0,128,1,0,2,128,3,0,4,0,5,0,6,0,7,0,8,43,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="1">0,7,1,0,2,19,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="34" Type="Scene" Name="BSW - Gobo1 Center" Path="Test/BSW">
+  <Function ID="15" Type="Scene" Name="BSW: Red" Path="Tests/BSW">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="1">0,128,1,0,2,128,3,0,4,0,5,0,6,0,7,0,8,0,9,12,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="1">0,7,1,0,2,19,3,0,4,0,5,0,6,0,7,0,8,20,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="35" Type="Scene" Name="BSW - Prism Center" Path="Test/BSW">
+  <Function ID="16" Type="Scene" Name="BSW: Blue" Path="Tests/BSW">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="1">0,128,1,0,2,128,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,128,14,128,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="1">0,7,1,0,2,19,3,0,4,0,5,0,6,0,7,0,8,44,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="40" Type="Scene" Name="Profile - White Center" Path="Test/Profile">
+  <Function ID="17" Type="Scene" Name="BSW: Pan Left" Path="Tests/BSW">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="4">0,255,1,0,2,128,3,128,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="1">0,100,1,0,2,19,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="41" Type="Scene" Name="Profile - Color 1" Path="Test/Profile">
+  <Function ID="18" Type="Scene" Name="BSW: Pan Right" Path="Tests/BSW">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="4">0,255,1,0,2,128,3,128,4,0,5,20,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="1">0,200,1,0,2,19,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="42" Type="Scene" Name="Profile - Color 2" Path="Test/Profile">
+  <Function ID="19" Type="Scene" Name="BSW: Gobo 1-3" Path="Tests/BSW">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="4">0,255,1,0,2,128,3,128,4,0,5,40,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="1">0,7,1,0,2,19,3,0,4,0,5,0,6,0,7,0,8,0,9,30,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="43" Type="Scene" Name="Profile - Color 3" Path="Test/Profile">
+  <Function ID="20" Type="Scene" Name="BSW: Prism" Path="Tests/BSW">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="4">0,255,1,0,2,128,3,128,4,0,5,60,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="1">0,7,1,0,2,19,3,0,4,0,5,0,6,0,7,0,8,44,9,0,10,0,11,0,12,0,13,128,14,160,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="44" Type="Scene" Name="Profile - Gobo Center" Path="Test/Profile">
+  <Function ID="21" Type="Scene" Name="BSW: Strobe" Path="Tests/BSW">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="4">0,255,1,0,2,128,3,128,4,0,5,0,6,20,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="1">0,7,1,0,2,19,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,20,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="45" Type="Scene" Name="Profile - Prism Center" Path="Test/Profile">
+  <Function ID="22" Type="Scene" Name="Profile: Center White" Path="Tests/Profile">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="4">0,255,1,0,2,128,3,128,4,0,5,0,6,0,7,0,8,0,9,128,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,255,1,0,2,0,3,123,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="50" Type="Scene" Name="NI3K - Red" Path="Test/NI3K">
+  <Function ID="23" Type="Scene" Name="Profile: Red" Path="Tests/Profile">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,255,1,0,2,0,3,123,4,0,5,5,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="24" Type="Scene" Name="Profile: Blue" Path="Tests/Profile">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,255,1,0,2,0,3,123,4,0,5,15,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="25" Type="Scene" Name="Profile: Pan Left" Path="Tests/Profile">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,255,1,0,2,30,3,123,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="26" Type="Scene" Name="Profile: Pan Right" Path="Tests/Profile">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,255,1,0,2,230,3,123,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="27" Type="Scene" Name="Profile: Prism" Path="Tests/Profile">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,255,1,0,2,0,3,123,4,0,5,15,6,0,7,0,8,0,9,128,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="28" Type="Scene" Name="NI3K: White LEDs" Path="Tests/NI3K">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,255,8,255,9,255,10,255,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="29" Type="Scene" Name="NI3K: Red LEDs" Path="Tests/NI3K">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
    <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,255,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="51" Type="Scene" Name="NI3K - Green" Path="Test/NI3K">
+  <Function ID="30" Type="Scene" Name="NI3K: Halo RGB" Path="Tests/NI3K">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,0,8,255,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,120,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="52" Type="Scene" Name="NI3K - Blue" Path="Test/NI3K">
+  <Function ID="31" Type="Scene" Name="NI3K: Tilt Rotation" Path="Tests/NI3K">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,0,8,0,9,255,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,160,2,180,3,200,4,0,5,255,6,0,7,0,8,0,9,255,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="53" Type="Scene" Name="NI3K - White" Path="Test/NI3K">
+  <Function ID="32" Type="Scene" Name="NI3K: Red Laser" Path="Tests/NI3K">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,0,8,0,9,0,10,255,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,255,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="54" Type="Scene" Name="NI3K - Red Laser" Path="Test/NI3K">
+  <Function ID="33" Type="Scene" Name="NI3K: Green Laser" Path="Tests/NI3K">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,255,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,255,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="55" Type="Scene" Name="NI3K - Green Laser" Path="Test/NI3K">
+  <Function ID="34" Type="Scene" Name="NI3K: Blue Laser" Path="Tests/NI3K">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,255,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,255,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="56" Type="Scene" Name="NI3K - Halo Ring" Path="Test/NI3K">
+  <Function ID="35" Type="Scene" Name="NI3K: All Lasers" Path="Tests/NI3K">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,16,18,0</FixtureVal>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,255,15,255,16,255,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="100" Type="Chaser" Name="Test: 4BAR" Path="Test Chasers">
-   <Speed FadeIn="500" FadeOut="500" Duration="2000"/>
-   <Direction>Forward</Direction>
-   <RunOrder>Loop</RunOrder>
-   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
-   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">1</Step>
-   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">2</Step>
-   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">3</Step>
-   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">4</Step>
-   <Step Number="4" FadeIn="0" Hold="0" FadeOut="0">5</Step>
+  <Function ID="36" Type="Scene" Name="NI3K: Motor FX" Path="Tests/NI3K">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,255,8,0,9,255,10,0,11,0,12,128,13,128,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="101" Type="Chaser" Name="Test: Missyee #1" Path="Test Chasers">
-   <Speed FadeIn="500" FadeOut="500" Duration="2000"/>
-   <Direction>Forward</Direction>
-   <RunOrder>Loop</RunOrder>
-   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
-   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">10</Step>
-   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">11</Step>
-   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">12</Step>
-   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">13</Step>
+  <Function ID="37" Type="Scene" Name="All Movers: Center White" Path="Tests/Combo">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,7,1,0,2,19,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,255,1,0,2,0,3,123,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,0,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="102" Type="Chaser" Name="Test: Missyee #2" Path="Test Chasers">
-   <Speed FadeIn="500" FadeOut="500" Duration="2000"/>
-   <Direction>Forward</Direction>
-   <RunOrder>Loop</RunOrder>
-   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
-   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">14</Step>
-   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">15</Step>
-   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">16</Step>
-   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">17</Step>
+  <Function ID="38" Type="Scene" Name="All Movers: Spread" Path="Tests/Combo">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,80,1,0,2,5,3,0,4,0,5,0,6,0,7,0,8,44,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,255,1,0,2,30,3,100,4,0,5,15,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,220,1,15,2,0,3,0,4,0,5,0,6,252,7,255,8,30,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="103" Type="Chaser" Name="Test: Sharpy" Path="Test Chasers">
-   <Speed FadeIn="500" FadeOut="500" Duration="2000"/>
-   <Direction>Forward</Direction>
-   <RunOrder>Loop</RunOrder>
-   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
-   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">20</Step>
-   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">21</Step>
-   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">22</Step>
-   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">23</Step>
-   <Step Number="4" FadeIn="0" Hold="0" FadeOut="0">24</Step>
-   <Step Number="5" FadeIn="0" Hold="0" FadeOut="0">25</Step>
+  <Function ID="39" Type="Scene" Name="All Pars: Warm" Path="Tests/Combo">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,255,4,128,5,0,6,255,7,128,8,0,9,255,10,128,11,0,12,255,13,128,14,0</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,255,1,255,2,128,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,255,1,255,2,128,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="104" Type="Chaser" Name="Test: BSW" Path="Test Chasers">
-   <Speed FadeIn="500" FadeOut="500" Duration="2000"/>
-   <Direction>Forward</Direction>
-   <RunOrder>Loop</RunOrder>
-   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
-   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">30</Step>
-   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">31</Step>
-   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">32</Step>
-   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">33</Step>
-   <Step Number="4" FadeIn="0" Hold="0" FadeOut="0">34</Step>
-   <Step Number="5" FadeIn="0" Hold="0" FadeOut="0">35</Step>
+  <Function ID="40" Type="Scene" Name="All Pars: Cool" Path="Tests/Combo">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,0,4,128,5,255,6,0,7,128,8,255,9,0,10,128,11,255,12,0,13,128,14,255</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,255,1,0,2,128,3,255,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,255,1,0,2,128,3,255,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="105" Type="Chaser" Name="Test: Profile" Path="Test Chasers">
-   <Speed FadeIn="500" FadeOut="500" Duration="2000"/>
-   <Direction>Forward</Direction>
-   <RunOrder>Loop</RunOrder>
-   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
-   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">40</Step>
-   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">41</Step>
-   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">42</Step>
-   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">43</Step>
-   <Step Number="4" FadeIn="0" Hold="0" FadeOut="0">44</Step>
-   <Step Number="5" FadeIn="0" Hold="0" FadeOut="0">45</Step>
+  <Function ID="41" Type="Scene" Name="FULL RIG: White" Path="Tests/Combo">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,7,1,0,2,19,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255,13,255,14,255</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,255,8,255,9,255,10,255,11,0,12,0,13,0,14,0,15,0,16,0,17,120,18,0</FixtureVal>
+   <FixtureVal ID="4">0,255,1,0,2,0,3,123,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,255,1,255,2,255,3,255,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,255,1,255,2,255,3,255,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,0,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="106" Type="Chaser" Name="Test: NI3K" Path="Test Chasers">
-   <Speed FadeIn="500" FadeOut="500" Duration="2000"/>
-   <Direction>Forward</Direction>
-   <RunOrder>Loop</RunOrder>
-   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
-   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">50</Step>
-   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">51</Step>
-   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">52</Step>
-   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">53</Step>
-   <Step Number="4" FadeIn="0" Hold="0" FadeOut="0">54</Step>
-   <Step Number="5" FadeIn="0" Hold="0" FadeOut="0">55</Step>
-   <Step Number="6" FadeIn="0" Hold="0" FadeOut="0">56</Step>
+  <Function ID="42" Type="Scene" Name="FULL RIG: Blue" Path="Tests/Combo">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,7,1,0,2,19,3,0,4,0,5,0,6,0,7,0,8,44,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,0,4,0,5,255,6,0,7,0,8,255,9,0,10,0,11,255,12,0,13,0,14,255</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,255,6,0,7,0,8,0,9,255,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,56,18,0</FixtureVal>
+   <FixtureVal ID="4">0,255,1,0,2,0,3,123,4,0,5,15,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,255,1,0,2,0,3,255,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,255,1,0,2,0,3,255,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,0,2,0,3,0,4,0,5,0,6,252,7,255,8,30,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
   </Function>
-  <Function ID="110" Type="Chaser" Name="Test: All Fixtures" Path="Test Chasers">
-   <Speed FadeIn="500" FadeOut="500" Duration="3000"/>
-   <Direction>Forward</Direction>
-   <RunOrder>Loop</RunOrder>
-   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
-   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">4</Step>
-   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">13</Step>
-   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">17</Step>
-   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">20</Step>
-   <Step Number="4" FadeIn="0" Hold="0" FadeOut="0">30</Step>
-   <Step Number="5" FadeIn="0" Hold="0" FadeOut="0">40</Step>
-   <Step Number="6" FadeIn="0" Hold="0" FadeOut="0">53</Step>
+  <Function ID="43" Type="Scene" Name="FULL RIG: Party" Path="Tests/Combo">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,7,1,0,2,19,3,0,4,0,5,0,6,0,7,0,8,50,9,0,10,0,11,0,12,0,13,128,14,160,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,255,2,0,3,255,4,0,5,0,6,0,7,255,8,0,9,0,10,0,11,255,12,255,13,255,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,160,2,180,3,200,4,0,5,255,6,0,7,255,8,0,9,255,10,0,11,0,12,0,13,0,14,255,15,255,16,255,17,120,18,0</FixtureVal>
+   <FixtureVal ID="4">0,255,1,0,2,0,3,123,4,0,5,30,6,0,7,0,8,0,9,128,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,255,1,255,2,0,3,128,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,255,1,0,2,128,3,255,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,0,2,0,3,0,4,0,5,0,6,252,7,255,8,50,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
   </Function>
-  <Monitor DisplayMode="0" ShowLabels="0">
-   <Font>Arial,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1</Font>
-   <ChannelStyle>0</ChannelStyle>
-   <ValueStyle>0</ValueStyle>
-   <Grid Width="5" Height="3" Depth="5" Units="0" POV="1"/>
-   <StageItem>0</StageItem>
-   <FxItem ID="1" XPos="386.582" YPos="1000" ZPos="287.18"/>
-   <FxItem ID="2" XPos="1961.2" YPos="1000" ZPos="386.889"/>
-   <FxItem ID="3" XPos="3355.38" YPos="1000" ZPos="335.202"/>
-   <FxItem ID="4" XPos="2342.48" YPos="1000" ZPos="4250.46"/>
-   <FxItem ID="5" XPos="25.06" YPos="1000" ZPos="1519.79"/>
-   <FxItem ID="6" XPos="22.4348" YPos="1000" ZPos="1012.91"/>
-   <FxItem ID="8" XPos="4341.8" YPos="1000" ZPos="345.539"/>
-  </Monitor>
  </Engine>
  <VirtualConsole>
-  <Frame Caption="Fixture Test" ID="0">
+  <Frame Caption="">
    <Appearance>
-    <Font>Roboto Condensed,16,-1,5,400,0,0,0,0,0,0,0,0,0,0,1</Font>
+    <FrameStyle>None</FrameStyle>
+    <ForegroundColor>Default</ForegroundColor>
+    <BackgroundColor>Default</BackgroundColor>
+    <BackgroundImage>None</BackgroundImage>
+    <Font>Default</Font>
    </Appearance>
-   <WindowState Visible="True" X="0" Y="0" Width="920" Height="520"/>
-   <AllowResize>False</AllowResize>
-   <ShowHeader>False</ShowHeader>
-   <ShowEnableButton>True</ShowEnableButton>
-   <Collapsed>False</Collapsed>
-   <Disabled>False</Disabled>
-   <Button Caption="Sharpy&#10;Test" ID="3">
-    <WindowState Visible="True" X="400" Y="10" Width="120" Height="60"/>
+   <Button Caption="BLACKOUT" ID="0" Icon="">
+    <WindowState Visible="True" X="10" Y="10" Width="230" Height="50"/>
     <Appearance>
-     <BackgroundColor>4278230783</BackgroundColor>
-    </Appearance>
-    <Function ID="103"/>
-    <Action>Toggle</Action>
-   </Button>
-   <Button Caption="Profile&#10;Test" ID="5">
-    <WindowState Visible="True" X="660" Y="10" Width="120" Height="60"/>
-    <Appearance>
-     <BackgroundColor>4278230783</BackgroundColor>
-    </Appearance>
-    <Function ID="105"/>
-    <Action>Toggle</Action>
-   </Button>
-   <Button Caption="NI3K&#10;Test" ID="6">
-    <WindowState Visible="True" X="790" Y="10" Width="120" Height="60"/>
-    <Appearance>
-     <BackgroundColor>4286578816</BackgroundColor>
-    </Appearance>
-    <Function ID="106"/>
-    <Action>Toggle</Action>
-   </Button>
-   <Button Caption="BLACKOUT" ID="8">
-    <WindowState Visible="True" X="530" Y="80" Width="380" Height="60"/>
-    <Appearance>
-     <ForegroundColor>4294901760</ForegroundColor>
-     <BackgroundColor>4278190080</BackgroundColor>
+     <BackgroundColor>#FF0000</BackgroundColor>
     </Appearance>
     <Function ID="0"/>
     <Action>Toggle</Action>
    </Button>
-   <Button Caption="BSW&#10;Test" ID="4">
-    <WindowState Visible="True" X="530" Y="10" Width="120" Height="60"/>
+   <Button Caption="BLACKOUT" ID="1" Icon="">
+    <WindowState Visible="True" X="250" Y="10" Width="230" Height="50"/>
     <Appearance>
-     <BackgroundColor>4278230783</BackgroundColor>
+     <BackgroundColor>#FF0000</BackgroundColor>
     </Appearance>
-    <Function ID="104"/>
+    <Function ID="0"/>
     <Action>Toggle</Action>
    </Button>
-   <Button Caption="ALL FIXTURES TEST" ID="7">
-    <WindowState Visible="True" X="10" Y="80" Width="510" Height="60"/>
+   <Button Caption="4BAR: White" ID="2" Icon="">
+    <WindowState Visible="True" X="10" Y="75" Width="230" Height="50"/>
     <Appearance>
-     <ForegroundColor>4278190080</ForegroundColor>
-     <BackgroundColor>4294967295</BackgroundColor>
+     <BackgroundColor>#22AA22</BackgroundColor>
     </Appearance>
-    <Function ID="110"/>
+    <Function ID="1"/>
     <Action>Toggle</Action>
    </Button>
-   <Button Caption="Missyee #1&#10;Test" ID="1">
-    <WindowState Visible="True" X="140" Y="10" Width="120" Height="60"/>
+   <Button Caption="4BAR: RGBW" ID="3" Icon="">
+    <WindowState Visible="True" X="10" Y="130" Width="230" Height="50"/>
     <Appearance>
-     <BackgroundColor>4294940672</BackgroundColor>
+     <BackgroundColor>#22AA22</BackgroundColor>
     </Appearance>
-    <Function ID="101"/>
+    <Function ID="2"/>
     <Action>Toggle</Action>
    </Button>
-   <Button Caption="Missyee #2&#10;Test" ID="2">
-    <WindowState Visible="True" X="270" Y="10" Width="120" Height="60"/>
+   <Button Caption="4BAR: Strobe" ID="4" Icon="">
+    <WindowState Visible="True" X="10" Y="185" Width="230" Height="50"/>
     <Appearance>
-     <BackgroundColor>4294940672</BackgroundColor>
+     <BackgroundColor>#22AA22</BackgroundColor>
     </Appearance>
-    <Function ID="102"/>
+    <Function ID="3"/>
     <Action>Toggle</Action>
    </Button>
-   <Button Caption="4BAR&#10;Test" ID="0">
-    <WindowState Visible="True" X="10" Y="10" Width="120" Height="60"/>
+   <Button Caption="Miss: White" ID="5" Icon="">
+    <WindowState Visible="True" X="10" Y="250" Width="230" Height="50"/>
     <Appearance>
-     <BackgroundColor>4294940672</BackgroundColor>
+     <BackgroundColor>#00AAAA</BackgroundColor>
     </Appearance>
-    <Function ID="100"/>
+    <Function ID="4"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Miss: R/B Split" ID="6" Icon="">
+    <WindowState Visible="True" X="10" Y="305" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#00AAAA</BackgroundColor>
+    </Appearance>
+    <Function ID="5"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Sharpy: Center" ID="7" Icon="">
+    <WindowState Visible="True" X="10" Y="370" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#4444FF</BackgroundColor>
+    </Appearance>
+    <Function ID="6"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Sharpy: Red" ID="8" Icon="">
+    <WindowState Visible="True" X="10" Y="425" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#4444FF</BackgroundColor>
+    </Appearance>
+    <Function ID="7"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Sharpy: Blue" ID="9" Icon="">
+    <WindowState Visible="True" X="10" Y="480" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#4444FF</BackgroundColor>
+    </Appearance>
+    <Function ID="8"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Sharpy: Pan L" ID="10" Icon="">
+    <WindowState Visible="True" X="10" Y="535" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#4444FF</BackgroundColor>
+    </Appearance>
+    <Function ID="9"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Sharpy: Pan R" ID="11" Icon="">
+    <WindowState Visible="True" X="10" Y="590" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#4444FF</BackgroundColor>
+    </Appearance>
+    <Function ID="10"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Sharpy: Prism" ID="12" Icon="">
+    <WindowState Visible="True" X="10" Y="645" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#4444FF</BackgroundColor>
+    </Appearance>
+    <Function ID="11"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Sharpy: Strobe" ID="13" Icon="">
+    <WindowState Visible="True" X="10" Y="700" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#4444FF</BackgroundColor>
+    </Appearance>
+    <Function ID="12"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Sharpy: Frost" ID="14" Icon="">
+    <WindowState Visible="True" X="10" Y="755" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#4444FF</BackgroundColor>
+    </Appearance>
+    <Function ID="13"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="BSW: Center" ID="15" Icon="">
+    <WindowState Visible="True" X="10" Y="820" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#8844CC</BackgroundColor>
+    </Appearance>
+    <Function ID="14"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="BSW: Red" ID="16" Icon="">
+    <WindowState Visible="True" X="10" Y="875" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#8844CC</BackgroundColor>
+    </Appearance>
+    <Function ID="15"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="BSW: Blue" ID="17" Icon="">
+    <WindowState Visible="True" X="10" Y="930" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#8844CC</BackgroundColor>
+    </Appearance>
+    <Function ID="16"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="BSW: Pan L" ID="18" Icon="">
+    <WindowState Visible="True" X="10" Y="985" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#8844CC</BackgroundColor>
+    </Appearance>
+    <Function ID="17"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="BSW: Pan R" ID="19" Icon="">
+    <WindowState Visible="True" X="10" Y="1040" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#8844CC</BackgroundColor>
+    </Appearance>
+    <Function ID="18"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="BSW: Gobo" ID="20" Icon="">
+    <WindowState Visible="True" X="10" Y="1095" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#8844CC</BackgroundColor>
+    </Appearance>
+    <Function ID="19"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="BSW: Prism" ID="21" Icon="">
+    <WindowState Visible="True" X="10" Y="1150" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#8844CC</BackgroundColor>
+    </Appearance>
+    <Function ID="20"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="BSW: Strobe" ID="22" Icon="">
+    <WindowState Visible="True" X="10" Y="1205" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#8844CC</BackgroundColor>
+    </Appearance>
+    <Function ID="21"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Prof: Center" ID="23" Icon="">
+    <WindowState Visible="True" X="10" Y="1270" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#FF8800</BackgroundColor>
+    </Appearance>
+    <Function ID="22"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Prof: Red" ID="24" Icon="">
+    <WindowState Visible="True" X="10" Y="1325" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#FF8800</BackgroundColor>
+    </Appearance>
+    <Function ID="23"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Prof: Blue" ID="25" Icon="">
+    <WindowState Visible="True" X="10" Y="1380" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#FF8800</BackgroundColor>
+    </Appearance>
+    <Function ID="24"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Prof: Pan L" ID="26" Icon="">
+    <WindowState Visible="True" X="10" Y="1435" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#FF8800</BackgroundColor>
+    </Appearance>
+    <Function ID="25"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Prof: Pan R" ID="27" Icon="">
+    <WindowState Visible="True" X="10" Y="1490" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#FF8800</BackgroundColor>
+    </Appearance>
+    <Function ID="26"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Prof: Prism" ID="28" Icon="">
+    <WindowState Visible="True" X="10" Y="1545" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#FF8800</BackgroundColor>
+    </Appearance>
+    <Function ID="27"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="NI3K: White" ID="29" Icon="">
+    <WindowState Visible="True" X="10" Y="1610" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#CC4488</BackgroundColor>
+    </Appearance>
+    <Function ID="28"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="NI3K: Red" ID="30" Icon="">
+    <WindowState Visible="True" X="10" Y="1665" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#CC4488</BackgroundColor>
+    </Appearance>
+    <Function ID="29"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="NI3K: Halo" ID="31" Icon="">
+    <WindowState Visible="True" X="10" Y="1720" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#CC4488</BackgroundColor>
+    </Appearance>
+    <Function ID="30"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="NI3K: Tilt Rot" ID="32" Icon="">
+    <WindowState Visible="True" X="10" Y="1775" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#CC4488</BackgroundColor>
+    </Appearance>
+    <Function ID="31"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="NI3K: Red Laser" ID="33" Icon="">
+    <WindowState Visible="True" X="10" Y="1830" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#CC4488</BackgroundColor>
+    </Appearance>
+    <Function ID="32"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="NI3K: Grn Laser" ID="34" Icon="">
+    <WindowState Visible="True" X="10" Y="1885" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#CC4488</BackgroundColor>
+    </Appearance>
+    <Function ID="33"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="NI3K: Blu Laser" ID="35" Icon="">
+    <WindowState Visible="True" X="10" Y="1940" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#CC4488</BackgroundColor>
+    </Appearance>
+    <Function ID="34"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="NI3K: All Laser" ID="36" Icon="">
+    <WindowState Visible="True" X="10" Y="1995" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#CC4488</BackgroundColor>
+    </Appearance>
+    <Function ID="35"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="NI3K: Motor FX" ID="37" Icon="">
+    <WindowState Visible="True" X="10" Y="2050" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#CC4488</BackgroundColor>
+    </Appearance>
+    <Function ID="36"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Movers: Center" ID="38" Icon="">
+    <WindowState Visible="True" X="250" Y="75" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#CCAA00</BackgroundColor>
+    </Appearance>
+    <Function ID="37"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Movers: Spread" ID="39" Icon="">
+    <WindowState Visible="True" X="250" Y="130" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#CCAA00</BackgroundColor>
+    </Appearance>
+    <Function ID="38"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Pars: Warm" ID="40" Icon="">
+    <WindowState Visible="True" X="250" Y="185" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#CCAA00</BackgroundColor>
+    </Appearance>
+    <Function ID="39"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="Pars: Cool" ID="41" Icon="">
+    <WindowState Visible="True" X="250" Y="240" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#CCAA00</BackgroundColor>
+    </Appearance>
+    <Function ID="40"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="FULL: White" ID="42" Icon="">
+    <WindowState Visible="True" X="250" Y="295" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#CCAA00</BackgroundColor>
+    </Appearance>
+    <Function ID="41"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="FULL: Blue" ID="43" Icon="">
+    <WindowState Visible="True" X="250" Y="350" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#CCAA00</BackgroundColor>
+    </Appearance>
+    <Function ID="42"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="FULL: Party" ID="44" Icon="">
+    <WindowState Visible="True" X="250" Y="405" Width="230" Height="50"/>
+    <Appearance>
+     <BackgroundColor>#CCAA00</BackgroundColor>
+    </Appearance>
+    <Function ID="43"/>
     <Action>Toggle</Action>
    </Button>
   </Frame>
+  <Properties>
+   <Size Width="1920" Height="1080"/>
+   <GrandMaster ChannelMode="Intensity" ValueMode="Reduce" SliderMode="Normal"/>
+  </Properties>
  </VirtualConsole>
+ <Monitor DisplayMode="0" ShowLabels="0">
+  <Font>Arial,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1</Font>
+  <ChannelStyle>0</ChannelStyle>
+  <ValueStyle>0</ValueStyle>
+  <Grid Width="5" Height="3" Depth="5" Units="0"/>
+  <StageItem>0</StageItem>
+  <FxItem ID="1" XPos="386.582" YPos="1000" ZPos="287.18"/>
+  <FxItem ID="2" XPos="1961.2" YPos="1000" ZPos="386.889"/>
+  <FxItem ID="3" XPos="3355.38" YPos="1000" ZPos="335.202"/>
+  <FxItem ID="4" XPos="2342.48" YPos="1000" ZPos="4250.46"/>
+  <FxItem ID="5" XPos="25.06" YPos="1000" ZPos="1519.79"/>
+  <FxItem ID="6" XPos="22.4348" YPos="1000" ZPos="1012.91"/>
+  <FxItem ID="8" XPos="4341.8" YPos="1000" ZPos="345.539"/>
+ </Monitor>
 </Workspace>
