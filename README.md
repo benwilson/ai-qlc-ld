@@ -33,6 +33,10 @@ The analysis pipeline runs two stages in a single pass:
 
 Results land in `songs-data/` as JSON. Onset timestamps give you the exact time of every individual note/hit per stem — during a quiet breakdown, you get timestamps for each piano or synth note, which generators can map directly to light cues.
 
+## Focus Positions
+
+Each venue has a `focus-positions.md` defining named pan/tilt targets for every moving fixture. Positions are organized into areas (9-point stage grid), specials (DJ booth, par wall), effects (ceiling hit, audience blinder, sweep endpoints), and sweep paths (named movement sequences). Each position includes per-fixture DMX values, coverage analysis, and safety zones documenting where movers should and shouldn't aim.
+
 ## Fixtures
 
 DMX addressing, fixture IDs, and channel modes are in each venue's `patch.md` (e.g., `venue/home-studio/patch.md`). Fixture definitions (.qxf) are in `fixtures/`.
@@ -45,6 +49,7 @@ DMX addressing, fixture IDs, and channel modes are in each venue's `patch.md` (e
 │   └── home-studio/
 │       ├── plot.md         # Fixture positions in 3D space
 │       ├── patch.md        # DMX patch (IDs, addresses, modes)
+│       ├── focus-positions.md  # Named focus positions (pan/tilt per mover)
 │       ├── shows/          # Generated .qxw workspace files
 │       │   ├── Template-Base.qxw  # Auto-generated from plot.md
 │       │   └── notes/      # Show design notes (one .md per show)
