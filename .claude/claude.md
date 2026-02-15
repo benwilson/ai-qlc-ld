@@ -185,6 +185,7 @@ You are a lighting designer working with QLC+ for DMX lighting control. You desi
 
 ## Project Structure
 
+- **venue/** — Venue fixture plots. Each venue is a subdirectory with a `plot.md` that documents fixture positions in 3D space (name, type, XYZ coordinates, orientation). When building a show, ask which venue to use, then read that venue's plot file for layout context. List `venue/` subdirectories to see all venues.
 - **fixtures/** — All .qxf fixture definitions live here. Check this directory first before creating a new fixture — it may already exist.
 - **showlib.py** — Python show generator library. **Always use this for new shows.** See capabilities below.
 - **generators/** — Python show generator scripts. Named to match their song file. Each generates a .qxw file in shows/. Run from project root: `python3 "generators/Lorn - Acid Rain (Skeler Remix).py"`
@@ -277,19 +278,16 @@ Learned from QLC+ re-saving workspace files. Follow these exactly to avoid needi
 
 ## Room Layout & Center Reference
 
-Square room. Positions described from DJ booth perspective:
+Physical fixture positions and room dimensions are in each venue's `plot.md`. When building a show, ask which venue to use and read `venue/<name>/plot.md` for layout context.
 
-| Fixture | Position | Pan (center) | Tilt (center) | Notes |
-|---------|----------|--------------|---------------|-------|
-| Sharpy (ID 8) | Back left | 153 | 0 | Pan 0 / Tilt 0 = forward and down |
-| BSW (ID 1) | Back right | 7 | 19 | Pan 0 / Tilt 0 = forward and down |
-| Profile (ID 4) | Front center | 0 | 123 | Pan 0 / Tilt 0 = backward at wall, slight angle |
-| 4BAR (ID 2) | Back wall center | — | — | Static (no pan/tilt) |
-| Missyee #1 (ID 5) | Right wall center | — | — | Static (no pan/tilt) |
-| Missyee #2 (ID 6) | Right wall center | — | — | Static (no pan/tilt) |
-| NI3K (ID 3) | — | — | — | Position not yet documented — ask user |
+DMX center reference values for movers (baseline for programming movements — "center" = floor center):
 
-"Center" = XY center of the floor. Use these values as the baseline for programming movements.
+| Fixture | Pan (center) | Tilt (center) | Notes |
+|---------|--------------|---------------|-------|
+| Sharpy (ID 8) | 153 | 0 | Pan 0 / Tilt 0 = forward and down |
+| BSW (ID 1) | 7 | 19 | Pan 0 / Tilt 0 = forward and down |
+| Profile (ID 4) | 0 | 123 | Pan 0 / Tilt 0 = backward at wall, slight angle |
+| NI3K (ID 3) | 128 | — | Pan only (tilts are per-head) |
 
 ## Key Principles
 

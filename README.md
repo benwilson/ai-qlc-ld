@@ -55,6 +55,8 @@ Results land in `songs-data/` as JSON. Onset timestamps give you the exact time 
 ├── shows/                  # Generated .qxw workspace files
 │   ├── Template-Base.qxw   # Blank starting point
 │   └── ...
+├── venue/                  # Venue fixture plots (physical positions in 3D space)
+│   └── home-studio/plot.md # Current rig layout
 ├── fixtures/               # QLC+ fixture definitions (.qxf)
 ├── songs/                  # Audio files for analysis
 ├── songs-data/             # Analysis output (JSON — structure + energy + onsets)
