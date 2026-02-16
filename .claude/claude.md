@@ -63,7 +63,7 @@ Focus positions (named pan/tilt targets for movers) are in each venue's `focus-p
 ### BSW 3-in-1 (ID 1, 20ch, addr 144)
 | Ch | Function | Open/Default | Notes |
 |----|----------|-------------|-------|
-| 0 | Pan | 7 (center) | |
+| 0 | Pan | 177 (center) | 7=factory home, 177=floor center (verified) |
 | 1 | Pan fine | 0 | |
 | 2 | Tilt | 19 (center) | |
 | 3 | Tilt fine | 0 | |

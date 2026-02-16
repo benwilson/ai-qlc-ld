@@ -48,7 +48,7 @@ Floor: X=2.15, Z=3.35
 | Fixture | Pan | Tilt | Verified |
 |---------|-----|------|----------|
 | Sharpy (ID 8) | 153 | 0 | Yes |
-| BSW (ID 1) | 7 | 19 | Yes |
+| BSW (ID 1) | 177 | 19 | Yes |
 | Profile (ID 4) | 0 | 123 | Yes |
 | NI3K (ID 3) | 128 | — | Yes |
 
@@ -170,8 +170,11 @@ Floor: X=4.2, Z=2.2
 | Fixture | Pan | Tilt | Verified |
 |---------|-----|------|----------|
 | Sharpy (ID 8) | 220 | 0 | No (calc) |
-| BSW (ID 1) | 0 | 25 | No (calc) |
+| BSW (ID 1) | 162 | 22 | No (calc) |
 | Profile (ID 4) | 0 | 115 | No (calc) |
+
+Notes: Par Wall is on the BSW's home side (right wall). BSW pan=162 aims at the near-right
+area. Needs verification — the BSW may not effectively highlight its own wall.
 
 ### Dance Floor
 Center of the open dance area, slightly downstage of room center. All movers converge
@@ -247,8 +250,11 @@ the 4BAR is also washing the back wall in a contrasting color.
 | Fixture | Pan | Tilt | Verified |
 |---------|-----|------|----------|
 | Sharpy (ID 8) | 153 | 0 | No (calc) |
-| BSW (ID 1) | 7 | 35 | No (calc) |
+| BSW (ID 1) | 180 | 35 | No (calc) |
 | Profile (ID 4) | 0 | 95 | No (calc) |
+
+Notes: BSW aims at the back wall with center-ish pan and high tilt (looking up/back).
+Needs verification — back wall wash may need BSW pointed differently than floor positions.
 
 ### Audience Blinder
 All movers aimed at the audience area at eye level. USE SPARINGLY — brief
@@ -258,8 +264,11 @@ this since it's front-mounted; the Sharpy and BSW shoot over heads from the back
 | Fixture | Pan | Tilt | Verified |
 |---------|-----|------|----------|
 | Sharpy (ID 8) | 153 | 15 | No (calc) |
-| BSW (ID 1) | 7 | 5 | No (calc) |
+| BSW (ID 1) | 177 | 5 | No (calc) |
 | Profile (ID 4) | 0 | 155 | No (calc) |
+
+Notes: BSW uses center pan with minimal tilt to shoot flat over the audience.
+Needs verification.
 
 ### Sweep Far Left
 Extreme stage left for sweep endpoints. Beyond the normal performance area.
@@ -268,8 +277,11 @@ Use as the start or end of a sweep, never as a sustained position.
 | Fixture | Pan | Tilt | Verified |
 |---------|-----|------|----------|
 | Sharpy (ID 8) | 90 | 5 | No (calc) |
-| BSW (ID 1) | 100 | 15 | No (calc) |
+| BSW (ID 1) | 198 | 25 | No (calc) |
 | Profile (ID 4) | 45 | 120 | No (calc) |
+
+Notes: BSW pan=198 is the extreme forward-facing left for a fixture mounted at back-right.
+Going beyond ~200 aims at the back wall. Needs verification.
 
 ### Sweep Far Right
 Extreme stage right. Mirror of Sweep Far Left.
@@ -277,8 +289,12 @@ Extreme stage right. Mirror of Sweep Far Left.
 | Fixture | Pan | Tilt | Verified |
 |---------|-----|------|----------|
 | Sharpy (ID 8) | 220 | 5 | No (calc) |
-| BSW (ID 1) | 0 | 15 | No (calc) |
+| BSW (ID 1) | 162 | 20 | No (calc) |
 | Profile (ID 4) | 0 | 120 | No (calc) |
+
+Notes: BSW pan=162 is the extreme forward-facing right. The BSW is mounted on the right
+wall, so "far right" is nearly beside it — lower pan values aim behind the fixture.
+Needs verification.
 
 ## Sweep Paths
 

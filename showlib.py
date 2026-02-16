@@ -200,7 +200,7 @@ def sharpy(pan=0, tilt=0, color7=0, gobo=0,
         (15,focus),(16,color7),(17,0)
     ])
 
-def bsw(pan=0, tilt=0, color=0, gobo1=0, gobo2=0, g2rot=0,
+def bsw(pan=177, tilt=19, color=0, gobo1=0, gobo2=0, g2rot=0,
          frost=0, prism=0, prot=0, focus=128,
          shutter=BSW_SHUT_OPEN, dim=255):
     """BSW 3-in-1 - 20ch mode (ID 1, addr 144)
