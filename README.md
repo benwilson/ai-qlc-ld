@@ -1,13 +1,73 @@
 # ai-qlc-ld
 
-AI-assisted lighting design with QLC+. Uses Claude as a lighting designer to create DMX show files — programming fixtures, building musically-synced chasers, and generating complete QLC+ workspace files from song analysis data.
+AI-assisted lighting design with QLC+. Uses Claude as a lighting designer to create DMX show files — programming fixtures, building musically-synced chasers, generating busking workspaces, and producing complete QLC+ workspace files from song analysis data.
 
 ## How It Works
+
+There are two main workflows: **busking** (live, improvised) and **song-synced shows** (pre-programmed).
+
+### Busking (Live Lighting)
+
+For real-time lighting control during DJ sets. Claude generates a QLC+ workspace with layered controls — color palettes, position presets, movement effects, strobes, and special moments — all organized in the Virtual Console for on-the-fly operation.
+
+1. Set up a venue (plot → patch → focus-positions)
+2. Pick a genre (or create one)
+3. Optionally pick a mood to shape the feel
+4. Generate the busking workspace
+
+### Song-Synced Shows
+
+For pre-programmed shows synced to a specific track.
 
 1. Drop audio files in `songs/`
 2. Run `./analyze.sh` to analyze tracks — extracts BPM, beats, song structure, per-stem energy envelopes, onset timestamps, and spectral dynamics
 3. Write a Python generator script that uses `showlib.py` to build scenes and chasers synced to the analysis data
 4. Load the generated `.qxw` file in QLC+ and hit play
+
+## Skills
+
+Skills are specialized instructions that guide Claude through specific tasks. They chain together in a dependency order — each skill produces files that downstream skills consume.
+
+### Venue Setup (run once per venue)
+
+| Step | Skill | Creates | Depends On |
+|------|-------|---------|------------|
+| 1 | **plot** | `venue/<name>/plot.md` | — (starting point) |
+| 2 | **patch** | `venue/<name>/patch.md` | plot.md |
+| 3 | **focus-positions** | `venue/<name>/focus-positions.md` | plot.md + patch.md |
+
+**plot** places fixtures in 3D space — room dimensions, fixture types, XYZ coordinates, orientations. Just describe where things go ("Sharpy back left, up high") and Claude converts to coordinates.
+
+**patch** assigns DMX addresses, fixture IDs, and channel modes from the plot.
+
+**focus-positions** defines named pan/tilt targets (like "DSL", "Ceiling Hit", "DJ Booth") for every mover, so shows and busking workspaces can reference positions by name instead of raw DMX values.
+
+### Content Definition (run as needed)
+
+| Skill | Creates | Purpose |
+|-------|---------|---------|
+| **genres** | `genres/<genre>.md` | Color palettes, timing presets, movement conventions, strobe/laser/gobo rules |
+| **moods** | `moods/<mood>.md` | Abstract modifiers that shape how a genre's values get applied |
+
+**Genres** define concrete lighting values for an EDM subgenre — specific colors (with per-fixture wheel mappings), BPM-calibrated timing, per-section energy profiles, and effect conventions. Available: drum-and-bass, dubstep, house, techno, trance.
+
+**Moods** define abstract modifiers — color filtering, intensity scaling, movement speed, effect density, timing adjustments. They never specify DMX values directly; they modify what the genre provides. A mood applied to different genres produces different concrete results but the same emotional character.
+
+Available moods — emotional states: dark, ethereal, aggressive, hypnotic, euphoric, melancholic, chaotic, intimate. Energy levels: chill, building, peak, comedown.
+
+### Generation
+
+| Skill | Creates | Reads |
+|-------|---------|-------|
+| **busking** | `venue/<name>/shows/Busking-<Genre>.qxw` | patch + focus-positions + genre + mood |
+
+**busking** generates a complete Virtual Console layout for live operation: color pair buttons (Solo Frame), position presets (Solo Frame), movement chasers, intensity sliders, strobe/flash buttons, and special moment buttons (blackout, whiteout, lasers, prism, etc.).
+
+### How Genre + Mood Combine
+
+Genre provides the raw material (specific colors, ms timing, DMX channel values). Mood applies filters and multipliers (prefer cool colors, dim to 60%, slow movement 0.5x, no strobe). The busking skill reads both files and applies the mood's modifiers to the genre's values.
+
+Example: "Ethereal" mood + DnB genre = DnB's blue/cyan palette with slower movements, longer fades, no strobes. Same "Ethereal" + House = house's teal/blue palette with even smoother fades and minimal effects.
 
 ## Setup
 
@@ -33,14 +93,6 @@ The analysis pipeline runs two stages in a single pass:
 
 Results land in `songs-data/` as JSON. Onset timestamps give you the exact time of every individual note/hit per stem — during a quiet breakdown, you get timestamps for each piano or synth note, which generators can map directly to light cues.
 
-## Focus Positions
-
-Each venue has a `focus-positions.md` defining named pan/tilt targets for every moving fixture. Positions are organized into areas (9-point stage grid), specials (DJ booth, par wall), effects (ceiling hit, audience blinder, sweep endpoints), and sweep paths (named movement sequences). Each position includes per-fixture DMX values, coverage analysis, and safety zones documenting where movers should and shouldn't aim.
-
-## Fixtures
-
-DMX addressing, fixture IDs, and channel modes are in each venue's `patch.md` (e.g., `venue/home-studio/patch.md`). Fixture definitions (.qxf) are in `fixtures/`.
-
 ## Project Structure
 
 ```
@@ -54,6 +106,8 @@ DMX addressing, fixture IDs, and channel modes are in each venue's `patch.md` (e
 │       │   ├── Template-Base.qxw  # Auto-generated from plot.md
 │       │   └── notes/      # Show design notes (one .md per show)
 │       └── generators/     # Per-song generator scripts
+├── genres/                 # EDM subgenre lighting definitions (one .md per genre)
+├── moods/                  # Mood modifier definitions (one .md per mood)
 ├── fixtures/               # QLC+ fixture definitions (.qxf)
 ├── songs/                  # Audio files for analysis
 ├── songs-data/             # Analysis output (JSON — structure + energy + onsets)
