@@ -17,12 +17,13 @@ For real-time lighting control during DJ sets. Claude generates a QLC+ workspace
 
 ### Song-Synced Shows
 
-For pre-programmed shows synced to a specific track.
+For pre-programmed shows synced to a specific track. Just name a song (or say "pick one") and Claude handles the rest.
 
 1. Drop audio files in `songs/`
-2. Run `./analyze.sh` to analyze tracks — extracts BPM, beats, song structure, per-stem energy envelopes, onset timestamps, and spectral dynamics
-3. Write a Python generator script that uses `showlib.py` to build scenes and chasers synced to the analysis data
-4. Load the generated `.qxw` file in QLC+ and hit play
+2. Tell Claude which song to analyze (or ask it to pick an unanalyzed one)
+3. Claude runs `./analyze.sh`, reviews the analysis data, and asks about creative direction
+4. Claude writes a Python generator, produces the `.qxw`, and validates it
+5. Load the generated `.qxw` file in QLC+ and hit play
 
 ## Skills
 
@@ -60,8 +61,11 @@ Available moods — emotional states: dark, ethereal, aggressive, hypnotic, euph
 | Skill | Creates | Reads |
 |-------|---------|-------|
 | **busking** | `venue/<name>/shows/Busking-<Genre>.qxw` | patch + focus-positions + genre + mood |
+| **song-analysis** | analysis JSON + show generator + `.qxw` | song audio + venue files + genre + mood |
 
 **busking** generates a complete Virtual Console layout for live operation: color pair buttons (Solo Frame), position presets (Solo Frame), movement chasers, intensity sliders, strobe/flash buttons, and special moment buttons (blackout, whiteout, lasers, prism, etc.).
+
+**song-analysis** is the entry point for song-synced shows. Finds a song (or picks an unanalyzed one), runs the Docker analysis pipeline, presents a summary of BPM/structure/energy, then gathers creative direction and builds the show generator.
 
 ### How Genre + Mood Combine
 
@@ -134,9 +138,9 @@ from showlib import *
 scenes = [
     scene("Blackout", *blackout_all()),
     scene("Blue Wash",
-        sharpy(pan=153, tilt=0, dim=200, frost=180),
-        bsw(pan=7, tilt=19, color=BSW_BLUE, dim=180),
-        profile(pan=0, tilt=123, dim=150),
+        sharpy(pan=153, tilt=0, dim=200, frost=180),   # pan/tilt from focus-positions.md
+        bsw(pan=7, tilt=19, color=BSW_BLUE, dim=180),  # pan/tilt from focus-positions.md
+        profile(pan=0, tilt=123, dim=150),              # pan/tilt from focus-positions.md
         fourbar_solid(0, 40, 180),
         *miss_both(0, 60, 140),
         ni3k(r=20, g=40, b=160, halo=H_BLU),
@@ -162,8 +166,6 @@ python3 "venue/home-studio/generators/Lorn - Acid Rain (Skeler Remix).py"
 **BSW color wheel / gobos / shutter**, **Sharpy shutter**, **NI3K halo / lasers**: named constants matching actual DMX values
 
 **Timing helpers**: `bpm_to_ms()`, `smooth()`, `snap()`, `hold()`
-
-**Movement presets**: `movers_center()`, `movers_spread()`, `movers_cross()`
 
 **Genre templates**: `structure_dnb()`, `structure_melodic_house()`, `structure_dubstep()`, `structure_party()`
 

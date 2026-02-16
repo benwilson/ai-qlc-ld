@@ -337,13 +337,12 @@ When you don't have hardware-verified values, estimate pan/tilt from fixture pos
 and known reference points. The approach:
 
 1. **Anchor on center.** Every venue's `Center` position should be verified first
-   (these are the center reference values in CLAUDE.md). All other positions are
-   calculated relative to center.
+   on the actual hardware. All other positions are calculated relative to center.
 
-2. **Estimate proportionally.** If you know center and one extreme (e.g., from
-   `movers_spread()` or `movers_cross()` in showlib.py), interpolate for positions
-   between them. The relationship isn't perfectly linear (it depends on throw
-   distance and mounting angle), but it's close enough for initial programming.
+2. **Estimate proportionally.** If you know center and one extreme, interpolate
+   for positions between them. The relationship isn't perfectly linear (it depends
+   on throw distance and mounting angle), but it's close enough for initial
+   programming.
 
 3. **Respect fixture limits.** Check CLAUDE.md for safe pan/tilt ranges that keep
    movers forward-facing. Stay within those bounds for area positions.

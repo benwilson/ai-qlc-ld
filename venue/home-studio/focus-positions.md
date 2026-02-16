@@ -59,9 +59,9 @@ Floor: X=2.15, Z=5.0
 
 | Fixture | Pan | Tilt | Verified |
 |---------|-----|------|----------|
-| Sharpy (ID 8) | 153 | 9 | No (calc) |
-| BSW (ID 1) | 7 | 10 | No (calc) |
-| Profile (ID 4) | 0 | 136 | No (calc) |
+| Sharpy (ID 8) | 158 | 6 | Yes |
+| BSW (ID 1) | 179 | 27 | Yes |
+| Profile (ID 4) | 64 | 145 | Yes |
 | NI3K (ID 3) | 128 | — | — |
 
 ### Upstage Center (USC)
@@ -71,9 +71,9 @@ Floor: X=2.15, Z=1.7
 
 | Fixture | Pan | Tilt | Verified |
 |---------|-----|------|----------|
-| Sharpy (ID 8) | 153 | 0 | No (calc) |
-| BSW (ID 1) | 7 | 27 | No (calc) |
-| Profile (ID 4) | 0 | 109 | No (calc) |
+| Sharpy (ID 8) | 157 | 0 | Yes |
+| BSW (ID 1) | 181 | 21 | Yes |
+| Profile (ID 4) | 52 | 136 | Yes |
 | NI3K (ID 3) | 128 | — | — |
 
 ### Stage Left (SL)
@@ -82,9 +82,9 @@ Floor: X=0.8, Z=3.35
 
 | Fixture | Pan | Tilt | Verified |
 |---------|-----|------|----------|
-| Sharpy (ID 8) | 90 | 0 | No (calc) |
-| BSW (ID 1) | 79 | 19 | No (calc) |
-| Profile (ID 4) | 29 | 123 | No (calc) |
+| Sharpy (ID 8) | 170 | 0 | Yes |
+| BSW (ID 1) | 189 | 29 | Yes |
+| Profile (ID 4) | 50 | 165 | Yes |
 | NI3K (ID 3) | 80 | — | No (calc) |
 
 ### Stage Right (SR)
@@ -94,9 +94,9 @@ Floor: X=3.5, Z=3.35
 
 | Fixture | Pan | Tilt | Verified |
 |---------|-----|------|----------|
-| Sharpy (ID 8) | 220 | 0 | No (calc) |
-| BSW (ID 1) | 0 | 19 | No (calc) |
-| Profile (ID 4) | 0 | 123 | No (calc) |
+| Sharpy (ID 8) | 149 | 5 | Yes |
+| BSW (ID 1) | 170 | 23 | Yes |
+| Profile (ID 4) | 110 | 145 | Yes |
 | NI3K (ID 3) | 176 | — | No (calc) |
 
 ### Downstage Left (DSL)
@@ -106,9 +106,9 @@ Floor: X=0.8, Z=5.0
 
 | Fixture | Pan | Tilt | Verified |
 |---------|-----|------|----------|
-| Sharpy (ID 8) | 90 | 9 | No (calc) |
-| BSW (ID 1) | 79 | 10 | No (calc) |
-| Profile (ID 4) | 29 | 136 | No (calc) |
+| Sharpy (ID 8) | 170 | 0 | Yes |
+| BSW (ID 1) | 189 | 29 | Yes |
+| Profile (ID 4) | 50 | 165 | Yes |
 | NI3K (ID 3) | 80 | — | No (calc) |
 
 ### Downstage Right (DSR)
@@ -118,9 +118,9 @@ Floor: X=3.5, Z=5.0
 
 | Fixture | Pan | Tilt | Verified |
 |---------|-----|------|----------|
-| Sharpy (ID 8) | 220 | 9 | No (calc) |
-| BSW (ID 1) | 0 | 10 | No (calc) |
-| Profile (ID 4) | 0 | 136 | No (calc) |
+| Sharpy (ID 8) | 149 | 5 | Yes |
+| BSW (ID 1) | 170 | 23 | Yes |
+| Profile (ID 4) | 110 | 145 | Yes |
 | NI3K (ID 3) | 176 | — | No (calc) |
 
 ### Upstage Left (USL)
@@ -130,9 +130,9 @@ Floor: X=0.8, Z=1.7
 
 | Fixture | Pan | Tilt | Verified |
 |---------|-----|------|----------|
-| Sharpy (ID 8) | 90 | 0 | No (calc) |
-| BSW (ID 1) | 79 | 27 | No (calc) |
-| Profile (ID 4) | 29 | 109 | No (calc) |
+| Sharpy (ID 8) | 170 | 0 | Yes |
+| BSW (ID 1) | 189 | 29 | Yes |
+| Profile (ID 4) | 50 | 165 | Yes |
 | NI3K (ID 3) | 80 | — | No (calc) |
 
 ### Upstage Right (USR)
@@ -141,9 +141,9 @@ Floor: X=3.5, Z=1.7
 
 | Fixture | Pan | Tilt | Verified |
 |---------|-----|------|----------|
-| Sharpy (ID 8) | 220 | 0 | No (calc) |
-| BSW (ID 1) | 0 | 27 | No (calc) |
-| Profile (ID 4) | 0 | 109 | No (calc) |
+| Sharpy (ID 8) | 149 | 5 | Yes |
+| BSW (ID 1) | 170 | 23 | Yes |
+| Profile (ID 4) | 110 | 145 | Yes |
 | NI3K (ID 3) | 176 | — | No (calc) |
 
 ## Specials
@@ -156,9 +156,9 @@ Floor: X=2.15, Z=0.5
 
 | Fixture | Pan | Tilt | Verified |
 |---------|-----|------|----------|
-| Sharpy (ID 8) | 153 | 0 | No (calc) |
-| BSW (ID 1) | 7 | 33 | No (calc) |
-| Profile (ID 4) | 0 | 100 | No (calc) |
+| Sharpy (ID 8) | 142 | 3 | Yes |
+| BSW (ID 1) | 196 | 25 | Yes |
+| Profile (ID 4) | 95 | 107 | Yes |
 | NI3K (ID 3) | 128 | — | — |
 
 ### Par Wall
@@ -173,21 +173,71 @@ Floor: X=4.2, Z=2.2
 | BSW (ID 1) | 0 | 25 | No (calc) |
 | Profile (ID 4) | 0 | 115 | No (calc) |
 
-## Effects
-
-### Ceiling Hit
-All beams aimed straight up at the ceiling. Dramatic in haze — creates visible
-shafts of light. Best with tight gobos and saturated colors. The three beams from
-different positions create a tent/pyramid effect.
+### Dance Floor
+Center of the open dance area, slightly downstage of room center. All movers converge
+on the heart of the dance space. Use for audience-facing wash looks and dance-centric
+shows where the action is further from the DJ.
+Floor: X=2.15, Z=4.2
 
 | Fixture | Pan | Tilt | Verified |
 |---------|-----|------|----------|
-| Sharpy (ID 8) | 153 | 0 | No (calc) |
-| BSW (ID 1) | 7 | 40 | No (calc) |
-| Profile (ID 4) | 0 | 85 | No (calc) |
+| Sharpy (ID 8) | 158 | 6 | Yes |
+| BSW (ID 1) | 179 | 27 | Yes |
+| Profile (ID 4) | 64 | 145 | Yes |
+| NI3K (ID 3) | 128 | — | — |
 
-Note: These values point the beams as close to vertical as the safe tilt ranges
-allow. The Profile can't go fully vertical from its front mount position.
+Notes: Very close to DSC values. All back movers tilt slightly forward from center;
+Profile tilts more toward the audience. Good default position for dance-floor-centric
+shows or when the energy should feel like it's "in the crowd."
+
+### Disco Ball
+All beams converge upward on a ceiling-mounted disco ball at room center. Creates
+classic reflected light scatter when beams hit the ball. Use with tight beam (no frost,
+no gobo) and saturated single colors for cleanest reflections.
+Target: X=2.15, Y=4.5, Z=3.35
+
+| Fixture | Pan | Tilt | Verified |
+|---------|-----|------|----------|
+| Sharpy (ID 8) | 144 | 34 | Yes |
+| BSW (ID 1) | 170 | 56 | Yes |
+| Profile (ID 4) | 154 | 168 | Yes |
+| NI3K (ID 3) | 128 | — | — |
+
+Notes: Assumes a disco ball is mounted at ceiling center (X=2.15, Y=4.5, Z=3.35).
+Pan values stay centered since the ball is directly above room center. Tilt values
+push well outside normal forward-facing ranges — all movers aim significantly upward.
+Verify ball position before use. Best with Sharpy beam mode (no frost) for tight
+reflections. NI3K tilt heads should use position mode (low values, 0-30) for upward aim.
+
+### Center Ceiling
+All beams aimed at the ceiling above room center. Dramatic in haze — creates visible
+shafts of light converging overhead. Best with tight gobos and saturated colors. The
+three beams from different positions create a tent/pyramid effect.
+Target: X=2.15, Y=4.9, Z=3.35
+
+| Fixture | Pan | Tilt | Verified |
+|---------|-----|------|----------|
+| Sharpy (ID 8) | 158 | 73 | Yes |
+| BSW (ID 1) | 180 | 86 | Yes |
+| Profile (ID 4) | 91 | 30 | Yes |
+| NI3K (ID 3) | 128 | — | — |
+
+Notes: Tilt values are well outside normal forward-facing ranges — all movers aim
+significantly upward. Profile tilt=30 is far below its normal floor-facing range
+(85-155), meaning it's aimed nearly straight up from its high front mount. Pair with
+haze for maximum beam visibility.
+
+## Effects
+
+### Ceiling Hit
+Same target as Center Ceiling special — all beams aimed at the ceiling above room
+center. Listed here as an effect for sweep path reference.
+
+| Fixture | Pan | Tilt | Verified |
+|---------|-----|------|----------|
+| Sharpy (ID 8) | 158 | 73 | Yes |
+| BSW (ID 1) | 180 | 86 | Yes |
+| Profile (ID 4) | 91 | 30 | Yes |
 
 ### Back Wall Wash
 All movers aimed at the back wall behind the DJ booth. Creates a color wash
@@ -314,3 +364,6 @@ Blinder position (tilt=155) should only ever appear with strobe, never open shut
   Its best coverage is center-to-downstage.
 - The Sharpy and BSW are both mounted at the back, so their downstage coverage
   requires longer throws. They're most precise at upstage positions.
+- The Disco Ball special assumes a ball is mounted at ceiling center — verify
+  physical location and update target coordinates if different. Best results with
+  tight beams (no frost/gobo) and single saturated colors for clean reflections.

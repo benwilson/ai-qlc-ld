@@ -231,7 +231,6 @@ Focus positions (named pan/tilt targets for movers) are in each venue's `focus-p
 - **NI3K halo**: `H_OFF`, `H_RED`, `H_GRN`, `H_BLU`, `H_YEL`, `H_PNK`, `H_CYN`, `H_RGB`, `H_JUMP_SLOW/MED/FAST`
 - **NI3K lasers**: `LASER_ON` (250), `LASER_OFF`, `LASER_STROBE_SLOW/MED/FAST`
 - **Timing**: `bpm_to_ms(bpm, beats)`, `smooth(bpm, bars)`, `snap(bpm, bars, fade_ms)`, `hold(bpm, bars)`
-- **Movement presets**: `movers_center()`, `movers_spread(amount)`, `movers_cross(amount)`
 - **Scene/Chaser builders**: `scene()`, `make_chaser()`, `write_workspace()`
 - **Genre templates**: `structure_dnb()`, `structure_melodic_house()`, `structure_dubstep()`, `structure_party()` — return section dicts with name, bars, energy, movement, timing_style
 - **Blackout helpers**: `blackout(fixture_id, num_channels)`, `blackout_all()`
@@ -264,8 +263,10 @@ Skills are specialized instructions in `.claude/skills/` that guide specific tas
 ### How Genre + Mood Combine
 Genre provides concrete values (specific colors, ms timing, DMX channel values). Mood applies abstract modifiers (prefer cool colors, dim to 60%, slow movement 0.5x, no strobe). The busking skill reads both files and applies the mood's modifiers to the genre's values. The same mood applied to different genres produces different concrete results but the same emotional character.
 
-### Song-Synced Shows (separate from busking)
-For pre-programmed shows synced to a specific track, the workflow is: `analyze.sh` → `songs-data/` (BPM, beats, segments, energy) → write a Python generator in `venue/<name>/generators/` using `showlib.py` → output `.qxw` to `venue/<name>/shows/`. Song-synced shows can reference genre conventions for palette/timing guidance but don't use the busking skill.
+### Song-Synced Shows
+7. **song-analysis** — Finds a song in `songs/` (or picks an unanalyzed one), runs `./analyze.sh` to extract BPM/beats/structure/energy/onsets, presents a human-readable summary of the analysis data, then transitions into show creation — gathering venue, genre/mood, and creative direction before building the generator script. This is the entry point for all song-synced shows.
+
+The full song-synced pipeline: **song-analysis** (find + analyze + review) → gather creative direction → write generator in `venue/<name>/generators/` using `showlib.py` → output `.qxw` to `venue/<name>/shows/`. Song-synced shows can reference genre conventions for palette/timing guidance but don't use the busking skill.
 
 ## QLC+ 5.0.1 XML Formatting Rules
 
@@ -299,19 +300,6 @@ Learned from QLC+ re-saving workspace files. Follow these exactly to avoid needi
 - **Sharpy Strobe**: Ch6 — `0` = closed, `2-127` = strobe slow→fast, `128-192` = strobe slow→fast (fade out), `252-255` = open. Use `252` for open (no strobe).
 - **BSW Shutter**: Ch16 uses different ranges — `0-7` = closed, `8` = open. Different from Sharpy.
 
-## Room Layout & Center Reference
-
-Physical fixture positions and room dimensions are in each venue's `plot.md`. When building a show, ask which venue to use and read `venue/<name>/plot.md` for layout context.
-
-DMX center reference values for movers (baseline for programming movements — "center" = floor center):
-
-| Fixture | Pan (center) | Tilt (center) | Notes |
-|---------|--------------|---------------|-------|
-| Sharpy (ID 8) | 153 | 0 | Pan 0 / Tilt 0 = forward and down |
-| BSW (ID 1) | 7 | 19 | Pan 0 / Tilt 0 = forward and down |
-| Profile (ID 4) | 0 | 123 | Pan 0 / Tilt 0 = backward at wall, slight angle |
-| NI3K (ID 3) | 128 | — | Pan only (tilts are per-head) |
-
 ## Key Principles
 
 - Channel order must match the actual fixture DMX protocol exactly — always verify
@@ -337,10 +325,8 @@ DMX center reference values for movers (baseline for programming movements — "
 - NI3K tilt channels (ch1-3): values 0-127 = position, 128-191 = forward rotation, 192-255 = reverse rotation. "High movement values" means using the rotation range (160-250) for dramatic continuous motion.
 
 ### Forward-Facing Mover Positions
-- Profile (front center): Tilt 0 = backward at wall. Keep tilt ≥ 85 to stay forward-facing. Tilt 123 = center, higher = more toward audience.
-- Sharpy (back left): Pan 153 = center. Safe range ~90-220 for forward-facing.
-- BSW (back right): Pan 7 = center. Safe range ~0-200 for forward-facing.
-- When user says "never point behind," define all positions with these bounds and verify each one.
+- Read safe pan/tilt ranges from the venue's `focus-positions.md` — they're listed in the movers table per fixture.
+- When user says "never point behind," define all positions within those bounds and verify each one.
 
 ### Scene Dedup Behavior
 - Beat-level shows (1 scene per beat) with varied NI3K tilt modulation typically produce 0 dedup hits because the tilt math (`beat % N * offset`) creates unique values per beat. Dedup is more effective when sections reuse identical looks (e.g., repeated bar patterns, common blackout scenes).

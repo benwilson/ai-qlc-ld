@@ -58,16 +58,6 @@ CH_PROFILE = 14
 CH_NI3K = 19
 
 # =============================================================================
-# CENTER REFERENCE POSITIONS (floor center from DJ booth perspective)
-# =============================================================================
-
-CENTER = {
-    "sharpy": {"pan": 153, "tilt": 0},    # Back left
-    "bsw":    {"pan": 7,   "tilt": 19},   # Back right
-    "profile":{"pan": 0,   "tilt": 123},  # Front center
-}
-
-# =============================================================================
 # BSW COLOR WHEEL (Ch8) - Verified from fixture definition
 # =============================================================================
 
@@ -190,7 +180,7 @@ PROF_SPIN   = 160   # Medium rotation speed
 # Each returns a tuple of (fixture_id, [(ch, val), ...])
 # =============================================================================
 
-def sharpy(pan=153, tilt=0, color7=0, gobo=0,
+def sharpy(pan=0, tilt=0, color7=0, gobo=0,
            prism1=0, p1r=0, prism2=0, p2r=0,
            frost=0, focus=128, strobe=SHARPY_OPEN, dim=255,
            colormacro=0):
@@ -210,7 +200,7 @@ def sharpy(pan=153, tilt=0, color7=0, gobo=0,
         (15,focus),(16,color7),(17,0)
     ])
 
-def bsw(pan=7, tilt=19, color=0, gobo1=0, gobo2=0, g2rot=0,
+def bsw(pan=0, tilt=0, color=0, gobo1=0, gobo2=0, g2rot=0,
          frost=0, prism=0, prot=0, focus=128,
          shutter=BSW_SHUT_OPEN, dim=255):
     """BSW 3-in-1 - 20ch mode (ID 1, addr 144)
@@ -230,7 +220,7 @@ def bsw(pan=7, tilt=19, color=0, gobo1=0, gobo2=0, g2rot=0,
         (15,focus),(16,shutter),(17,dim),(18,0),(19,0)
     ])
 
-def profile(pan=0, tilt=123, color=0, gobo=0, gobo1=0, g1rot=0,
+def profile(pan=0, tilt=0, color=0, gobo=0, gobo1=0, g1rot=0,
             prism=0, focus=128, strobe=PROFILE_STROBE_OFF, dim=255):
     """Profile Knockoff - 14ch mode (ID 4, addr 192)
 
@@ -631,31 +621,6 @@ OFF     = (0, 0, 0)
 # MOVEMENT PRESETS
 # =============================================================================
 
-def movers_center():
-    """All three movers aimed at floor center."""
-    return [
-        sharpy(pan=153, tilt=0),
-        bsw(pan=7, tilt=19),
-        profile(pan=0, tilt=123),
-    ]
-
-def movers_spread(amount=1.0):
-    """Movers spread wide. amount: 0.0=center, 1.0=full spread."""
-    a = amount
-    return [
-        sharpy(pan=int(153 + 67*a), tilt=int(15*a)),
-        bsw(pan=int(7 + 73*a), tilt=int(19 - 14*a)),
-        profile(pan=int(30*a), tilt=int(123 - 23*a)),
-    ]
-
-def movers_cross(amount=1.0):
-    """Movers crossed to opposite sides."""
-    a = amount
-    return [
-        sharpy(pan=int(153 - 73*a), tilt=0),
-        bsw(pan=int(7 + 193*a), tilt=int(19 + 11*a)),
-        profile(pan=int(230*a), tilt=int(123 + 22*a)),
-    ]
 
 
 # =============================================================================
@@ -874,7 +839,8 @@ def generate_venue_template(venue_dir: str, bpm: int = 128):
 if __name__ == "__main__":
     # Quick test: generate a minimal workspace
     test_scenes = [
-        scene("Test White", *movers_center(),
+        scene("Test White",
+              sharpy(dim=255), bsw(dim=255), profile(dim=255),
               fourbar_solid(*WHITE), *miss_both(*BLUE), ni3k(halo=H_RGB)),
         scene("Test Blackout", *blackout_all()),
     ]
