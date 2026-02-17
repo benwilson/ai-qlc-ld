@@ -5,7 +5,9 @@
 Repetitive, trance-inducing, mesmerizing. Light patterns should lock into a rhythm and
 hold it — the audience's eyes following predictable, repeating movements until they lose
 themselves in the pattern. Think pendulum swing, spiraling tunnel, a single light pulsing
-in perfect sync with a relentless kick drum.
+in perfect sync with a relentless kick drum. Creates a state of "soft fascination" through
+MATHEMATICAL patterns and PRECISE beat synchronization — what induces trance is not just
+slow movement but predictable, synchronized movement that the brain can lock onto.
 
 Use when: deep grooves, repetitive sections, rolling basslines, minimal/hypnotic techno,
 rolling DnB, any sustained rhythmic section where the music locks into a groove.
@@ -16,9 +18,11 @@ emotional
 
 ## Visual References
 
-- A pendulum swinging in a dark room — predictable, rhythmic, mesmerizing
-- The spiraling tunnel sequence from Vertigo — pulling you deeper
+- A pendulum swinging in a dark room — predictable, rhythmic, mesmerizing, impossible to look away
+- The spiraling tunnel sequence from Vertigo — pulling you deeper, rotating perfectly
 - A single candle flame — flickering in perfect rhythm, impossible to look away from
+- Figure-8 ballyhoo pattern — the quintessential hypnotic movement (pan sine wave + tilt at 2x speed)
+- Spinning record on a turntable — mesmerizing rotation, consistent, unchanging
 
 ## Color Scheme
 
@@ -47,8 +51,13 @@ emotional
 - **Contrast ratio**: Low-medium. Smooth, repeating intensity variations. No sudden jumps —
   the predictability is the point.
 - **Blackout frequency**: Very rare. Blackouts break the hypnotic loop. Avoid them.
-- **Number of fixtures active**: Medium. Enough to create the pattern, not so many that it's
-  chaotic. 3–4 fixtures in a coordinated pattern.
+- **Number of fixtures active**: Low-moderate — fewer fixtures, all synchronized, creating
+  trance-like repetition. 3–4 fixtures moving in perfect unison is more hypnotic than 6 fixtures
+  in different patterns.
+- **Fixture density**: Low-moderate — sparse but coordinated. The repetition of a few fixtures
+  in lockstep is more mesmerizing than distributed coverage. Repetition is the hypnotic agent.
+- **Key-to-fill ratio**: Medium (some contrast but synchronized) — typically 1:1 with both key
+  and fill pulsing to the same beat. Everything should feel locked together, never separate.
 - **Dimmer behavior**: Gently pulsing 40–70% range, synced to the beat or a multiple of it.
   The pulse should be subtle enough to feel subliminal.
 
@@ -59,7 +68,8 @@ emotional
 - **Width preference**: Medium. Consistent sweep width — the same arc every time. Predictable,
   repeating paths.
 - **Movement style**: Smooth, repeating loops. PingPong sweeps, figure-8 patterns, circular
-  motion. The same path, over and over. Smooth transitions, never angular.
+  motion. The same path, over and over. Smooth transitions, never angular. The figure-8 ballyhoo
+  (pan sine wave + tilt at 2x speed) is the quintessential hypnotic pattern.
 - **Position hold time**: Brief between movements (the loop should be near-continuous).
 - **Preferred positions**: Sweep paths — LR Sweep (PingPong), Narrow LR, Diamond. Any
   repeating path. Avoid static positions (no movement = no hypnosis).
@@ -75,7 +85,9 @@ emotional
 - **Prism**: Optional. Slow, constant prism rotation creates spiraling beam patterns that
   are inherently hypnotic. Single prism only.
 - **Frost**: Avoid. Hard beams with visible movement paths are more hypnotic than soft washes.
-- **Haze**: Medium. Enough to see the beam patterns clearly.
+- **Haze density**: Medium — consistent haze for beam visibility without distraction. Beams should
+  be clearly visible as they move, creating visual tracking that locks the viewer's attention to
+  the repetitive path.
 
 ## Timing Modifiers
 
@@ -109,3 +121,15 @@ emotional
   sustained for 16–32 bars, subtle variations only. Minimal color changes.
 - **Trance**: Natural for the extended groove sections. Suppress the emotional build/release
   in favor of sustained hypnotic state. Works best for the mid-track groove, not breakdowns.
+- **Melodic Techno**: Good match — hypnotic + melodic-techno = deep flow state. Use locked
+  par chases in cool tones. Movers in slow, repetitive sweeps. The groove becomes almost
+  sacred through perfect synchronization.
+- **Psytrance**: EXCELLENT match — psytrance is inherently hypnotic. Use the psychedelic colors
+  but keep movement patterns mathematic and locked. Figure-8 and spiral patterns are essential.
+  Psytrance's natural build works well with hypnotic's sustained energy.
+- **Liquid DnB**: Good for rolling sections with minimal notes. Keep grooves locked but at
+  lower intensity than aggressive dnb. Works better for the "rolling" concept than fast breakbeats.
+- **Future Bass**: Poor match — future bass is too dynamic and builds/crashes frequently.
+  Hypnotic mood requires sustained repetition, which future bass resists.
+- **Hardstyle**: Poor match — hardstyle's power and impact are incompatible with hypnotic's
+  trance state. Hardstyle demands attention and intensity; hypnotic demands surrender to pattern.

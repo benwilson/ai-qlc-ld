@@ -5,7 +5,9 @@
 Close, personal, warm, small-feeling. Light should make a big room feel like a small one —
 pools of warm light, tight focus areas, the space between people shrinking. The audience
 should feel connected, like they're sharing a private moment. Think candlelit bar, late-night
-conversation, the moment a DJ plays a track just for you.
+conversation, the moment a DJ plays a track just for you. Built on the principle of a single
+beautiful warm light source — the "single candle in darkness" concept where one warm spotlight
+dominates and everything else fades to black.
 
 Use when: vocal-heavy tracks, quiet moments between bangers, deep house grooves, the DJ
 talking to the crowd, b2b moments between artists.
@@ -16,9 +18,11 @@ emotional
 
 ## Visual References
 
-- A candlelit dinner — warm pools of amber light, soft shadows
+- A candlelit dinner — warm pools of amber light, soft shadows, intimate glow (2700K warm white)
 - A jazz club at midnight — smoky, warm, the spotlight barely reaching the edges
 - Campfire in the woods — faces lit by warm glow, darkness just beyond reach
+- Single candle in darkness — the purest intimate principle, one warm source, everything else black
+- Spotlight on a singer — intimate stage moment, warm light, audience in shadow
 
 ## Color Scheme
 
@@ -30,6 +34,7 @@ emotional
 ## Color Filtering
 
 - **Temperature bias**: Warm. Strongly prefer warm colors — ambers, warm whites, soft pinks.
+  Reference warm color temperature: 2700–3000K equivalent (firelight, candlelight, incandescent).
 - **Saturation preference**: Low-medium. Soft, approachable colors. Nothing harsh or
   electric. Colors should feel like firelight, not neon.
 - **Palette selection**: From the genre's two-color pairs, prefer pairs with amber, warm
@@ -49,8 +54,14 @@ emotional
   comfortable range.
 - **Blackout frequency**: None. Blackouts are too dramatic and break the intimate connection.
   Minimum brightness is a soft warm glow (15–20%).
-- **Number of fixtures active**: Medium. 3–4 fixtures creating overlapping pools of warm
-  light. Not too many (overwhelming) or too few (sparse/cold).
+- **Number of fixtures active**: Sparse — 1–2 fixtures maximum, creating a personal spotlight
+  feel. More fixtures dilute the intensity of the personal connection.
+- **Fixture density**: Sparse — 1–2 fixtures maximum. The goal is isolation, not coverage.
+  One beautiful warm source is more intimate than distributed light. Creates the "single candle"
+  principle where one fixture dominates completely.
+- **Key-to-fill ratio**: 6:1 — one warm source dominates, very little fill. The key light is a
+  warm amber/gold; fill (if any) is extremely subtle, allowing the key to dominate emotionally.
+  Creates strong modeling but warm and inviting, not harsh.
 - **Dimmer behavior**: 30–60% range. Moderate brightness that feels comfortable and inviting.
 
 ## Movement Modifiers
@@ -74,8 +85,9 @@ emotional
 - **Prism**: None. Too much visual complexity.
 - **Frost**: Yes. Heavy frost on all movers. Soft pools of light, not hard beams. Intimate
   mood is about softness and warmth.
-- **Haze**: Light. Just enough atmosphere to soften the edges. Heavy haze creates drama;
-  intimate mood avoids drama.
+- **Haze density**: Light — just enough for subtle beam visibility, room should feel clear and close.
+  Heavy haze creates drama and distance; intimate mood wants clarity and proximity. Just enough to
+  soften harsh edges, never enough to obscure the space.
 
 ## Timing Modifiers
 
@@ -107,3 +119,17 @@ emotional
   aesthetic with warmth. Amber and warm white palette.
 - **Trance**: Works for breakdowns with vocals. The intimate moment before the release.
   Pull everything in close, warm it up, then let the euphoric release blow it wide open.
+- **Melodic Techno**: Good match for breakdowns — single amber wash, movers at center or DJ booth,
+  heavy frost creating soft warm glow. Works for the deeply human, introspective moments in
+  melodic techno.
+- **Psytrance**: Poor match — psytrance is inherently expansive and psychedelic. Intimate's
+  single warm source contradicts psytrance's natural spectacle. Only works for rare intro/outro
+  sections.
+- **Liquid DnB**: Excellent match — this IS liquid breakdown lighting. Warm ethereal aesthetic,
+  sparse fixtures, vocals/strings front and center. The liquid DJ playing for you personally.
+- **Future Bass**: Good for vocal breakdowns — single warm source on the vocalist, minimal
+  movement, let the emotional moment breathe. Works for the intimate sections of future bass
+  tracks.
+- **Hardstyle**: Poor match — hardstyle needs scale, power, and visual impact. Intimate's
+  single candle approach contradicts hardstyle's inherent grandeur. Only works for rare
+  intro/buildup moments with explicit emotional framing.

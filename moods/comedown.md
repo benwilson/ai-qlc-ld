@@ -47,10 +47,16 @@ energy
 - **Base brightness**: Decreasing. Start at 80% of genre default, end at 30%.
 - **Contrast ratio**: Decreasing. Start with medium contrast, end with minimal. As the
   comedown progresses, the dynamic range compresses toward "quiet."
-- **Blackout frequency**: None. Blackouts are too jarring during comedown. Let the light
-  fade gently.
+- **Blackout frequency**: None. No jarring blackouts during comedown — smooth fades only.
+  Let the light fade gently without shocking the eye.
 - **Number of fixtures active**: Decreasing. Start with all fixtures, remove one every 4–8
   bars. End with 1–2 fixtures providing ambient glow.
+- **Fixture density**: Decreasing — remove fixtures one at a time, starting with effects
+  (lasers, strobes) then movers then pars. This creates a graceful descent rather than an
+  abrupt drop.
+- **Key-to-fill ratio**: Starts at 2:1, ends at 5:1 — light becomes more focused and isolated
+  as energy drops. Early in the comedown, maintain some directional interest. By the end,
+  the fill should dominate, creating a soft, intimate glow.
 - **Dimmer behavior**: Gradually ramping down. Dimmers decrease by 10–15% every 4–8 bars.
 
 ## Movement Modifiers
@@ -76,7 +82,8 @@ energy
 - **Prism**: Remove. Kill prism in the first 4–8 bars. Return to clean single beams.
 - **Frost**: Add. As the comedown progresses, add frost to soften beams. The light should
   get softer as energy decreases.
-- **Haze**: Reducing (if controllable). Thinner haze matches the lighter feel.
+- **Haze**: Decreasing — let haze thin naturally as energy drops, start at heavy, end at
+  light. The haze removal parallels fixture removal, creating an open, breathing space.
 
 ## Timing Modifiers
 
@@ -105,6 +112,20 @@ energy
 | Late | 17–24 | 40% → 30% | Cool, muted | 2–3 fixtures | Slow → Drift | Add frost, clean beams |
 | Floor | 25+ | 30% stable | Single soft color | 1–2 fixtures | Near-static | None, soft glow only |
 
+## Effect Removal Order (Critical)
+
+The ORDER of effect removal matters — this creates a graceful descent rather than a jarring
+drop:
+
+1. **Strobe off first** (bars 1–4) — Removes the most aggressive element immediately
+2. **Lasers off** (bars 5–8) — Red/green/blue lasers dark, room feels calmer
+3. **Gobos/prisms off** (bars 9–12) — Return to clean, open beams
+4. **Reduce mover count** (bars 13–20) — Remove movers one at a time
+5. **Reduce par intensity** (bars 17–24) — Pars dim gradually
+6. **Final single fixture** (bars 25+) — End with one soft beam, usually a par at 30–40%
+
+This sequence ensures the space feels like it's breathing, not getting strangled.
+
 ## Genre Interaction Notes
 
 - **DnB**: After a drop, the comedown is 8–16 bars. Rapid fixture reduction — from full rig
@@ -118,3 +139,16 @@ energy
 - **Trance**: The comedown after the release is bittersweet. 16–32 bars of gentle fading.
   Colors cooling from euphoric warm to reflective cool. End with a single soft blue or
   purple, setting up for the next section or the outro.
+- **Melodic Techno**: Elegant decline over 20–24 bars. Emphasize color cooling and smooth
+  mover paths. Remove strobes and effects early, let fixtures fade gradually with emphasis
+  on melodic elements.
+- **Psytrance**: Hypnotic descent over 16–20 bars. Slow the repetitive movement patterns.
+  Reduce laser intensity gradually. Let the hypnotic elements fade to silence naturally.
+- **Liquid DnB**: Smooth, melodic comedown over 16–20 bars. Emphasize warm colors cooling.
+  Remove effects early but let movers make graceful closing sweeps. End on soft, warm glow.
+- **Future Bass**: Emotional resolution over 16–24 bars. Color temperature should cool from
+  the emotional peak warmth. Movers should make final elegant sweeps. Pars should fade to
+  a single intimate wash. This is the resolution of the emotional arc.
+- **Hardstyle**: Relatively quick comedown (8–12 bars) as the hardstyle kick intensity
+  drops. Rapid fixture and effect removal. But still smooth — no jarring blackouts. Snap to
+  cooler colors. End on near-silence with minimal light.

@@ -178,7 +178,11 @@ understand the intent and help Claude recreate the feeling in different contexts
 - **Contrast ratio**: [Minimal | Low | Medium | High | Maximum | Extreme]
 - **Blackout frequency**: [None | Rare | Strategic | Medium | High]
 - **Number of fixtures active**: [Description of fixture count behavior]
+- **Fixture density**: [Sparse | Minimal | Moderate | Dense | Maximum — describes how many
+  fixtures are active simultaneously and how that affects the spatial feel]
 - **Dimmer behavior**: [Dimmer range, e.g., "30–60% range"]
+- **Key-to-fill ratio**: [N:1 — ratio of key (directional) to fill (ambient) light.
+  2:1 = bright and open, 8:1 = dramatic with deep shadows, 10:1+ = stark isolation]
 
 ## Movement Modifiers
 
@@ -234,7 +238,12 @@ with no internal progression, omit this section entirely.]
 
 - **DnB**: [How this mood plays with DnB conventions]
 - **Dubstep**: [How this mood plays with dubstep]
+- **Future Bass**: [How this mood plays with future bass]
+- **Hardstyle**: [How this mood plays with hardstyle]
 - **House**: [How this mood plays with house]
+- **Liquid DnB**: [How this mood plays with liquid DnB]
+- **Melodic Techno**: [How this mood plays with melodic techno]
+- **Psytrance**: [How this mood plays with psytrance]
 - **Techno**: [How this mood plays with techno]
 - **Trance**: [How this mood plays with trance]
 ```
@@ -265,11 +274,140 @@ After creating or editing a mood file:
 1. Verify all required sections are present
 2. Verify modifier values are reasonable (e.g., speed multiplier between 0.1x and 3x,
    brightness between 10% and 120%)
-3. Verify genre interaction notes exist for all 5 genres
+3. Verify genre interaction notes exist for all 10 genres (DnB, Dubstep, Future Bass,
+   Hardstyle, House, Liquid DnB, Melodic Techno, Psytrance, Techno, Trance)
 4. Verify the color scheme type is one of: monochromatic, complementary, analogous,
    triadic, split-complementary
 5. Verify the category is either "emotional" or "energy"
 6. If phases are included, verify each has duration, character, and modifier adjustments
+7. Verify fixture density and key-to-fill ratio are present in Intensity Modifiers
+8. Verify haze density is specified in Effect Density
+
+## Professional Techniques Reference
+
+These techniques were distilled from research into professional lighting designers and apply
+to how moods shape a genre's concrete values. Use them when creating or editing mood files.
+
+### How Moods Actually Work in Practice
+
+**Moods Are Multipliers, Not Replacements**
+A mood never overrides a genre's DNA — it scales, filters, and reshapes it. "Dark + House"
+shouldn't feel like dark techno with house timing; it should feel like house music performed
+in a shadowy basement. The genre's warm amber palette gets filtered to deep blues/teals, but
+the par-led foundation and groove-driven timing remain. Always preserve the genre's structural
+identity while transforming its emotional character.
+
+**The Two Levers: What and How Much**
+Every mood modifier operates on two dimensions: (1) what subset of the genre's values to use,
+and (2) how intensely to apply them. "Dark" selects the coolest/darkest colors and reduces
+intensity. "Euphoric" selects the brightest/warmest colors and increases intensity. "Building"
+progressively widens both selection and intensity over time. Make both dimensions explicit in
+every modifier.
+
+### Atmosphere Shaping Techniques
+
+**Key-to-Fill Ratio as Mood Indicator**
+The ratio of directional (key) light to ambient (fill) light is the single most powerful mood
+tool. Low ratios (2:1) feel open, inviting, celebratory — good for euphoric, intimate, peak
+moods. High ratios (8:1+) feel dramatic, isolated, tense — good for dark, aggressive, hypnotic
+moods. When defining a mood, the key-to-fill ratio communicates more about the feeling than
+any other single parameter. Always include it with a concrete number and explanation.
+
+**Fixture Density as Spatial Psychology**
+How many fixtures are active simultaneously changes how the room feels:
+- **Sparse** (1–2 fixtures): Isolation, focus, tension, intimacy. The audience's attention
+  narrows to a single point. Best for dark, intimate, hypnotic moods.
+- **Moderate** (3–5 fixtures): Balanced, comfortable, engaged. Multiple visual elements
+  without overwhelm. Best for chill, building, melancholic moods.
+- **Dense** (most/all fixtures): Immersive, overwhelming, euphoric. Light comes from
+  everywhere. Best for peak, euphoric, chaotic moods.
+State fixture density explicitly and explain the spatial psychology it creates.
+
+**Haze as Mood Amplifier**
+Haze doesn't just make beams visible — it transforms the room's character:
+- Heavy haze + sparse fixtures = oppressive, claustrophobic (dark mood)
+- Heavy haze + dense fixtures = immersive, enveloping (euphoric mood)
+- Light haze + warm colors = honeyed, intimate (intimate mood)
+- No haze + cold colors = clinical, exposed (aggressive mood in a specific context)
+Define haze density as a mood modifier, not just a genre convention.
+
+### Movement as Emotion
+
+**Movement Vocabulary**
+Different movement styles communicate different emotions. Use these descriptors in mood files
+and be specific about what they mean for fixture behavior:
+
+| Movement Style | Emotion | Fixture Behavior |
+|----------------|---------|------------------|
+| Stalking | Menace, dread | Slow angular changes with long holds, deliberate |
+| Soaring | Euphoria, release | Wide sweeping arcs, figure-8s, synchronized |
+| Breathing | Calm, organic | Slow continuous drift, barely perceptible |
+| Drifting | Detachment, trance | Very slow random movement, unfocused |
+| Pounding | Aggression, impact | Sharp snaps synced to beat, minimal transition |
+| Flowering | Beauty, opening | Gradual spread from center, unfurling |
+| Collapsing | Sadness, withdrawal | Convergence to center, narrowing, dimming |
+| Stuttering | Chaos, disorientation | Erratic, unpredictable position changes |
+
+When defining a mood's movement style, reference these archetypes and describe how they
+modify the genre's default movement conventions.
+
+**Movement Speed × Width = Energy**
+Speed and width multiply to create perceived energy. A mood can maintain the same perceived
+energy while changing character by adjusting the ratio:
+- Fast + narrow = nervous, tense, contained (aggressive, building)
+- Fast + wide = explosive, chaotic, overwhelming (peak, chaotic)
+- Slow + narrow = intimate, focused, oppressive (dark, intimate, hypnotic)
+- Slow + wide = epic, soaring, transcendent (euphoric, ethereal)
+
+### Build and Transition Techniques
+
+**The Layering Principle for Building Mood**
+Add ONE new element every 4–8 bars: color → fixture → movement → gobo → laser → release.
+The build is a patience game — the longer you hold back, the more powerful the release. This
+principle extends beyond the "building" energy mood to any transition between low and high
+energy states. Even within a static emotional mood, energy transitions should layer progressively.
+
+**Effect Removal Order for Comedown Mood**
+The inverse of the layering principle. Remove elements in reverse order of impact:
+1. Kill lasers first (biggest spectacle element)
+2. Reduce strobe to nothing
+3. Simplify gobos back to open
+4. Narrow mover width
+5. Reduce par intensity
+6. Slow movement speed
+7. Reduce fixture count to 1–2
+This ordered de-escalation feels natural and prevents jarring transitions.
+
+**Phase Design Patterns**
+Moods with internal phases should follow one of these narrative arcs:
+- **Linear escalation**: Phase 1 → 2 → 3, each more intense (building, peak)
+- **Arc**: Phase 1 (calm) → 2 (peak) → 3 (return), classic dramatic structure (euphoric)
+- **Cycle**: Phases repeat, each iteration slightly different (hypnotic, ethereal)
+- **Strike pattern**: Phase 1 (sustained state) → 2 (brief violent burst) → 1 (return) (dark, aggressive)
+
+### Genre Interaction Wisdom
+
+**The Tension Test**
+When writing genre interaction notes, ask: "Does this mood create productive tension with
+the genre, or does it fight it?" Dark + DnB creates productive tension (neurofunk). Dark +
+House creates a challenging but rewarding pairing (deep house at 4am). Dark + Future Bass
+fights the genre's DNA — possible but requires significant modifier adjustments. State the
+difficulty level and what adjustments are needed.
+
+**Warm vs Cold Genre Foundations**
+Genres have a temperature foundation that moods interact with:
+- **Warm-foundation genres** (house, future bass, liquid DnB, trance): Cool moods create
+  dramatic tension by fighting the natural warmth. Warm moods amplify the natural character.
+- **Cold-foundation genres** (techno, DnB, dubstep): Warm moods soften and humanize.
+  Cold moods push deeper into the genre's natural territory.
+- **Neutral genres** (melodic techno, hardstyle, psytrance): Temperature shifts have maximum
+  impact because there's no strong default to fight.
+
+**The Identity Preservation Rule**
+A mood should never make one genre's output indistinguishable from another genre. "Dark +
+House" should still be recognizably house (par-led, groove-driven, four-on-the-floor). If
+applying a mood makes house look like techno, the mood's modifiers are too aggressive. Test
+this by asking: "Would a DJ recognize this as lighting for their genre?" If not, dial back.
 
 ## Important Notes
 

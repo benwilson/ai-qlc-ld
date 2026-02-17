@@ -50,8 +50,12 @@ emotional
   blackouts (1–2 beats) within sections for tension.
 - **Number of fixtures active**: Minimum. 1–2 fixtures at a time during low energy, 3–4 at
   peak. Never all fixtures simultaneously except for a brief strobe burst.
+- **Fixture density**: Sparse — 1–2 fixtures at a time during low energy, 3–4 max at peak.
+  Sparse density maintains isolation and oppressive atmosphere.
 - **Dimmer behavior**: Keep most fixture dimmers at 50–70% even during "bright" moments.
   Full intensity only for strobes and single-beat impacts.
+- **Key-to-fill ratio**: 10:1 or higher — one dominant light source, almost no fill. The stark
+  ratio reinforces isolation and menace.
 
 ## Movement Modifiers
 
@@ -76,8 +80,8 @@ emotional
   moments of visual complexity.
 - **Frost**: Avoid. Soft/frosted beams are the opposite of what Dark mood wants. Hard, tight
   beams cutting through shadow.
-- **Haze**: Essential. Dark mood depends entirely on visible beams in haze. Without haze,
-  the isolated beams lose their impact.
+- **Haze**: Heavy — darkness needs visible beams cutting through thick haze to create oppressive
+  atmosphere. Without haze, the isolated beams lose their impact. Essential to Dark mood's design.
 
 ## Timing Modifiers
 
@@ -128,3 +132,13 @@ emotional
   blues and teals. Reduce par usage dramatically. Movers only.
 - **Trance**: Challenging pairing — trance's euphoria fights Dark mood. Use for psytrance or
   dark progressive. Favor purples and blues, suppress the bright/warm palette entirely.
+- **Melodic Techno**: Excellent match — Dark mood enhances the Afterlife aesthetic. Push even
+  darker, use cold blue + red only, minimal movement during breakdowns, single beam piercing moments.
+- **Psytrance**: Particularly effective for dark psy variants. Favor green + purple at low
+  intensity, static gobos for hypnotic patterns, slow angular movement creates haunting quality.
+- **Liquid DnB**: Challenging but rewarding. Suppress warmth entirely, favor cold blues + teals,
+  reduce fixture density even lower, use slower fades to preserve the genre's liquid movement.
+- **Future Bass**: Unusual pairing but possible for "dark future bass" aesthetic. Mute the neon
+  saturation, use deep magentas + dark purples, slower position changes than the genre suggests.
+- **Hardstyle**: Excellent for raw hardstyle moments. Red + white + near-blackout creates visceral
+  impact, strobe sparingly on climactic moments, intensity contrast at maximum for drop violence.

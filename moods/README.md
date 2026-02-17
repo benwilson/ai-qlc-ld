@@ -10,9 +10,9 @@ genre provides the raw palette and timing, mood filters and adjusts them toward 
 A mood never defines exact DMX values or specific colors. Instead it defines:
 
 - **Color filtering** — which temperature/saturation range to prefer from the genre palette
-- **Intensity modifiers** — brightness levels, contrast ratios, blackout usage
+- **Intensity modifiers** — brightness levels, contrast ratios, blackout usage, fixture density, key-to-fill ratio
 - **Movement modifiers** — speed scaling, sweep width, movement style
-- **Effect density** — how much strobe, laser, gobo, prism to use
+- **Effect density** — how much strobe, laser, gobo, prism, haze to use
 - **Timing modifiers** — fade speed scaling, hold duration preference
 - **Energy curve** — how the mood shapes energy over time
 
@@ -27,16 +27,16 @@ Every mood file follows a consistent structure:
 
 - **Overview** — What this mood feels like, when to use it
 - **Category** — `emotional` or `energy`
-- **Visual References** — 3 evocative reference images that capture the mood's feeling (e.g., "Berghain at 4am — a single red beam cutting through industrial haze"). Used for creative alignment when designing and as translation anchors for the moods skill.
-- **Color Scheme** — Formal color scheme type (monochromatic, complementary, analogous, triadic, split-complementary) with rationale. Guides the busking skill's color pair selection from the genre palette.
+- **Visual References** — 3 evocative reference images that capture the mood's feeling
+- **Color Scheme** — Formal color scheme type (monochromatic, complementary, analogous, triadic, split-complementary) with rationale
 - **Color Filtering** — Temperature bias, saturation preference, palette selection rules
-- **Intensity Modifiers** — Base level, contrast ratio, blackout behavior
+- **Intensity Modifiers** — Base level, contrast ratio, blackout behavior, fixture density, key-to-fill ratio
 - **Movement Modifiers** — Speed multiplier, width preference, style
-- **Effect Density** — Strobe/laser/gobo/prism usage levels
+- **Effect Density** — Strobe/laser/gobo/prism/haze usage levels
 - **Timing Modifiers** — Fade and hold scaling
 - **Energy Curve** — How energy flows over time in this mood
-- **Phases** *(optional)* — 2–4 internal progression stages for moods that evolve over time. Each phase defines duration, character, and modifier adjustments. Most sustained-state moods (chill, intimate, hypnotic) omit this section. Moods with natural arcs (building, dark, aggressive) use phases to define their progression.
-- **Genre Interaction Notes** — How this mood plays with specific genres
+- **Phases** *(optional)* — 2–4 internal progression stages for moods that evolve over time
+- **Genre Interaction Notes** — How this mood plays with all 10 genres (DnB, Dubstep, Future Bass, Hardstyle, House, Liquid DnB, Melodic Techno, Psytrance, Techno, Trance)
 
 ## Available Moods
 

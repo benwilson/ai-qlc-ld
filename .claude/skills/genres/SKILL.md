@@ -233,6 +233,62 @@ Include the key sonic features that drive lighting decisions.]
 - **[Section]**: [par_wash/par_gradient/par_chase/par_pairs usage]
 - [One entry per major section type]
 
+## Fixture Layering
+
+[Define the fixture hierarchy for each major section. Which fixture type is the PRIMARY
+visual element, which provides SECONDARY texture, and which is the ACCENT layer?]
+
+### [Section 1] Layer Stack
+1. **Foundation (N% of visual)**: [Fixture type] — [Role and behavior]
+2. **Texture layer (N% of visual)**: [Fixture type] — [Role and behavior]
+3. **Accent layer (N% of visual)**: [Fixture type] — [Role and behavior]
+
+### [Section 2] Layer Stack
+[Same structure]
+
+[One subsection per major section type. Every genre has a different fixture hierarchy —
+e.g., house is par-led (60-70% pars), techno is mover-led, dubstep is effect-led.]
+
+## Haze & Atmosphere
+
+[Define haze density requirements per section. Haze is a performance tool, not decoration.]
+
+| Section | Density | Purpose |
+|---------|---------|---------|
+| [Section] | [None/Light/Medium/Heavy/Maximum] ([N-N%]) | [Why this level] |
+| ... | ... | ... |
+
+### Haze + Lighting Interaction
+- [How beams look in haze for this genre]
+- [How strobes interact with haze]
+- [Any genre-specific haze techniques]
+
+## Venue Scale Notes
+
+[How the genre's conventions change between club and festival scale.]
+
+### Club Scale ([capacity])
+- **Fixture count**: [typical range]
+- **Key adaptation**: [what changes at this scale]
+
+### Festival Scale ([capacity])
+- **Fixture count**: [typical range]
+- **Key adaptation**: [what changes at this scale]
+
+### Scaling Philosophy
+[1-2 sentences on the core scaling principle for this genre]
+
+## Notable References
+
+### LDs / Productions
+- **[Name]** — [What they're known for, what to study]
+
+### Venues / Festivals
+- **[Name]** — [Why it exemplifies this genre's lighting]
+
+### Techniques to Study
+- **[Technique name]**: [What it is, when to use it]
+
 ## Key Philosophy
 
 [One paragraph capturing the essence of this genre's lighting approach. What's the single
@@ -284,7 +340,7 @@ Common parent → subgenre relationships:
 
 After creating or editing a genre file:
 
-1. Verify all required sections are present (Overview through Key Philosophy)
+1. Verify all required sections are present (Overview through Key Philosophy, including Fixture Layering, Haze & Atmosphere, Venue Scale Notes, and Notable References)
 2. Verify BPM range includes typical, common, and time signature
 3. Verify energy profile table has at least 5 sections
 4. Verify color palette has 3 primary + 3 accent colors with RGB values and fixture mappings
@@ -292,7 +348,165 @@ After creating or editing a genre file:
 6. Verify timing presets are mathematically correct for the stated BPM
 7. Verify movement conventions cover all sections from the energy profile
 8. Verify strobe, laser, gobo, and par sections exist with per-section guidance
-9. Update `genres/README.md` table to include the new/modified genre
+9. Verify fixture layering defines primary/secondary/accent layers per section
+10. Verify haze section includes density table and interaction notes
+11. Verify venue scale notes cover at least club and festival scale
+12. Verify notable references include at least one LD/production and one venue/festival
+13. Update `genres/README.md` table to include the new/modified genre
+
+## Professional Techniques Reference
+
+These techniques were distilled from research into professional EDM lighting designers and
+landmark productions. Use them as building blocks when creating or editing genre files.
+
+### Core Principles
+
+**Negative Space / Darkness as Design Element**
+Darkness is not the absence of lighting — it's an active design choice. The deeper the darkness
+in quiet sections, the more devastating the bright moments. Every genre has a different
+relationship with darkness: techno treats it as the primary canvas, dubstep uses it to
+maximize drop contrast, house avoids it in favor of warm ambient glow. When defining a genre,
+explicitly state how darkness functions.
+
+**Restraint Earns Impact**
+Every effect gains power through scarcity. A strobe that fires once per track hits harder than
+one that runs every 8 bars. A laser reveal on the second drop is more dramatic than lasers
+running from bar 1. When writing genre conventions, define what's held back and when it's
+released — the restraint/release cycle is the fundamental unit of lighting dramaturgy.
+
+**Fixture Introduction Order**
+During builds, introduce fixtures one at a time, every 4–8 bars. The order of introduction
+creates a narrative: pars first (ambient foundation) → movers (spatial definition) → gobos
+(texture) → prisms (complexity) → lasers (spectacle) → strobe (climax). This layering
+principle applies to every genre — only the timing and density changes.
+
+### Movement Techniques
+
+**Ballyhoo (Figure-8)**
+The fundamental mover movement pattern. Pan and tilt trace a figure-8 in the air, creating
+smooth continuous motion. Works at any speed — slow ballyhoo for atmospheric sections, fast
+for energy. Particularly effective in haze where the beam path becomes visible. Best for:
+rolling bass sections, grooves, sustained energy without chaos.
+
+**Mover Convergence**
+All movers gradually moving toward a single point (center, DJ booth, ceiling hit). Creates
+intimacy and focus. The inverse — movers spreading from center to wide — creates opening
+and release. The convergence/spread cycle maps directly to breakdown/release energy arcs.
+
+**Synchronized Parallel Sweeps**
+All movers executing the same movement in the same direction simultaneously. Creates geometric
+precision and visual unity. More "architectural" than individual random movements. Signature
+technique for techno (geometric precision) and trance (soaring euphoria). The direction and
+speed communicate genre: slow L→R = hypnotic/flowing, sharp angular snaps = aggressive/industrial.
+
+**Beam Geometry in Haze**
+Parallel beams, fan patterns, grid intersections, and crossing patterns are only visible in haze.
+These geometric shapes are the primary design vocabulary for beam-heavy genres (techno, DnB,
+trance). When defining movement conventions, think in terms of the shapes beams create in space,
+not just where fixtures point.
+
+### Color Techniques
+
+**Color Temperature as Energy Indicator**
+Cool colors (blue, cyan, teal) = low energy, introspection, depth. Warm colors (amber, magenta,
+red, white) = high energy, excitement, release. This mapping is nearly universal across EDM
+genres. Builds should shift from cool → warm. Breakdowns should return to cool. Define each
+genre's specific temperature journey in the Color Palette section.
+
+**Color Evolution Journey**
+A track-length color arc that mirrors the emotional narrative. Example (trance): deep blue →
+blue/purple → bright cyan → single pure blue → purple/magenta → white/magenta explosion.
+Every genre should define its characteristic evolution journey in the Color Palette section.
+This gives the busking operator a roadmap for live color decisions.
+
+**Two-Color Pair Philosophy**
+Each pair needs a distinct emotional character and usage context. The operator selects a pair
+and assigns Color A to movers and Color B to pars (or vice versa). Both assignments should
+look good — design pairs that work in either direction. Include at least one pair that uses
+black/off as a color (for dark/minimal moments) and one all-warm pair (for peak energy).
+
+### Par Techniques
+
+**Sidechain Breathing**
+Pars oscillate brightness on the beat, mimicking the sidechain compression that's fundamental
+to electronic music production. The kick "ducks" everything — lighting mirrors this with subtle
+brightness pulses. Implementation: dimmer oscillates ±10–20% on downbeats. Most effective in
+house (where the four-on-the-floor pulse defines everything) and DnB (where the breakbeat
+drives energy). Define the breathing intensity and timing per genre.
+
+**Par-Led vs Mover-Led**
+Some genres are par-led (house: 60-70% of visual from pars), others are mover-led (techno:
+beams are the primary element). This distinction fundamentally shapes the fixture layering.
+When creating a genre, decide which fixture type carries the visual foundation and state it
+explicitly in the Fixture Layering section.
+
+### Effect Techniques
+
+**Strobe Discipline**
+Professional LDs use strobe far less than amateurs expect. Rules of thumb: maximum 2–4 bars of
+sustained strobe per section; always follow strobe with a contrasting moment (blackout or calm);
+white strobe for maximum impact, color strobe for palette continuity; accelerating strobe
+(slow → fast over 4–8 bars) is a build technique, not a drop technique.
+
+**Laser as Architecture**
+Lasers function as spatial architecture — beams cutting through haze define rooms and volumes
+of light. Static laser beams are more "designed" than strobing lasers. In trance, lasers create
+a "cathedral" effect with parallel vertical beams. In techno, a single red laser cutting through
+haze is a Berghain signature. In dubstep, all lasers simultaneously create overwhelming assault.
+Define each genre's laser philosophy in terms of architectural intent, not just on/off rules.
+
+**Gobo Progression**
+Gobos add visual complexity progressively through a build: open beam → static gobo → rotating
+gobo → gobo + prism. This progression works as a secondary build technique alongside fixture
+introduction. Different genres favor different gobo aesthetics: organic/flowing for trance,
+sharp/geometric for techno, mechanical/repetitive for riddim dubstep.
+
+### Haze Techniques
+
+**Haze as Performance Tool**
+Haze is not a static atmospheric effect — it's a dynamic performance tool with its own density
+curve per section. Heavy haze reveals beam geometry but obscures the room. Light haze preserves
+intimacy. No haze makes beams invisible. Every genre file should define a haze density table
+that maps sections to density percentages, just like a dimmer curve.
+
+**Haze + Beam Synergy**
+Beam-heavy genres (techno, DnB, trance) REQUIRE haze for their fundamental aesthetic to work.
+Without haze, geometric beam patterns are invisible — the audience only sees dots of light on
+surfaces. With haze, they see sculpted volumes of light in space. When defining a genre, state
+whether haze is essential, recommended, or optional.
+
+**Haze + Color Interaction**
+Warm colors (amber, gold) in haze create a "honeyed glow" (house signature). Cool colors
+(blue, cyan) in heavy haze feel expansive and deep. White beams in heavy haze create the most
+visible geometry. Red in haze creates industrial warmth. These interactions should inform color
+palette choices — some colors only achieve their intended character in haze.
+
+### Venue Scaling Principles
+
+**Club vs Festival Adaptation**
+When defining venue scale notes, apply these universal scaling rules:
+- **Movement**: Double duration at festival scale (2-bar sweep → 4-bar sweep)
+- **Strobe**: Halve density, extend duration at festival scale
+- **Haze**: Increase density 20-25% at festival scale (larger volume dissipates faster)
+- **Contrast**: Increase section contrast at festival scale (harder to perceive subtlety at distance)
+- **Breakdowns**: Avoid total blackout at festival (back of crowd loses focus); use 20-30% dim instead
+- **Fixture density**: More fixtures doesn't mean all-on — restraint at large scale is harder and more impactful
+
+**The Constant Across Scales**
+Every genre has one element that doesn't change with scale — identify and state it. For house,
+it's warm amber/gold foundation. For techno, it's geometric precision. For dubstep, it's the
+blackout-to-drop contrast ratio. This constant is the genre's identity regardless of venue.
+
+### Notable Reference Patterns
+
+When writing the Notable References section, include:
+- **At least one LD or production team** with a named technique to study
+- **At least one venue or festival** that exemplifies the genre's lighting DNA
+- **Specific techniques** named and described concretely enough to recreate
+- **A lesson** for each reference — what principle it teaches about the genre
+
+Good references are specific: "Ed Warren's philosophy: hit the beat, the off beat, wait for the
+last possible moment" is actionable. "DnB lighting is energetic" is not.
 
 ## Important Notes
 

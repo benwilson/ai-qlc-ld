@@ -51,6 +51,12 @@ energy
   setup for whatever comes next (often a dramatic blackout → explosion).
 - **Number of fixtures active**: Progressive. Start with 1 fixture, add one every 4–8 bars.
   By the peak, most or all fixtures are active.
+- **Fixture density**: Progressive — start with 1–2 fixtures, add one every 4–8 bars. This
+  layering IS the build. Each new fixture adds a perceptible step in energy. Never add more
+  than one fixture at a time.
+- **Key-to-fill ratio**: Starts at 6:1, ends at 3:1 — light becomes more even as energy rises.
+  Early in the build, use dramatic directional light with deep shadows. As energy builds, add
+  fill light to create a more unified, overwhelmingly bright space.
 - **Dimmer behavior**: Ramping. Gradually increase from 30% to 90% over the build duration.
 
 ## Movement Modifiers
@@ -77,7 +83,9 @@ energy
 - **Prism**: Progressive. Off at start. Add prism in the final 4–8 bars. Prism is a
   "penultimate" effect that signals the climax is near.
 - **Frost**: Start frosted (soft), end open (hard). The beams "sharpen" as the build peaks.
-- **Haze**: Medium-heavy. Builds look best with clear beam visibility.
+- **Haze**: Increasing — start at light (20%), end at medium-heavy (60–70%) by the time the
+  build crests. The haze thickens in parallel with energy, creating visible beams that
+  emphasize the growing intensity.
 
 ## Timing Modifiers
 
@@ -117,6 +125,13 @@ energy
 - **Modifier adjustments**: Base brightness 80%, most fixtures, warm/bright palette, fast movement,
   accelerating strobe in final 2 bars.
 
+## Core Principle: Patience and Layering
+
+The key insight is **LAYERING** — add ONE new element every 4–8 bars: color → fixture →
+movement → gobo → laser → release. The build is a patience game — the longer you hold back,
+the more powerful the release. Rushing kills the build. Never add more than one fixture at
+a time. Let each addition breathe and register with the audience before the next arrives.
+
 ## Genre Interaction Notes
 
 - **DnB**: Classic DnB build. Accelerating par chase, movers spreading, strobe acceleration,
@@ -130,3 +145,17 @@ energy
 - **Trance**: The longest builds. 16–32 bars of gradual layering. Color evolution from cool
   to warm. The most dramatic "fixture adding" progression. Strobe acceleration in the
   final 4 bars.
+- **Melodic Techno**: Excellent — melodic techno lives in the build space. Use gradual color
+  and fixture layering over 16–24 bars. The build is the entire section, not a prelude to
+  a drop.
+- **Psytrance**: Good — psytrance builds are long and hypnotic. 24–32 bars of gradual
+  intensity increase with cyclical movement patterns. Add layers slowly. The hypnotic
+  repetition IS the build.
+- **Liquid DnB**: Good for vocal builds. Smoother than DnB builds but still progressive.
+  16–24 bars. Emphasize melodic elements alongside fixture additions.
+- **Future Bass**: Essential — future bass emotional builds are critical to the genre.
+  16–32 bars of careful layering with emphasis on color temperature shifts. The build
+  carries the emotional arc of the track.
+- **Hardstyle**: PERFECT — hardstyle builds are the most dramatic in EDM. 16–32 bars of
+  relentless fixture/color/effect addition. The hardstyle kick enters partway through and
+  drives the acceleration. Peak payoff is crucial.

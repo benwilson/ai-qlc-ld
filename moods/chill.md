@@ -48,6 +48,10 @@ energy
 - **Blackout frequency**: None. Too dramatic. Minimum brightness never drops below 15%.
 - **Number of fixtures active**: Low. 2–3 fixtures maximum. Pars doing most of the work.
   Movers optional — if used, one at a time at low intensity.
+- **Fixture density**: Minimal — 1–2 fixtures at most, barely noticeable lighting. Let the pars
+  carry the weight of the mood. Movers are secondary accent only.
+- **Key-to-fill ratio**: 3:1 — soft directional light with some ambient fill. Avoid hard
+  shadows. The fill should be nearly as bright as the key.
 - **Dimmer behavior**: 15–35% range. Barely on. Comfortable background glow.
 
 ## Movement Modifiers
@@ -69,7 +73,8 @@ energy
 - **Gobos**: None. Clean, simple light.
 - **Prism**: None.
 - **Frost**: Optional. Frost softens movers to create gentle ambient wash.
-- **Haze**: Minimal. Just enough for a hint of atmosphere.
+- **Haze**: Light — barely there, just enough for ambient glow. The haze should be invisible
+  unless you're specifically looking for it. A barely-perceptible shimmer in the air.
 
 ## Timing Modifiers
 
@@ -92,10 +97,20 @@ energy
 
 - **All genres**: Chill mood overrides most genre-specific conventions. Regardless of genre,
   chill means low, slow, and quiet. DnB at 174 BPM with chill mood still uses slow, muted
-  lighting.
+  lighting. The room should feel like it's "sleeping" with light.
 - **DnB**: Suppress all drop/breakdown dynamics. Constant low-energy ambient.
 - **House**: Most natural pairing. Deep house warmup set = chill mood + house genre.
 - **Techno**: Works for ambient techno sets. Even more minimal than techno's already
   minimal conventions.
 - **Trance/Dubstep**: Overrides the genre's dynamic conventions entirely. Everything
   stays flat and quiet.
+- **Melodic Techno**: Good for opener/warmup phase. Use chill mood to establish a calm,
+  welcoming tone before introducing melodic elements.
+- **Psytrance**: Poor match. Psytrance doesn't do chill — the hypnotic builds and constant
+  motion are antithetical to chill's stillness. Avoid this pairing.
+- **Liquid DnB**: Good for intro sections. The smooth, flowing nature of liquid DnB pairs
+  naturally with chill's gentle ambient approach.
+- **Future Bass**: Poor match. Future bass demands dynamic emotion and intensity changes.
+  Chill flattens that essential emotional variation.
+- **Hardstyle**: Very poor match. Hardstyle's relentless kick and impact energy cannot
+  coexist with chill's minimalism. Avoid entirely.

@@ -49,6 +49,11 @@ energy
   peak section. Brief darkness makes the light hit harder.
 - **Number of fixtures active**: Maximum. All fixtures, all the time. This is the moment
   where everything comes together.
+- **Fixture density**: Maximum — every fixture active, creating overwhelming visual density.
+  Don't hold anything back. The rig should feel fully deployed.
+- **Key-to-fill ratio**: 1.5:1 — nearly flat lighting, everything bright, minimal shadow.
+  The room should feel illuminated from all angles simultaneously. Avoid directional pools
+  of light — aim for uniform, all-encompassing brightness.
 - **Dimmer behavior**: 90–100% range. Full blast. No subtlety.
 
 ## Movement Modifiers
@@ -71,7 +76,9 @@ energy
   open beam for clean brightness.
 - **Prism**: Yes. Prism engaged for beam multiplication. Spinning for dynamic visual texture.
 - **Frost**: No. Hard, defined beams for maximum visual impact and brightness.
-- **Haze**: Heavy. Maximum beam visibility.
+- **Haze**: Heavy — maximum beam visibility for the full rig at full power. The haze should
+  make every beam in the venue instantly visible. The air itself becomes part of the lighting
+  design.
 
 ## Timing Modifiers
 
@@ -96,12 +103,17 @@ energy
 ## Internal Dynamics
 
 Peak mood should still have variation within its high-energy state to prevent audience
-fatigue. Techniques:
+fatigue. Peak needs INTERNAL DYNAMICS to avoid going stale. Even at max energy, vary the
+look every 4–8 bars to maintain visual excitement.
+
+Techniques:
 
 - **Color swap every 4–8 bars**: Same intensity, different palette keeps it fresh.
 - **Movement pattern change every 8 bars**: Sweep → cross → spread → sweep.
 - **Effect rotation**: Strobe for 4 bars → clean for 4 bars → gobo for 4 bars.
-- **Brief blackout accents**: 1-beat blackouts on big drum hits for punctuation.
+- **Brief blackout accents**: 1-beat blackout on big drum hits for punctuation. The brief
+  blackout accent (1 beat) is the secret weapon at peak — it resets the eye and makes
+  everything feel brighter when it returns.
 - **Fixture focus shifts**: Feature different fixture groups for 4-bar stretches —
   mover-heavy → par-heavy → all together.
 
@@ -117,3 +129,17 @@ fatigue. Techniques:
   Fast but precise mover movements. Strobe in industrial pulse pattern.
 - **Trance**: The main release after the breakdown. Full euphoric peak — wide sweeps, bright
   colors, all fixtures, lasers. The most emotionally satisfying peak.
+- **Melodic Techno**: Sustained brightness without aggression. All fixtures active but
+  focused on smooth movement arcs and color elegance rather than chaos. Less strobe,
+  more precision.
+- **Psytrance**: Hypnotic chaos with rhythm. All effects active, but locked to the hypnotic
+  pulse. Movement patterns lock to the breakdown/spiral structure. Lasers running
+  continuously.
+- **Liquid DnB**: Melodic and bright. Full rig but with emphasis on smooth mover arcs and
+  color warmth rather than harsh strobes. Balance brightness with musicality.
+- **Future Bass**: Emotional climax. All fixtures at full intensity but emphasize smooth
+  transitions and emotional color evolution. Less strobe, more elegant light shapes. The
+  peak is about the feeling, not shock value.
+- **Hardstyle**: MAXIMUM everything. Hardstyle peaks are the most aggressive in EDM. All
+  strobes, all lasers, all fixtures, rapid color snaps, intense mover movements. The drop
+  hits like a physical force.

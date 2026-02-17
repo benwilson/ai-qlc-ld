@@ -50,7 +50,11 @@ emotional
   keeps the room lit.
 - **Number of fixtures active**: Maximum. All fixtures contributing to the look. The whole
   room should glow.
+- **Fixture density**: Maximum. Every fixture in the venue is active. The room radiates light
+  from all directions simultaneously — no dark corners, no quiet areas.
 - **Dimmer behavior**: 70–100% range. Even "pulled back" moments stay bright.
+- **Key-to-fill ratio**: 2:1. Nearly even light distribution — bright key light but significant
+  fill to avoid harsh shadows. The room is open and bright, with minimal shadow play.
 
 ## Movement Modifiers
 
@@ -77,7 +81,8 @@ emotional
 - **Frost**: Optional. Frosted beams create wide washes that fill the room. Works well on
   some fixtures while others stay tight for definition.
 - **Haze**: Medium-heavy. Bright beams through haze create the "beams from heaven" look
-  that defines euphoric lighting.
+  that defines euphoric lighting. Vertical beams cutting through haze is the signature
+  euphoric visual — pure, transcendent light rays.
 
 ## Timing Modifiers
 
@@ -104,8 +109,23 @@ emotional
   conventions. Bright colors, wide movements, joyful energy even during drops.
 - **Dubstep**: Unusual pairing — works for melodic dubstep drops (Illenium style). Replace
   the darkness with brightness, the aggression with exhilaration.
+- **Future Bass**: Excellent match. Future bass drops are inherently euphoric — wide, warm
+  pads meeting bright spotlights. Triadic colors shine here. Use the warm palette (gold/cyan)
+  with maximum fixture density and haze for ethereal beams.
+- **Hardstyle**: Perfect for euphoric hardstyle climaxes. Blue + white + gold combination at
+  maximum intensity with wide sweeps creates a stadium-filling euphoric moment. Suppress
+  the aggressive strobe conventions — keep light warm and celebratory.
 - **House**: Excellent match. House + euphoric = peak-time disco-influenced festival moment.
   Push house's warm palette to its brightest. All pars full, sweeping movers, joyful.
+- **Liquid DnB**: PERFECT match. This IS liquid DnB at its best — emotional breakdowns with
+  euphoric resolution. Use the triadic color scheme in conjunction with warm ambers and
+  bright cyans. Beams from heaven through haze essential here.
+- **Melodic Techno**: Good for peak moments — push the warm palette to maximum brightness.
+  Override techno's minimalism with euphoric abundance. Bright pads + full fixtures + beams
+  create a transcendent moment that still respects techno's structure.
+- **Psytrance**: Works for progressive psytrance peaks. Replace the darkness with euphoric
+  light. Psychedelic palette works well — multiple simultaneous colors reading as visual
+  richness. Organic gobos optional (mandala/flower patterns add magic without aggression).
 - **Techno**: Challenging — techno's restraint fights euphoric's expressiveness. Can work for
   melodic techno peaks. Let the euphoria override the minimal aesthetic briefly.
 - **Trance**: Perfect pairing. This IS what trance lighting is at its best — the main release

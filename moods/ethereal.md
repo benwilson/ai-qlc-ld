@@ -5,7 +5,9 @@
 Dreamy, floating, otherworldly. Light should feel like it exists independent of the room —
 shafts of color drifting through space, slow movements that seem to breathe on their own.
 The audience should feel weightless, transported. Think sunrise over clouds, bioluminescent
-ocean, cathedral light through stained glass.
+ocean, cathedral light through stained glass. Creates a state of "soft fascination" —
+gentle, pleasurable visual engagement like a lava lamp, where the eye is drawn and held
+without tension.
 
 Use when: melodic and atmospheric sets, ambient intros, emotional breakdowns, liquid DnB,
 deep/progressive house, uplifting trance breakdowns.
@@ -16,9 +18,11 @@ emotional
 
 ## Visual References
 
-- Sunrise seen from above the clouds — soft light filtering through mist
-- Underwater bioluminescence — gentle organic glowing in deep blue-black water
-- Cathedral light through stained glass — colored shafts drifting through dusty air
+- Sunrise seen from above the clouds — soft light filtering through mist, hazy and boundless
+- Underwater bioluminescence — gentle organic glowing in deep blue-black water, pulsing softly
+- Cathedral light through stained glass — colored shafts drifting through dusty air, sacred
+- Lava lamp effect — slow, organic color drifts in a confined but infinite-feeling space
+- Jellyfish in moonlit water — translucent, glowing, undulating gently
 
 ## Color Scheme
 
@@ -48,8 +52,12 @@ emotional
   from dark to bright.
 - **Blackout frequency**: Very rare. Blackouts break the dreamlike state. Instead, fade to
   a minimal glow (10–15% single color wash) for "quiet" moments.
-- **Number of fixtures active**: Medium-high. More fixtures at lower intensity creates a
-  richer, more enveloping atmosphere than fewer fixtures at high intensity.
+- **Number of fixtures active**: Moderate — enough fixtures to create an enveloping wash, but not
+  overwhelming. 4–6 fixtures at reduced intensity creates richer atmosphere than 2–3 at full power.
+- **Fixture density**: Moderate — purposeful coverage without saturation. The room should feel
+  wrapped in light, not filled with it.
+- **Key-to-fill ratio**: Low (soft light everywhere) — typically 1:1 or 1:2, where both key and fill
+  sources are dimmed equally, creating unified soft wash rather than dramatic modeling.
 - **Dimmer behavior**: Keep all fixtures in the 30–60% range. Full intensity is too harsh.
   Even peak moments should max around 75%.
 
@@ -75,10 +83,11 @@ emotional
   rotation creates beautiful texture in haze. Think flowing water or dappled light.
 - **Prism**: Optional. Single prism with slow rotation creates multiplied drifting beams.
   Beautiful in haze.
-- **Frost**: Yes. Frost on movers softens beams from hard points to gentle washes. This is
-  the signature look of ethereal mood.
-- **Haze**: Essential at medium density. Too thick and it becomes soup; too thin and the
-  beams don't float.
+- **Frost**: Essential. Frost on movers softens beams from hard points to gentle washes. This is
+  the signature look of ethereal mood — soft diffused beams are core to the aesthetic.
+- **Haze density**: Medium-heavy — creates the misty, dreamlike atmosphere essential to ethereal mood.
+  Beams should float visibly through haze without becoming soup. Haze is the canvas that makes
+  ethereal lighting work.
 
 ## Timing Modifiers
 
@@ -110,3 +119,16 @@ emotional
   into the hypnotic qualities. Soft rather than hard.
 - **Trance**: Excellent for breakdowns and emotional sections. Trance's sweeping movements
   + ethereal's slow speed = gorgeous floating light. Apply heavily during breakdowns.
+- **Melodic Techno**: PERFECT match — this IS the Afterlife/deep Mediterranean aesthetic. Warm
+  ethereal blues, slow fades, minimal movement, no drama. The genre is already dreamy; ethereal
+  simply intensifies the floaty, transcendent feel.
+- **Psytrance**: Unusual but works for progressive psy sections. Suppress the aggressive psychedelic
+  colors (keep ethereal cool palette). Use for slow, hypnotic buildup sections rather than peak chaos.
+- **Liquid DnB**: Excellent match — warm ethereal aesthetic for liquid breakdowns with vocals.
+  Movers on wide sweeps, pars in soft gradient. Let liquid basslines and strings shine through
+  gentle light.
+- **Future Bass**: Works well for emotional/vocal breakdowns. Ethereal softness counterbalances
+  future bass's intense drops. Use for "drop aftermath" moments with heavy frost and haze.
+- **Hardstyle**: Challenging pairing — only applicable to euphoric hardstyle breakdowns with
+  emotional/uplifting sections. Never for the hard kick sections. Requires dramatic suppression
+  of intensity and effect density.
