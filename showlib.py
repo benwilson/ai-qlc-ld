@@ -310,20 +310,64 @@ def ni3k(pan=128, t1=64, t2=64, t3=64,
 # BLACKOUT HELPERS
 # =============================================================================
 
+# DSC (Downstage Center) pan/tilt — the default mover park position.
+# Movers hold here when blacked out to prevent unwanted pan spins.
+_DSC_SHARPY = (158, 6)    # (pan, tilt)
+_DSC_BSW    = (179, 27)
+_DSC_PROF   = (64, 145)
+_DSC_NI3K   = 128          # pan only
+
 def blackout(fixture_id: int, num_channels: int):
-    """Generic blackout for any fixture."""
+    """Generic blackout for any fixture (all channels to 0).
+
+    WARNING: For movers (Sharpy, BSW, Profile, NI3K), this sends pan/tilt
+    to 0, causing physical head movement. Use the dark_*() functions instead
+    to black out movers while keeping them parked at DSC.
+    """
     return (fixture_id, [(i, 0) for i in range(num_channels)])
 
+
+def dark_sharpy(pan=None, tilt=None):
+    """Sharpy with output killed but head parked at a position.
+    Defaults to DSC. Prevents pan spins during blackout scenes."""
+    p, t = pan or _DSC_SHARPY[0], tilt or _DSC_SHARPY[1]
+    return sharpy(pan=p, tilt=t, dim=0, strobe=SHARPY_CLOSED)
+
+
+def dark_bsw(pan=None, tilt=None):
+    """BSW with output killed but head parked at a position.
+    Defaults to DSC. Prevents pan spins during blackout scenes."""
+    p, t = pan or _DSC_BSW[0], tilt or _DSC_BSW[1]
+    return bsw(pan=p, tilt=t, dim=0, shutter=BSW_SHUT_CLOSED)
+
+
+def dark_profile(pan=None, tilt=None):
+    """Profile with output killed but head parked at a position.
+    Defaults to DSC. Prevents tilt flips during blackout scenes."""
+    p, t = pan or _DSC_PROF[0], tilt or _DSC_PROF[1]
+    return profile(pan=p, tilt=t, dim=0)
+
+
+def dark_ni3k(pan=None):
+    """NI3K with all output killed but pan parked at a position.
+    Defaults to DSC. LEDs, lasers, halo all off."""
+    p = pan or _DSC_NI3K
+    return ni3k(pan=p, dim=0, r=0, g=0, b=0, w=0,
+                halo=H_OFF, rl=LASER_OFF, gl=LASER_OFF, bl=LASER_OFF)
+
+
 def blackout_all():
-    """Returns list of blackout tuples for all 7 fixtures."""
+    """All fixtures blacked out with movers parked at DSC.
+    Pars/missyees zero all channels. Movers zero output but hold
+    pan/tilt at DSC to prevent unwanted physical head movement."""
     return [
-        blackout(FX_BSW, CH_BSW),
+        dark_bsw(),
         blackout(FX_4BAR, CH_4BAR),
-        blackout(FX_NI3K, CH_NI3K),
-        blackout(FX_PROFILE, CH_PROFILE),
+        dark_ni3k(),
+        dark_profile(),
         blackout(FX_MISS1, CH_MISS),
         blackout(FX_MISS2, CH_MISS),
-        blackout(FX_SHARPY, CH_SHARPY),
+        dark_sharpy(),
     ]
 
 # =============================================================================

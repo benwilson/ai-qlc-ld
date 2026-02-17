@@ -264,9 +264,22 @@ Skills are specialized instructions in `.claude/skills/` that guide specific tas
 Genre provides concrete values (specific colors, ms timing, DMX channel values). Mood applies abstract modifiers (prefer cool colors, dim to 60%, slow movement 0.5x, no strobe). The busking skill reads both files and applies the mood's modifiers to the genre's values. The same mood applied to different genres produces different concrete results but the same emotional character.
 
 ### Song-Synced Shows
-7. **song-analysis** — Finds a song in `songs/` (or picks an unanalyzed one), runs `./analyze.sh` to extract BPM/beats/structure/energy/onsets, presents a human-readable summary of the analysis data, then transitions into show creation — gathering venue, genre/mood, and creative direction before building the generator script. This is the entry point for all song-synced shows.
+7. **song-analysis** — Finds a song in `songs/` (or picks an unanalyzed one), runs `./analyze.sh` to extract BPM/beats/structure/energy/onsets, presents a human-readable summary of the analysis data, then transitions into show creation. This is the entry point for all song-synced shows.
 
-The full song-synced pipeline: **song-analysis** (find + analyze + review) → gather creative direction → write generator in `venue/<name>/generators/` using `showlib.py` → output `.qxw` to `venue/<name>/shows/`. Song-synced shows can reference genre conventions for palette/timing guidance but don't use the busking skill.
+The full song-synced pipeline:
+
+1. **song-analysis** — find + analyze + present summary
+2. **Gather creative direction** (ask the user ALL of these before writing any code):
+   - **Venue**: Which venue to use (list `venue/` subdirectories)
+   - **Genre**: Single-select from `genres/*.md` — suggest one based on BPM but let user override
+   - **Mood(s)**: Multi-select from `moods/*.md` — suggest options that fit the track but let user choose
+   - **Creative direction**: Any additional color preferences, constraints, or references
+3. **Read selected files**: Read the chosen genre `.md` and all chosen mood `.md` files. Apply mood modifiers to genre values (moods are abstract modifiers that shape how genre values get applied).
+4. **Write generator** in `venue/<name>/generators/` using `showlib.py`
+5. **Output `.qxw`** to `venue/<name>/shows/`
+6. **Write show notes** to `venue/<name>/shows/notes/`
+
+Genre + mood files are NOT optional — they define the palette, timing, movement, and effect conventions that make shows genre-appropriate. Always read them and apply their rules.
 
 ## QLC+ 5.0.1 XML Formatting Rules
 
@@ -337,3 +350,13 @@ Learned from QLC+ re-saving workspace files. Follow these exactly to avoid needi
 - `par_pairs()` (P1+P3 vs P2+P4 + missyees split) = balanced texture. Good for verses/builds.
 - `par_gradient()` (4BAR gradient + missyees split) = subtle depth. Good for building sections.
 - When user asks for "cohesive and uniform" pars, default to `par_wash()` for drops and `par_gradient()` for builds.
+
+### Mover Reset Position
+- Movers should always reset to **DSC** (Downstage Center) between sections. This is the default "home" position for section transitions — when a section ends and the next begins, movers snap or crossfade to DSC before moving to their first position in the new section. This creates a consistent visual anchor and prevents jarring mid-air movements between sections.
+
+### Mover Blackout: dark_*() Not blackout()
+- **Never use `blackout(FX_*, CH_*)` on movers** (Sharpy, BSW, Profile, NI3K). `blackout()` sets ALL channels to 0, including pan/tilt, which sends the physical head spinning to its home position (pan=0) even though the beam is off. This creates ugly visible pan spins.
+- **Use `dark_sharpy()`, `dark_bsw()`, `dark_profile()`, `dark_ni3k()`** instead. These zero the output (dimmer=0, shutter=closed) but keep pan/tilt parked at DSC by default, or at a specified position.
+- **Position tracking**: When one mover is active and others are dark, park the dark movers at the **same position** as the active one. This way, if they turn on later, they're already aimed correctly. Example: `solo_sharpy()` should use `dark_bsw(pan=bp, tilt=bt)` where bp/bt match the Sharpy's target position.
+- **`blackout_all()`** is safe — it already uses `dark_*()` for movers internally.
+- **`blackout()` is fine for pars/missyees** — they have no pan/tilt.
