@@ -217,7 +217,7 @@ next_row()
 
 next_y += 10
 sid = add_scene("BSW: Center White",
-    bsw(pan=7, tilt=19, color=BSW_WHITE, shutter=BSW_SHUT_OPEN, dim=255),
+    bsw(pan=177, tilt=19, color=BSW_WHITE, shutter=BSW_SHUT_OPEN, dim=255),
     blackout(FX_SHARPY, CH_SHARPY), blackout(FX_PROFILE, CH_PROFILE),
     blackout(FX_NI3K, CH_NI3K), blackout(FX_4BAR, CH_4BAR),
     blackout(FX_MISS1, CH_MISS), blackout(FX_MISS2, CH_MISS),
@@ -226,7 +226,7 @@ add_button("BSW: Center", sid, VC_PURPLE, col=1)
 next_row()
 
 sid = add_scene("BSW: Red",
-    bsw(pan=7, tilt=19, color=BSW_RED),
+    bsw(pan=177, tilt=19, color=BSW_RED),
     blackout(FX_SHARPY, CH_SHARPY), blackout(FX_PROFILE, CH_PROFILE),
     blackout(FX_NI3K, CH_NI3K), blackout(FX_4BAR, CH_4BAR),
     blackout(FX_MISS1, CH_MISS), blackout(FX_MISS2, CH_MISS),
@@ -235,7 +235,7 @@ add_button("BSW: Red", sid, VC_PURPLE, col=1)
 next_row()
 
 sid = add_scene("BSW: Blue",
-    bsw(pan=7, tilt=19, color=BSW_BLUE),
+    bsw(pan=177, tilt=19, color=BSW_BLUE),
     blackout(FX_SHARPY, CH_SHARPY), blackout(FX_PROFILE, CH_PROFILE),
     blackout(FX_NI3K, CH_NI3K), blackout(FX_4BAR, CH_4BAR),
     blackout(FX_MISS1, CH_MISS), blackout(FX_MISS2, CH_MISS),
@@ -245,7 +245,7 @@ next_row()
 
 # Pan test
 sid = add_scene("BSW: Pan Left",
-    bsw(pan=100, tilt=19, color=BSW_WHITE),
+    bsw(pan=189, tilt=29, color=BSW_WHITE),
     blackout(FX_SHARPY, CH_SHARPY), blackout(FX_PROFILE, CH_PROFILE),
     blackout(FX_NI3K, CH_NI3K), blackout(FX_4BAR, CH_4BAR),
     blackout(FX_MISS1, CH_MISS), blackout(FX_MISS2, CH_MISS),
@@ -254,7 +254,7 @@ add_button("BSW: Pan L", sid, VC_PURPLE, col=1)
 next_row()
 
 sid = add_scene("BSW: Pan Right",
-    bsw(pan=200, tilt=19, color=BSW_WHITE),
+    bsw(pan=170, tilt=23, color=BSW_WHITE),
     blackout(FX_SHARPY, CH_SHARPY), blackout(FX_PROFILE, CH_PROFILE),
     blackout(FX_NI3K, CH_NI3K), blackout(FX_4BAR, CH_4BAR),
     blackout(FX_MISS1, CH_MISS), blackout(FX_MISS2, CH_MISS),
@@ -264,7 +264,7 @@ next_row()
 
 # Gobo 1 test
 sid = add_scene("BSW: Gobo 1-3",
-    bsw(pan=7, tilt=19, color=BSW_WHITE, gobo1=BSW_G1_3),
+    bsw(pan=177, tilt=19, color=BSW_WHITE, gobo1=BSW_G1_3),
     blackout(FX_SHARPY, CH_SHARPY), blackout(FX_PROFILE, CH_PROFILE),
     blackout(FX_NI3K, CH_NI3K), blackout(FX_4BAR, CH_4BAR),
     blackout(FX_MISS1, CH_MISS), blackout(FX_MISS2, CH_MISS),
@@ -274,7 +274,7 @@ next_row()
 
 # Prism test
 sid = add_scene("BSW: Prism",
-    bsw(pan=7, tilt=19, color=BSW_BLUE, prism=128, prot=160),
+    bsw(pan=177, tilt=19, color=BSW_BLUE, prism=128, prot=160),
     blackout(FX_SHARPY, CH_SHARPY), blackout(FX_PROFILE, CH_PROFILE),
     blackout(FX_NI3K, CH_NI3K), blackout(FX_4BAR, CH_4BAR),
     blackout(FX_MISS1, CH_MISS), blackout(FX_MISS2, CH_MISS),
@@ -284,7 +284,7 @@ next_row()
 
 # Strobe test
 sid = add_scene("BSW: Strobe",
-    bsw(pan=7, tilt=19, color=BSW_WHITE, shutter=BSW_SHUT_STROBE_SLOW),
+    bsw(pan=177, tilt=19, color=BSW_WHITE, shutter=BSW_SHUT_STROBE_SLOW),
     blackout(FX_SHARPY, CH_SHARPY), blackout(FX_PROFILE, CH_PROFILE),
     blackout(FX_NI3K, CH_NI3K), blackout(FX_4BAR, CH_4BAR),
     blackout(FX_MISS1, CH_MISS), blackout(FX_MISS2, CH_MISS),
@@ -460,7 +460,7 @@ next_y = combo_y
 # All movers center white
 sid = add_scene("All Movers: Center White",
     sharpy(pan=153, tilt=0, colormacro=SHARPY_WHITE),
-    bsw(pan=7, tilt=19, color=BSW_WHITE),
+    bsw(pan=177, tilt=19, color=BSW_WHITE),
     profile(pan=0, tilt=123, color=PROF_WHITE),
     blackout(FX_NI3K, CH_NI3K), blackout(FX_4BAR, CH_4BAR),
     blackout(FX_MISS1, CH_MISS), blackout(FX_MISS2, CH_MISS),
@@ -471,7 +471,7 @@ next_row()
 # All movers spread
 sid = add_scene("All Movers: Spread",
     sharpy(pan=220, tilt=15, colormacro=SHARPY_BLUE),
-    bsw(pan=80, tilt=5, color=BSW_BLUE),
+    bsw(pan=189, tilt=29, color=BSW_BLUE),
     profile(pan=30, tilt=100, color=PROF_BLUE),
     blackout(FX_NI3K, CH_NI3K), blackout(FX_4BAR, CH_4BAR),
     blackout(FX_MISS1, CH_MISS), blackout(FX_MISS2, CH_MISS),
@@ -502,7 +502,7 @@ next_row()
 # Everything on — full rig test
 sid = add_scene("FULL RIG: White",
     sharpy(pan=153, tilt=0, colormacro=SHARPY_WHITE),
-    bsw(pan=7, tilt=19, color=BSW_WHITE),
+    bsw(pan=177, tilt=19, color=BSW_WHITE),
     profile(pan=0, tilt=123, color=PROF_WHITE),
     fourbar_solid(255, 255, 255),
     miss_both(255, 255, 255),
@@ -514,7 +514,7 @@ next_row()
 # Everything on — color
 sid = add_scene("FULL RIG: Blue",
     sharpy(pan=153, tilt=0, colormacro=SHARPY_BLUE),
-    bsw(pan=7, tilt=19, color=BSW_BLUE),
+    bsw(pan=177, tilt=19, color=BSW_BLUE),
     profile(pan=0, tilt=123, color=PROF_BLUE),
     fourbar_solid(0, 0, 255),
     miss_both(0, 0, 255),
@@ -526,7 +526,7 @@ next_row()
 # Full rig with lasers
 sid = add_scene("FULL RIG: Party",
     sharpy(pan=153, tilt=0, colormacro=SHARPY_PURPLE, prism1=128, p1r=200),
-    bsw(pan=7, tilt=19, color=BSW_MAG, prism=128, prot=160),
+    bsw(pan=177, tilt=19, color=BSW_MAG, prism=128, prot=160),
     profile(pan=0, tilt=123, color=PROF_PINK, prism=128),
     fourbar(255,0,0, 0,255,0, 0,0,255, 255,255,0),
     miss1(255, 0, 128),

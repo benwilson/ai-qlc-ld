@@ -1,8 +1,20 @@
 #!/usr/bin/env python3
 """
-Show Generator: Damian Marley - Welcome To Jamrock (Explicit)
-=============================================================
+Show Generator: Damian Marley - Welcome To Jamrock (Explicit) (v2)
+===================================================================
 BPM: 77 | Duration: ~3:33 | Genre: Reggae / Dancehall
+
+v2 Changes from v1:
+  - ALL positions now use hardware-verified focus positions from focus-positions.md
+  - 7-tuple format: (sharpy_pan, sharpy_tilt, bsw_pan, bsw_tilt, prof_pan, prof_tilt, ni3k_pan)
+  - SL=DSL=USL and SR=DSR=USR (room too small for depth difference on sides)
+  - Added verified specials: DJ Booth, Disco Ball, Center Ceiling, Cross (X)
+  - NI3K pan in tuple for consistency (NI3K is OFF for this show)
+  - Drift sequences redesigned to feature specials:
+    * DJ Booth in intro and outro (intimate, performer-focused)
+    * Center Ceiling in chorus drift (dramatic upward beams)
+    * Cross (X) in chorus for beam crossing effects
+    * Disco Ball in verses for atmosphere
 
 Creative Direction:
   - RASTA PALETTE: Red, Gold (yellow), Green — cycling through pars and movers
@@ -93,25 +105,34 @@ PROF_RASTA = {
 }
 
 # =============================================================================
-# MOVER POSITIONS — slow drift sequences
+# FOCUS POSITIONS — ALL HARDWARE-VERIFIED from focus-positions.md
+# Format: (sharpy_pan, sharpy_tilt, bsw_pan, bsw_tilt, prof_pan, prof_tilt, ni3k_pan)
 # =============================================================================
 
 POS = {
-    "C":   (153, 0,   7,  19,  0,   123),
-    "SL":  (90,  0,   79, 19,  29,  123),
-    "SR":  (220, 0,   0,  19,  0,   123),
-    "DSC": (153, 9,   7,  10,  0,   136),
-    "USC": (153, 0,   7,  27,  0,   109),
-    "DSL": (90,  9,   79, 10,  29,  136),
-    "DSR": (220, 9,   0,  10,  0,   136),
-    "USL": (90,  0,   79, 27,  29,  109),
-    "USR": (220, 0,   0,  27,  0,   109),
+    # Areas (all verified — SL=DSL=USL, SR=DSR=USR in this room)
+    "C":     (153, 0,   177, 19,  0,   123, 128),  # Center
+    "SL":    (170, 0,   189, 29,  50,  165, 80),   # Stage Left
+    "SR":    (149, 5,   170, 23,  110, 145, 176),  # Stage Right
+    "DSC":   (158, 6,   179, 27,  64,  145, 128),  # Downstage Center
+    "DSL":   (170, 0,   189, 29,  50,  165, 80),   # = SL (verified)
+    "DSR":   (149, 5,   170, 23,  110, 145, 176),  # = SR (verified)
+    "USC":   (157, 0,   181, 21,  52,  136, 128),  # Upstage Center
+    "USL":   (170, 0,   189, 29,  50,  165, 80),   # = SL (verified)
+    "USR":   (149, 5,   170, 23,  110, 145, 176),  # = SR (verified)
+    # Specials (all verified)
+    "DJ":    (142, 3,   196, 25,  95,  107, 128),  # DJ Booth
+    "DISCO": (144, 34,  170, 56,  154, 168, 128),  # Disco Ball
+    "CEIL":  (158, 73,  180, 86,  91,  30,  128),  # Center Ceiling
+    # Cross: Sharpy aims SR side, BSW aims SL side = crossing beams
+    "X":     (149, 5,   189, 29,  0,   123, 128),
 }
 
-DRIFT_INTRO   = ["C", "SL", "C", "SR", "C"]
-DRIFT_VERSE   = ["C", "SL", "SR", "DSC", "C", "USL", "USR", "C"]
-DRIFT_CHORUS  = ["DSC", "SL", "SR", "DSL", "DSR", "C", "DSC", "SL"]
-DRIFT_OUTRO   = ["C", "SL", "C", "SR", "C", "USC", "C"]
+# v2: Drift sequences redesigned with specials
+DRIFT_INTRO   = ["C", "SL", "DJ", "SR", "C"]                            # DJ Booth for performer focus
+DRIFT_VERSE   = ["C", "SL", "SR", "DSC", "C", "DISCO", "USR", "C"]     # Disco Ball for atmosphere
+DRIFT_CHORUS  = ["DSC", "SL", "SR", "X", "CEIL", "C", "DSC", "SL"]     # Cross + Ceiling for drama
+DRIFT_OUTRO   = ["C", "SL", "DJ", "SR", "C", "USC", "C"]               # DJ Booth for intimate wind-down
 
 # =============================================================================
 # SCENE BUILDING WITH DEDUP — SEPARATE MOVER AND PAR TRACKS
@@ -156,9 +177,9 @@ def add_scene(name, *fixtures):
 def mk_movers(pos_key, color, dim=255, frost=0, focus=128,
               prism_s=0, p1r_s=0, prism_b=0, prot_b=0, prism_p=0,
               gobo_b=0, gobo_p=0):
-    """Build all 3 movers from position key + Rasta color.
+    """Build all 3 movers from position key + Rasta color. Uses 7-tuple positions.
     Always uses open shutter — dimmer controls the pulse."""
-    sp, st, bp, bt, pp, pt = POS[pos_key]
+    sp, st, bp, bt, pp, pt, _ni = POS[pos_key]
     bsw_c = BSW_RASTA.get(color, BSW_WHITE)
     sharpy_c = SHARPY_RASTA.get(color, SHARPY_WHITE)
     prof_c = PROF_RASTA.get(color, PROF_WHITE)
@@ -580,7 +601,7 @@ par_chaser = make_chaser("Jamrock - Pars", par_scene_ids, par_timing,
                           run_order="SingleShot", path=folder)
 
 vc_buttons = [
-    {"caption": "▶ WELCOME TO JAMROCK", "vc_id": 0, "func_id": "COLLECTION",
+    {"caption": "\u25b6 WELCOME TO JAMROCK", "vc_id": 0, "func_id": "COLLECTION",
      "x": 10, "y": 10, "w": 470, "h": 100,
      "color": "#228B22", "action": "Toggle"},
     {"caption": "BLACKOUT", "vc_id": 1, "func_id": "BLACKOUT",

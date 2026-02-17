@@ -34,22 +34,23 @@ ICE_WHITE    = (200, 220, 255)
 # =============================================================================
 
 POS = {
-    "C":   {"sharpy": (153, 0),   "bsw": (7, 19),   "profile": (0, 123)},
-    "DSC": {"sharpy": (153, 9),   "bsw": (7, 10),   "profile": (0, 136)},
-    "USC": {"sharpy": (153, 0),   "bsw": (7, 27),   "profile": (0, 109)},
-    "SL":  {"sharpy": (90, 0),    "bsw": (79, 19),   "profile": (29, 123)},
-    "SR":  {"sharpy": (220, 0),   "bsw": (0, 19),    "profile": (0, 123)},
-    "DSL": {"sharpy": (90, 9),    "bsw": (79, 10),   "profile": (29, 136)},
-    "DSR": {"sharpy": (220, 9),   "bsw": (0, 10),    "profile": (0, 136)},
-    "USL": {"sharpy": (90, 0),    "bsw": (79, 27),   "profile": (29, 109)},
-    "USR": {"sharpy": (220, 0),   "bsw": (0, 27),    "profile": (0, 109)},
-    # Effects
-    "CEIL":    {"sharpy": (153, 0),  "bsw": (7, 40),  "profile": (0, 85)},
-    "BLIND":   {"sharpy": (153, 15), "bsw": (7, 5),   "profile": (0, 155)},
-    "BACKWALL":{"sharpy": (153, 0),  "bsw": (7, 35),  "profile": (0, 95)},
-    # Sweep extremes
-    "FAR_L":   {"sharpy": (90, 5),   "bsw": (100, 15), "profile": (45, 120)},
-    "FAR_R":   {"sharpy": (220, 5),  "bsw": (0, 15),   "profile": (0, 120)},
+    # Verified positions from focus-positions.md
+    "C":   {"sharpy": (153, 0),   "bsw": (177, 19),  "profile": (0, 123)},
+    "DSC": {"sharpy": (158, 6),   "bsw": (179, 27),  "profile": (64, 145)},
+    "USC": {"sharpy": (157, 0),   "bsw": (181, 21),  "profile": (52, 136)},
+    "SL":  {"sharpy": (170, 0),   "bsw": (189, 29),  "profile": (50, 165)},
+    "SR":  {"sharpy": (149, 5),   "bsw": (170, 23),  "profile": (110, 145)},
+    "DSL": {"sharpy": (168, 4),   "bsw": (187, 32),  "profile": (56, 170)},
+    "DSR": {"sharpy": (151, 8),   "bsw": (168, 27),  "profile": (115, 150)},
+    "USL": {"sharpy": (172, 0),   "bsw": (192, 25),  "profile": (40, 155)},
+    "USR": {"sharpy": (147, 2),   "bsw": (173, 18),  "profile": (105, 138)},
+    # Effects (from focus-positions.md)
+    "CEIL":    {"sharpy": (158, 73), "bsw": (180, 86),  "profile": (91, 30)},
+    "BLIND":   {"sharpy": (153, 15), "bsw": (177, 5),   "profile": (0, 155)},
+    "BACKWALL":{"sharpy": (153, 0),  "bsw": (180, 35),  "profile": (0, 95)},
+    # Sweep extremes — BSW stays within forward-facing range (162-198)
+    "FAR_L":   {"sharpy": (90, 5),   "bsw": (198, 25),  "profile": (45, 120)},
+    "FAR_R":   {"sharpy": (220, 5),  "bsw": (162, 20),  "profile": (0, 120)},
 }
 
 def movers_at(pos_name, sharpy_color=SHARPY_WHITE, bsw_color=BSW_WHITE,
@@ -115,8 +116,8 @@ scenes.append(scene("Green Machine",
 # -- LOOK 5: Fire (Red/Orange, movers spread) --
 scenes.append(scene("Fire",
     sharpy(pan=90, tilt=0, colormacro=SHARPY_RED),
-    bsw(pan=0, tilt=19, color=BSW_ORANGE),
-    profile(pan=0, tilt=123, color=PROF_ORANGE),
+    bsw(pan=170, tilt=23, color=BSW_ORANGE),
+    profile(pan=110, tilt=145, color=PROF_ORANGE),
     fourbar_gradient(*RED, *HOT_ORANGE),
     *miss_both(*ORANGE),
     ni3k(r=255, g=40, b=0, halo=H_RED, rl=LASER_ON),
@@ -125,7 +126,7 @@ scenes.append(scene("Fire",
 # -- LOOK 6: Purple Haze (movers crossed, prisms) --
 scenes.append(scene("Purple Haze",
     sharpy(pan=220, tilt=0, colormacro=SHARPY_PURPLE, prism1=128, p1r=200),
-    bsw(pan=79, tilt=19, color=BSW_MAG, prism=200, prot=160),
+    bsw(pan=189, tilt=29, color=BSW_MAG, prism=200, prot=160),
     profile(pan=29, tilt=123, color=PROF_PINK),
     fourbar_solid(*NEON_PURPLE),
     *miss_both(*PURPLE),
@@ -233,7 +234,7 @@ scenes.append(scene("Drop OFF",
 # --- Cross Beam Swap (movers swap sides) ---
 scenes.append(scene("Cross A",
     sharpy(pan=220, tilt=9, colormacro=SHARPY_RED),   # Sharpy to DSR
-    bsw(pan=79, tilt=10, color=BSW_BLUE),              # BSW to DSL
+    bsw(pan=187, tilt=32, color=BSW_BLUE),              # BSW to DSL
     profile(pan=0, tilt=136, color=PROF_RED),
     fourbar_pairs(*RED, *BLUE),
     miss1(*RED), miss2(*BLUE),
@@ -242,7 +243,7 @@ scenes.append(scene("Cross A",
 ))
 scenes.append(scene("Cross B",
     sharpy(pan=90, tilt=9, colormacro=SHARPY_BLUE),    # Sharpy to DSL
-    bsw(pan=0, tilt=10, color=BSW_RED),                 # BSW to DSR
+    bsw(pan=168, tilt=27, color=BSW_RED),               # BSW to DSR
     profile(pan=0, tilt=136, color=PROF_BLUE),
     fourbar_pairs(*BLUE, *RED),
     miss1(*BLUE), miss2(*RED),

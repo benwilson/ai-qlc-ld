@@ -1,8 +1,15 @@
 #!/usr/bin/env python3
 """
-Show Generator: Lorn - Acid Rain (Skeler Remix) — v3 Data-Driven
+Show Generator: Lorn - Acid Rain (Skeler Remix) — v4 Data-Driven
 =================================================================
 BPM: 115 | Duration: ~4:23 | Genre: Dark electronic / wave
+
+v4 Changes:
+  - ALL positions now use hardware-verified focus positions from focus-positions.md
+  - 7-tuple format: (sharpy_pan, sharpy_tilt, bsw_pan, bsw_tilt, prof_pan, prof_tilt, ni3k_pan)
+  - Replaced hardcoded MOVER_POSITIONS (many unsafe values) with verified POS dict
+  - Position selection by energy level using verified position keys
+  - NI3K pan varies per position (was fixed at 128)
 
 Fully reactive to analysis data: energy envelopes drive intensity,
 stem onsets trigger individual light cues, spectral dynamics control
@@ -178,27 +185,35 @@ SEGMENT_PALETTES = {
 }
 
 # =============================================================================
-# MOVER POSITIONS
+# MOVER POSITIONS — ALL HARDWARE-VERIFIED from focus-positions.md
+# Format: (sharpy_pan, sharpy_tilt, bsw_pan, bsw_tilt, prof_pan, prof_tilt, ni3k_pan)
 # =============================================================================
 
-S_C = {"pan": 153, "tilt": 0}
-B_C = {"pan": 7,   "tilt": 19}
-P_C = {"pan": 0,   "tilt": 123}
+POS = {
+    # Areas (all verified)
+    "C":     (153, 0,   177, 19,  0,   123, 128),  # Center
+    "SL":    (170, 0,   189, 29,  50,  165, 80),   # Stage Left
+    "SR":    (149, 5,   170, 23,  110, 145, 176),  # Stage Right
+    "DSC":   (158, 6,   179, 27,  64,  145, 128),  # Downstage Center
+    "USC":   (157, 0,   181, 21,  52,  136, 128),  # Upstage Center
+    "DSL":   (170, 0,   189, 29,  50,  165, 80),   # = SL (verified)
+    "DSR":   (149, 5,   170, 23,  110, 145, 176),  # = SR (verified)
+    # Specials (all verified)
+    "DJ":    (142, 3,   196, 25,  95,  107, 128),  # DJ Booth
+    "DISCO": (144, 34,  170, 56,  154, 168, 128),  # Disco Ball
+    "CEIL":  (158, 73,  180, 86,  91,  30,  128),  # Center Ceiling
+    # Cross: Sharpy aims SR side, BSW aims SL side = crossing beams
+    "X":     (149, 5,   189, 29,  0,   123, 128),
+    # Audience Blinder — UNVERIFIED calc values, use sparingly
+    "AUD":   (153, 15,  177, 5,   0,   155, 128),
+}
 
-# Position vocabulary for reactive movement
-MOVER_POSITIONS = [
-    # (sharpy, bsw, profile) — various configurations
-    ({"pan": 153, "tilt": 0},   {"pan": 7,   "tilt": 19},  {"pan": 0,   "tilt": 123}),  # 0: center
-    ({"pan": 220, "tilt": 15},  {"pan": 80,  "tilt": 30},  {"pan": 60,  "tilt": 100}),  # 1: spread left
-    ({"pan": 80,  "tilt": 15},  {"pan": 200, "tilt": 5},   {"pan": 200, "tilt": 100}),  # 2: spread right
-    ({"pan": 80,  "tilt": 10},  {"pan": 200, "tilt": 10},  {"pan": 180, "tilt": 100}),  # 3: cross
-    ({"pan": 220, "tilt": 20},  {"pan": 80,  "tilt": 30},  {"pan": 50,  "tilt": 90}),   # 4: wide
-    ({"pan": 153, "tilt": 40},  {"pan": 7,   "tilt": 50},  {"pan": 0,   "tilt": 80}),   # 5: high
-    ({"pan": 153, "tilt": 245}, {"pan": 7,   "tilt": 5},   {"pan": 0,   "tilt": 160}),  # 6: low/audience
-    ({"pan": 130, "tilt": 20},  {"pan": 40,  "tilt": 10},  {"pan": 35,  "tilt": 110}),  # 7: tight cluster
-    ({"pan": 200, "tilt": 30},  {"pan": 200, "tilt": 25},  {"pan": 200, "tilt": 95}),   # 8: all right
-    ({"pan": 100, "tilt": 30},  {"pan": 100, "tilt": 25},  {"pan": 100, "tilt": 95}),   # 9: all left
-]
+# Position vocabulary for reactive movement — mapped to energy levels
+POS_KEYS_LOW = ["C", "DJ", "C", "USC"]                          # low energy: center + intimate
+POS_KEYS_MED = ["SL", "SR", "X", "DSC", "C", "USC", "DJ"]     # medium: spreading out
+POS_KEYS_HIGH = ["DSC", "X", "CEIL", "SL", "SR", "DSR", "C"]  # high: dramatic + wide
+POS_KEYS_PEAK = ["X", "AUD", "CEIL", "DSR", "DSL", "DISCO",   # peak: extreme + specials
+                 "SL", "SR", "C", "DSC"]
 
 # =============================================================================
 # SCENE GENERATION ENGINE
@@ -226,23 +241,18 @@ def energy_to_master(e, low=20, high=255):
     return int(low + (high - low) * min(1.0, max(0.0, e)))
 
 def pick_position(beat_idx, energy_val):
-    """Pick a mover position based on beat index and energy.
-    Higher energy = more extreme positions. Beat index adds variety."""
+    """Pick a mover position key based on beat index and energy.
+    Higher energy = more extreme positions. Beat index adds variety.
+    Returns a position key string for the POS dict."""
     if energy_val < 0.15:
-        # Low energy: center or tight
-        return MOVER_POSITIONS[beat_idx % 2 * 7]  # alternates 0, 7
+        keys = POS_KEYS_LOW
     elif energy_val < 0.4:
-        # Medium: spread or cross
-        options = [1, 2, 3, 7]
-        return MOVER_POSITIONS[options[beat_idx % len(options)]]
+        keys = POS_KEYS_MED
     elif energy_val < 0.7:
-        # High: wide, high/low
-        options = [4, 5, 6, 3, 8, 9]
-        return MOVER_POSITIONS[options[beat_idx % len(options)]]
+        keys = POS_KEYS_HIGH
     else:
-        # Peak: extreme positions
-        options = [4, 6, 8, 9, 5, 3]
-        return MOVER_POSITIONS[options[beat_idx % len(options)]]
+        keys = POS_KEYS_PEAK
+    return keys[beat_idx % len(keys)]
 
 def make_reactive_scene(name, beat_idx, seg_idx, is_accent=False,
                          strobe_movers=False, lasers=False,
@@ -265,8 +275,9 @@ def make_reactive_scene(name, beat_idx, seg_idx, is_accent=False,
     mover_dim = energy_to_dim(rms, low=40, high=255)
     par_master = energy_to_master(rms, low=20, high=255)
 
-    # Position from energy + beat variety
-    s_pos, b_pos, p_pos = pick_position(beat_idx, rms)
+    # Position from energy + beat variety (now returns a key string)
+    pos_key = pick_position(beat_idx, rms)
+    sp, st, bp, bt, pp, pt, ni_pan = POS[pos_key]
 
     # Frost: inverse of energy (more energy = less frost = sharper beams)
     frost_val = int(200 * (1.0 - min(1.0, rms)))
@@ -309,20 +320,20 @@ def make_reactive_scene(name, beat_idx, seg_idx, is_accent=False,
         m2_fix = miss2(*pal["rgb1"], master=par_master)
 
     return scene(name,
-        sharpy(pan=s_pos["pan"], tilt=s_pos["tilt"],
+        sharpy(pan=sp, tilt=st,
                strobe=s_strobe, dim=mover_dim, frost=frost_val,
                colormacro=pal["sharpy"],
                prism1=prism_val, p1r=prism_rot,
                gobo=gobo_val, focus=128),
-        bsw(pan=b_pos["pan"], tilt=b_pos["tilt"],
+        bsw(pan=bp, tilt=bt,
             color=pal["bsw"], shutter=b_shutter, dim=mover_dim,
             frost=min(255, frost_val), prism=prism_val, prot=prism_rot,
             gobo1=gobo_val, focus=128),
-        profile(pan=p_pos["pan"], tilt=p_pos["tilt"],
+        profile(pan=pp, tilt=pt,
                 color=pal["prof"], dim=mover_dim,
                 prism=prism_val // 2, focus=128),
         bar_fix, m1_fix, m2_fix,
-        ni3k(pan=128, t1=64, t2=64, t3=64,
+        ni3k(pan=ni_pan, t1=64, t2=64, t3=64,
              r=ni_r, g=ni_g, b=ni_b, w=0,
              halo=halo, rl=laser_r, gl=laser_g, bl=laser_b,
              dim=ni_dim, strobe=0),
@@ -342,24 +353,26 @@ def make_onset_scene(name, onset_time, seg_idx, fixture_focus="other"):
     # For quiet sections, use single fixtures with punchy colors
     dim = energy_to_dim(max(0.3, rms), low=80, high=255)
 
-    # Cycle through position vocabulary based on onset index
-    pos_idx = hash(str(onset_time)) % len(MOVER_POSITIONS)
-    s_pos, b_pos, p_pos = MOVER_POSITIONS[pos_idx]
+    # Cycle through positions based on onset index
+    all_pos_keys = list(POS.keys())
+    pos_key = all_pos_keys[hash(str(onset_time)) % len(all_pos_keys)]
+    sp, st, bp, bt, pp, pt, ni_pan = POS[pos_key]
 
     if fixture_focus == "bass":
-        # Bass hit: sub-bass reaction — all movers converge, red flash
+        # Bass hit: sub-bass reaction — all movers converge on center, red flash
+        cp = POS["C"]
         return scene(name,
-            sharpy(pan=S_C["pan"], tilt=S_C["tilt"],
+            sharpy(pan=cp[0], tilt=cp[1],
                    strobe=SHARPY_OPEN, dim=dim,
                    colormacro=pal["sharpy"], focus=128),
-            bsw(pan=B_C["pan"], tilt=B_C["tilt"],
+            bsw(pan=cp[2], tilt=cp[3],
                 color=pal["bsw"], shutter=BSW_SHUT_OPEN, dim=dim,
                 focus=128),
-            profile(pan=P_C["pan"], tilt=P_C["tilt"],
+            profile(pan=cp[4], tilt=cp[5],
                     color=pal["prof"], dim=dim, focus=128),
             fourbar_solid(*pal["rgb1"], master=energy_to_master(max(0.4, rms))),
             *miss_both(*pal["rgb1"], master=energy_to_master(max(0.3, rms))),
-            ni3k(pan=128, t1=64, t2=64, t3=64,
+            ni3k(pan=cp[6], t1=64, t2=64, t3=64,
                  r=pal["rgb1"][0], g=pal["rgb1"][1], b=pal["rgb1"][2],
                  halo=pal["halo"], dim=dim, strobe=0),
             path=folder)
@@ -373,13 +386,13 @@ def make_onset_scene(name, onset_time, seg_idx, fixture_focus="other"):
 
         # The non-lead fixtures stay dark or very dim
         return scene(name,
-            sharpy(pan=s_pos["pan"], tilt=s_pos["tilt"],
+            sharpy(pan=sp, tilt=st,
                    strobe=SHARPY_OPEN, dim=s_dim,
                    colormacro=pal["sharpy"], frost=60, focus=128),
-            bsw(pan=b_pos["pan"], tilt=b_pos["tilt"],
+            bsw(pan=bp, tilt=bt,
                 color=pal["bsw"], shutter=BSW_SHUT_OPEN, dim=b_dim,
                 frost=80, focus=128),
-            profile(pan=p_pos["pan"], tilt=p_pos["tilt"],
+            profile(pan=pp, tilt=pt,
                     color=pal["prof"], dim=p_dim, focus=128),
             fourbar(pal["rgb1"][0] if onset_mod == 0 else 0,
                     pal["rgb1"][1] if onset_mod == 0 else 0,
@@ -396,7 +409,7 @@ def make_onset_scene(name, onset_time, seg_idx, fixture_focus="other"):
                   master=60),
             miss2(*pal["rgb2"] if onset_mod % 2 == 1 else NOTHING,
                   master=60),
-            ni3k(pan=128, t1=64, t2=64, t3=64,
+            ni3k(pan=ni_pan, t1=64, t2=64, t3=64,
                  r=pal["rgb1"][0] // 4, g=pal["rgb1"][1] // 4,
                  b=pal["rgb1"][2] // 4,
                  halo=pal["halo"], dim=dim // 3, strobe=0),
@@ -515,14 +528,14 @@ def _build_sparse_section(seg_idx, t_start, t_end, melody_onsets, bass_hits,
             dark_sid = get_or_create_scene(
                 f"dark_{seg_idx}_{i}", lambda:
                 scene(f"Dark Gap {seg_idx}-{i}",
-                      sharpy(pan=S_C["pan"], tilt=S_C["tilt"],
+                      sharpy(pan=POS["C"][0], tilt=POS["C"][1],
                              strobe=SHARPY_OPEN, dim=0),
-                      bsw(pan=B_C["pan"], tilt=B_C["tilt"],
+                      bsw(pan=POS["C"][2], tilt=POS["C"][3],
                           shutter=BSW_SHUT_OPEN, dim=0),
-                      profile(pan=P_C["pan"], tilt=P_C["tilt"], dim=0),
+                      profile(pan=POS["C"][4], tilt=POS["C"][5], dim=0),
                       fourbar_solid(*NOTHING),
                       *miss_both(*NOTHING),
-                      ni3k(pan=128, r=0, g=0, b=0,
+                      ni3k(pan=POS["C"][6], r=0, g=0, b=0,
                            halo=H_OFF if not eerie else H_BLU,
                            dim=10 if eerie else 0, strobe=0),
                       path=folder))
@@ -732,22 +745,22 @@ def _build_outro_section(seg_idx, t_start, t_end, melody_onsets, n_bars):
         forced_dim = int(120 * (1.0 - progress))
 
         pal = SEGMENT_PALETTES.get(seg_idx, SEGMENT_PALETTES[13])
-        s_pos, b_pos, p_pos = MOVER_POSITIONS[0]  # center
+        cp = POS["C"]  # center position
 
         sid = get_or_create_scene(
             f"outro_{seg_idx}_{step_num}", lambda:
             scene(f"Outro {seg_idx}-{step_num}",
-                  sharpy(pan=s_pos["pan"], tilt=s_pos["tilt"],
+                  sharpy(pan=cp[0], tilt=cp[1],
                          strobe=SHARPY_OPEN, dim=forced_dim,
                          frost=200, colormacro=pal["sharpy"], focus=128),
-                  bsw(pan=b_pos["pan"], tilt=b_pos["tilt"],
+                  bsw(pan=cp[2], tilt=cp[3],
                       color=pal["bsw"], shutter=BSW_SHUT_OPEN,
                       dim=forced_dim, frost=200, focus=128),
-                  profile(pan=p_pos["pan"], tilt=p_pos["tilt"],
+                  profile(pan=cp[4], tilt=cp[5],
                           color=pal["prof"], dim=forced_dim // 2, focus=128),
                   fourbar_solid(*pal["rgb1"], master=forced_dim // 2),
                   *miss_both(*pal["rgb2"], master=forced_dim // 3),
-                  ni3k(pan=128, r=pal["rgb1"][0] // 4,
+                  ni3k(pan=cp[6], r=pal["rgb1"][0] // 4,
                        g=pal["rgb1"][1] // 4, b=pal["rgb1"][2] // 4,
                        halo=H_BLU if progress < 0.5 else H_OFF,
                        dim=forced_dim // 2, strobe=0),

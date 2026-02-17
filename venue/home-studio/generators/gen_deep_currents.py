@@ -49,24 +49,27 @@ BUILD_CYAN   = (0, 80, 120)
 # Profile does subtle independent movement (front center fixture)
 # =========================================================================
 
-# BSW positions (back right, center pan=7)
-BSW_R  = dict(pan=240, tilt=25)
-BSW_CR = dict(pan=250, tilt=22)
-BSW_C  = dict(pan=7,   tilt=19)
-BSW_CL = dict(pan=25,  tilt=15)
-BSW_L  = dict(pan=45,  tilt=10)
+# BSW positions (back right, center pan=177) — from focus-positions.md
+# Sweep range: SR(170)→C(177)→SL(189), interpolated for 5 steps
+BSW_R  = dict(pan=165, tilt=22)   # past SR toward wall
+BSW_CR = dict(pan=170, tilt=23)   # SR area (verified)
+BSW_C  = dict(pan=177, tilt=19)   # center (verified)
+BSW_CL = dict(pan=184, tilt=25)   # between C and SL
+BSW_L  = dict(pan=192, tilt=28)   # near SL (within safe range <200)
 
-# Sharpy positions (back left, center pan=153)
-SH_R  = dict(pan=100, tilt=5)
-SH_CR = dict(pan=125, tilt=3)
-SH_C  = dict(pan=153, tilt=0)
-SH_CL = dict(pan=180, tilt=253)
-SH_L  = dict(pan=210, tilt=250)
+# Sharpy positions (back left, center pan=153) — from focus-positions.md
+# Sweep range: SR(149)→C(153)→SL(170), safe tilt 0-40
+SH_R  = dict(pan=140, tilt=5)     # past SR toward right
+SH_CR = dict(pan=147, tilt=3)     # near SR
+SH_C  = dict(pan=153, tilt=0)     # center (verified)
+SH_CL = dict(pan=162, tilt=0)     # between C and SL
+SH_L  = dict(pan=170, tilt=0)     # SL (verified)
 
-# Profile positions (front center, center pan=0, tilt=123)
-PR_SL = dict(pan=245, tilt=125)
-PR_C  = dict(pan=0,   tilt=123)
-PR_SR = dict(pan=10,  tilt=121)
+# Profile positions (front center, center pan=0, tilt=123) — from focus-positions.md
+# Safe pan 0-230, safe tilt 85-155
+PR_SL = dict(pan=50,  tilt=155)   # stage left (verified pan, clamped tilt)
+PR_C  = dict(pan=0,   tilt=123)   # center (verified)
+PR_SR = dict(pan=110, tilt=145)   # stage right (verified)
 
 # =========================================================================
 # DARK FIXTURE HELPERS (positioned but dark)

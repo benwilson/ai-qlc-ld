@@ -1,4 +1,4 @@
-# Dimension & Karen Harding - Guardian Angel — Show Design Notes (v2)
+# Dimension & Karen Harding - Guardian Angel — Show Design Notes (v3)
 
 ## Overview
 - **BPM**: 174
@@ -8,18 +8,16 @@
 - **Output**: `shows/Dimension & Karen Harding - Guardian Angel.qxw`
 - **Run Order**: SingleShot
 - **Analysis**: `songs-data/Dimension & Karen Harding - Guardian Angel.json`
-- **Version**: v2 — rebuilt with techniques from Fixin's, Acid Rain, and PhatAdam shows
+- **Version**: v3 — all positions hardware-verified, specials integrated
 
-## v2 Changes from v1
-1. **Focus-positions grid**: Replaced 7 custom positions with 9-point stage grid (DSL, DSC, DSR, SL, C, SR, USL, USC, USR) + specials (CEIL, AUD, WALL, DJ) from `focus-positions.md`
-2. **NI3K atmosphere mode**: Quiet sections (ambient, verses, bridge) now use subtle RGBW glow + palette-matched halo instead of total darkness. NI3K contributes ambient light.
-3. **BSW gobo escalation**: Progressive gobo staircase across drops: none (Drop 1) → G1_3 (Drop 2) → G1_4 (Triple #1) → G1_5 (Triple #2/3)
-4. **Laser strobe tease**: Builds ramp LASER_STROBE_SLOW → LASER_STROBE_MED → LASER_ON instead of binary off→on
-5. **White downbeat blast**: Triple #3 fires white on beat 1 of every bar (16 blasts) with alternating strobe
-6. **Prime-number tilt math**: `beat * 7 % 37`, `beat * 11 % 29`, `beat * 13 % 31` for more chaotic NI3K rotation patterns vs v1's simple modulo
-7. **Cool down section**: 4-bar smooth fade replaces v1's 2-bar snap-to-black. Movers frost up, dim down, NI3K returns to soft atmosphere.
-8. **Mover strobe ramp**: Build sections (V1B, V2B) ramp mover strobe from open → SLOW → MED in final bars
-9. **Audience Blinder position**: POS_BIG sequence includes AUD for brief blinder hits during Triple #3
+## v3 Changes from v2
+1. **Hardware-verified positions**: ALL 9 area positions + specials now use values confirmed on the actual rig. The v2 calculated values were completely wrong (e.g., SL Sharpy calc=90 vs verified=170).
+2. **7-tuple format**: Position tuples now include NI3K pan as 7th element: `(sharpy_pan, sharpy_tilt, bsw_pan, bsw_tilt, prof_pan, prof_tilt, ni3k_pan)`.
+3. **Room collapse**: SL=DSL=USL and SR=DSR=USR — room too small for depth to matter on sides. Only centerline positions (C, DSC, USC) vary with depth.
+4. **Verified specials**: DJ Booth, Disco Ball, Center Ceiling all use hardware-verified pan/tilt values.
+5. **Cross position (X)**: Built from verified SL/SR — Sharpy aims SR side, BSW aims SL side, Profile at center.
+6. **NI3K position-aware**: `mk_ni3k_laser()` and `mk_ni3k_atmo()` now look up NI3K pan from position dict (was hardcoded at 128/200/etc).
+7. **Position sequences redesigned**: Specials integrated at musically meaningful moments — Disco Ball in sweeps/bridge, Center Ceiling in builds/drops, DJ Booth in intimate verses, Cross in drop accents.
 
 ## Creative Brief
 - Theme: Angels, heaven, clouds, feeling a rush
@@ -52,7 +50,7 @@
 | Gold | BSW_YELLOW | SHARPY_AMBER | PROF_YELLOW |
 | Soft Teal | BSW_TEAL | SHARPY_TEAL | PROF_TEAL |
 
-### NI3K Halo Mapping (v2)
+### NI3K Halo Mapping
 | Palette Color | Halo Value |
 |---------------|-----------|
 | Ice Blue | H_BLU |
@@ -61,42 +59,37 @@
 | Soft Teal | H_CYN |
 
 ## Fixture Roles
-- **All 3 Movers**: Unified movement from focus-positions grid. Forward-facing only. Color-matched to palette. Frosted and slow during breakdowns, clean and snappy during drops.
+- **All 3 Movers**: Unified movement from verified focus-positions grid. Forward-facing only. Color-matched to palette. Frosted and slow during breakdowns, clean and snappy during drops.
 - **4BAR (ID 2) + Missyee 1+2 (ID 5, 6)**: Dynamic wash unit — fades out in quiet parts, goes crazy during builds. Drops mix wash/pairs/chase on rotating 4-bar cycles. Triple #3 is chase + white downbeat blasts.
 - **NI3K (ID 3)**: Dual-mode fixture:
   - **Quiet sections** (ambient, verses, bridge): Atmosphere mode — subtle RGBW glow matching palette color, halo synced, dim 30-96. Lasers strobe-teased in builds.
-  - **Drops**: Laser-only mode — dim=0, no RGBW, no halo. High tilt rotation (160-247 range via prime-number math). Laser color builds section by section.
+  - **Drops**: Laser-only mode — dim=0, no RGBW, no halo. High tilt rotation (160-247 range via prime-number math). Laser color builds section by section. Pan varies per position.
 
-## Movement Positions (v2: Focus-positions grid)
+## Movement Positions (v3: All Hardware-Verified)
 
-### 9-Point Stage Grid
-| Key | Sharpy (pan,tilt) | BSW (pan,tilt) | Profile (pan,tilt) | Description |
-|-----|-------------------|----------------|-------------------|-------------|
-| C | 153, 0 | 7, 19 | 0, 123 | Center floor |
-| DSC | 153, 9 | 7, 10 | 0, 136 | Downstage center (near audience) |
-| USC | 153, 0 | 7, 27 | 0, 109 | Upstage center (near DJ) |
-| SL | 90, 0 | 79, 19 | 29, 123 | Stage left |
-| SR | 220, 0 | 0, 19 | 0, 123 | Stage right |
-| DSL | 90, 9 | 79, 10 | 29, 136 | Downstage left |
-| DSR | 220, 9 | 0, 10 | 0, 136 | Downstage right |
-| USL | 90, 0 | 79, 27 | 29, 109 | Upstage left |
-| USR | 220, 0 | 0, 27 | 0, 109 | Upstage right |
+### Position Values
+| Key | Sharpy (pan,tilt) | BSW (pan,tilt) | Profile (pan,tilt) | NI3K pan | Verified |
+|-----|-------------------|----------------|-------------------|----------|----------|
+| C | 153, 0 | 7, 19 | 0, 123 | 128 | Yes |
+| SL | 170, 0 | 189, 29 | 50, 165 | 80 | Yes |
+| SR | 149, 5 | 170, 23 | 110, 145 | 176 | Yes |
+| DSC | 158, 6 | 179, 27 | 64, 145 | 128 | Yes |
+| USC | 157, 0 | 181, 21 | 52, 136 | 128 | Yes |
+| DJ | 142, 3 | 196, 25 | 95, 107 | 128 | Yes |
+| DISCO | 144, 34 | 170, 56 | 154, 168 | 128 | Yes |
+| CEIL | 158, 73 | 180, 86 | 91, 30 | 128 | Yes |
+| X | 149, 5 | 189, 29 | 0, 123 | 128 | Composite |
+| AUD | 153, 15 | 7, 5 | 0, 155 | 128 | No (calc) |
 
-### Special Positions
-| Key | Description | Usage |
-|-----|-------------|-------|
-| CEIL | Ceiling hit — all beams up | Sweeps, atmospheric moments |
-| AUD | Audience blinder — brief only! | Triple #3 accent hits |
-| WALL | Par wall highlight | Not used in this show |
-| DJ | DJ booth spotlight | Not used in this show |
+Notes: DSL=SL, DSR=SR, USL=SL, USR=SR (room too small for depth on sides). NI3K pan for SL (80) and SR (176) are calculated, not hardware-verified.
 
-### Position Sequences
-- **POS_SWEEP** (8): C, SL, CEIL, SR, DSC, USL, C, DSR — dreamy sweep for breakdowns
-- **POS_DROP** (8): C, SL, SR, DSL, DSR, CEIL, DSC, C — standard drop movement
-- **POS_WIDE** (8): DSL, DSR, USL, USR, DSC, SL, SR, DSR — widest moves for Triple #2
-- **POS_BIG** (16): Full 16-position cycle including AUD — maximum variety for Triple #3
+### Position Sequences (v3: with specials)
+- **POS_SWEEP** (8): C, SL, DISCO, SR, DSC, DJ, CEIL, DSR — dreamy sweep featuring specials
+- **POS_DROP** (8): C, SL, SR, X, DSC, CEIL, DSR, C — standard drop movement with cross + ceiling
+- **POS_WIDE** (8): DSL, DSR, USL, USR, X, DISCO, CEIL, DSR — widest moves + specials for Triple #2
+- **POS_BIG** (16): Full 16-position cycle including DISCO, CEIL, DJ, X, AUD — maximum variety for Triple #3
 
-## Gobo Staircase (v2)
+## Gobo Staircase
 | Section | BSW Gobo | Notes |
 |---------|----------|-------|
 | Drop 1 | None (open) | Clean beams, first chorus |
@@ -105,7 +98,7 @@
 | Triple #2 | G1_5 | + prisms = maximum beam texture |
 | Triple #3 | G1_5 | + dual prisms, same gobo as T2 |
 
-## NI3K Laser Progression (v2: with strobe tease)
+## NI3K Laser Progression (with strobe tease)
 | Section | Red Laser | Green Laser | Blue Laser | NI3K Mode | Notes |
 |---------|-----------|-------------|------------|-----------|-------|
 | Ambient + V1A | OFF | OFF | OFF | Atmosphere | Subtle RGBW glow building |
@@ -125,91 +118,92 @@
 ### Ambient Intro (bars 1-8, 8 steps @ 4-beat)
 - Pars: **Nearly off** — master 0→35 (first bar is blackout, barely a glow by bar 8)
 - Movers: Dark (dim=0). Positioned at center.
-- NI3K: **v2: Subtle blue atmosphere** — dim 0→35, halo appears at bar 3. Was dark in v1.
+- NI3K: Subtle blue atmosphere — dim 0→35, halo appears at bar 3.
 - Timing: 4-beat holds. Pre-beat atmosphere.
 
 ### Verse 1A (bars 9-20, 12 steps @ 4-beat)
 - Pars: **Gradients** cycling ETHEREAL_3 pairs, master 30→184 (fading in gently)
-- Movers: Slowly appearing (dim 0→198). Frosted (180). Pure white. Gentle position shifts (C→SL→SR→CEIL→C).
-- NI3K: **v2: Halo tracks palette** — dim 30→96, halo color-matches current palette. Was dark in v1.
+- Movers: Slowly appearing (dim 0→198). Frosted (180). Pure white. v3: Position sequence includes DJ Booth and CEIL for intimate variety.
+- NI3K: Halo tracks palette — dim 30→96, halo color-matches current palette. Pan tracks mover position.
 - Timing: 4-beat holds. Vocals enter.
 
 ### Verse 1B (bars 21-32, 24 steps @ 2-beat)
 - Pars: **Escalating patterns** — gradient (bars 1-4) → pairs (bars 5-8) → chase (bars 9-12). Master 140→250.
-- Movers: Brightening (180→246), frost reducing (160→6). Sweeping through POS_SWEEP.
-- **v2: Mover strobe ramp** in last 2 bars (SHARPY_STROBE_SLOW building).
-- **v2: Blue laser strobe tease** in last 4 bars (LASER_STROBE_SLOW → MED).
+- Movers: Brightening (180→246), frost reducing (160→6). Sweeping through POS_SWEEP (v3: includes DISCO and CEIL).
+- Mover strobe ramp in last 2 bars (SHARPY_STROBE_SLOW building).
+- Blue laser strobe tease in last 4 bars (LASER_STROBE_SLOW → MED).
 - Timing: 2-beat steps. Momentum building to drop.
 
 ### Drop 1 (bars 33-48, 64 steps @ 1-beat)
 - Pars: **Wash + pairs alternating** every 2 bars, ETHEREAL_4 cycle. White solid on strobe accents.
-- Movers: Full brightness. Color snaps every beat. Reposition every bar via POS_DROP.
+- Movers: Full brightness. Color snaps every beat. POS_DROP (v3: includes X cross + CEIL).
 - Strobe accent: Beat 1 every 4 bars (SHARPY_STROBE_MED + BSW_SHUT_STROBE_FAST).
-- NI3K: Blue laser ON. **v2: Prime tilt math** (beat*7%37, beat*11%29, beat*13%31). Pan 200.
+- NI3K: Blue laser ON. Prime tilt math (beat*7%37, beat*11%29, beat*13%31). Pan tracks position.
 - Timing: Beat-by-beat instant snaps.
 
 ### Bridge (bars 49-64, 8 steps @ 2-bar smooth)
 - Pars: **Fading out** — master 80→10 (near-dark by end).
 - Movers: Frosted (200), dim 180. Slow continuous sweeps. Gold/blue/white/teal.
-- NI3K: **v2: Atmosphere mode** — dim 60, halo tracks palette, blue laser ON. Provides warm underglow.
+- v3: Sweep features DISCO and DJ — ethereal disco ball reflections + DJ booth intimacy.
+- NI3K: Atmosphere mode — dim 60, halo tracks palette, blue laser ON. Pan tracks position.
 - Timing: 2-bar smooth crossfades. Dreamy, flowing.
 
 ### Drop 2 (bars 65-88, 96 steps @ 1-beat)
 - Pars: **Rotating patterns** every 4 bars: wash → pairs → chase cycle. White solid on strobe accents.
-- Movers: Full brightness. **v2: BSW gobo G1_3** for beam texture. Wider positions (POS_DROP + POS_WIDE + POS_DROP cycle).
+- Movers: Full brightness. BSW gobo G1_3 for beam texture. POS_DROP + POS_WIDE + POS_DROP cycle (v3: includes specials).
 - Strobe accent: Beat 1 every 4 bars (SHARPY_STROBE_FAST + BSW_SHUT_STROBE_FAST).
-- NI3K: Blue + green lasers. **v2: Prime tilt math**. Pan 200-210.
+- NI3K: Blue + green lasers. Prime tilt math. Pan tracks position.
 - Timing: Beat-by-beat instant snaps.
 
 ### Verse 2A (bars 89-104, 8 steps @ 2-bar smooth)
 - Pars: **Whisper-level** — master 15→50. Barely visible. Soft wash, smooth crossfades.
-- Movers: Frosted (200), dim 160. Luxurious sweeps through v2a_sweep positions.
-- NI3K: **v2: Atmosphere mode** — dim 50, halo tracks palette, green laser only. Warm ambient glow.
+- Movers: Frosted (200), dim 160. v3: Sweep includes DISCO and DJ for ethereal variety.
+- NI3K: Atmosphere mode — dim 50, halo tracks palette, green laser only. Pan tracks position.
 - Timing: 2-bar smooth crossfades. Maximum luxury.
 
 ### Verse 2B (bars 105-112, 16 steps @ 2-beat)
 - Pars: **Rocket launch build** — gradient (bars 1-3) → pairs (bars 4-6) → chase (bars 7-8). Master 50→253.
-- Movers: Brightening (180→243), frost reducing (150→10). **v2: Strobe ramp** in last 2 bars.
-- NI3K: **v2: Green laser sustains, blue laser strobe tease** in last 4 bars (LASER_STROBE_SLOW → MED). Atmosphere mode with halo.
+- Movers: Brightening (180→243), frost reducing (150→10). Strobe ramp in last 2 bars.
+- NI3K: Green laser sustains, blue laser strobe tease in last 4 bars (LASER_STROBE_SLOW → MED). Atmosphere mode with halo.
 - Timing: 2-beat steps. Building back toward drops.
 
 ### Triple #1 (bars 113-128, 64 steps @ 1-beat)
 - Staircase Level 1: Strong but not maxed. Clean beams.
 - Pars: **Wash + pairs** alternating every 2 bars. ETHEREAL_4.
-- Movers: Full brightness. No prisms. **v2: BSW gobo G1_4**. POS_DROP positions.
-- NI3K: Blue + green lasers. **v2: Prime tilt math**. Pan 205.
+- Movers: Full brightness. No prisms. BSW gobo G1_4. POS_DROP positions (v3: with X + CEIL).
+- NI3K: Blue + green lasers. Prime tilt math. Pan tracks position.
 - Timing: Beat-by-beat snaps.
 
 ### Triple #2 (bars 129-144, 64 steps @ 1-beat)
 - Staircase Level 2: Add prisms + gobos, wider movement, all 3 lasers.
 - Pars: **Rotating patterns** — wash (4 bars) → chase (4 bars) → pairs (4 bars) → chase. White on strobe accents.
-- Movers: Prisms spinning (Sharpy prism1=128 @200, BSW prism=80 @180, Profile prism=60). **v2: BSW gobo G1_5**. POS_WIDE positions.
+- Movers: Prisms spinning. BSW gobo G1_5. POS_WIDE positions (v3: includes DISCO + CEIL).
 - Strobe accent: Beat 1 every 4 bars.
-- NI3K: ALL 3 lasers ON. **v2: Prime tilt math — widest range**. Pan 215.
+- NI3K: ALL 3 lasers ON. Prime tilt math — widest range. Pan tracks position.
 - Timing: Beat-by-beat snaps.
 
 ### Triple #3 (bars 145-160, 64 steps @ 1-beat)
 - Staircase Level 3: EVERYTHING MAXED. Full blowout.
-- Pars: **v2: White downbeat blast** on beat 1 of every bar (16 blasts!). Chase on other beats. Alternating strobe every 2 bars.
-- Movers: DUAL prisms (Sharpy prism1+prism2=128 @200, BSW prism=128 @200, Profile prism=120). **v2: BSW gobo G1_5**. POS_BIG 16-position cycle **including AUD blinder**.
-- NI3K: ALL 3 lasers. Pan 220. **v2: Prime tilt math — maximum range** (175-247).
+- Pars: White downbeat blast on beat 1 of every bar (16 blasts!). Chase on other beats. Alternating strobe every 2 bars.
+- Movers: DUAL prisms. BSW gobo G1_5. POS_BIG 16-position cycle (v3: includes DISCO, CEIL, DJ, X, AUD).
+- NI3K: ALL 3 lasers. Pan tracks position. Prime tilt math — maximum range (175-247).
 - Timing: Beat-by-beat snaps.
 
-### Cool Down (v2: replaces 2-bar snap-to-black)
-- **4 steps**: 1-bar smooth crossfades converging to center.
+### Cool Down (4 steps @ 1-bar smooth)
 - Movers: Dim 120→15, frost 150→225 (re-frosting), returning to C.
 - Pars: Master 100→10 (fading).
 - NI3K: Returns to atmosphere mode — dim 50→5, halo fading, no lasers.
 - Final blackout: 4-beat hold.
 
 ## Key Techniques
-- **Scene deduplication**: `add_scene()` with `scene_cache` prevents duplicate scenes. 433 unique, 0 reuses (every beat is unique due to prime tilt math).
-- **Dual NI3K modes**: `mk_ni3k_atmo()` for quiet sections (RGBW+halo), `mk_ni3k_laser()` for drops (lasers only). v1 only had laser mode.
+- **Scene deduplication**: `add_scene()` with `scene_cache` prevents duplicate scenes. 433 unique, 0 reuses (every beat is unique due to prime tilt math + position-aware NI3K pan).
+- **Dual NI3K modes**: `mk_ni3k_atmo()` for quiet sections (RGBW+halo), `mk_ni3k_laser()` for drops (lasers only). Both now position-aware for NI3K pan.
 - **Prime-number tilt math**: `beat * P % M` where P and M are different primes per-head creates pseudo-random rotation that never repeats within a section.
 - **Laser strobe tease**: Build sections ramp LASER_STROBE_SLOW → MED before drops snap to LASER_ON. Creates anticipation.
-- **White downbeat blast**: Triple #3 fires white on beat 1 of every bar for maximum visual punch (technique from Fixin's generator).
+- **White downbeat blast**: Triple #3 fires white on beat 1 of every bar for maximum visual punch.
 - **Gobo staircase**: Progressive BSW gobo escalation (none → G1_3 → G1_4 → G1_5) adds beam texture complexity alongside prism staircase.
-- **Focus-positions grid**: Uses standardized 9-point stage grid from focus-positions.md instead of ad-hoc positions. More positions = more variety.
+- **Hardware-verified positions**: All positions confirmed on the actual rig, eliminating the geometric calculation errors from v1/v2.
+- **Special position integration**: Disco Ball, Center Ceiling, DJ Booth, and Cross positions appear at musically meaningful moments (bridge sweeps, drop accents, intimate verses).
 - **Mover strobe ramp**: Build sections ramp mover strobe SLOW → MED in final bars for tension.
 - **Cool down section**: Proper breathing-out fade replaces abrupt blackout.
 

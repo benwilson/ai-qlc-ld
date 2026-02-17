@@ -1,4 +1,25 @@
-# Show Notes: Damian Marley - Welcome To Jamrock (Explicit)
+# Show Notes: Damian Marley - Welcome To Jamrock (Explicit) (v2)
+
+## Overview
+- **BPM**: 77
+- **Duration**: ~3:33 (213.4s)
+- **Genre**: Reggae / Dancehall
+- **Generator**: `generators/Damian Marley - Welcome To Jamrock (Explicit).py`
+- **Output**: `shows/Damian Marley - Welcome To Jamrock (Explicit).qxw`
+- **Run Order**: SingleShot (via Collection)
+- **Analysis**: `songs-data/Damian Marley - Welcome To Jamrock (Explicit).json`
+- **Version**: v2 — all positions hardware-verified, specials integrated
+
+## v2 Changes from v1
+1. **Hardware-verified positions**: ALL positions now use values confirmed on the actual rig. The v1 calculated values were wrong (e.g., SL Sharpy calc=90 vs verified=170).
+2. **7-tuple format**: Position tuples include NI3K pan as 7th element for consistency (NI3K is OFF for this show).
+3. **Room collapse**: SL=DSL=USL and SR=DSR=USR — room too small for depth to matter on sides.
+4. **Verified specials added**: DJ Booth, Disco Ball, Center Ceiling, Cross (X).
+5. **Drift sequences redesigned**: Specials integrated at musically meaningful moments:
+   - **Intro**: DJ Booth for performer spotlight during siren buildup
+   - **Verses**: Disco Ball for atmospheric texture during grooves
+   - **Choruses**: Cross (X) + Center Ceiling for dramatic beam effects
+   - **Outro**: DJ Booth for intimate wind-down
 
 ## Creative Brief
 
@@ -40,14 +61,30 @@ instant snaps (FadeIn=0) for crisp chase patterns.
   Intensity builds per section. Runs in its own dedicated chaser for crisp timing.
 - **NI3K**: OFF for entire show. Clean mover + par aesthetic.
 
-## Movement & Positions
+## Movement Positions (v2: All Hardware-Verified)
 
+### Position Values
+| Key | Sharpy (pan,tilt) | BSW (pan,tilt) | Profile (pan,tilt) | NI3K pan | Verified |
+|-----|-------------------|----------------|-------------------|----------|----------|
+| C | 153, 0 | 7, 19 | 0, 123 | 128 | Yes |
+| SL | 170, 0 | 189, 29 | 50, 165 | 80 | Yes |
+| SR | 149, 5 | 170, 23 | 110, 145 | 176 | Yes |
+| DSC | 158, 6 | 179, 27 | 64, 145 | 128 | Yes |
+| USC | 157, 0 | 181, 21 | 52, 136 | 128 | Yes |
+| DJ | 142, 3 | 196, 25 | 95, 107 | 128 | Yes |
+| DISCO | 144, 34 | 170, 56 | 154, 168 | 128 | Yes |
+| CEIL | 158, 73 | 180, 86 | 91, 30 | 128 | Yes |
+| X | 149, 5 | 189, 29 | 0, 123 | 128 | Composite |
+
+Notes: DSL=SL, DSR=SR, USL=SL, USR=SR (room too small for depth on sides).
+
+### Drift Sequences (v2: with specials)
 Movers drift slowly between positions, changing every 8 beats (~2 bars):
 
-- **Intro**: C → SL → C → SR → C (conservative, centered)
-- **Verses**: C → SL → SR → DSC → C → USL → USR → C (wider exploration)
-- **Choruses**: DSC → SL → SR → DSL → DSR → C → DSC → SL (audience-facing, energetic)
-- **Outro**: C → SL → C → SR → C → USC → C (return to center, winding down)
+- **DRIFT_INTRO** (5): C → SL → DJ → SR → C — DJ Booth for performer focus
+- **DRIFT_VERSE** (8): C → SL → SR → DSC → C → DISCO → USR → C — Disco Ball for atmosphere
+- **DRIFT_CHORUS** (8): DSC → SL → SR → X → CEIL → C → DSC → SL — Cross + Ceiling for drama
+- **DRIFT_OUTRO** (7): C → SL → DJ → SR → C → USC → C — DJ Booth for intimate wind-down
 
 ## Section Breakdown
 
@@ -56,13 +93,14 @@ Movers drift slowly between positions, changing every 8 beats (~2 bars):
 - Pars build from dim (master 80) up to moderate (200)
 - Movers start dark (dim=0), flash dim on bass hits (building from 80 to 200)
 - Heavy frost (200) for diffuse atmosphere
-- 15 bass hits — scattered, building
+- v2: DJ Booth position in drift for performer spotlight
 
 ### Verse 2 (0:29 - 0:45, 19 beats)
 - Groove established, consistent vibe
 - Movers have subtle base glow (dim=40), flash to 220 on bass
 - Frost reduced to 150
 - Pars at master 200
+- v2: Disco Ball in drift for atmospheric texture
 
 ### Verse 3 (0:45 - 1:08, 31 beats)
 - Building toward first chorus
@@ -76,12 +114,14 @@ Movers drift slowly between positions, changing every 8 beats (~2 bars):
 - No frost, sharp beams
 - BSW gobo 3 added for texture
 - Pars at full master 255
+- v2: Cross (X) + Center Ceiling in drift for dramatic beams
 
 ### Verse 4 (1:22 - 2:00, 47 beats)
 - Longest section, pull back from chorus energy
 - Movers dim=50, flash to 220
 - Frost back to 120 for softer feel
 - Pars at 180
+- v2: Disco Ball in drift
 
 ### Verse 5 (2:00 - 2:25, 33 beats)
 - Rebuilding toward second chorus
@@ -96,6 +136,7 @@ Movers drift slowly between positions, changing every 8 beats (~2 bars):
 - Profile prism (60)
 - Movers dim=100, flash to 255
 - Pars full blast 255
+- v2: Cross + Ceiling in drift
 
 ### Chorus 3 (2:49 - 3:03, 17 beats)
 - PEAK energy — everything maxed
@@ -110,6 +151,7 @@ Movers drift slowly between positions, changing every 8 beats (~2 bars):
 - Mover flash dims from 200 down to 80
 - Frost increases back to heavy (200+)
 - Returns to atmospheric, diffuse feel
+- v2: DJ Booth in drift for intimate wind-down
 
 ### End (3:28 - 3:33)
 - Snap to full blackout
@@ -126,6 +168,10 @@ Movers drift slowly between positions, changing every 8 beats (~2 bars):
   Consecutive bass hits stay bright (no decay between them).
 - **Smooth position drift**: Non-bass beats use FadeIn=779ms, which also smoothly crossfades
   pan/tilt values between positions. Movers glide between focus points rather than snapping.
+- **Hardware-verified positions**: All positions confirmed on the actual rig, eliminating
+  the geometric calculation errors from v1.
+- **Special position integration**: DJ Booth (intro/outro intimacy), Disco Ball (verse
+  atmosphere), Cross + Center Ceiling (chorus drama) appear at musically meaningful moments.
 - **3-color cycling**: All fixtures cycle R/G/Y on a 3-beat rotation, creating a constantly
   shifting tricolor pattern that never repeats the same way.
 - **Progressive frost**: Intro uses heavy frost (200) for atmosphere, gradually sharpens
@@ -137,7 +183,7 @@ Movers drift slowly between positions, changing every 8 beats (~2 bars):
 
 ## Stats
 
-- 289 unique scenes (246 dedup reuses)
+- 292 unique scenes (243 dedup reuses)
 - 274 steps per chaser (2 chasers + 1 Collection)
 - 117 snap beats (bass pulses + blackouts), 157 smooth beats (pulse decay + drift)
 - 109 bass-triggered mover pulses across 270 beats (40% hit rate)

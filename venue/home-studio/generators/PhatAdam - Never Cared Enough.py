@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
 """
-Show Generator: PhatAdam - Never Cared Enough (v2 - Beat-Synced)
-================================================================
+Show Generator: PhatAdam - Never Cared Enough (v3 - Verified Focus Positions)
+=============================================================================
 BPM: 133 | Duration: ~2:28 | Genre: Happy / upbeat electronic
 
-v2 Creative Direction:
-  - EVERYTHING to the beat: pars snap on every beat (or 2/4 in slower sections)
-  - 4BAR + Missyees = unified wash unit (Missyees extend the 4BAR chase/pattern)
-  - Par patterns rotate per section: chase → pairs → solid → alternating
-  - Movers reposition every 4 beats, color/effect changes every beat
-  - Neon pop palette: hot pink, electric blue, vivid green, magenta, yellow, orange
-  - Strobe accents on chorus downbeats and big moments (more than v1)
-  - NI3K halo: beat-synced in verses/tease, hardware jump mode in choruses
-  - All timing: FadeIn=0 instant snaps for maximum punch
+v3 Changes from v2:
+  - ALL positions now use hardware-verified focus positions from focus-positions.md
+  - Added specials: DJ Booth, Disco Ball, Center Ceiling
+  - Cross position built from verified SL/SR (Sharpy→SR, BSW→SL = crossing beams)
+  - Position sequences redesigned to showcase specials at key moments:
+    * Disco Ball surprise in Full Party, featured in Chorus 2 + Climax
+    * Center Ceiling for dramatic upward beams in builds + Chorus 3
+    * DJ Booth for performer spotlight during Break + transitions
+  - NI3K pan varies per position (was fixed at 128)
 
 Song Structure (from allin1 analysis):
   0:00 - 0:14  intro     (8 bars)   "Tease" — chase pattern, pars building, movers dark
@@ -82,24 +82,30 @@ HALO_FOR = {
 }
 
 # =============================================================================
-# MOVER POSITIONS — (sharpy_pan, sharpy_tilt, bsw_pan, bsw_tilt, prof_pan, prof_tilt)
+# MOVER POSITIONS — ALL HARDWARE-VERIFIED from focus-positions.md
+# Format: (sharpy_pan, sharpy_tilt, bsw_pan, bsw_tilt, prof_pan, prof_tilt, ni3k_pan)
 # =============================================================================
 
 POS = {
-    "C": (153, 0,   7, 19,  0, 123),   # center
-    "L": (100, 10,  80, 25,  50, 110),  # left
-    "R": (210, 10,  190, 10, 200, 110), # right
-    "W": (220, 20,  80, 30,  50, 90),   # wide
-    "H": (153, 40,  7, 50,   0, 80),    # high
-    "A": (153, 230, 7, 0,    0, 150),   # audience
-    "X": (80, 5,    200, 15, 200, 130), # cross
+    # Areas (verified)
+    "C":     (153, 0,   177, 19,  0,   123, 128),  # Center
+    "SL":    (170, 0,   189, 29,  50,  165, 80),   # Stage Left
+    "SR":    (149, 5,   170, 23,  110, 145, 176),  # Stage Right
+    "DSC":   (158, 6,   179, 27,  64,  145, 128),  # Downstage Center
+    "USC":   (157, 0,   181, 21,  52,  136, 128),  # Upstage Center
+    # Specials (verified)
+    "DJ":    (142, 3,   196, 25,  95,  107, 128),  # DJ Booth
+    "DISCO": (144, 34,  170, 56,  154, 168, 128),  # Disco Ball
+    "CEIL":  (158, 73,  180, 86,  91,  30,  128),  # Center Ceiling
+    # Cross: Sharpy aims SR side, BSW aims SL side = crossing beams
+    "X":     (149, 5,   189, 29,  0,   123, 128),
 }
 
 # Position sequences for different section energies
-POS_DANCE = ["C", "L", "R", "W", "X", "H", "A", "C"]
-POS_WIDE  = ["W", "X", "A", "H", "W", "L", "R", "X"]
-POS_BIG   = ["C", "W", "X", "A", "H", "L", "R", "C",
-             "X", "W", "H", "A", "L", "R", "C", "W"]
+POS_DANCE = ["C", "SL", "SR", "DSC", "X", "USC", "DISCO", "C"]
+POS_WIDE  = ["DSC", "X", "CEIL", "SL", "DISCO", "SR", "DJ", "X"]
+POS_BIG   = ["C", "DSC", "X", "DISCO", "CEIL", "SL", "SR", "C",
+             "DJ", "DSC", "CEIL", "DISCO", "SL", "SR", "USC", "X"]
 
 # =============================================================================
 # SCENE BUILDING WITH DEDUP
@@ -146,7 +152,7 @@ def mkvrs(pos_key, color, dim=255, frost=0, focus=128,
           prism_s=0, p1r_s=0, prism_b=0, prot_b=0, prism_p=0,
           s_strobe=SHARPY_OPEN, b_shutter=BSW_SHUT_OPEN):
     """Build all 3 movers from position key + color."""
-    sp, st, bp, bt, pp, pt = POS[pos_key]
+    sp, st, bp, bt, pp, pt, _ni = POS[pos_key]
     bsw_c = BSW_FOR.get(color, BSW_WHITE)
     sharpy_c = SHARPY_FOR.get(color, SHARPY_WHITE)
     prof_c = PROF_FOR.get(color, PROF_WHITE)
@@ -190,16 +196,17 @@ def par_solid(color, master=255):
             miss2(r, g, b, master=master))
 
 
-def mkni(color, dim=255, halo_mode="sync",
+def mkni(color, pos_key="C", dim=255, halo_mode="sync",
          rl=LASER_OFF, gl=LASER_OFF, bl=LASER_OFF,
          t1=64, t2=64, t3=64, strobe=0):
-    """Build NI3K fixture with color-matched halo."""
+    """Build NI3K fixture with color-matched halo and position-aware pan."""
     r, g, b = color
     halo_map = {"sync": HALO_FOR.get(color, H_RGB),
                 "jump_fast": H_JUMP_FAST, "jump_med": H_JUMP_MED,
                 "jump_slow": H_JUMP_SLOW, "off": H_OFF}
     halo = halo_map.get(halo_mode, H_RGB)
-    return ni3k(pan=128, t1=t1, t2=t2, t3=t3, r=r, g=g, b=b,
+    ni_pan = POS[pos_key][6]  # NI3K pan from position dict
+    return ni3k(pan=ni_pan, t1=t1, t2=t2, t3=t3, r=r, g=g, b=b,
                 halo=halo, dim=dim, strobe=strobe, rl=rl, gl=gl, bl=bl)
 
 
@@ -219,7 +226,7 @@ for bar in range(8):
     c = NEON_4[bar % 4]
     fb, m1, m2 = par_chase(c, bar, master=60 + bar * 20)
     s, b, p = mkvrs("C", c, dim=0)
-    n = mkni(c, dim=40 + bar * 12, halo_mode="sync")
+    n = mkni(c, pos_key="C", dim=40 + bar * 12, halo_mode="sync")
     idx = add_scene(f"Tease-{bar+1}", s, b, p, fb, m1, m2, n)
     beat_step(idx, beats=4)
 
@@ -227,9 +234,10 @@ for bar in range(8):
 # =============================================================================
 # OPENS UP — 8 bars, pars every 2 beats, movers every bar (brightening)
 # Pairs pattern with complementary colors. Movers fade in.
+# Introduces SL/SR movement, building toward the dance floor.
 # =============================================================================
 
-open_positions = POS_DANCE  # 8 positions for 8 bars
+open_positions = ["C", "SL", "SR", "USC", "C", "SL", "SR", "DSC"]
 
 for i in range(16):
     bar = i // 2
@@ -240,7 +248,7 @@ for i in range(16):
     pos = open_positions[bar % len(open_positions)]
     mc = NEON_4[bar % 4]
     s, b, p = mkvrs(pos, mc, dim=60 + bar * 24)
-    n = mkni(c1, dim=80 + bar * 20, halo_mode="sync")
+    n = mkni(c1, pos_key=pos, dim=80 + bar * 20, halo_mode="sync")
     idx = add_scene(f"Open-{bar+1}{chr(65+half)}", s, b, p, fb, m1, m2, n)
     beat_step(idx, beats=2)
 
@@ -248,19 +256,19 @@ for i in range(16):
 # =============================================================================
 # FULL PARTY — 8 bars, pars EVERY BEAT, movers reposition every bar
 # Chase pattern cycling 4 neon colors. Mover color shifts every beat.
+# Disco ball surprise on bar 7!
 # =============================================================================
 
-party_positions = POS_DANCE
+party_positions = POS_DANCE  # C, SL, SR, DSC, X, USC, DISCO, C
 
 for beat in range(32):
     bar = beat // 4
     bib = beat % 4
     c = NEON_4[beat % 4]
-    mc = NEON_4[beat % 4]
     pos = party_positions[bar % len(party_positions)]
     fb, m1, m2 = par_chase(c, beat)
-    s, b, p = mkvrs(pos, mc, dim=255)
-    n = mkni(c, dim=220, halo_mode="sync")
+    s, b, p = mkvrs(pos, c, dim=255)
+    n = mkni(c, pos_key=pos, dim=220, halo_mode="sync")
     idx = add_scene(f"Party-{bar+1}.{bib+1}", s, b, p, fb, m1, m2, n)
     beat_step(idx, beats=1)
 
@@ -269,9 +277,10 @@ for beat in range(32):
 # CHORUS 1 — 9 bars, pars EVERY BEAT
 # Chase + solid hits. Strobe accent on beat 1 of every other bar.
 # NI3K: jump mode. NI3K tilts start moving.
+# Features DJ Booth on bar 5 for performer spotlight.
 # =============================================================================
 
-ch1_positions = POS_DANCE + ["X"]  # 9 for 9 bars
+ch1_positions = ["C", "SL", "SR", "DSC", "DJ", "X", "USC", "DSC", "C"]
 
 for beat in range(36):
     bar = beat // 4
@@ -288,11 +297,13 @@ for beat in range(36):
         s, b, p = mkvrs(pos, c,
                          s_strobe=SHARPY_STROBE_FAST,
                          b_shutter=BSW_SHUT_STROBE_FAST)
-        n = mkni(c, dim=255, halo_mode="jump_med", t1=t1, t2=t2, t3=t3)
+        n = mkni(c, pos_key=pos, dim=255, halo_mode="jump_med",
+                 t1=t1, t2=t2, t3=t3)
     else:
         fb, m1, m2 = par_chase(c, beat)
         s, b, p = mkvrs(pos, c)
-        n = mkni(c, dim=255, halo_mode="jump_med", t1=t1, t2=t2, t3=t3)
+        n = mkni(c, pos_key=pos, dim=255, halo_mode="jump_med",
+                 t1=t1, t2=t2, t3=t3)
 
     idx = add_scene(f"Ch1-{bar+1}.{bib+1}", s, b, p, fb, m1, m2, n)
     beat_step(idx, beats=1)
@@ -301,9 +312,10 @@ for beat in range(36):
 # =============================================================================
 # VERSE — 7 bars, pars every 2 beats, movers every 8 beats (slow)
 # Pairs pattern, softer. Movers frosted. NI3K beat-synced.
+# Gentle movement: C → SL → SR → C. Intimate feel.
 # =============================================================================
 
-verse_positions = ["C", "L", "R", "C"]
+verse_positions = ["C", "SL", "SR", "C"]
 
 for i in range(14):
     bar = i // 2
@@ -317,47 +329,47 @@ for i in range(14):
     pos = verse_positions[pos_idx % len(verse_positions)]
     mc = NEON_4[i % 4]
     s, b, p = mkvrs(pos, mc, dim=140, frost=150, focus=200)
-    n = mkni(c1, dim=100, halo_mode="sync")
+    n = mkni(c1, pos_key=pos, dim=100, halo_mode="sync")
     idx = add_scene(f"Verse-{bar+1}{chr(65+half)}", s, b, p, fb, m1, m2, n)
     beat_step(idx, beats=2)
 
 
 # =============================================================================
 # BREAK — 8 bars, strobe buildup with accelerating par rate
-# Bars 1-3: pars every 4 beats, slow strobe on movers
-# Bars 4-5: pars every 2 beats, medium strobe
-# Bars 6-8: pars every beat, fast strobe, building to white
+# Bars 1-3: DJ Booth focus, slow strobe (performer spotlight during build)
+# Bars 4-5: Center Ceiling, medium strobe (beams reaching upward)
+# Bars 6-8: Center, fast strobe, building to white (converging energy)
 # =============================================================================
 
-# Bars 1-3: slow buildup (3 steps × 4 beats each)
+# Bars 1-3: slow buildup on DJ Booth (3 steps × 4 beats each)
 build_slow_colors = [HOT_PINK, ELEC_BLUE, NEON_MAG]
 for bar in range(3):
     c = build_slow_colors[bar]
     fb, m1, m2 = par_solid(c, master=100 + bar * 30)
-    s, b, p = mkvrs("C", BRIGHT_WHITE, dim=120 + bar * 30,
+    s, b, p = mkvrs("DJ", BRIGHT_WHITE, dim=120 + bar * 30,
                      s_strobe=SHARPY_STROBE_SLOW, b_shutter=20)
-    n = mkni(c, dim=80 + bar * 30, halo_mode="sync")
+    n = mkni(c, pos_key="DJ", dim=80 + bar * 30, halo_mode="sync")
     idx = add_scene(f"Build-S{bar+1}", s, b, p, fb, m1, m2, n)
     beat_step(idx, beats=4)
 
-# Bars 4-5: medium buildup (4 steps × 2 beats each)
+# Bars 4-5: medium buildup, Center Ceiling (4 steps × 2 beats each)
 for i in range(4):
     c = NEON_4[i % 4]
     fb, m1, m2 = par_chase(c, i, master=180)
-    s, b, p = mkvrs("C", BRIGHT_WHITE, dim=200,
+    s, b, p = mkvrs("CEIL", BRIGHT_WHITE, dim=200,
                      s_strobe=SHARPY_STROBE_MED, b_shutter=70)
-    n = mkni(c, dim=160, halo_mode="sync")
+    n = mkni(c, pos_key="CEIL", dim=160, halo_mode="sync")
     idx = add_scene(f"Build-M{i+1}", s, b, p, fb, m1, m2, n)
     beat_step(idx, beats=2)
 
-# Bars 6-8: fast buildup (12 steps × 1 beat each)
+# Bars 6-8: fast buildup on Center (12 steps × 1 beat each)
 for beat in range(12):
     c = NEON_6[beat % 6]
     fb, m1, m2 = par_chase(c, beat)
     s, b, p = mkvrs("C", BRIGHT_WHITE, dim=240,
                      s_strobe=SHARPY_STROBE_FAST,
                      b_shutter=BSW_SHUT_STROBE_FAST)
-    n = mkni(BRIGHT_WHITE, dim=220, halo_mode="jump_fast")
+    n = mkni(BRIGHT_WHITE, pos_key="C", dim=220, halo_mode="jump_fast")
     idx = add_scene(f"Build-F{beat+1}", s, b, p, fb, m1, m2, n)
     beat_step(idx, beats=1)
 
@@ -366,6 +378,7 @@ for beat in range(12):
 # CHORUS 2 — 10 bars, pars EVERY BEAT, 6-color cycle
 # Prisms spinning on all movers. Strobe accents on beat 1 every other bar.
 # NI3K: jump fast, tilts dancing.
+# Features Disco Ball + Center Ceiling in the position rotation.
 # =============================================================================
 
 for beat in range(40):
@@ -389,7 +402,8 @@ for beat in range(40):
         s, b, p = mkvrs(pos, c, prism_s=128, p1r_s=200,
                          prism_b=80, prot_b=180, prism_p=60)
 
-    n = mkni(c, dim=255, halo_mode="jump_fast", t1=t1, t2=t2, t3=t3)
+    n = mkni(c, pos_key=pos, dim=255, halo_mode="jump_fast",
+             t1=t1, t2=t2, t3=t3)
     idx = add_scene(f"Ch2-{bar+1}.{bib+1}", s, b, p, fb, m1, m2, n)
     beat_step(idx, beats=1)
 
@@ -397,7 +411,8 @@ for beat in range(40):
 # =============================================================================
 # CHORUS 3 — 15 bars, pars EVERY BEAT, maximum variety
 # Alternates chase + pairs patterns every 2 bars. All 6 neon colors.
-# Widest mover moves. Prisms spinning harder. Strobe every 4 bars.
+# Uses ALL positions including every special. Prisms spinning harder.
+# Strobe every 4 bars.
 # =============================================================================
 
 for beat in range(60):
@@ -426,7 +441,8 @@ for beat in range(60):
         s, b, p = mkvrs(pos, c, prism_s=128, p1r_s=200,
                          prism_b=128, prot_b=200, prism_p=80)
 
-    n = mkni(c, dim=255, halo_mode="jump_fast", t1=t1, t2=t2, t3=t3)
+    n = mkni(c, pos_key=pos, dim=255, halo_mode="jump_fast",
+             t1=t1, t2=t2, t3=t3)
     idx = add_scene(f"Ch3-{bar+1}.{bib+1}", s, b, p, fb, m1, m2, n)
     beat_step(idx, beats=1)
 
@@ -435,9 +451,10 @@ for beat in range(60):
 # CLIMAX — 9 bars, ALL strobes + ALL lasers, maximum sensory overload
 # Solid color hits every beat. Prisms spinning. NI3K tilts rotating.
 # All 3 NI3K lasers on permanently.
+# Disco Ball + Center Ceiling featured prominently for dramatic finale.
 # =============================================================================
 
-climax_positions = POS_DANCE + ["X"]  # 9 for 9 bars
+climax_positions = ["C", "DISCO", "X", "CEIL", "DSC", "DISCO", "SL", "SR", "CEIL"]
 
 for beat in range(36):
     bar = beat // 4
@@ -450,7 +467,7 @@ for beat in range(36):
                      prism_b=128, prot_b=200, prism_p=120,
                      s_strobe=SHARPY_STROBE_FAST,
                      b_shutter=BSW_SHUT_STROBE_FAST)
-    n = mkni(c, dim=255, halo_mode="jump_fast",
+    n = mkni(c, pos_key=pos, dim=255, halo_mode="jump_fast",
              rl=LASER_ON, gl=LASER_ON, bl=LASER_ON,
              t1=160, t2=140, t3=180)  # auto-rotating tilts
     idx = add_scene(f"Climax-{bar+1}.{bib+1}", s, b, p, fb, m1, m2, n)

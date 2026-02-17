@@ -1,8 +1,16 @@
 #!/usr/bin/env python3
 """
-Show Generator: Tvboo - Fixin's (Fire & Ice Edition)
-=====================================================
+Show Generator: Tvboo - Fixin's (Fire & Ice Edition) (v2)
+==========================================================
 BPM: 144 | Duration: ~3:25 | Genre: Dirty bass / riddim
+
+v2 Changes:
+  - ALL positions now use hardware-verified focus positions from focus-positions.md
+  - 7-tuple format: (sharpy_pan, sharpy_tilt, bsw_pan, bsw_tilt, prof_pan, prof_tilt, ni3k_pan)
+  - Replaced hardcoded positions (many unsafe: BSW pan=210 behind, Sharpy pan=80 behind,
+    Profile pan=220 outside safe range, tilt=170 outside safe range)
+  - NI3K pan now varies per position via pos_key parameter
+  - Position sequences redesigned using verified positions (DSL/DSR/X/CEIL/DISCO/AUD etc.)
 
 Creative Direction:
   - FIRE & ICE palette: red/orange/amber vs blue/cyan/white
@@ -80,27 +88,34 @@ HALO_FIRE = [H_RED, H_RED, H_YEL, H_RGB]
 HALO_ICE  = [H_BLU, H_CYN, H_RGB, H_CYN]
 
 # =============================================================================
-# MOVER POSITIONS — Sharpy+BSW face FORWARD, Profile faces BACK
-# (sharpy_pan, sharpy_tilt, bsw_pan, bsw_tilt, prof_pan, prof_tilt)
+# MOVER POSITIONS — ALL HARDWARE-VERIFIED from focus-positions.md
+# Format: (sharpy_pan, sharpy_tilt, bsw_pan, bsw_tilt, prof_pan, prof_tilt, ni3k_pan)
 # =============================================================================
 
 POS = {
-    # Standard positions — back movers forward, front mover backward
-    "C":  (153, 0,   7,  19,  0,   123),   # all center
-    "FL": (120, 15,  40, 25,  30,  140),   # front left area
-    "FR": (190, 15,  200, 10, 220, 140),   # front right area
-    "W":  (100, 20,  210, 10, 40,  100),   # wide spread
-    "AUD":(153, 40,  7,  45,  0,   150),   # audience (forward+down / back+up)
-    "X":  (100, 10,  200, 10, 200, 130),   # crossed beams
-    "FAN":(80,  25,  220, 25, 0,   90),    # fanned out wide
-    "UP": (153, 230, 7,  0,   0,   170),   # movers aimed up/back at ceiling
+    # Areas (all verified)
+    "C":     (153, 0,   177, 19,  0,   123, 128),  # Center
+    "SL":    (170, 0,   189, 29,  50,  165, 80),   # Stage Left
+    "SR":    (149, 5,   170, 23,  110, 145, 176),  # Stage Right
+    "DSC":   (158, 6,   179, 27,  64,  145, 128),  # Downstage Center
+    "DSL":   (170, 0,   189, 29,  50,  165, 80),   # = SL (verified)
+    "DSR":   (149, 5,   170, 23,  110, 145, 176),  # = SR (verified)
+    "USC":   (157, 0,   181, 21,  52,  136, 128),  # Upstage Center
+    # Specials (all verified)
+    "DJ":    (142, 3,   196, 25,  95,  107, 128),  # DJ Booth
+    "DISCO": (144, 34,  170, 56,  154, 168, 128),  # Disco Ball
+    "CEIL":  (158, 73,  180, 86,  91,  30,  128),  # Center Ceiling
+    # Cross: Sharpy aims SR side, BSW aims SL side = crossing beams
+    "X":     (149, 5,   189, 29,  0,   123, 128),
+    # Audience Blinder — UNVERIFIED calc values, use sparingly
+    "AUD":   (153, 15,  177, 5,   0,   155, 128),
 }
 
-# Position sequences for different energies
-POS_DROP   = ["C", "FL", "FR", "W", "X", "AUD", "FAN", "C"]
-POS_SWEEP  = ["FL", "C", "FR", "C"]  # smooth sweeps for breakdowns
-POS_BIG    = ["C", "W", "X", "AUD", "FAN", "FL", "FR", "UP",
-              "X", "W", "AUD", "FAN", "C", "FL", "FR", "W"]
+# Position sequences for different energies — using verified positions
+POS_DROP   = ["C", "DSL", "DSR", "X", "AUD", "CEIL", "SL", "C"]
+POS_SWEEP  = ["SL", "C", "SR", "C"]    # smooth sweeps for breakdowns
+POS_BIG    = ["C", "X", "CEIL", "AUD", "DSL", "DSR", "SR", "DISCO",
+              "X", "SL", "AUD", "CEIL", "C", "DSL", "DSR", "X"]
 
 # =============================================================================
 # SCENE BUILDING WITH DEDUP
@@ -155,8 +170,8 @@ def mk_movers(pos_key, palette="ice", color_idx=0, dim=255,
               prism_b=0, prot_b=0, prism_p=0,
               gobo_b=0, gobo_p=0,
               s_strobe=SHARPY_OPEN, b_shutter=BSW_SHUT_OPEN):
-    """Build all 3 movers from position key + fire/ice palette."""
-    sp, st, bp, bt, pp, pt = POS[pos_key]
+    """Build all 3 movers from position key + fire/ice palette. Uses 7-tuple positions."""
+    sp, st, bp, bt, pp, pt, _ni = POS[pos_key]
     bsw_colors = BSW_FIRE if palette == "fire" else BSW_ICE
     sharpy_colors = SHARPY_FIRE if palette == "fire" else SHARPY_ICE
     prof_colors = PROF_FIRE if palette == "fire" else PROF_ICE
@@ -230,8 +245,8 @@ def par_solid(color, master=255, strobe=0):
 
 def mk_ni(palette="ice", color_idx=0, dim=255, halo_mode="sync",
            rl=LASER_OFF, gl=LASER_OFF, bl=LASER_OFF,
-           t1=64, t2=64, t3=64, strobe=0):
-    """Build NI3K with fire/ice palette matching."""
+           t1=64, t2=64, t3=64, strobe=0, pos_key="C"):
+    """Build NI3K with fire/ice palette matching. Uses position lookup for pan."""
     if palette == "fire":
         colors = FIRE_COLORS
         halos = HALO_FIRE
@@ -244,7 +259,8 @@ def mk_ni(palette="ice", color_idx=0, dim=255, halo_mode="sync",
                 "jump_fast": H_JUMP_FAST, "jump_med": H_JUMP_MED,
                 "jump_slow": H_JUMP_SLOW, "off": H_OFF}
     halo = halo_map.get(halo_mode, H_RGB)
-    return ni3k(pan=128, t1=t1, t2=t2, t3=t3, r=r, g=g, b=b,
+    ni_pan = POS[pos_key][6]
+    return ni3k(pan=ni_pan, t1=t1, t2=t2, t3=t3, r=r, g=g, b=b,
                 halo=halo, dim=dim, strobe=strobe, rl=rl, gl=gl, bl=bl)
 
 
@@ -282,7 +298,7 @@ for bar in range(16):
                                 frost=200 - bar * 15, focus=180)
             t_base = 64
             n = mk_ni(palette="ice", color_idx=ci, dim=40 + bar * 20,
-                      halo_mode="sync", t1=t_base, t2=t_base, t3=t_base)
+                      halo_mode="sync", t1=t_base, t2=t_base, t3=t_base, pos_key=pos)
             idx = add_scene(f"Intro-{bar+1}{chr(65+half)}", s, b, p, fb, m1, m2, n)
             beat_step(idx, beats=2)
     else:
@@ -314,7 +330,7 @@ for bar in range(16):
             n = mk_ni(palette=pal, color_idx=ci, dim=dim_val,
                       halo_mode="sync",
                       t1=t1, t2=t2, t3=t3,
-                      rl=laser_r, gl=laser_g, bl=laser_b)
+                      rl=laser_r, gl=laser_g, bl=laser_b, pos_key=pos)
             idx = add_scene(f"Intro-{bar+1}.{bib+1}", s, b, p, fb, m1, m2, n)
             beat_step(idx, beats=1)
 
@@ -348,7 +364,7 @@ for beat in range(64):
     n = mk_ni(palette=pal, color_idx=ci, dim=255,
               halo_mode="jump_fast",
               rl=LASER_ON, gl=LASER_ON, bl=LASER_ON,
-              t1=t1, t2=t2, t3=t3)
+              t1=t1, t2=t2, t3=t3, pos_key=pos)
 
     idx = add_scene(f"Drop1-{bar+1}.{bib+1}", s, b, p, fb, m1, m2, n)
     beat_step(idx, beats=1)
@@ -387,7 +403,7 @@ for beat in range(32):
     n = mk_ni(palette=pal, color_idx=ci, dim=255,
               halo_mode="jump_fast",
               rl=LASER_ON, gl=LASER_ON, bl=LASER_ON,
-              t1=t1, t2=t2, t3=t3)
+              t1=t1, t2=t2, t3=t3, pos_key=pos)
 
     idx = add_scene(f"Drop1B-{bar+1}.{bib+1}", s, b, p, fb, m1, m2, n)
     beat_step(idx, beats=1)
@@ -417,7 +433,7 @@ for bar in range(8):
 
         # NI3K: positioned, soft halo, no lasers
         n = mk_ni(palette="ice", color_idx=ci, dim=80 + bar * 15,
-                  halo_mode="sync", t1=64, t2=64, t3=64)
+                  halo_mode="sync", t1=64, t2=64, t3=64, pos_key=pos)
 
         idx = add_scene(f"BD1-{bar+1}{chr(65+half)}", s, b, p, fb, m1, m2, n)
         smooth_step(idx, beats=2)
@@ -455,7 +471,7 @@ for beat in range(32):
     n = mk_ni(palette=pal, color_idx=ci, dim=255,
               halo_mode="jump_fast",
               rl=LASER_ON, gl=LASER_ON, bl=LASER_ON,
-              t1=t1, t2=t2, t3=t3)
+              t1=t1, t2=t2, t3=t3, pos_key=pos)
 
     idx = add_scene(f"Drop2-{bar+1}.{bib+1}", s, b, p, fb, m1, m2, n)
     beat_step(idx, beats=1)
@@ -493,7 +509,7 @@ for bar in range(8):
 
         n = mk_ni(palette="ice", color_idx=ci, dim=60 + bar * 18,
                   halo_mode="sync", t1=64, t2=64, t3=64,
-                  rl=rl, gl=gl, bl=bl)
+                  rl=rl, gl=gl, bl=bl, pos_key=pos)
 
         idx = add_scene(f"BD2-{bar+1}{chr(65+half)}", s, b, p, fb, m1, m2, n)
         smooth_step(idx, beats=2)
@@ -540,7 +556,7 @@ for bar in range(8):
         n = mk_ni(palette=pal, color_idx=ci, dim=dim_val,
                   halo_mode="sync" if bar < 4 else "jump_slow",
                   t1=t1, t2=t2, t3=t3,
-                  rl=rl, gl=gl, bl=bl)
+                  rl=rl, gl=gl, bl=bl, pos_key=pos)
 
         idx = add_scene(f"Build-{bar+1}.{bib+1}", s, b, p, fb, m1, m2, n)
         beat_step(idx, beats=1)
@@ -580,7 +596,7 @@ for beat in range(32):
     n = mk_ni(palette=pal, color_idx=ci, dim=255,
               halo_mode="jump_fast",
               rl=LASER_ON, gl=LASER_ON, bl=LASER_ON,
-              t1=t1, t2=t2, t3=t3)
+              t1=t1, t2=t2, t3=t3, pos_key=pos)
 
     idx = add_scene(f"Drop3-{bar+1}.{bib+1}", s, b, p, fb, m1, m2, n)
     beat_step(idx, beats=1)
@@ -614,7 +630,7 @@ for beat in range(32):
     n = mk_ni(palette=pal, color_idx=ci, dim=255,
               halo_mode="jump_fast",
               rl=LASER_ON, gl=LASER_ON, bl=LASER_ON,
-              t1=t1, t2=t2, t3=t3)
+              t1=t1, t2=t2, t3=t3, pos_key=pos)
 
     idx = add_scene(f"Drop3B-{bar+1}.{bib+1}", s, b, p, fb, m1, m2, n)
     beat_step(idx, beats=1)
@@ -638,7 +654,7 @@ for beat in range(32):
         fb, m1, m2 = par_solid(WHITE, strobe=0)
         pal = "ice"
         # Sharpy and BSW go white
-        sp, st, bp, bt, pp, pt = POS[pos]
+        sp, st, bp, bt, pp, pt, _ni = POS[pos]
         s = sharpy(pan=sp, tilt=st, strobe=SHARPY_STROBE_FAST, dim=255,
                    prism1=128, p1r=200, prism2=128, p2r=200)
         b = bsw(pan=bp, tilt=bt, color=BSW_WHITE,
@@ -667,7 +683,7 @@ for beat in range(32):
     n = mk_ni(palette=pal, color_idx=ci, dim=255,
               halo_mode="jump_fast",
               rl=LASER_ON, gl=LASER_ON, bl=LASER_ON,
-              t1=t1, t2=t2, t3=t3)
+              t1=t1, t2=t2, t3=t3, pos_key=pos)
 
     idx = add_scene(f"Final-{bar+1}.{bib+1}", s, b, p, fb, m1, m2, n)
     beat_step(idx, beats=1)
@@ -693,14 +709,14 @@ for bar in range(8):
         m2 = miss2(0, 20, 60, master=master_val)
 
         # Movers converging to center
-        pos_seq = ["W", "FR", "FL", "C", "C", "C", "C", "C"]
+        pos_seq = ["X", "DSR", "DSL", "C", "C", "C", "C", "C"]
         pos = pos_seq[bar]
         s, b, p = mk_movers(pos, palette="ice", color_idx=ci,
                              dim=dim_val, frost=80 + bar * 15, focus=200)
 
         t_val = 64  # settled
         n = mk_ni(palette="ice", color_idx=ci, dim=max(10, dim_val - 40),
-                  halo_mode="sync", t1=t_val, t2=t_val, t3=t_val)
+                  halo_mode="sync", t1=t_val, t2=t_val, t3=t_val, pos_key=pos)
 
         idx = add_scene(f"Outro-{bar+1}{chr(65+half)}", s, b, p, fb, m1, m2, n)
         smooth_step(idx, beats=2)
