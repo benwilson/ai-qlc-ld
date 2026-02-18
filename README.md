@@ -90,6 +90,16 @@ Example: "Ethereal" mood + DnB genre = DnB's blue/cyan palette with slower movem
 ./analyze.sh --keep-stems "Artist - Title.flac"
 ```
 
+## CI Command
+
+Run the full test suite with:
+
+```bash
+./ci.sh
+```
+
+This runs all `unittest` test files under `tests/` via discovery.
+
 The analysis pipeline runs two stages in a single pass:
 
 1. **allin1** — BPM, beat/downbeat timestamps, song structure segments (intro, verse, chorus, break, etc.), and demucs source separation

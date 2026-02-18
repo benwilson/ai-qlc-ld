@@ -25,6 +25,7 @@ Usage:
 import os
 import re
 import xml.etree.ElementTree as ET
+from xml.sax.saxutils import escape
 from typing import List, Tuple, Dict, Optional, Any
 
 # =============================================================================
@@ -330,28 +331,31 @@ def blackout(fixture_id: int, num_channels: int):
 def dark_sharpy(pan=None, tilt=None):
     """Sharpy with output killed but head parked at a position.
     Defaults to DSC. Prevents pan spins during blackout scenes."""
-    p, t = pan or _DSC_SHARPY[0], tilt or _DSC_SHARPY[1]
+    p = _DSC_SHARPY[0] if pan is None else pan
+    t = _DSC_SHARPY[1] if tilt is None else tilt
     return sharpy(pan=p, tilt=t, dim=0, strobe=SHARPY_CLOSED)
 
 
 def dark_bsw(pan=None, tilt=None):
     """BSW with output killed but head parked at a position.
     Defaults to DSC. Prevents pan spins during blackout scenes."""
-    p, t = pan or _DSC_BSW[0], tilt or _DSC_BSW[1]
+    p = _DSC_BSW[0] if pan is None else pan
+    t = _DSC_BSW[1] if tilt is None else tilt
     return bsw(pan=p, tilt=t, dim=0, shutter=BSW_SHUT_CLOSED)
 
 
 def dark_profile(pan=None, tilt=None):
     """Profile with output killed but head parked at a position.
     Defaults to DSC. Prevents tilt flips during blackout scenes."""
-    p, t = pan or _DSC_PROF[0], tilt or _DSC_PROF[1]
+    p = _DSC_PROF[0] if pan is None else pan
+    t = _DSC_PROF[1] if tilt is None else tilt
     return profile(pan=p, tilt=t, dim=0)
 
 
 def dark_ni3k(pan=None):
     """NI3K with all output killed but pan parked at a position.
     Defaults to DSC. LEDs, lasers, halo all off."""
-    p = pan or _DSC_NI3K
+    p = _DSC_NI3K if pan is None else pan
     return ni3k(pan=p, dim=0, r=0, g=0, b=0, w=0,
                 halo=H_OFF, rl=LASER_OFF, gl=LASER_OFF, bl=LASER_OFF)
 
@@ -481,9 +485,24 @@ def make_chaser(name: str, scene_ids: List[int], timing: List[Tuple[int, int]],
     }
 
 
+_XML_ATTR_ESCAPES = {'"': '&quot;', "'": '&apos;'}
+
+
+def _xml_attr(value: Any) -> str:
+    """Escape text for safe XML attribute interpolation."""
+    return escape(str(value), _XML_ATTR_ESCAPES)
+
+
+def _xml_text(value: Any) -> str:
+    """Escape text for safe XML node interpolation."""
+    return escape(str(value))
+
+
 def write_workspace(filename: str, scenes: List[dict], chasers: List[dict] = None,
                     bpm: int = 174, artnet_ip: str = "10.0.0.7",
-                    vc_buttons: List[dict] = None):
+                    vc_buttons: List[dict] = None,
+                    fixture_defs: Optional[List[dict]] = None,
+                    stage_positions: Optional[List[Tuple[int, str, str, str]]] = None):
     """Write a complete QLC+ 5.0.1 workspace file.
 
     Args:
@@ -494,8 +513,13 @@ def write_workspace(filename: str, scenes: List[dict], chasers: List[dict] = Non
         artnet_ip: ArtNet output IP
         vc_buttons: Optional custom VC buttons. If None, auto-generates
                     a button for each chaser + blackout.
+        fixture_defs: Optional fixture definitions override (defaults to FIXTURE_DEFS)
+        stage_positions: Optional monitor stage positions override
+                         (defaults to STAGE_POSITIONS)
     """
     chasers = chasers or []
+    fixture_defs = fixture_defs if fixture_defs is not None else FIXTURE_DEFS
+    stage_positions = stage_positions if stage_positions is not None else STAGE_POSITIONS
 
     # Assign function IDs: scenes get 0..N-1, chasers get N..N+M-1
     next_id = len(scenes)
@@ -518,20 +542,20 @@ def write_workspace(filename: str, scenes: List[dict], chasers: List[dict] = Non
 
     # InputOutputMap
     L('  <InputOutputMap>')
-    L(f'   <BeatGenerator BeatType="Internal" BPM="{bpm}"/>')
+    L(f'   <BeatGenerator BeatType="Internal" BPM="{_xml_attr(bpm)}"/>')
     L('   <Universe Name="Universe 1" ID="0">')
-    L(f'    <Output Plugin="ArtNet" UID="{artnet_ip}" Line="0"/>')
+    L(f'    <Output Plugin="ArtNet" UID="{_xml_attr(artnet_ip)}" Line="0"/>')
     L('   </Universe>')
     L('  </InputOutputMap>')
 
     # Fixtures
-    for fx in FIXTURE_DEFS:
+    for fx in fixture_defs:
         L('  <Fixture>')
-        L(f'   <Manufacturer>{fx["mfr"]}</Manufacturer>')
-        L(f'   <Model>{fx["model"]}</Model>')
-        L(f'   <Mode>{fx["mode"]}</Mode>')
+        L(f'   <Manufacturer>{_xml_text(fx["mfr"])}</Manufacturer>')
+        L(f'   <Model>{_xml_text(fx["model"])}</Model>')
+        L(f'   <Mode>{_xml_text(fx["mode"])}</Mode>')
         L(f'   <ID>{fx["id"]}</ID>')
-        L(f'   <Name>{fx["name"]}</Name>')
+        L(f'   <Name>{_xml_text(fx["name"])}</Name>')
         L('   <Universe>0</Universe>')
         L(f'   <Address>{fx["addr"]}</Address>')
         L(f'   <Channels>{fx["ch"]}</Channels>')
@@ -539,20 +563,20 @@ def write_workspace(filename: str, scenes: List[dict], chasers: List[dict] = Non
 
     # Scenes
     for sid, sc in enumerate(scenes):
-        L(f'  <Function ID="{sid}" Type="Scene" Name="{sc["name"]}" Path="{sc["path"]}">')
+        L(f'  <Function ID="{sid}" Type="Scene" Name="{_xml_attr(sc["name"])}" Path="{_xml_attr(sc["path"])}">')
         L('   <Speed FadeIn="0" FadeOut="0" Duration="0"/>')
         for fid, channels in sc["fixtures"]:
             val_str = ','.join(f'{ch},{val}' for ch, val in channels)
-            L(f'   <FixtureVal ID="{fid}">{val_str}</FixtureVal>')
+            L(f'   <FixtureVal ID="{fid}">{_xml_text(val_str)}</FixtureVal>')
         L('  </Function>')
 
     # Chasers
     for i, ch in enumerate(chasers):
         cid = chaser_ids[i]
-        L(f'  <Function ID="{cid}" Type="Chaser" Name="{ch["name"]}" Path="{ch["path"]}">')
+        L(f'  <Function ID="{cid}" Type="Chaser" Name="{_xml_attr(ch["name"])}" Path="{_xml_attr(ch["path"])}">')
         L('   <Speed FadeIn="0" FadeOut="0" Duration="0"/>')
         L('   <Direction>Forward</Direction>')
-        L(f'   <RunOrder>{ch["run_order"]}</RunOrder>')
+        L(f'   <RunOrder>{_xml_text(ch["run_order"])}</RunOrder>')
         L('   <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="PerStep"/>')
         for step_num, (scene_id, (fi, ho)) in enumerate(zip(ch["scene_ids"], ch["timing"])):
             L(f'   <Step Number="{step_num}" FadeIn="{fi}" Hold="{ho}" FadeOut="0">{scene_id}</Step>')
@@ -573,13 +597,13 @@ def write_workspace(filename: str, scenes: List[dict], chasers: List[dict] = Non
 
     if vc_buttons:
         for btn in vc_buttons:
-            L(f'   <Button Caption="{btn["caption"]}" ID="{btn["vc_id"]}" Icon="">')
+            L(f'   <Button Caption="{_xml_attr(btn["caption"])}" ID="{btn["vc_id"]}" Icon="">')
             L(f'    <WindowState Visible="True" X="{btn["x"]}" Y="{btn["y"]}" Width="{btn["w"]}" Height="{btn["h"]}"/>')
             L('    <Appearance>')
-            L(f'     <BackgroundColor>{btn["color"]}</BackgroundColor>')
+            L(f'     <BackgroundColor>{_xml_text(btn["color"])}</BackgroundColor>')
             L('    </Appearance>')
             L(f'    <Function ID="{btn["func_id"]}"/>')
-            L(f'    <Action>{btn.get("action", "Toggle")}</Action>')
+            L(f'    <Action>{_xml_text(btn.get("action", "Toggle"))}</Action>')
             L('   </Button>')
     else:
         # Auto-generate: one button per chaser + blackout
@@ -587,7 +611,7 @@ def write_workspace(filename: str, scenes: List[dict], chasers: List[dict] = Non
         y = 10
         for i, ch in enumerate(chasers):
             cid = chaser_ids[i]
-            L(f'   <Button Caption="{ch["name"]}" ID="{vc_id}" Icon="">')
+            L(f'   <Button Caption="{_xml_attr(ch["name"])}" ID="{vc_id}" Icon="">')
             L(f'    <WindowState Visible="True" X="10" Y="{y}" Width="470" Height="80"/>')
             L('    <Appearance>')
             L('     <BackgroundColor>#22AA22</BackgroundColor>')
@@ -627,7 +651,7 @@ def write_workspace(filename: str, scenes: List[dict], chasers: List[dict] = Non
     L('  <ValueStyle>0</ValueStyle>')
     L('  <Grid Width="5" Height="3" Depth="5" Units="0"/>')
     L('  <StageItem>0</StageItem>')
-    for fid, x, y_pos, z in STAGE_POSITIONS:
+    for fid, x, y_pos, z in stage_positions:
         L(f'  <FxItem ID="{fid}" XPos="{x}" YPos="{y_pos}" ZPos="{z}"/>')
     L(' </Monitor>')
     L('</Workspace>')
@@ -858,24 +882,15 @@ def generate_venue_template(venue_dir: str, bpm: int = 128):
     scenes = [scene("BLACKOUT", *blackout_fixtures)]
     output_path = os.path.join(shows_dir, "Template-Base.qxw")
 
-    # Write workspace with only the placed fixtures
-    # (write_workspace uses FIXTURE_DEFS globally, so we temporarily swap)
-    original_defs = list(FIXTURE_DEFS)
-    FIXTURE_DEFS.clear()
-    FIXTURE_DEFS.extend(placed_defs)
-
-    # Also filter STAGE_POSITIONS
-    original_positions = list(STAGE_POSITIONS)
-    STAGE_POSITIONS.clear()
-    STAGE_POSITIONS.extend([p for p in original_positions if p[0] in placed_fixture_ids])
-
-    write_workspace(output_path, scenes, [], bpm=bpm)
-
-    # Restore
-    FIXTURE_DEFS.clear()
-    FIXTURE_DEFS.extend(original_defs)
-    STAGE_POSITIONS.clear()
-    STAGE_POSITIONS.extend(original_positions)
+    filtered_positions = [p for p in STAGE_POSITIONS if p[0] in placed_fixture_ids]
+    write_workspace(
+        output_path,
+        scenes,
+        [],
+        bpm=bpm,
+        fixture_defs=placed_defs,
+        stage_positions=filtered_positions,
+    )
 
     print(f"  Fixtures: {', '.join(fx['name'] for fx in placed_defs)}")
 

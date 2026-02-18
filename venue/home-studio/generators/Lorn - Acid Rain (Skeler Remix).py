@@ -108,6 +108,11 @@ def beat_at(t):
         return idx
     return idx - 1
 
+def stable_index(value, modulo, salt=0):
+    """Deterministic index helper (avoids process-randomized hash())."""
+    key = int(round(float(value) * 1000)) + (salt * 9973)
+    return key % modulo
+
 def bars_between(t_start, t_end):
     """Number of bars between two timestamps."""
     return (t_end - t_start) / (BAR_MS / 1000)
@@ -355,7 +360,8 @@ def make_onset_scene(name, onset_time, seg_idx, fixture_focus="other"):
 
     # Cycle through positions based on onset index
     all_pos_keys = list(POS.keys())
-    pos_key = all_pos_keys[hash(str(onset_time)) % len(all_pos_keys)]
+    pos_idx = stable_index(onset_time, len(all_pos_keys), salt=seg_idx)
+    pos_key = all_pos_keys[pos_idx]
     sp, st, bp, bt, pp, pt, ni_pan = POS[pos_key]
 
     if fixture_focus == "bass":
@@ -379,7 +385,7 @@ def make_onset_scene(name, onset_time, seg_idx, fixture_focus="other"):
     else:
         # Melodic onset: single mover spot + par accent
         # Rotate which mover is the "lead" based on onset position
-        onset_mod = hash(str(onset_time)) % 3
+        onset_mod = stable_index(onset_time, 3, salt=seg_idx + 17)
         s_dim = dim if onset_mod == 0 else 0
         b_dim = dim if onset_mod == 1 else 0
         p_dim = dim if onset_mod == 2 else 0
