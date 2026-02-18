@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import time
 from dataclasses import dataclass
-from typing import Callable, Optional, Tuple
+from typing import Callable, List, Optional, Tuple
 
 from qlc_runtime.model import (
     ChaserFunction,
@@ -64,6 +64,148 @@ def resolve_step_timing(chaser: ChaserFunction, step: ChaserStep) -> Tuple[int, 
     return max(0, int(fade_in)), max(0, int(hold)), max(0, int(fade_out))
 
 
+def _normalize_run_order(run_order: str) -> str:
+    run_order_cf = (run_order or "SingleShot").casefold()
+    if run_order_cf in {"singleshot", "loop", "pingpong"}:
+        return run_order_cf
+    return "singleshot"
+
+
+def _build_step_order(run_order: str, step_count: int) -> Tuple[List[int], bool]:
+    if step_count <= 0:
+        return [], False
+    if run_order == "loop":
+        return list(range(step_count)), True
+    if run_order == "pingpong":
+        if step_count == 1:
+            return [0], True
+        return list(range(step_count)) + list(range(step_count - 2, 0, -1)), True
+    return list(range(step_count)), False
+
+
+@dataclass
+class _ChaserStartState:
+    completed: bool
+    current: bytes
+    order_pos: int
+    fade_offset_ms: int
+    hold_offset_ms: int
+
+
+def _resolve_chaser_start(
+    workspace: WorkspaceModel,
+    chaser: ChaserFunction,
+    universe: int,
+    step_order: List[int],
+    repeats: bool,
+    start_offset_ms: int,
+) -> _ChaserStartState:
+    if not step_order:
+        return _ChaserStartState(
+            completed=True,
+            current=make_blackout_frame(),
+            order_pos=0,
+            fade_offset_ms=0,
+            hold_offset_ms=0,
+        )
+
+    current = make_blackout_frame()
+    if start_offset_ms <= 0:
+        return _ChaserStartState(
+            completed=False,
+            current=current,
+            order_pos=0,
+            fade_offset_ms=0,
+            hold_offset_ms=0,
+        )
+
+    offset_left = max(0, int(start_offset_ms))
+    order_pos = 0
+    stale_steps = 0
+
+    while offset_left > 0:
+        step_idx = step_order[order_pos]
+        step = chaser.steps[step_idx]
+        scene_fn = workspace.functions.get(step.function_id)
+        if not isinstance(scene_fn, SceneFunction):
+            raise ValueError(
+                f"Chaser {chaser.id} step {step.number} targets unsupported function ID "
+                f"{step.function_id}"
+            )
+
+        start_frame = current
+        target = apply_scene_to_frame(start_frame, scene_fn, workspace, universe)
+        fade_ms, hold_ms, _fade_out_ms = resolve_step_timing(chaser, step)
+        step_ms = fade_ms + hold_ms
+
+        if step_ms <= 0:
+            current = target
+            if not repeats and order_pos >= len(step_order) - 1:
+                return _ChaserStartState(
+                    completed=True,
+                    current=current,
+                    order_pos=order_pos,
+                    fade_offset_ms=0,
+                    hold_offset_ms=0,
+                )
+            order_pos = (order_pos + 1) % len(step_order) if repeats else order_pos + 1
+            stale_steps += 1
+            if repeats and stale_steps >= len(step_order):
+                return _ChaserStartState(
+                    completed=False,
+                    current=current,
+                    order_pos=order_pos,
+                    fade_offset_ms=0,
+                    hold_offset_ms=0,
+                )
+            continue
+
+        stale_steps = 0
+
+        if offset_left >= step_ms:
+            offset_left -= step_ms
+            current = target
+            if not repeats and order_pos >= len(step_order) - 1:
+                return _ChaserStartState(
+                    completed=True,
+                    current=current,
+                    order_pos=order_pos,
+                    fade_offset_ms=0,
+                    hold_offset_ms=0,
+                )
+            order_pos = (order_pos + 1) % len(step_order) if repeats else order_pos + 1
+            continue
+
+        if offset_left < fade_ms and fade_ms > 0:
+            alpha = float(offset_left) / float(fade_ms)
+            current = interpolate_frame(start_frame, target, alpha)
+            return _ChaserStartState(
+                completed=False,
+                current=current,
+                order_pos=order_pos,
+                fade_offset_ms=int(offset_left),
+                hold_offset_ms=0,
+            )
+
+        current = target
+        hold_offset = max(0, int(offset_left - fade_ms))
+        return _ChaserStartState(
+            completed=False,
+            current=current,
+            order_pos=order_pos,
+            fade_offset_ms=fade_ms,
+            hold_offset_ms=hold_offset,
+        )
+
+    return _ChaserStartState(
+        completed=False,
+        current=current,
+        order_pos=order_pos,
+        fade_offset_ms=0,
+        hold_offset_ms=0,
+    )
+
+
 def run_function(
     workspace: WorkspaceModel,
     function_id: int,
@@ -73,6 +215,7 @@ def run_function(
     max_seconds: Optional[float] = None,
     should_stop: Optional[Callable[[], bool]] = None,
     on_step: Optional[Callable[[int, int, int, int, str], None]] = None,
+    start_offset_ms: int = 0,
 ) -> RunResult:
     if fps <= 0:
         raise ValueError("fps must be > 0")
@@ -144,9 +287,26 @@ def run_function(
     if not fn.steps:
         raise ValueError(f"Chaser {fn.id} has no steps")
 
-    run_order = (fn.run_order or "SingleShot").casefold()
-    step_idx = 0
-    direction = 1
+    run_order = _normalize_run_order(fn.run_order)
+    step_order, repeats = _build_step_order(run_order, len(fn.steps))
+    if not step_order:
+        raise ValueError(f"Chaser {fn.id} has no runnable steps")
+
+    start_state = _resolve_chaser_start(
+        workspace=workspace,
+        chaser=fn,
+        universe=universe,
+        step_order=step_order,
+        repeats=repeats,
+        start_offset_ms=start_offset_ms,
+    )
+    if start_state.completed:
+        return RunResult(reason=COMPLETED, last_frame=start_state.current, steps_executed=0)
+
+    current = start_state.current
+    order_pos = start_state.order_pos
+    fade_offset_ms = start_state.fade_offset_ms
+    hold_offset_ms = start_state.hold_offset_ms
     steps_executed = 0
 
     while True:
@@ -154,6 +314,7 @@ def run_function(
         if reason is not None:
             return RunResult(reason=reason, last_frame=current, steps_executed=steps_executed)
 
+        step_idx = step_order[order_pos]
         step = fn.steps[step_idx]
         scene_fn = workspace.functions.get(step.function_id)
         if not isinstance(scene_fn, SceneFunction):
@@ -167,38 +328,26 @@ def run_function(
             on_step(step_idx, fade_ms, hold_ms, steps_executed, scene_fn.name)
 
         target = apply_scene_to_frame(current, scene_fn, workspace, universe)
-        reason = run_phase(current, target, fade_ms, interpolate=True)
-        if reason is not None:
-            return RunResult(reason=reason, last_frame=current, steps_executed=steps_executed)
-        current = target
 
-        if hold_ms > 0:
-            reason = run_phase(current, current, hold_ms, interpolate=False)
+        remaining_fade_ms = max(0, fade_ms - fade_offset_ms)
+        if remaining_fade_ms > 0:
+            reason = run_phase(current, target, remaining_fade_ms, interpolate=True)
+            if reason is not None:
+                return RunResult(reason=reason, last_frame=current, steps_executed=steps_executed)
+            current = target
+        else:
+            current = target
+
+        remaining_hold_ms = max(0, hold_ms - hold_offset_ms)
+        if remaining_hold_ms > 0:
+            reason = run_phase(current, current, remaining_hold_ms, interpolate=False)
             if reason is not None:
                 return RunResult(reason=reason, last_frame=current, steps_executed=steps_executed)
 
         steps_executed += 1
+        fade_offset_ms = 0
+        hold_offset_ms = 0
 
-        if run_order == "singleshot":
-            if step_idx >= len(fn.steps) - 1:
-                return RunResult(reason=COMPLETED, last_frame=current, steps_executed=steps_executed)
-            step_idx += 1
-        elif run_order == "loop":
-            step_idx = (step_idx + 1) % len(fn.steps)
-        elif run_order == "pingpong":
-            if len(fn.steps) == 1:
-                step_idx = 0
-            elif direction == 1 and step_idx == len(fn.steps) - 1:
-                direction = -1
-                step_idx -= 1
-            elif direction == -1 and step_idx == 0:
-                direction = 1
-                step_idx += 1
-            else:
-                step_idx += direction
-        else:
-            # Unknown run order: behave like SingleShot for safety.
-            if step_idx >= len(fn.steps) - 1:
-                return RunResult(reason=COMPLETED, last_frame=current, steps_executed=steps_executed)
-            step_idx += 1
-
+        if not repeats and order_pos >= len(step_order) - 1:
+            return RunResult(reason=COMPLETED, last_frame=current, steps_executed=steps_executed)
+        order_pos = (order_pos + 1) % len(step_order) if repeats else order_pos + 1

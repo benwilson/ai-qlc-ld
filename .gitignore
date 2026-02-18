@@ -2,3 +2,6 @@
 *.flac
 *.mp3
 *.pyc
+.env
+.env.*
+!.env.example
