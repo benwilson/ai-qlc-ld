@@ -100,6 +100,38 @@ Run the full test suite with:
 
 This runs all `unittest` test files under `tests/` via discovery.
 
+## Headless Show Runner
+
+Run a `.qxw` directly to ArtNet without opening QLC+ Virtual Console:
+
+```bash
+python3 run_show.py "venue/home-studio/shows/Lorn - Acid Rain (Skeler Remix).qxw"
+```
+
+Useful options:
+
+```bash
+# Override target output from the workspace
+python3 run_show.py "show.qxw" --ip 10.0.0.7 --universe 0
+
+# Force a specific local NIC/interface for ArtNet output
+python3 run_show.py "show.qxw" --bind-ip 10.0.0.7 --ip 10.0.0.255
+
+# Pick a specific button/function
+python3 run_show.py "show.qxw" --button-caption "FULL SHOW"
+python3 run_show.py "show.qxw" --function-id 99
+
+# Dry run (parse + timing only, no UDP)
+python3 run_show.py "show.qxw" --dry-run --max-seconds 5
+```
+
+Behavior:
+- Defaults to the main VC button (prefers captions containing `FULL SHOW`, `▶`, or `SHOW`)
+- If `--ip` is omitted, auto-derives directed broadcast from the bound interface/netmask (falls back to `255.255.255.255`)
+- Supports Scene and Chaser execution
+- Runs loops until Ctrl+C (or `--max-seconds`)
+- Sends blackout on exit for fixture safety
+
 The analysis pipeline runs two stages in a single pass:
 
 1. **allin1** — BPM, beat/downbeat timestamps, song structure segments (intro, verse, chorus, break, etc.), and demucs source separation
@@ -129,6 +161,8 @@ Results land in `songs-data/` as JSON. Onset timestamps give you the exact time 
 ├── analyze.sh              # Analysis pipeline wrapper (Docker)
 ├── pipeline.py             # Docker entrypoint — orchestrates allin1 + feature extraction
 ├── extract_features.py     # Stem energy envelopes + onset detection (librosa)
+├── run_show.py             # Headless .qxw runner to ArtNet (no QLC+ UI needed)
+├── qlc_runtime/            # Runtime modules (parser, selector, timing engine, ArtNet sender)
 ├── Dockerfile              # Analysis pipeline Docker image
 └── dockerfile.md           # Docker build notes, output format, and pitfalls
 ```
