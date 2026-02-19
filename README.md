@@ -90,6 +90,99 @@ Example: "Ethereal" mood + DnB genre = DnB's blue/cyan palette with slower movem
 ./analyze.sh --keep-stems "Artist - Title.flac"
 ```
 
+## CI Command
+
+Run the full test suite with:
+
+```bash
+./ci.sh
+```
+
+This runs all `unittest` test files under `tests/` via discovery.
+
+## Headless Show Runner
+
+Run a `.qxw` directly to ArtNet without opening QLC+ Virtual Console:
+
+```bash
+python3 run_show.py "venue/home-studio/shows/Lorn - Acid Rain (Skeler Remix).qxw"
+```
+
+Useful options:
+
+```bash
+# Override target output from the workspace
+python3 run_show.py "show.qxw" --ip 10.0.0.7 --universe 0
+
+# Force a specific local NIC/interface for ArtNet output
+python3 run_show.py "show.qxw" --bind-ip 10.0.0.7 --ip 10.0.0.255
+
+# Pick a specific button/function
+python3 run_show.py "show.qxw" --button-caption "FULL SHOW"
+python3 run_show.py "show.qxw" --function-id 99
+
+# Dry run (parse + timing only, no UDP)
+python3 run_show.py "show.qxw" --dry-run --max-seconds 5
+```
+
+Behavior:
+- Defaults to the main VC button (prefers captions containing `FULL SHOW`, `▶`, or `SHOW`)
+- If `--ip` is omitted, auto-derives directed broadcast from the bound interface/netmask (falls back to `255.255.255.255`)
+- Supports Scene and Chaser execution
+- Runs loops until Ctrl+C (or `--max-seconds`)
+- Sends blackout on exit for fixture safety
+
+## VLC-Synced Runner
+
+Run the show that matches VLC's current track name and start at VLC's current playback time:
+
+```bash
+# configure once in .env
+cat > .env <<'EOF'
+RUN_VLC_SHOW_SHOWS_DIR=venue/home-studio/shows
+RUN_VLC_SHOW_VLC_URL=http://127.0.0.1:8080
+RUN_VLC_SHOW_VLC_PASSWORD=your-vlc-web-password
+RUN_VLC_SHOW_VLC_TIMEOUT=1.0
+EOF
+
+python3 run_vlc_show.py
+```
+
+`run_vlc_show.py` supports env vars for all CLI args.
+- Primary naming: `RUN_VLC_SHOW_<ARG_NAME>` (for example `--bind-ip` -> `RUN_VLC_SHOW_BIND_IP`)
+- Booleans accept: `true/false`, `1/0`, `yes/no`, `on/off`
+- `RUN_VLC_SHOW_ENV_FILE` can chain to another env file (unless `--env-file` is passed)
+- Precedence: CLI flag > shell env var > `.env` > built-in default
+- Full template: `.env.example`
+
+VLC setup:
+- In VLC, enable the HTTP/web interface and set a password (Preferences -> Show All -> Interface -> Main interfaces -> Web).
+- Keep VLC HTTP available on `http://127.0.0.1:8080` (or set `RUN_VLC_SHOW_VLC_URL` / pass `--vlc-url`).
+
+Useful options:
+
+```bash
+# Continuous sync mode: follow track changes / drift
+python3 run_vlc_show.py venue/home-studio/shows --follow
+
+# Override ArtNet routing and selected function
+python3 run_vlc_show.py venue/home-studio/shows \
+  --ip 10.0.255.255 --bind-ip 10.0.0.7 --function-id 42
+
+# Use caption/button selection from VC
+python3 run_vlc_show.py venue/home-studio/shows --button-caption "FULL SHOW"
+
+# Dry run and short supervisor timeout
+python3 run_vlc_show.py venue/home-studio/shows --dry-run --follow --max-seconds 5
+```
+
+Behavior:
+- Matches VLC media filename stem to `.qxw` stem (exact normalized match, recursive under `shows_dir`)
+- Starts selected function at VLC time offset (`start_offset_ms`)
+- One-shot mode by default; `--follow` enables polling/resync and track-change restarts
+- Reads all `run_vlc_show.py` args from `.env`/env vars, unless overridden by flags
+- Sends blackout on final exit
+
 The analysis pipeline runs two stages in a single pass:
 
 1. **allin1** — BPM, beat/downbeat timestamps, song structure segments (intro, verse, chorus, break, etc.), and demucs source separation
@@ -119,6 +212,9 @@ Results land in `songs-data/` as JSON. Onset timestamps give you the exact time 
 ├── analyze.sh              # Analysis pipeline wrapper (Docker)
 ├── pipeline.py             # Docker entrypoint — orchestrates allin1 + feature extraction
 ├── extract_features.py     # Stem energy envelopes + onset detection (librosa)
+├── run_show.py             # Headless .qxw runner to ArtNet (no QLC+ UI needed)
+├── run_vlc_show.py         # VLC-synced headless runner (track/time -> show offset)
+├── qlc_runtime/            # Runtime modules (parser, selector, timing engine, ArtNet sender, VLC/matching)
 ├── Dockerfile              # Analysis pipeline Docker image
 └── dockerfile.md           # Docker build notes, output format, and pitfalls
 ```
