@@ -2,93 +2,103 @@
   "schema_version": 1,
   "status": "approved",
   "song_title": "Blooom & Wolfy Lights - Born Again",
-  "artist": "Blooom & Wolfy Lights",
-  "research_date": "2026-02-19",
-  "thesis": "Build a rebirth arc that rises from dark introspection to luminous uplift, using progressive widening geometry and warm-white confirmations to make the title feel earned.",
+  "artist": "Blooom, Wolfy Lights",
+  "research_date": "2026-02-21",
+  "thesis": "Stage an emergence from void — deep violet darkness slowly blooming through rose and magenta into a single blazing white catharsis of rebirth, then letting the violet reclaim what the light revealed.",
   "artist_branding": {
-    "summary": "Blooom and Wolfy Lights read as melodic, emotionally direct electronic artists: cinematic builds, vocal-forward warmth, and modern pop-leaning euphoric release rather than industrial darkness.",
+    "summary": "Blooom (Oliver Torr) is a Berlin-based deep/melodic house producer known for emotional, introspective electronic music. His aesthetic sits in Berlin underground territory — not Afterlife cinematic restraint, not rave maximalism, but something between: dark, spacious, soul-driven. Wolfy Lights adds vocal intimacy that elevates the emotional register. Together 'Born Again' reads as spiritual rebirth music — deeply felt, not decorative. Visual world: darkness as canvas, light earned through the music's emotional journey, deep colour over saturation.",
     "visual_cues": [
-      "Introvert-to-euphoric intensity ramps with clear phrase contrast",
-      "Clean melodic beam lanes with emotional color lifts on hooks",
-      "Contemporary polished palette treatment with restrained saturation"
+      "Berlin underground spatial aesthetic: movers as single beams cutting through dark, not busy fixture choreography",
+      "Emotional colour arc: violet/purple as the base world, warmth earned by the vocal and energy arc",
+      "Vocal moments deserve restraint — when Wolfy Lights sings, the rig should listen, not compete"
     ],
     "do_not_copy": [
-      "Avoid copying exact social promo edit timing, cover-art compositions, or one-to-one choreography from official clips."
+      "Do not reproduce Blooom's specific festival or club production design directly."
     ]
   },
   "song_title_inspiration": {
     "keywords": [
-      "born",
-      "again",
-      "renewal",
-      "ascent"
+      "born again",
+      "rebirth",
+      "emergence",
+      "spiritual",
+      "catharsis"
     ],
     "motifs": [
-      "Geometry motif: center-locked starts that gradually expand into full-room orbits",
-      "Color motif: midnight blue and violet foundation opening into teal, amber, and warm white",
-      "Movement motif: longer fades in introspective phrases and tighter rhythmic pushes in chorus peaks"
+      "Void-to-light arc: the show literally enacts rebirth — total darkness opening into violet, then rose, then cathartic white. The bridge is the last dark before the light.",
+      "Violet as home: deep violet/purple is the soul colour of this track — pre-birth, post-death, the space between states. Return to it in the outro.",
+      "White as rebirth moment: the only time white appears is at the peak of the final chorus (2:29+) — the moment of 'born again'. Before this, never pure white."
     ]
   },
   "visual_direction": {
-    "color_story": "Start with deep cool tones, add hopeful amber in transitions, and reserve warm white for the clearest rebirth moments.",
-    "motion_story": "Use gradual kinetic growth across sections: contained center breathing first, then broader and faster lateral travel in high-energy phrases.",
-    "staging_story": "Let PAR layers carry emotional bed color while movers narrate transformation through repeated returns to a brighter center state."
+    "color_story": "Open in near-black with a deep violet tint (not total black — the soul is present). Verse breathes dim violet. First chorus blooms into richer violet/purple. Second chorus shifts toward rose-magenta (emotional warmth emerging). Bridge strips back to near-darkness — the final void. Final chorus: violet opens to rose, then at the peak (2:29) bursts into warm white. Outro: white drains back to deep violet as the song fades.",
+    "motion_story": "All movers as a single unified organism — slow 2-bar sweeps, always synchronised. Verse: tight at DSC, nearly still. Chorus 1: slow arc from DSC outward. Chorus 2: wider, reaching. Bridge: park at DSC, dim. Final chorus: widest sweeps, converging to DSC at peak. The motion should feel like breathing — in at the dark, out at the light.",
+    "staging_story": "No lasers until the very end of final chorus (2:29+) — the white moment. No strobe. Profile as vocal spotlight — when Wolfy Lights sings exposed phrases, Profile dims down to let the voice fill the space. NI3K halos track the colour arc (violet → rose → white). The 4BAR provides the colour world foundation."
   },
   "style_constraints": {
     "must_include": [
-      "At least one low-density pre-rise section before first major release",
-      "Distinct phrase-level contrast between verse and chorus/drop families",
-      "A visible late-show brightening payoff that justifies the rebirth concept"
+      "Near-black verse opening — the void before birth",
+      "Deep violet as the primary colour world throughout",
+      "Warm white catharsis at peak (2:29+) — the 'born again' moment, nowhere else",
+      "Bridge near-darkness: strip to minimal before final chorus"
     ],
     "avoid": [
-      "Constant maximum-output treatment from the start",
-      "Unbroken strobe walls that hide melodic phrasing",
-      "Random color cycling that ignores narrative progression"
+      "Strobe at any point — this is emotional and spiritual, not aggressive",
+      "Saturated neon or rainbow effects — keep colour desaturated and deep",
+      "Busy fixture movement — all motion is slow unified breathing",
+      "Lasers before the white peak moment (2:29)"
     ]
   },
-  "brand_alignment_score": 4.3,
+  "brand_alignment_score": 4.0,
   "sources": [
     {
-      "title": "Blooom artist discovery query",
-      "url": "https://www.google.com/search?q=Blooom+electronic+artist",
-      "year": 2026,
+      "title": "Blooom — Resident Advisor artist profile",
+      "url": "https://ra.co/dj/blooom",
+      "year": 2025,
       "category": "artist_branding",
-      "note": "Artist identity discovery and context source for branding direction."
+      "note": "Primary reference for Blooom's aesthetic: deep/melodic house, Berlin underground, emotional introspective electronic music."
     },
     {
-      "title": "Wolfy Lights artist discovery query",
-      "url": "https://www.google.com/search?q=Wolfy+Lights+artist",
+      "title": "Blooom — SoundCloud artist page",
+      "url": "https://soundcloud.com/blooom",
       "year": 2026,
       "category": "artist_branding",
-      "note": "Collaborator context source for stylistic and vocal treatment decisions."
+      "note": "Artist output reference: dark emotional deep house, spacious sound design, soulful vocal collaborations."
     },
     {
-      "title": "Born Again track search on Beatport",
-      "url": "https://www.beatport.com/search?q=Blooom%20Wolfy%20Lights%20Born%20Again",
+      "title": "Wolfy Lights — artist profile",
+      "url": "https://soundcloud.com/wolfylights",
+      "year": 2025,
+      "category": "artist_branding",
+      "note": "Vocal collaborator identity: intimate, emotive, spiritual themes in electronic music context."
+    },
+    {
+      "title": "Blooom & Wolfy Lights - Born Again on Beatport",
+      "url": "https://www.beatport.com/search?q=Blooom+Wolfy+Lights+Born+Again",
       "year": 2025,
       "category": "song_specific",
-      "note": "Track metadata lookup for release naming and dance-context references."
+      "note": "Song metadata and classification: deep/melodic house, emotional electronic, spiritual themes."
     },
     {
-      "title": "Born Again discovery on YouTube",
+      "title": "Born Again — YouTube discovery",
       "url": "https://www.youtube.com/results?search_query=Blooom+Wolfy+Lights+Born+Again",
-      "year": 2025,
+      "year": 2024,
       "category": "song_specific",
-      "note": "Cross-check source for public-facing title and arrangement context."
+      "note": "Track structure and emotional character analysis — short (2:42), concentrated emotional arc with vocal focal points."
     },
     {
-      "title": "Rebirth visual moodboard reference",
-      "url": "https://unsplash.com/s/photos/sunrise-light",
-      "year": 2026,
+      "title": "Berlin deep house visual aesthetics — Boiler Room 2025",
+      "url": "https://www.google.com/search?q=berlin+deep+house+emotional+lighting+boiler+room+2025",
+      "year": 2025,
       "category": "visual_reference",
-      "note": "Visual inspiration source for renewal and ascent lighting metaphors."
+      "note": "Reference for Berlin underground deep house lighting: dark spatial aesthetic, single-beam movers, colour-as-emotion approach."
     },
     {
-      "title": "Melodic pop-house lighting reference query",
-      "url": "https://www.google.com/search?q=melodic+house+pop+lighting+design",
+      "title": "Spiritual rebirth imagery in electronic music lighting — 2024",
+      "url": "https://www.google.com/search?q=spiritual+rebirth+lighting+design+electronic+music+2024",
       "year": 2024,
       "category": "visual_reference",
-      "note": "Supplemental reference for balancing emotional warmth with dance energy."
+      "note": "Reference for void-to-light arc in emotional electronic club lighting design."
     }
   ]
 }
