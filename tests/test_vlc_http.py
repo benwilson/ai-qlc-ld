@@ -15,6 +15,7 @@ class VlcHttpTests(unittest.TestCase):
                 "state": "playing",
                 "time": 42,
                 "length": 180,
+                "position": 0.2345,
                 "information": {
                     "category": {
                         "meta": {
@@ -29,6 +30,7 @@ class VlcHttpTests(unittest.TestCase):
         self.assertEqual(status.state, "playing")
         self.assertEqual(status.time_s, 42.0)
         self.assertEqual(status.length_s, 180.0)
+        self.assertAlmostEqual(status.position_ratio, 0.2345)
         self.assertEqual(status.media_uri, "file:///Users/test/Music/Track%20Name.mp3")
 
     def test_extract_media_basename_prefers_uri(self):

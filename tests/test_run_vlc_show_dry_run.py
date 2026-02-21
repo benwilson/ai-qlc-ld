@@ -57,7 +57,8 @@ class RunVlcShowDryRunTests(unittest.TestCase):
                         {
                             "state": "playing",
                             "time": 12,
-                            "length": 180,
+                            "length": 100,
+                            "position": 0.12345,
                             "information": {
                                 "category": {
                                     "meta": {
@@ -94,7 +95,7 @@ class RunVlcShowDryRunTests(unittest.TestCase):
                 thread.join(timeout=2.0)
 
         self.assertEqual(proc.returncode, 0, msg=proc.stderr)
-        self.assertIn("media='Track Name.mp3' time=12.000s", proc.stdout)
+        self.assertIn("media='Track Name.mp3' time=12.345s", proc.stdout)
         self.assertIn("Show:", proc.stdout)
         self.assertIn("Stop reason: timeout", proc.stdout)
 

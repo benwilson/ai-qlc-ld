@@ -469,6 +469,14 @@ def _resolve_target(workspace, args) -> Tuple[Optional[str], str, int, bool, Opt
     return bind_ip, target_ip, int(target_universe), auto_target, auto_target_source
 
 
+def _status_offset_ms(status) -> int:
+    # VLC "time" is second-granularity; prefer "position * length" when available.
+    if status.length_s and status.length_s > 0 and status.position_ratio is not None:
+        precise_ms = int(round(max(0.0, min(1.0, float(status.position_ratio))) * float(status.length_s) * 1000.0))
+        return max(0, precise_ms)
+    return int(max(0.0, float(status.time_s)) * 1000.0)
+
+
 def _resolve_run_for_status(args, show_index, status) -> ResolvedRun:
     media_name = extract_media_basename(status)
     if not media_name:
@@ -492,7 +500,7 @@ def _resolve_run_for_status(args, show_index, status) -> ResolvedRun:
         workspace,
         args,
     )
-    offset_ms = int(max(0.0, float(status.time_s)) * 1000.0)
+    offset_ms = _status_offset_ms(status)
 
     return ResolvedRun(
         status_state=status.state,

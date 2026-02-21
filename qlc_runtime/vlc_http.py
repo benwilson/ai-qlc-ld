@@ -25,6 +25,7 @@ class VlcStatus:
     media_uri: Optional[str]
     filename: Optional[str]
     title: Optional[str]
+    position_ratio: Optional[float] = None
 
 
 def _to_float(value: Any, default: float = 0.0) -> float:
@@ -58,6 +59,13 @@ def parse_vlc_status_payload(payload: Dict[str, Any]) -> VlcStatus:
     media_uri = _as_str(meta.get("url") or payload.get("uri"))
     filename = _as_str(meta.get("filename"))
     title = _as_str(meta.get("title"))
+    position_ratio = None
+    raw_position = payload.get("position")
+    if raw_position is not None:
+        try:
+            position_ratio = max(0.0, min(1.0, float(raw_position)))
+        except (TypeError, ValueError):
+            position_ratio = None
 
     return VlcStatus(
         state=str(payload.get("state") or "").strip().casefold(),
@@ -66,6 +74,7 @@ def parse_vlc_status_payload(payload: Dict[str, Any]) -> VlcStatus:
         media_uri=media_uri,
         filename=filename,
         title=title,
+        position_ratio=position_ratio,
     )
 
 
