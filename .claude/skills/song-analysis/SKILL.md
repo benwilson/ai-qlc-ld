@@ -142,35 +142,20 @@ To build this summary:
 
 ### Step 5: Transition to Show Creation
 
-After presenting the analysis summary, ask the user:
+After presenting the analysis summary, transition to the **qlc-show-workflow** pipeline:
 
 1. **Which venue?** (list available venues from `venue/` subdirectories)
-2. **What genre/style?** The analysis may suggest one based on BPM:
-   - 170-180 → DnB
-   - 140-150 → Dubstep
-   - 125-145 → Techno
-   - 120-130 → House
-   - 130-150 → Trance
+2. Run scaffold: `python3 scripts/show_workflow.py scaffold --song "<Artist - Song>" --venue <dir>`
+3. Follow the qlc-show-workflow pipeline (see `skills/qlc-show-workflow/SKILL.md`):
+   - Fill research brief (artist branding, song motifs, thesis, 5+ sources) → set status=approved
+   - Validate brief
+   - Build phrase-aware generator using `require_research_brief()`, `build_creative_context()`, `classify_phrase()`, `pick_phrase_technique()`
+   - Generate .qxw
+   - Validate invariants
 
-   But let the user override — BPM alone doesn't determine genre.
-
-3. **Any creative direction?** Color palette, mood, specific effects, references.
-   This is where the user's artistic vision shapes the show. If they reference a mood
-   from `moods/`, read it. If they describe something that doesn't match an existing
-   mood, offer to create one via the moods skill.
-
-4. **Any constraints?** "Never point movers behind," "no strobes," "lasers only on drops," etc.
-
-Then transition into building the show generator:
-
-1. Read the venue's `plot.md`, `patch.md`, and `focus-positions.md`
-2. Read the relevant `genres/<genre>.md` for palette/timing conventions
-3. Read `moods/<mood>.md` if a mood was specified
-4. Read the analysis JSON for timing data
-5. Create a show notes file at `venue/<name>/shows/notes/<Song Name>.md`
-6. Write the generator script at `venue/<name>/generators/<Song Name>.py`
-7. Run the generator to produce the `.qxw` workspace
-8. Validate with `xmllint --noout`
+Creative direction now comes from research briefs + the phrase planner + designer packs,
+not from genre/mood .md files. Genre and mood files are still used by the **busking** skill
+for live improvised lighting.
 
 ## Analysis Data Reference
 

@@ -187,16 +187,41 @@ Focus positions (named pan/tilt targets for movers) are in each venue's `focus-p
   - `shows/notes/` — Show design notes (one .md per show). **Always create/update when building a show.** Contains creative brief, color palette, fixture roles, movement positions, section-by-section breakdown, and key techniques. Read these before modifying an existing show.
   - `shows/Template-Base.qxw` — Venue-specific blank canvas generated from `plot.md` via `generate_venue_template()`. Contains only the fixtures placed in that venue.
   - `generators/` — Python show generator scripts for this venue. Named to match their song file. Run from project root: `python3 "venue/home-studio/generators/Lorn - Acid Rain (Skeler Remix).py"`
+  - `references/creative-profile.json` — Venue-specific fixture-to-role mapping. Maps physical fixtures to abstract roles (PAR_A, PAR_B, M1_BEAM, M2_HYBRID, M3_PROFILE, M4_FX), zone aliases (C, SL, SR, etc.), special zones (DJ_BOOTH, DANCE_FLOOR, etc.), and par groups. Read by phrase planner and generators for venue-portable show creation.
+  - `references/creativity-venue.md` — Venue-specific creative notes (what works well in this space, fixture strengths/limitations)
   - When building a show, ask which venue to use, then read that venue's `plot.md` for layout context. List `venue/` subdirectories to see all venues.
 - **genres/** — EDM subgenre lighting definitions (one .md per genre). Each file defines color palettes, timing presets, movement conventions, strobe/laser/gobo rules, and par behavior for a specific genre. Read by the **busking** skill when generating workspaces. Created/edited by the **genres** skill. See `genres/README.md` for format. Available: drum-and-bass, dubstep, house, techno, trance.
 - **moods/** — Lighting mood definitions (one .md per mood). Each file defines abstract modifiers that shape how a genre's values get applied — color filtering, intensity scaling, movement speed, effect density, timing adjustments. Read by the **busking** skill in combination with a genre file. Created/edited by the **moods** skill. See `moods/README.md` for format. Available: dark, ethereal, aggressive, hypnotic, euphoric, melancholic, chaotic, intimate (emotional states); chill, building, peak, comedown (energy levels).
 - **fixtures/** — All .qxf fixture definitions live here. Check this directory first before creating a new fixture — it may already exist.
 - **showlib.py** — Python show generator library. **Always use this for new shows.** See capabilities below.
-- **references/** — QLC+ format documentation. Read these when building fixtures or debugging XML:
+- **qlc_runtime/** — Python runtime modules for show execution and creative planning:
+  - `model.py`, `parser.py`, `engine.py` — Core: parse .qxw files and execute scenes/chasers with frame interpolation
+  - `artnet.py`, `network.py` — DMX output via ArtNet UDP
+  - `vlc_http.py`, `show_match.py`, `select.py` — VLC sync, show-to-media matching, function selection
+  - `venue_profile.py` — Loads/validates venue creative profiles (`venue/<name>/references/creative-profile.json`). Maps fixtures to abstract roles (PAR_A, M1_BEAM, etc.) and zones.
+  - `phrase_planner.py` — Phrase-aware technique planning. Classifies bars into phrase buckets, selects scored coordination techniques (INT-001..INT-090), enforces contrast on phrase changes, integrates designer packs.
+  - `research_gate.py` — Research brief validation. Requires approved briefs with artist branding, song motifs, thesis, and 5+ cited sources before generation can proceed.
+  - `focus_positions.py` — Parses venue focus-positions.md into canonical mover position tuples (7-tuple: sharpy_pan/tilt, bsw_pan/tilt, profile_pan/tilt, ni3k_pan).
+- **scripts/show_workflow.py** — CLI orchestrator for song-synced shows. Commands: `scaffold` (create brief stubs + generator skeleton), `next` (list unbuilt songs), `status` (show completion dashboard).
+- **AGENTS.md** — Skill registry. Lists the `qlc-show-workflow` skill with trigger rules and path.
+- **references/** — QLC+ format documentation and creative playbook:
   - `qxf-format.md` — Fixture definition XML structure, presets, heads, physical properties
   - `qxw-format.md` — Workspace XML structure (scenes, chasers, EFX, collections, VC widgets, ARGB color format)
   - `bpm-timing.md` — BPM timing tables, genre-specific chaser patterns, chaser design templates
   - `channel-presets.md` — QLC+ channel preset names for .qxf files (IntensityRed, PositionPan, GoboWheelCoarse, etc.)
+  - `creativity.md` — Central creative playbook (2600+ lines). Contains 60 look recipes (CR-*), 60+ coordination techniques (INT-*), 48 color palettes (P-*), 120 mover patterns (MP-*), 96 PAR patterns (PP-*), 30 designer profiles (LD-*), genre starting packs, anti-patterns, and AI prompt templates. **Human-readable source of truth** — edit here, then sync to JSON via `references/data/sync_from_creativity.py`.
+- **references/data/** — Machine-readable catalogs synced from `creativity.md`. **Read these first** when building shows programmatically:
+  - `coordination-techniques.json` — 90 whole-rig coordination techniques (INT-001..INT-090) with timing recipes, relationships (unison/counterpoint/inclusion), and starter combos
+  - `palettes.json` — 48 named color palettes (P-001..P-048) with hex, base/accent/hit colors, and usage rules
+  - `designers.json` — 30 lighting designer profiles (LD-001..LD-030) with study focus and transfer rules
+  - `designer-techniques.json` — 30 designer technique packs (DTP-001..DTP-030) with mover/par ideas, preferred transforms, and anti-rules
+  - `phrase-rules.json` — Phrase classification rules, coordination pools per phrase bucket, contrast enforcement, mover pattern grammar
+  - `manifest.json` — Registry of all catalogs with counts
+  - `designer-pack-memory.json` — Runtime cooldown tracking for DTP usage across shows
+  - `sync_from_creativity.py` — Parses creativity.md and regenerates all JSON catalogs
+  - `validate_data.py` — Schema and cross-reference validation for all catalogs
+  - `validate_venue_profiles.py` — Validates venue creative profiles against catalog data
+  - `validate_generator_portability.py` — Ensures generators don't hardcode venue-specific values
 - **songs/** — Audio files for analysis. Drop tracks here before running the analysis pipeline.
 - **songs-data/** — Analysis pipeline output (JSON files with BPM, beats, downbeats, segments, per-stem energy envelopes, onset timestamps, frequency band energy, spectral dynamics). Generated by `analyze.sh`.
 - **extract_features.py** — Audio feature extraction script. Runs on demucs-separated stems to extract energy envelopes and onset timestamps per stem, plus frequency band energy and spectral dynamics from the full mix. Tuned for electronic music (house, DnB, dubstep).
@@ -235,6 +260,13 @@ Focus positions (named pan/tilt targets for movers) are in each venue's `focus-p
 - **Genre templates**: `structure_dnb()`, `structure_melodic_house()`, `structure_dubstep()`, `structure_party()` — return section dicts with name, bars, energy, movement, timing_style
 - **Blackout helpers**: `blackout(fixture_id, num_channels)`, `blackout_all()`
 - **Venue template**: `generate_venue_template(venue_dir, bpm)` — reads `plot.md`, generates `Template-Base.qxw` with only the fixtures placed in that venue
+- **Research brief**: `require_research_brief(song_stem, project_root, venue_dir)` — loads/validates brief; creates stub if missing; raises if not approved. `build_creative_context(brief, song_stem)` — extracts `brand_tokens` + `creative_directives` from approved brief
+- **Phrase-aware planning**: `classify_phrase(segment_label, rms, sub, high, progress)` — maps segment + energy to phrase class (intro/verse_groove/build/drop/breakdown/outro). `pick_phrase_technique(phrase, segment_index, global_bar, brand_tokens, creative_directives, ...)` — scores 3+ candidate coordination techniques, returns top-ranked with timing, mover pattern, dimensions, and designer pack metadata. `pick_phrase_technique_candidates(...)` — returns all scored candidates (not just top 1)
+- **Designer packs**: `pick_show_designer_packs(show_key, brand_tokens, creative_directives, ...)` — selects dominant + contrast designer technique packs (DTP-001..DTP-030) for a show
+- **Technique helpers**: `mover_family_from_phrase(phrase, relationship, rms, sub)` — maps technique to mover family bucket. `par_mode_from_phrase_timing(par_beats, par_style, phrase, seg_bar_idx)` — maps technique timing to PAR mode key
+- **Venue context**: `load_venue_profile(project_root, venue_dir)` — loads/validates venue creative profile. `load_focus_position_tuples(project_root, venue_dir)` — loads named mover positions as 7-tuples from focus-positions.md
+- **Transition helpers**: `plan_segment_transition(prev_phrase, next_phrase, prev_energy, next_energy, segment_index, total_segments, ...)` — plans a 1-4 beat bridge moment at a segment boundary using phrase-rules.json pools/cooldown/escalation. Returns dict with transition_type, duration_beats, fixtures, exit_style, or None. `build_transition_scenes(transition, bpm, pos_tuples, palette, last_scene)` — dispatches to one of 21 transition scene factories, returns `(scenes, timing)` lists matching `make_chaser()` contract. Supported types: blackout, white_flash, strobe_burst, freeze_decay, color_swap, color_inversion, position_snap, slow_dissolve, par_ladder, stutter_gate, pulse_to_glow, compression_snap, ladder_build, par_convergence, dim_dissolve, freeze_burst, stutter_resolve, chase_cancel, fade_to_black, freeze_hold, end_of_show_fade
+- **Beat reactivity**: `pick_phrase_technique()` now attaches `beat_reactivity` to the returned `PlannedTechnique` — contains `par_min`, `mover_min`, `accent_layer`, `accent_type` from phrase-rules.json. Serialized by `_serialize_planned_phrase_technique()` into the technique dict
 
 ## What You Do
 
@@ -246,7 +278,7 @@ Focus positions (named pan/tilt targets for movers) are in each venue's `focus-p
 
 ## Skills & Workflow
 
-Skills are specialized instructions in `.claude/skills/` that guide specific tasks. They chain together in a dependency order:
+Skills are specialized instructions that guide specific tasks. Most live in `.claude/skills/`; the `qlc-show-workflow` skill lives in `skills/` (see `AGENTS.md` for its path). They chain together in a dependency order:
 
 ### Venue Setup (run once per venue)
 1. **plot** — Creates `venue/<name>/plot.md` with fixture positions in 3D space. Handles venue creation (room dimensions, directory structure), adding/removing/moving fixtures, and coordinate conversion from spatial descriptions. This is the starting point — everything else depends on plot.md existing.
@@ -263,23 +295,44 @@ Skills are specialized instructions in `.claude/skills/` that guide specific tas
 ### How Genre + Mood Combine
 Genre provides concrete values (specific colors, ms timing, DMX channel values). Mood applies abstract modifiers (prefer cool colors, dim to 60%, slow movement 0.5x, no strobe). The busking skill reads both files and applies the mood's modifiers to the genre's values. The same mood applied to different genres produces different concrete results but the same emotional character.
 
-### Song-Synced Shows
-7. **song-analysis** — Finds a song in `songs/` (or picks an unanalyzed one), runs `./analyze.sh` to extract BPM/beats/structure/energy/onsets, presents a human-readable summary of the analysis data, then transitions into show creation. This is the entry point for all song-synced shows.
+### Song-Synced Shows (Research-Gated Pipeline)
+7. **song-analysis** — Finds a song in `songs/` (or picks an unanalyzed one), runs `./analyze.sh` to extract BPM/beats/structure/energy/onsets, presents a human-readable summary of the analysis data. This is the entry point for all song-synced shows.
+8. **qlc-show-workflow** — Full pipeline orchestrator for song-synced shows. Scaffold (brief stubs + generator skeleton) → research brief (artist branding, song motifs, thesis, sources) → validate → phrase-aware generator → .qxw output → validate invariants. See `AGENTS.md` for trigger rules and `skills/qlc-show-workflow/SKILL.md` for full instructions.
 
 The full song-synced pipeline:
 
 1. **song-analysis** — find + analyze + present summary
-2. **Gather creative direction** (ask the user ALL of these before writing any code):
-   - **Venue**: Which venue to use (list `venue/` subdirectories)
-   - **Genre**: Single-select from `genres/*.md` — suggest one based on BPM but let user override
-   - **Mood(s)**: Multi-select from `moods/*.md` — suggest options that fit the track but let user choose
-   - **Creative direction**: Any additional color preferences, constraints, or references
-3. **Read selected files**: Read the chosen genre `.md` and all chosen mood `.md` files. Apply mood modifiers to genre values (moods are abstract modifiers that shape how genre values get applied).
-4. **Write generator** in `venue/<name>/generators/` using `showlib.py`
-5. **Output `.qxw`** to `venue/<name>/shows/`
-6. **Write show notes** to `venue/<name>/shows/notes/`
+2. **Scaffold** — `python3 scripts/show_workflow.py scaffold --song "Artist - Song" --venue <dir>`. Creates: brief stubs (JSON + MD) in `venue/<name>/shows/notes/`, generator skeleton in `venue/<name>/generators/`.
+3. **Research brief** — Fill the JSON brief at `venue/<name>/shows/notes/<slug>.json` with:
+   - Artist branding (summary, visual_cues [3+], do_not_copy [1+])
+   - Song-title inspiration (keywords [2+], motifs [3+])
+   - Visual direction (color_story, motion_story, staging_story)
+   - Style constraints (must_include [1+], avoid [1+])
+   - Creative thesis (1 sentence, 24+ chars)
+   - 5+ sources covering 3 required categories (artist_branding, song_specific, visual_reference), 2+ from last 3 years
+   - Set `status: "approved"` and `brand_alignment_score >= 3`
+4. **Validate brief** — `python3 venue/<name>/shows/notes/validate_briefs.py --song "..." --venue <dir>`
+5. **Build generator** in `venue/<name>/generators/` using phrase-aware API:
+   - `BRIEF = require_research_brief(...)` — enforces approved brief
+   - `CREATIVE = build_creative_context(BRIEF, song_stem=...)` — extracts brand_tokens + creative_directives
+   - `POS = load_focus_position_tuples(...)` — named positions, not raw pan/tilt
+   - Per-bar loop: `classify_phrase()` → `pick_phrase_technique()` → `mover_family_from_phrase()` → `par_mode_from_phrase_timing()` → build scene. `pick_phrase_technique()` returns `beat_reactivity` (par_min/mover_min/accent_layer/accent_type) on each technique.
+   - At segment boundaries: `plan_segment_transition(prev_phrase, next_phrase, ...)` → `build_transition_scenes(transition, bpm, ...)` → extend chaser with transition scenes/timing
+6. **Generate show** — `python3 "venue/<name>/generators/<Song>.py"`
+7. **Validate invariants** — Run all three validators:
+   - `python3 references/data/validate_data.py`
+   - `python3 references/data/validate_venue_profiles.py`
+   - `python3 references/data/validate_generator_portability.py`
+8. **Write show notes** to `venue/<name>/shows/notes/`
 
-Genre + mood files are NOT optional — they define the palette, timing, movement, and effect conventions that make shows genre-appropriate. Always read them and apply their rules.
+Creative direction now comes from research briefs + the phrase planner + designer packs, not from genre/mood .md files. Genre and mood files are still used by the **busking** skill for live improvised lighting.
+
+### Data Maintenance (when editing creativity.md)
+1. Edit creative content in `references/creativity.md`
+2. Sync: `python3 references/data/sync_from_creativity.py`
+3. Validate catalogs: `python3 references/data/validate_data.py`
+4. Validate venue profiles: `python3 references/data/validate_venue_profiles.py`
+5. Validate generators: `python3 references/data/validate_generator_portability.py`
 
 ## QLC+ 5.0.1 XML Formatting Rules
 
@@ -330,6 +383,10 @@ Learned from QLC+ re-saving workspace files. Follow these exactly to avoid needi
 - When mixing `beat_step()` (FadeIn=0, Hold=ms) and `smooth_step()` (FadeIn=ms, Hold=0), total duration must sum `FadeIn + Hold` for each step, not just Hold. The PhatAdam generator only summed Hold because all steps were snaps — that formula breaks for smooth crossfade steps.
 - `smooth(bpm, bars)` returns `(FadeIn=full_duration, Hold=0)` — the entire step is crossfade time. This creates flowing mover sweeps where the motion IS the crossfade between positions.
 
+### Half-Time BPM Detection
+- The analysis pipeline often detects BPM at half-time (e.g., 87 instead of 174 for DnB). Always confirm BPM with the user before building a generator.
+- Beat tracker timestamps can be unreliable for half-time tracks. Use `bpm_to_ms()` math for timing calculations and segment timestamps from the analysis JSON for section boundaries — don't rely solely on the beat array spacing.
+
 ### Pre-Beat Silence
 - Analysis data segments may start at 0.0s, but the first beat often doesn't land until several seconds in (e.g., 11s for Guardian Angel). Account for this by splitting the first segment into an "ambient intro" section (pre-beat bars) and the actual verse. The DJ starts the chaser at song start, so those pre-beat bars need to be programmed as atmosphere/dark.
 
@@ -360,3 +417,28 @@ Learned from QLC+ re-saving workspace files. Follow these exactly to avoid needi
 - **Position tracking**: When one mover is active and others are dark, park the dark movers at the **same position** as the active one. This way, if they turn on later, they're already aimed correctly. Example: `solo_sharpy()` should use `dark_bsw(pan=bp, tilt=bt)` where bp/bt match the Sharpy's target position.
 - **`blackout_all()`** is safe — it already uses `dark_*()` for movers internally.
 - **`blackout()` is fine for pars/missyees** — they have no pan/tilt.
+
+### Transition Scene Contract
+- `build_transition_scenes()` must return `(scenes, timing)` where `len(scenes) == len(timing)`. This is enforced by `make_chaser()` which asserts matching counts.
+- Every transition factory must produce at least 1 scene + 1 timing entry — even "hold" or "freeze" transitions need a concrete scene (e.g., a dim midpoint or fade-to-black) rather than returning 0 scenes with only timing.
+- Transition pools in phrase-rules.json are keyed by phrase-pair (e.g., `build_to_drop`), energy-pair (e.g., `high_to_high`), or fallback (`same_to_same`). Pool selection priority: phrase-pair → energy-pair → fallback.
+
+### Research Brief Workflow
+- Every song-synced show requires an approved research brief at `venue/<name>/shows/notes/<slug>.json`. The brief gates generation — `require_research_brief()` will create a stub and raise if `status != "approved"`.
+- Brief must have 5+ sources covering 3 categories (artist_branding, song_specific, visual_reference), with 2+ from the last 3 years. This prevents hallucinated creative direction.
+- `build_creative_context(brief, song_stem)` extracts `brand_tokens` (unique creative keywords) and `creative_directives` (must_include, avoid, do_not_copy, direction_notes) from the approved brief.
+
+### Phrase-Aware Technique Selection
+- Generators use `classify_phrase()` to bucket each bar into one of 6 phrase classes (intro, verse_groove, build, drop, breakdown, outro), then `pick_phrase_technique()` to select a scored coordination technique (INT-001..INT-090) from that phrase's pool.
+- Technique selection evaluates 3 candidates across 5 scoring dimensions: novelty, coherence, brand_fit, creative_fit, phrase_fit. Top-ranked wins.
+- On phrase change, contrast enforcement requires at least 2 visual dimensions to differ (position, rhythm, color, intensity, effect_density). The planner auto-adds transforms if contrast isn't met.
+
+### Designer Pack Integration
+- Shows select 1-2 dominant + 1 contrast designer technique packs (DTP-001..DTP-030) based on brand tokens and creative directives.
+- Packs influence technique selection: preferred transforms, par modes, relationships, and anti-rules (forbidden techniques).
+- Pack usage is tracked in `references/data/designer-pack-memory.json` with a 3-show cooldown to prevent repetition across shows.
+
+### Venue Creative Profiles
+- `venue/<name>/references/creative-profile.json` maps physical fixtures to abstract roles (PAR_A, M1_BEAM, etc.) and zones (C, SL, DJ_BOOTH, etc.).
+- Generators should reference roles and zones, not fixture names, for portability across venues.
+- Use `load_venue_profile()` to load the profile; use `load_focus_position_tuples()` for named pan/tilt positions instead of hardcoding values.

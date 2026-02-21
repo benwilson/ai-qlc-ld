@@ -21,9 +21,11 @@ For pre-programmed shows synced to a specific track. Just name a song (or say "p
 
 1. Drop audio files in `songs/`
 2. Tell Claude which song to analyze (or ask it to pick an unanalyzed one)
-3. Claude runs `./analyze.sh`, reviews the analysis data, and asks about creative direction
-4. Claude writes a Python generator, produces the `.qxw`, and validates it
-5. Load the generated `.qxw` file in QLC+ and hit play
+3. Claude runs `./analyze.sh` and reviews the analysis data
+4. Claude scaffolds the show (research brief stubs + generator skeleton)
+5. Claude fills the research brief (artist branding, song motifs, creative thesis, sources), then builds a phrase-aware generator using scored coordination techniques
+6. Claude produces the `.qxw`, validates invariants, and writes show notes
+7. Load the generated `.qxw` file in QLC+ and hit play
 
 ## Skills
 
@@ -61,11 +63,14 @@ Available moods — emotional states: dark, ethereal, aggressive, hypnotic, euph
 | Skill | Creates | Reads |
 |-------|---------|-------|
 | **busking** | `venue/<name>/shows/Busking-<Genre>.qxw` | patch + focus-positions + genre + mood |
-| **song-analysis** | analysis JSON + show generator + `.qxw` | song audio + venue files + genre + mood |
+| **song-analysis** | analysis JSON + summary | song audio |
+| **qlc-show-workflow** | research brief + generator + `.qxw` | analysis JSON + venue files |
 
 **busking** generates a complete Virtual Console layout for live operation: color pair buttons (Solo Frame), position presets (Solo Frame), movement chasers, intensity sliders, strobe/flash buttons, and special moment buttons (blackout, whiteout, lasers, prism, etc.).
 
-**song-analysis** is the entry point for song-synced shows. Finds a song (or picks an unanalyzed one), runs the Docker analysis pipeline, presents a summary of BPM/structure/energy, then gathers creative direction and builds the show generator.
+**song-analysis** is the entry point for song-synced shows. Finds a song (or picks an unanalyzed one), runs the Docker analysis pipeline, and presents a summary of BPM/structure/energy. Hands off to **qlc-show-workflow** for generation.
+
+**qlc-show-workflow** handles the full generation pipeline: scaffold (brief stubs + generator skeleton) → research brief (artist branding, song motifs, thesis, sources) → validate → phrase-aware generator (scored coordination techniques, contrast enforcement, designer packs) → `.qxw` output → validate invariants. Creative direction comes from research briefs + the phrase planner, not genre/mood files.
 
 ### How Genre + Mood Combine
 
@@ -199,9 +204,12 @@ Results land in `songs-data/` as JSON. Onset timestamps give you the exact time 
 │       ├── plot.md         # Fixture positions in 3D space
 │       ├── patch.md        # DMX patch (IDs, addresses, modes)
 │       ├── focus-positions.md  # Named focus positions (pan/tilt per mover)
+│       ├── references/
+│       │   ├── creative-profile.json  # Venue-specific role/zone mapping
+│       │   └── creativity-venue.md    # Venue adaptation notes
 │       ├── shows/          # Generated .qxw workspace files
 │       │   ├── Template-Base.qxw  # Auto-generated from plot.md
-│       │   └── notes/      # Show design notes (one .md per show)
+│       │   └── notes/      # Show notes + research briefs (.md + .json)
 │       └── generators/     # Per-song generator scripts
 ├── genres/                 # EDM subgenre lighting definitions (one .md per genre)
 ├── moods/                  # Mood modifier definitions (one .md per mood)
@@ -253,6 +261,36 @@ Run from the project root:
 python3 "venue/home-studio/generators/Lorn - Acid Rain (Skeler Remix).py"
 ```
 
+### Show Workflow Command
+
+Use the helper command to keep show creation consistent:
+
+```bash
+# See songs in songs-data missing .qxw for a venue
+python3 scripts/show_workflow.py next --venue venue/home-studio
+
+# See generator/show/brief status
+python3 scripts/show_workflow.py status --venue venue/home-studio
+
+# Scaffold a song: ensure brief stub + generator stub + print Codex prompt
+python3 scripts/show_workflow.py scaffold --song "Artist - Song Title" --venue venue/home-studio
+```
+
+`scaffold` does not bypass research-gate approval. It prepares the files and prints a canonical prompt you can paste to Codex for the full creative + build workflow.
+
+Project-local skill is available at `skills/qlc-show-workflow/`.
+Invoke it in Codex with:
+
+```text
+Use $qlc-show-workflow to build a full show for "Artist - Song" in venue/home-studio.
+```
+
+Before generation, each venue should have:
+- `venue/<name>/references/creative-profile.json` (validated venue mapping layer)
+- `venue/<name>/shows/notes/<song-slug>.json` (approved research brief)
+- Research-gated generators should load positions via `load_focus_position_tuples(...)` (no static `POS` maps)
+- Phrase-aware generators should derive `BRAND_TOKENS` + `CREATIVE_DIRECTIVES` with `build_creative_context(...)` and pass both into `pick_phrase_technique(...)`
+
 ### showlib.py Provides
 
 **Fixture helpers** with safe defaults and correct channel maps: `sharpy()`, `bsw()`, `profile()`, `fourbar()`, `fourbar_solid()`, `fourbar_pairs()`, `fourbar_gradient()`, `miss1()`, `miss2()`, `miss_both()`, `ni3k()`
@@ -264,6 +302,8 @@ python3 "venue/home-studio/generators/Lorn - Acid Rain (Skeler Remix).py"
 **Timing helpers**: `bpm_to_ms()`, `smooth()`, `snap()`, `hold()`
 
 **Genre templates**: `structure_dnb()`, `structure_melodic_house()`, `structure_dubstep()`, `structure_party()`
+
+**Creative context helper**: `build_creative_context(brief, song_stem=...)` to feed full research brief signals into phrase planner scoring.
 
 **Venue template**: `generate_venue_template(venue_dir, bpm)` — reads a venue's `plot.md` and generates a `Template-Base.qxw` with only the fixtures placed in that venue
 
