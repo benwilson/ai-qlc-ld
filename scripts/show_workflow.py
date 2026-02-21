@@ -179,7 +179,7 @@ TECHNIQUE_COUNTS = {{}}
 LAST_TECHNIQUE_PLAN = None
 
 def timing_from_phrase_technique(technique, bars_here):
-    bars_here = max(1.0, float(bars_here))
+    bars_here = max(0.25, float(bars_here))
     timing = technique["timing"]
     par_style = str(timing["par_style"])
     par_beats = int(timing["par_beats"])
@@ -353,7 +353,7 @@ def build_low(sec):
             s_dim=int(60 * dim_f), b_dim=int(40 * dim_f), p_dim=0,
             par_m=int(80 * dim_f)))
 
-        bars_here = max(1, (next_t - t) / bar)
+        bars_here = max(0.25, (next_t - t) / bar)
         steps.append((sid, phrase_step_timing(t, next_t, bars_here)))
         t = next_t
         n += 1
@@ -377,7 +377,7 @@ def build_mid(sec):
             par=ACCENT_COLOR, miss=DIM_COLOR,
             ni_rgb=BASE_COLOR, halo=H_BLU))
 
-        bars_here = max(1, (next_t - t) / bar)
+        bars_here = max(0.25, (next_t - t) / bar)
         steps.append((sid, phrase_step_timing(t, next_t, bars_here)))
         t = next_t
         n += 1
@@ -406,7 +406,7 @@ def build_high(sec):
             ni_rgb=ACCENT_COLOR, halo=H_CYN,
             prism=(energy > 0.7)))
 
-        bars_here = max(1, (next_t - t) / bar)
+        bars_here = max(0.25, (next_t - t) / bar)
         steps.append((sid, phrase_step_timing(t, next_t, bars_here)))
         t = next_t
         n += 1
@@ -467,12 +467,15 @@ for i, sec in enumerate(SECTIONS):
     if trans_offset_s > 0:
         build_sec = {{**sec, "start": sec["start"] + trans_offset_s}}
 
+    # Recompute energy from the actual build window for dispatch
+    build_energy = avg_energy(e_rms, build_sec["start"], build_sec["end"])
+
     # --- Dispatch builder by energy ---
-    label = f"  Building {{sec['name']:12s}} ({{sec['bars']:3d}} bars, e={{energy:.2f}})"
-    if energy > 0.6:
+    label = f"  Building {{sec['name']:12s}} ({{sec['bars']:3d}} bars, e={{build_energy:.2f}})"
+    if build_energy > 0.6:
         print(f"{{label}} -> HIGH")
         build_high(build_sec)
-    elif energy > 0.3:
+    elif build_energy > 0.3:
         print(f"{{label}} -> MID")
         build_mid(build_sec)
     else:
