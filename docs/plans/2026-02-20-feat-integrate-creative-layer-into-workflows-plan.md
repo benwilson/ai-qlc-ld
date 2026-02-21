@@ -19,33 +19,19 @@ The codebase has gained four major new subsystems that aren't yet reflected in t
 
 Plus: `references/creativity.md` (2600+ line creative playbook), `scripts/show_workflow.py` (CLI orchestrator), the `qlc-show-workflow` skill, and 10+ new showlib.py wrapper functions.
 
-**None of this is documented in CLAUDE.md or connected to the existing skill chain.** The old "Song-Synced Shows" workflow in CLAUDE.md still describes the manual genre/mood/direction gathering flow.
-
-## Problem Statement
-
-A new user (or AI agent) reading CLAUDE.md today would:
-- Not know research briefs exist or are required
-- Not know about phrase-aware planning or coordination techniques
-- Not know about venue creative profiles or the data layer
-- Follow the old manual workflow instead of using the scaffold/brief/validate pipeline
-- Miss the new showlib.py API functions entirely
-- Not know about the creativity.md playbook or the sync/validate scripts
-
-## Proposed Solution
-
-Update CLAUDE.md, song-analysis skill, and MEMORY.md to fully document the new architecture. No code changes — documentation and workflow integration only.
+**[COMPLETED]** All items below have been addressed. CLAUDE.md, README, and song-analysis skill now document the full research-brief + phrase-aware pipeline.
 
 ## Acceptance Criteria
 
-- [ ] CLAUDE.md "Project Structure" section documents all new files/directories
-- [ ] CLAUDE.md "showlib.py Capabilities" section lists all new API functions
-- [ ] CLAUDE.md "Song-Synced Shows" pipeline reflects research-gated, phrase-aware workflow
-- [ ] CLAUDE.md "Skills & Workflow" section includes qlc-show-workflow skill
-- [ ] CLAUDE.md documents the data maintenance workflow (creativity.md -> sync -> validate)
-- [ ] CLAUDE.md "Show Generator Lessons Learned" covers new patterns (research briefs, phrase planning, designer packs, contrast enforcement)
-- [ ] Song-analysis skill hands off to qlc-show-workflow for generation
-- [ ] MEMORY.md updated with new architecture knowledge
-- [ ] No stale/contradictory information left in any documentation
+- [x] CLAUDE.md "Project Structure" section documents all new files/directories
+- [x] CLAUDE.md "showlib.py Capabilities" section lists all new API functions
+- [x] CLAUDE.md "Song-Synced Shows" pipeline reflects research-gated, phrase-aware workflow
+- [x] CLAUDE.md "Skills & Workflow" section includes qlc-show-workflow skill
+- [x] CLAUDE.md documents the data maintenance workflow (creativity.md -> sync -> validate)
+- [x] CLAUDE.md "Show Generator Lessons Learned" covers new patterns (research briefs, phrase planning, designer packs, contrast enforcement)
+- [x] Song-analysis skill hands off to qlc-show-workflow for generation
+- [x] MEMORY.md updated with new architecture knowledge
+- [x] No stale/contradictory information left in any documentation
 
 ---
 

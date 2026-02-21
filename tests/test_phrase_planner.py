@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 import showlib
@@ -157,7 +158,8 @@ class PhrasePlannerCoreTests(unittest.TestCase):
 
 class ShowlibWrapperTests(unittest.TestCase):
 
-    def test_wrappers_expose_phrase_planner(self):
+    @patch("showlib._record_designer_pack_usage_once")
+    def test_wrappers_expose_phrase_planner(self, _mock_record):
         phrase = showlib.classify_phrase(
             segment_label="chorus", rms=0.82, sub=0.71, high=0.33,
             progress=0.56, project_root=str(ROOT),
@@ -364,7 +366,8 @@ class BeatReactivityTests(unittest.TestCase):
             accents.add(br.accent_type)
         self.assertGreaterEqual(len(accents), 2, f"Expected accent variety, got: {accents}")
 
-    def test_beat_reactivity_in_serialized_technique(self):
+    @patch("showlib._record_designer_pack_usage_once")
+    def test_beat_reactivity_in_serialized_technique(self, _mock_record):
         technique = showlib.pick_phrase_technique(
             phrase="build", segment_index=2, global_bar=8,
             show_key="serialize_test", project_root=str(ROOT),
