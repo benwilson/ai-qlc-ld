@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "status": "approved",
+  "song_title": "WhoMadeWho - Children (Mind Against & Dyzen Remix)",
+  "artist": "WhoMadeWho / Mind Against / Dyzen",
+  "research_date": "2026-02-20",
+  "thesis": "Transform the childlike wonder of 'sunshine and moonbeams' into a hypnotic Afterlife-aesthetic journey where unified beam organisms breathe through deep indigo darkness toward a single euphoric gold-white revelation at the climax.",
+  "artist_branding": {
+    "summary": "WhoMadeWho blend indie warmth with electronic depth; their BIG-designed sphere stage emphasizes immersive inner journeys. Mind Against channel dark, hypnotic melodic techno through the Afterlife aesthetic — unified beam arrays moving as one organism, mood-focused rather than hectic. Dyzen adds psychedelic nostalgic melodic lines. The Afterlife lighting philosophy (Pascal Bach): 'nice looks and moods, not crazy and hectic effects.'",
+    "visual_cues": [
+      "Afterlife unified beam arrays — all movers as one organism, slow organic sweeps",
+      "Deep indigo/navy base state with extensive negative space and shadow",
+      "WhoMadeWho BIG sphere — breathing, pulsing light patterns responding to music",
+      "Children's choir angelic quality — soft wide washes with gentle pulse, not hard strobes"
+    ],
+    "do_not_copy": [
+      "Avoid the actual inflatable sphere projection element — translate the breathing concept to beam movement instead"
+    ]
+  },
+  "song_title_inspiration": {
+    "keywords": [
+      "children",
+      "innocence",
+      "wonder",
+      "cosmic dance"
+    ],
+    "motifs": [
+      "Sunshine-to-moonbeams arc: warm gold fading to cool silver across the show's energy curve",
+      "Unified organism movement: movers converge and breathe as one living entity, not independent chase patterns",
+      "Childlike reveal: the climax peels back darkness to expose warm light underneath, like eyes opening"
+    ]
+  },
+  "visual_direction": {
+    "color_story": "Deep indigo/navy base. Pale gold and warm cream accents during vocal moments (sunshine). Cool silver-white and desaturated cyan for instrumental peaks (moonbeams). Blood red sparingly for one dramatic punctuation. Pure white reserved for the 3:56 climax only.",
+    "motion_story": "Afterlife organism principle: movers tilt and sweep together in slow unison, 8-bar minimum transitions. Separation only during the breakdown (2:22) where fixtures isolate like scattered children. Reconverge at the rebuild.",
+    "staging_story": "Dark and minimal for first half. Profile at ceiling throughout intro as a distant star. BSW and Sharpy breathe together in slow pendulum sweeps. NI3K halo provides subtle color atmosphere. Full rig only at climax (3:56). Lasers reserved for sustained plateau (4:16-4:59)."
+  },
+  "style_constraints": {
+    "must_include": [
+      "Unified mover breathing — all beams move together as one organism",
+      "Deep indigo base state with extensive shadow/negative space",
+      "Single euphoric white-gold reveal at the 3:56 climax"
+    ],
+    "avoid": [
+      "Chase patterns where movers move independently",
+      "Gratuitous strobing — Afterlife principle is restraint",
+      "Fully saturated primary colors — desaturate everything",
+      "Beat-by-beat fixture changes in the intro/verse sections"
+    ]
+  },
+  "brand_alignment_score": 4,
+  "sources": [
+    {
+      "title": "Afterlife 2020 Debuts in Dubai with 100 Claypaky Sharpys",
+      "url": "https://www.claypaky.it/en/news/afterlife_2020_debuts_in_dubai_with_100_claypaky_sharpys_creating_a_massive_array_of_beams/",
+      "year": 2020,
+      "category": "visual_reference",
+      "note": "Pascal Bach LD: 'more relaxed and focused on nice looks and moods instead of crazy and hectic effects.' 100 Sharpys as one organic beam array."
+    },
+    {
+      "title": "WhoMadeWho Children Single Release - The Music Essentials",
+      "url": "https://themusicessentials.com/music/whomadewho-children/",
+      "year": 2023,
+      "category": "song_specific",
+      "note": "Children's choir (Vesterbros Ungdomsgard), 'audio painting of children dancing, enjoying the cosmic dance of sunshine and moonbeams.'"
+    },
+    {
+      "title": "Mind Against & Dyzen Remix - 909originals",
+      "url": "https://909originals.com/2024/01/12/mind-against-and-dyzen-team-up-to-remix-whomadewhos-children/",
+      "year": 2024,
+      "category": "song_specific",
+      "note": "Transforms quirky 80s track into deep techno anthem. Glistening synths, pounding bass, euphoric breakdown."
+    },
+    {
+      "title": "WhoMadeWho BIG Sphere Stage Design - Stirworld",
+      "url": "https://www.stirworld.com/see-features-sphere-of-sound-whomadewho-s-immersive-concert-experience-with-big",
+      "year": 2023,
+      "category": "artist_branding",
+      "note": "BIG-designed inflatable sphere as living breathing entity pulsing with music. Inner journey emphasis."
+    },
+    {
+      "title": "Mind Against Unveils HABITAT Platform - Exron Music",
+      "url": "https://exronmusic.com/2023/06/09/mind-against-unveils-new-record-label-habitat/",
+      "year": 2023,
+      "category": "artist_branding",
+      "note": "HABITAT as multi-sensorial ecosystem. Collaboration with visual artist Aujik for otherworldly digital aesthetics."
+    },
+    {
+      "title": "Afterlife Visual Identity - Sentimente Studio",
+      "url": "https://www.sentimentestudio.com/work/afterlife/",
+      "year": 2016,
+      "category": "visual_reference",
+      "note": "Brand built around 'limbo, twilight, between life and death.' Muted grays, deep blood reds, pale cream. Spirituality and analogue design."
+    }
+  ]
+}

@@ -5,6 +5,7 @@ from pathlib import Path
 
 from showlib import (
     FIXTURE_DEFS,
+    REACTIVITY_BARS,
     STAGE_POSITIONS,
     dark_bsw,
     dark_ni3k,
@@ -13,6 +14,7 @@ from showlib import (
     generate_venue_template,
     hold,
     make_chaser,
+    reactivity_to_bars,
     scene,
     write_workspace,
 )
@@ -97,6 +99,11 @@ class ShowlibHardeningTests(unittest.TestCase):
 
         self.assertEqual(original_defs, FIXTURE_DEFS)
         self.assertEqual(original_positions, STAGE_POSITIONS)
+
+    def test_reactivity_to_bars(self):
+        for key, val in REACTIVITY_BARS.items():
+            self.assertEqual(reactivity_to_bars(key), val)
+        self.assertEqual(reactivity_to_bars("unknown_value"), 2)
 
 
 if __name__ == "__main__":

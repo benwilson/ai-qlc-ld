@@ -231,7 +231,7 @@ def phrase_step_timing(t_start, t_end, bars_here):
 
     PHRASE_BAR_COUNTS[phrase] = PHRASE_BAR_COUNTS.get(phrase, 0) + max(1, int(round(bars_here)))
     TECHNIQUE_COUNTS[technique_id] = TECHNIQUE_COUNTS.get(technique_id, 0) + 1
-    return timing_from_phrase_technique(technique, bars_here)
+    return timing_from_phrase_technique(technique, bars_here), technique
 
 # =============================================================================
 # COLOR PALETTE — customize these for your show's aesthetic
@@ -298,35 +298,18 @@ def atmo(name, pos_key, energy, frost=180,
          s_dim=None, b_dim=None, p_dim=None, par_m=None,
          prism=False, lasers=False):
     \"\"\"Generic atmosphere scene — customize palette at call site.\"\"\"
-    p = POS.get(pos_key, POS.get("C", next(iter(POS.values()))))
-    sp, st, bp, bt, pp, pt, ni_pan = p
-
     sd = s_dim if s_dim is not None else e2d(energy, 40, 230)
     bd = b_dim if b_dim is not None else e2d(energy, 30, 210)
-    pd = p_dim if p_dim is not None else e2d(energy * 0.5, 0, 140)
+    pd = p_dim if p_dim is not None else e2d(energy * 0.5, 20, 140)
     pm = par_m if par_m is not None else e2d(energy, 15, 200)
-
-    pv = 128 if prism else 0
-    pr = 200 if prism else 0
-    ni_r, ni_g, ni_b = ni_rgb
-    nd = e2d(energy * 0.45, 0, 160)
-    lr = LASER_ON if lasers else LASER_OFF
+    nd = e2d(energy * 0.45, 15, 160)
 
     return scene(name,
-        sharpy(pan=sp, tilt=st, strobe=SHARPY_OPEN, dim=sd,
-               frost=frost, colormacro=s_color, focus=128,
-               prism1=pv, p1r=pr),
-        bsw(pan=bp, tilt=bt, color=b_color, shutter=BSW_SHUT_OPEN,
-            dim=bd, frost=min(255, frost), focus=128,
-            prism=pv, prot=pr),
-        profile(pan=pp, tilt=pt, color=p_color, dim=pd, focus=128),
-        fourbar_solid(*par, master=pm),
-        miss1(*miss, master=pm // 3),
-        miss2(*miss, master=pm // 3),
-        ni3k(pan=ni_pan, t1=64, t2=64, t3=64,
-             r=ni_r, g=ni_g, b=ni_b, w=0,
-             halo=halo, rl=lr, gl=lr, bl=lr,
-             dim=nd, strobe=0),
+        *mover_look(pos_key, POS, colors=(s_color, b_color, p_color),
+                    dims=(sd, bd, pd), frost=(frost, min(255, frost)),
+                    prism=prism, focus=128),
+        *par_look("solid", par, master=pm, miss_color=miss, miss_master=pm // 3),
+        ni3k_look(pos_key, POS, rgb=ni_rgb, dim=nd, halo=halo, lasers=lasers),
         path=folder)
 
 # =============================================================================
@@ -334,14 +317,15 @@ def atmo(name, pos_key, energy, frost=180,
 # =============================================================================
 
 def build_low(sec):
-    \"\"\"Low energy: intro/breakdown/outro — slow 4-bar steps, minimal fixtures.\"\"\"
+    \"\"\"Low energy: intro/breakdown/outro — dynamic step size from phrase planner.\"\"\"
     t, t_end = sec["start"], sec["end"]
     bar = BAR_MS / 1000
     total = max(0.1, t_end - t)
     n = 0
+    step_bars = 4
 
     while t < t_end - 0.3:
-        next_t = min(t + bar * 4, t_end)
+        next_t = min(t + bar * step_bars, t_end)
         prog = (t - sec["start"]) / total
         energy = avg_energy(e_rms, t, next_t)
         dim_f = max(0.1, 0.3 + 0.4 * energy)
@@ -350,24 +334,28 @@ def build_low(sec):
             f"{{sec['name']}} {{n}}", "DSC", energy * dim_f, 220,
             par=tuple(int(c * dim_f) for c in BASE_COLOR),
             miss=NOTHING, halo=H_OFF,
-            s_dim=int(60 * dim_f), b_dim=int(40 * dim_f), p_dim=0,
+            s_dim=int(60 * dim_f), b_dim=int(40 * dim_f), p_dim=int(25 * dim_f),
             par_m=int(80 * dim_f)))
 
         bars_here = max(0.25, (next_t - t) / bar)
-        steps.append((sid, phrase_step_timing(t, next_t, bars_here)))
+        timing, technique = phrase_step_timing(t, next_t, bars_here)
+        br = technique.get("beat_reactivity") or {{}}
+        step_bars = reactivity_to_bars(br.get("mover_min", "4bar"))
+        steps.append((sid, timing))
         t = next_t
         n += 1
 
 
 def build_mid(sec):
-    \"\"\"Mid energy: verse/build — 2-bar steps, add movers, gradient pars.\"\"\"
+    \"\"\"Mid energy: verse/build — dynamic step size from phrase planner.\"\"\"
     t, t_end = sec["start"], sec["end"]
     bar = BAR_MS / 1000
     positions = SWEEP_TIGHT
     n = 0
+    step_bars = 2
 
     while t < t_end - 0.3:
-        next_t = min(t + bar * 2, t_end)
+        next_t = min(t + bar * step_bars, t_end)
         energy = avg_energy(e_rms, t, next_t)
         pos = positions[n % len(positions)]
 
@@ -378,20 +366,24 @@ def build_mid(sec):
             ni_rgb=BASE_COLOR, halo=H_BLU))
 
         bars_here = max(0.25, (next_t - t) / bar)
-        steps.append((sid, phrase_step_timing(t, next_t, bars_here)))
+        timing, technique = phrase_step_timing(t, next_t, bars_here)
+        br = technique.get("beat_reactivity") or {{}}
+        step_bars = reactivity_to_bars(br.get("mover_min", "2bar"))
+        steps.append((sid, timing))
         t = next_t
         n += 1
 
 
 def build_high(sec):
-    \"\"\"High energy: chorus/drop — 1-2 bar steps, prism, full brightness, sweep.\"\"\"
+    \"\"\"High energy: chorus/drop — dynamic step size from phrase planner, prism, sweep.\"\"\"
     t, t_end = sec["start"], sec["end"]
     bar = BAR_MS / 1000
     positions = SWEEP_WIDE
     n = 0
+    step_bars = 2
 
     while t < t_end - 0.3:
-        next_t = min(t + bar * 2, t_end)
+        next_t = min(t + bar * step_bars, t_end)
         energy = avg_energy(e_rms, t, next_t)
         pos = positions[n % len(positions)]
         has_vocal = vocal_present(t, next_t)
@@ -407,7 +399,10 @@ def build_high(sec):
             prism=(energy > 0.7)))
 
         bars_here = max(0.25, (next_t - t) / bar)
-        steps.append((sid, phrase_step_timing(t, next_t, bars_here)))
+        timing, technique = phrase_step_timing(t, next_t, bars_here)
+        br = technique.get("beat_reactivity") or {{}}
+        step_bars = reactivity_to_bars(br.get("mover_min", "bar"))
+        steps.append((sid, timing))
         t = next_t
         n += 1
 
