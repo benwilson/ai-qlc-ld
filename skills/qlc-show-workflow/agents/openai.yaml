@@ -1,0 +1,4 @@
+interface:
+  display_name: "QLC Show Workflow"
+  short_description: "Create phrase-aware QLC song shows"
+  default_prompt: "Use $qlc-show-workflow to build a full show for \"Artist - Song\" in venue/home-studio."
