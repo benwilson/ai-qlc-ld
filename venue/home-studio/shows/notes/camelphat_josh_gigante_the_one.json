@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "status": "approved",
+  "song_title": "CamelPhat & Josh Gigante - The One",
+  "artist": "CamelPhat & Josh Gigante",
+  "research_date": "2026-02-19",
+  "thesis": "Deliver a controlled cinematic warehouse arc where split-position beam coverage and earned warm accents frame the title as a singular gravitational pull toward one shared center.",
+  "artist_branding": {
+    "summary": "CamelPhat and Josh Gigante point toward dark melodic club storytelling: disciplined low-key foundations, selective high-impact moments, and polished cinematic pacing rather than maximal constant effects.",
+    "visual_cues": [
+      "Dark charcoal and cold-blue base with teal and violet tension layers",
+      "Wide split-position sweeps to create intentional spatial contrast",
+      "Amber and white deployed as earned peak language, not baseline color"
+    ],
+    "do_not_copy": [
+      "Do not recreate exact branded stage packages, visuals, or known headline show cue structures."
+    ]
+  },
+  "song_title_inspiration": {
+    "keywords": [
+      "one",
+      "focus",
+      "gravity",
+      "convergence"
+    ],
+    "motifs": [
+      "Geometry motif: split beams explore room extremes before converging on center anchors",
+      "Color motif: cold blue and charcoal body with amber/white as singular payoff tones",
+      "Movement motif: section-specific sweep routes with deliberate buildup from tight to full-span coverage"
+    ]
+  },
+  "visual_direction": {
+    "color_story": "Keep instrumental phrases in cold-blue, teal, and charcoal, then unlock amber and white only at emotional or structural peak milestones.",
+    "motion_story": "Use 2-bar and 1-bar transitions to increase urgency across sections while preserving coherent directional sweep narratives.",
+    "staging_story": "Treat Sharpy/BSW as dual protagonists in split coverage, with Profile and PAR layers reinforcing architecture and peak punctuation."
+  },
+  "style_constraints": {
+    "must_include": [
+      "Frequent split-position sweeps where Sharpy and BSW target different zones",
+      "Clear section-level route variation so each act covers distinct room geometry",
+      "Peak white moments reserved for true climax only"
+    ],
+    "avoid": [
+      "Flat same-position unison for entire sections in high-energy acts",
+      "Unbroken strobe-heavy blocks that collapse dynamic contrast",
+      "Warm color dominance during low-energy or stripped passages"
+    ]
+  },
+  "brand_alignment_score": 4.4,
+  "sources": [
+    {
+      "title": "CamelPhat Official Website",
+      "url": "https://www.camelphat.com/",
+      "year": 2026,
+      "category": "artist_branding",
+      "note": "Primary artist brand and release ecosystem reference."
+    },
+    {
+      "title": "Josh Gigante artist discovery query",
+      "url": "https://www.google.com/search?q=Josh+Gigante+DJ+producer",
+      "year": 2026,
+      "category": "artist_branding",
+      "note": "Supporting artist context for melodic-techno visual expectations."
+    },
+    {
+      "title": "The One track search on Beatport",
+      "url": "https://www.beatport.com/search?q=CamelPhat%20Josh%20Gigante%20The%20One",
+      "year": 2025,
+      "category": "song_specific",
+      "note": "Track metadata lookup for BPM, mix details, and release listing."
+    },
+    {
+      "title": "The One discovery on YouTube",
+      "url": "https://www.youtube.com/results?search_query=CamelPhat+Josh+Gigante+The+One",
+      "year": 2025,
+      "category": "song_specific",
+      "note": "Cross-check source for public release naming and arrangement context."
+    },
+    {
+      "title": "Afterlife visual reference query",
+      "url": "https://www.google.com/search?q=Afterlife+melodic+techno+visuals",
+      "year": 2024,
+      "category": "visual_reference",
+      "note": "Reference benchmark for cinematic darkness, pacing, and spatial scale."
+    },
+    {
+      "title": "Warehouse beam design reference query",
+      "url": "https://www.google.com/search?q=warehouse+beam+lighting+design",
+      "year": 2026,
+      "category": "visual_reference",
+      "note": "Practical visual language reference for split-beam room coverage."
+    }
+  ]
+}

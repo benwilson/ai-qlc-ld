@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "status": "approved",
+  "song_title": "Adriatique_Delhia_De_France_Marino_Canal_-_Home_feat._Delhia_De_France_Mind_Against_Remix_(mp3.pm)",
+  "artist": "Adriatique, Delhia de France, Marino Canal, Mind Against",
+  "research_date": "2026-02-19",
+  "thesis": "Shape a restrained dark-to-warm journey where hypnotic blue geometry keeps the room in suspended tension until selective amber reunions express the idea of finding home.",
+  "artist_branding": {
+    "summary": "This collaboration sits in melodic-techno territory with Adriatique and Mind Against style traits: cinematic restraint, deep monochrome base states, long-form tension arcs, and emotionally timed warmth.",
+    "visual_cues": [
+      "Afterlife-like low-saturation scenes with haze-first beam architecture",
+      "Long hypnotic sweeps and slow circular orbits rather than constant fast snaps",
+      "Selective amber or gold reveals as emotional punctuation, not constant palette"
+    ],
+    "do_not_copy": [
+      "Avoid directly recreating signature Afterlife set pieces, branded stage objects, or exact choreography from filmed headline shows."
+    ]
+  },
+  "song_title_inspiration": {
+    "keywords": [
+      "home",
+      "return",
+      "longing",
+      "arrival"
+    ],
+    "motifs": [
+      "Geometry motif: recurring center reunions after wide left-right drift to suggest return",
+      "Color motif: deep navy and steel blue world with rare amber home-call accents",
+      "Movement motif: 4- and 8-bar breathing sweeps that contract toward DSC on vocal resolve"
+    ]
+  },
+  "visual_direction": {
+    "color_story": "Open in steel-blue and deep navy darkness, hold cool monochrome for most phrases, and deploy amber or dusty gold only for emotional resolution moments.",
+    "motion_story": "Favor smooth 4-8 bar transitions with hypnotic circular travel during peaks and sparse single-source movement in breakdown valleys.",
+    "staging_story": "Keep the back movers as atmospheric narrator, let PAR wash define the room shell, and use center/downstage convergences as the recurring home anchor."
+  },
+  "style_constraints": {
+    "must_include": [
+      "Warm palette moments only when phrasing or vocal energy justifies emotional payoff",
+      "At least one long-form 8-bar atmospheric sweep in the breakdown arc",
+      "Phrase-aware technique selection with explicit contrast on phrase boundaries"
+    ],
+    "avoid": [
+      "Continuous full-rig strobe sections that flatten melodic phrasing",
+      "Rainbow cycling or saturated color changes every bar",
+      "Unmotivated random position jumps that break hypnotic continuity"
+    ]
+  },
+  "brand_alignment_score": 4.3,
+  "sources": [
+    {
+      "title": "Adriatique Official Website",
+      "url": "https://adriatique.ch/",
+      "year": 2026,
+      "category": "artist_branding",
+      "note": "Primary artist identity reference and official release/performance context."
+    },
+    {
+      "title": "Mind Against Official Channels (search index)",
+      "url": "https://www.google.com/search?q=Mind+Against+official",
+      "year": 2026,
+      "category": "artist_branding",
+      "note": "Artist profile discovery source for style framing and visual direction."
+    },
+    {
+      "title": "Home (Mind Against Remix) track search on Beatport",
+      "url": "https://www.beatport.com/search?q=Home%20Mind%20Against%20Remix%20Adriatique",
+      "year": 2025,
+      "category": "song_specific",
+      "note": "Song metadata reference for BPM, mix version naming, and catalog context."
+    },
+    {
+      "title": "Home (Mind Against Remix) discovery on YouTube",
+      "url": "https://www.youtube.com/results?search_query=Adriatique+Home+Mind+Against+Remix",
+      "year": 2025,
+      "category": "song_specific",
+      "note": "Cross-check of release naming and listener-facing edits/uploads."
+    },
+    {
+      "title": "Afterlife visual style reference",
+      "url": "https://www.after.life/",
+      "year": 2026,
+      "category": "visual_reference",
+      "note": "Macro visual language reference for restrained monochrome and atmospheric staging."
+    },
+    {
+      "title": "Melodic techno lighting moodboard query",
+      "url": "https://www.google.com/search?q=melodic+techno+lighting+design",
+      "year": 2024,
+      "category": "visual_reference",
+      "note": "Supplementary visual vocabulary for beam density and color restraint benchmarks."
+    }
+  ]
+}

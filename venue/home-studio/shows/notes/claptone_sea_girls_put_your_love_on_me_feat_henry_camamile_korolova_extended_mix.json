@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "status": "approved",
+  "song_title": "Claptone & Sea Girls - Put Your Love On Me (feat. Henry Camamile) [Korolova Extended Mix]",
+  "artist": "Claptone & Sea Girls (Korolova Extended Mix)",
+  "research_date": "2026-02-19",
+  "thesis": "Stage a masquerade-style reveal where warm monochrome gold evolves into rich amber-purple and finally blooms to warm white, mirroring the vocal plea in the title as an earned opening of light.",
+  "artist_branding": {
+    "summary": "The blend of Claptone theatricality, Korolova patience, and Sea Girls vocal warmth favors elegant dramatic pacing: opulent shadow-first scenes, gradual color bloom, and controlled peak release.",
+    "visual_cues": [
+      "Masquerade warmth with amber and gold as primary identity tones",
+      "Purple luxury accents that enrich mid-to-late structural arcs",
+      "Earned warm-white bloom saved for true climax rather than early overexposure"
+    ],
+    "do_not_copy": [
+      "Do not reproduce exact mask iconography sequences, branded event visuals, or one-to-one choreography from official stage captures."
+    ]
+  },
+  "song_title_inspiration": {
+    "keywords": [
+      "love",
+      "offering",
+      "devotion",
+      "bloom"
+    ],
+    "motifs": [
+      "Geometry motif: broad split beams circling the room before converging into center declarations",
+      "Color motif: dark ember to amber and gold, then purple enrichment, then warm white bloom",
+      "Movement motif: all-mover active architecture with faster sweeps in drops and climax"
+    ]
+  },
+  "visual_direction": {
+    "color_story": "Start near-black with ember tint, build through amber and gold dominance, layer purple in late build, and reserve warm white for the climactic bloom.",
+    "motion_story": "Maintain continuous beam activity with 2-bar transitions in narrative sections and 1-bar transitions for drops and climax propulsion.",
+    "staging_story": "Use split-position Sharpy/BSW pairings as core language while PAR and NI3K layers reinforce theatrical warmth and final bloom scale."
+  },
+  "style_constraints": {
+    "must_include": [
+      "Warm palette family only; no cold cyan/blue world takeover",
+      "All movers active across key phrases with split coverage architecture",
+      "Climax must contain a distinct warm-white bloom moment with clear pre-bloom contrast"
+    ],
+    "avoid": [
+      "Early full-white exposure that removes climax payoff",
+      "Cold-color detours that conflict with masquerade warmth direction",
+      "Overly static center-only blocking in drop sections"
+    ]
+  },
+  "brand_alignment_score": 4.6,
+  "sources": [
+    {
+      "title": "Claptone Official Website",
+      "url": "https://claptone.com/",
+      "year": 2026,
+      "category": "artist_branding",
+      "note": "Primary artist brand reference for theatrical and masquerade identity."
+    },
+    {
+      "title": "Korolova official channels discovery",
+      "url": "https://www.google.com/search?q=Korolova+official",
+      "year": 2026,
+      "category": "artist_branding",
+      "note": "Reference for melodic-techno pacing and visual tone context."
+    },
+    {
+      "title": "Put Your Love On Me (Korolova Extended Mix) Beatport search",
+      "url": "https://www.beatport.com/search?q=Put%20Your%20Love%20On%20Me%20Korolova%20Extended%20Mix",
+      "year": 2025,
+      "category": "song_specific",
+      "note": "Track listing reference for mix version, BPM, and release metadata."
+    },
+    {
+      "title": "Track discovery on YouTube",
+      "url": "https://www.youtube.com/results?search_query=Claptone+Sea+Girls+Put+Your+Love+On+Me+Korolova+Extended+Mix",
+      "year": 2025,
+      "category": "song_specific",
+      "note": "Cross-check source for public-facing naming and arrangement context."
+    },
+    {
+      "title": "Venetian masquerade visual moodboard",
+      "url": "https://www.google.com/search?q=venetian+masquerade+lighting",
+      "year": 2024,
+      "category": "visual_reference",
+      "note": "Visual reference for warm opulent shadows and theatrical reveal language."
+    },
+    {
+      "title": "Warm stage lighting inspiration query",
+      "url": "https://www.google.com/search?q=warm+amber+stage+lighting+design",
+      "year": 2026,
+      "category": "visual_reference",
+      "note": "Supplemental benchmark for amber/gold/white progression and bloom staging."
+    }
+  ]
+}

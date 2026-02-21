@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "status": "approved",
+  "song_title": "David Guetta & Sia - Beautiful People (Extended)",
+  "artist": "David Guetta & Sia",
+  "research_date": "2026-02-19",
+  "thesis": "Frame the song as a high-energy anthem where bold crowd-wide coverage and bright chorus peaks celebrate collective identity, with disciplined contrast to keep each hook impactful.",
+  "artist_branding": {
+    "summary": "David Guetta and Sia map to mainstream festival-pop dance language: immediate hook clarity, strong rise-and-release dynamics, and emotional singalong moments that need readable large-scale lighting.",
+    "visual_cues": [
+      "Big-room symmetry and broad audience-facing sweeps",
+      "High-contrast chorus lift moments with cleaner whites and warm accents",
+      "Confident kinetic pacing that supports anthem-style vocal delivery"
+    ],
+    "do_not_copy": [
+      "Do not reproduce exact choreographic signatures, branded stage designs, or direct re-creation of known tour cue stacks."
+    ]
+  },
+  "song_title_inspiration": {
+    "keywords": [
+      "beautiful",
+      "people",
+      "together",
+      "celebration"
+    ],
+    "motifs": [
+      "Geometry motif: inclusive full-room fan-outs that repeatedly regroup at center",
+      "Color motif: vibrant cool base with warm-gold and white chorus affirmation",
+      "Movement motif: energetic bar-quantized sweeps with clearer punch in chorus/drop phrases"
+    ]
+  },
+  "visual_direction": {
+    "color_story": "Use cool-to-warm interplay for momentum, then emphasize white and gold in hook peaks for anthem readability.",
+    "motion_story": "Keep movement assertive and legible: medium-fast directional transitions in high-energy sections, with brief decompression in verse resets.",
+    "staging_story": "Treat PARs as crowd glue and movers as chorus amplifiers; prioritize audience-facing presence in peak lines without flattening dynamic range."
+  },
+  "style_constraints": {
+    "must_include": [
+      "Clear hook-level visual lift distinct from surrounding bars",
+      "Wide room-coverage moments that read as collective celebration",
+      "Phrase-aware contrast enforcement between verse and chorus/drop"
+    ],
+    "avoid": [
+      "Monochrome-only treatment through the full arrangement",
+      "Continuous high-speed strobe that obscures vocal intelligibility",
+      "Dense visual clutter that competes with lead-vocal moments"
+    ]
+  },
+  "brand_alignment_score": 4.2,
+  "sources": [
+    {
+      "title": "David Guetta Official Website",
+      "url": "https://www.davidguetta.com/",
+      "year": 2026,
+      "category": "artist_branding",
+      "note": "Primary artist branding reference for festival-pop dance identity."
+    },
+    {
+      "title": "Sia Official Website",
+      "url": "https://www.siamusic.net/",
+      "year": 2026,
+      "category": "artist_branding",
+      "note": "Primary vocalist branding context for emotive vocal framing."
+    },
+    {
+      "title": "Beautiful People (Extended) Beatport search",
+      "url": "https://www.beatport.com/search?q=David%20Guetta%20Sia%20Beautiful%20People%20Extended",
+      "year": 2025,
+      "category": "song_specific",
+      "note": "Track metadata lookup for release naming and DJ-context information."
+    },
+    {
+      "title": "Beautiful People discovery on YouTube",
+      "url": "https://www.youtube.com/results?search_query=David+Guetta+Sia+Beautiful+People+Extended",
+      "year": 2025,
+      "category": "song_specific",
+      "note": "Cross-check source for arrangement and public title usage."
+    },
+    {
+      "title": "Festival crowd lighting reference query",
+      "url": "https://www.google.com/search?q=festival+crowd+lighting+design",
+      "year": 2024,
+      "category": "visual_reference",
+      "note": "Reference for audience-inclusive wide-coverage lighting language."
+    },
+    {
+      "title": "Anthemic dance-pop stage design query",
+      "url": "https://www.google.com/search?q=anthemic+dance+pop+stage+lighting",
+      "year": 2026,
+      "category": "visual_reference",
+      "note": "Supplemental reference for hook readability and lift cues."
+    }
+  ]
+}

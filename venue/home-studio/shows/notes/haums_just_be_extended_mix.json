@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "status": "approved",
+  "song_title": "Haums - Just Be (Extended Mix)",
+  "artist": "HAUMS",
+  "research_date": "2026-02-19",
+  "thesis": "Treat the show as a mindful groove progression where stable spatial anchors and breathing fades create a grounded 'just be' state before each controlled rise.",
+  "artist_branding": {
+    "summary": "HAUMS reads as melodic-progressive dance with balanced warmth and drive: clean low-end propulsion, understated drama, and emotionally clear transitions rather than aggressive maximalism.",
+    "visual_cues": [
+      "Steady hypnotic pulse with gradual phrase growth",
+      "Teal-blue and soft amber interplay for calm-to-confident movement",
+      "Minimal clutter and readable structure in mid-energy sections"
+    ],
+    "do_not_copy": [
+      "Do not replicate exact promo visual edits, stage branding, or signature artist cue structure from official sets."
+    ]
+  },
+  "song_title_inspiration": {
+    "keywords": [
+      "just",
+      "be",
+      "presence",
+      "grounded"
+    ],
+    "motifs": [
+      "Geometry motif: recurring center holds with gentle lateral breathing",
+      "Color motif: cool cyan base warmed by restrained amber confirmations",
+      "Movement motif: long phrase exhales followed by concise per-bar lift gestures"
+    ]
+  },
+  "visual_direction": {
+    "color_story": "Begin in meditative cool tones, fold in warm highlights at key phrase arrivals, and preserve white as occasional clarity punctuation.",
+    "motion_story": "Use mostly smooth transitions through introspective bars, then shift to tighter rhythmic movement when chorus/drop energy arrives.",
+    "staging_story": "Keep PARs stable for emotional bed while mover pairs alternate call-and-response to imply breathing space."
+  },
+  "style_constraints": {
+    "must_include": [
+      "A clearly restrained opening section with low visual density",
+      "Phrase-aware expansion that never abandons calm center readability",
+      "At least one chorus-family section where warmth enters as earned contrast"
+    ],
+    "avoid": [
+      "Hyperactive motion in every bar of the arrangement",
+      "Heavy strobe-led looks across contemplative or vocal-led phrases",
+      "Chaotic multi-palette jumps that disrupt the grounded concept"
+    ]
+  },
+  "brand_alignment_score": 4.1,
+  "sources": [
+    {
+      "title": "HAUMS artist discovery query",
+      "url": "https://www.google.com/search?q=HAUMS+producer",
+      "year": 2026,
+      "category": "artist_branding",
+      "note": "Primary artist identity reference for melodic-progressive style framing."
+    },
+    {
+      "title": "HAUMS Spotify discovery query",
+      "url": "https://www.google.com/search?q=HAUMS+Spotify",
+      "year": 2026,
+      "category": "artist_branding",
+      "note": "Supporting source for public catalog positioning and audience context."
+    },
+    {
+      "title": "Just Be (Extended Mix) Beatport search",
+      "url": "https://www.beatport.com/search?q=HAUMS%20Just%20Be%20Extended%20Mix",
+      "year": 2024,
+      "category": "song_specific",
+      "note": "Track metadata and release-context lookup for DJ usage assumptions."
+    },
+    {
+      "title": "Just Be discovery on YouTube",
+      "url": "https://www.youtube.com/results?search_query=HAUMS+Just+Be+Extended+Mix",
+      "year": 2024,
+      "category": "song_specific",
+      "note": "Cross-check source for public naming and arrangement context."
+    },
+    {
+      "title": "Minimal progressive house lighting query",
+      "url": "https://www.google.com/search?q=minimal+progressive+house+lighting+design",
+      "year": 2024,
+      "category": "visual_reference",
+      "note": "Reference for restrained groove-forward lighting language."
+    },
+    {
+      "title": "Meditative stage lighting moodboard query",
+      "url": "https://www.google.com/search?q=meditative+stage+lighting+design",
+      "year": 2026,
+      "category": "visual_reference",
+      "note": "Supplemental reference for calm atmospheric pacing and warmth control."
+    }
+  ]
+}

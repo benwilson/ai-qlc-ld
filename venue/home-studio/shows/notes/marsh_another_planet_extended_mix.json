@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "status": "approved",
+  "song_title": "Marsh - Another Planet (Extended Mix)",
+  "artist": "Marsh",
+  "research_date": "2026-02-19",
+  "thesis": "Build an orbital narrative where restrained terrestrial grooves evolve into expansive celestial sweeps, making 'another planet' feel like a gradual departure from gravity.",
+  "artist_branding": {
+    "summary": "Marsh is associated with polished melodic-house storytelling: emotional depth, progressive layering, and cinematic long-form arrangement that rewards disciplined restraint before lift moments.",
+    "visual_cues": [
+      "Wide atmospheric beam fields with clean melodic contour",
+      "Cool-space palette foundations with selective luminous highlights",
+      "Long-range phrase architecture that favors narrative continuity"
+    ],
+    "do_not_copy": [
+      "Do not recreate exact visual identities, branded scenography, or one-to-one cue patterns from official Marsh live/tour content."
+    ]
+  },
+  "song_title_inspiration": {
+    "keywords": [
+      "another",
+      "planet",
+      "orbit",
+      "ascent"
+    ],
+    "motifs": [
+      "Geometry motif: orbiting arcs that repeatedly depart center then re-lock on a new axis",
+      "Color motif: deep indigo and cyan atmosphere with occasional white-star punctures",
+      "Movement motif: slow rotational travel in verses and tighter thrust patterns in drop/chorus peaks"
+    ]
+  },
+  "visual_direction": {
+    "color_story": "Anchor the show in nocturnal blue-cyan tones and use bright white like star events, only at structural apex points.",
+    "motion_story": "Favor smooth orbital movement early, then increase directional urgency as sections imply launch and transit.",
+    "staging_story": "Let PAR texture provide space ambience while movers and NI arcs define trajectory, distance, and return vectors."
+  },
+  "style_constraints": {
+    "must_include": [
+      "At least one long atmospheric segment that reads as weightless drift",
+      "Distinct shift from grounded verse behavior to expansive chorus/drop behavior",
+      "A late-stage high-clarity moment that signifies arrival beyond the initial space"
+    ],
+    "avoid": [
+      "Continuous front-facing blast looks that erase depth",
+      "Frequent random position hops without orbital logic",
+      "Overusing white so climax events lose meaning"
+    ]
+  },
+  "brand_alignment_score": 4.5,
+  "sources": [
+    {
+      "title": "Marsh artist discovery query",
+      "url": "https://www.google.com/search?q=Marsh+melodic+house+artist",
+      "year": 2026,
+      "category": "artist_branding",
+      "note": "Primary artist-brand context for melodic-house visual pacing."
+    },
+    {
+      "title": "Anjunadeep Marsh discovery query",
+      "url": "https://www.google.com/search?q=Anjunadeep+Marsh+artist",
+      "year": 2026,
+      "category": "artist_branding",
+      "note": "Label ecosystem reference for stylistic positioning and audience expectation."
+    },
+    {
+      "title": "Another Planet (Extended Mix) Beatport search",
+      "url": "https://www.beatport.com/search?q=Marsh%20Another%20Planet%20Extended%20Mix",
+      "year": 2024,
+      "category": "song_specific",
+      "note": "Track metadata lookup for release naming and club-context cues."
+    },
+    {
+      "title": "Another Planet discovery on YouTube",
+      "url": "https://www.youtube.com/results?search_query=Marsh+Another+Planet+Extended+Mix",
+      "year": 2024,
+      "category": "song_specific",
+      "note": "Cross-check source for public naming and arrangement framing."
+    },
+    {
+      "title": "NASA image library",
+      "url": "https://images.nasa.gov/",
+      "year": 2026,
+      "category": "visual_reference",
+      "note": "Space-imagery reference for depth, glow, and celestial composition language."
+    },
+    {
+      "title": "Cinematic cosmic lighting design query",
+      "url": "https://www.google.com/search?q=cinematic+cosmic+lighting+design",
+      "year": 2024,
+      "category": "visual_reference",
+      "note": "Supplemental reference for orbit-inspired movement and contrast strategy."
+    }
+  ]
+}

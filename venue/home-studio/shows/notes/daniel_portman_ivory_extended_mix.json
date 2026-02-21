@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "status": "approved",
+  "song_title": "Daniel Portman - Ivory (Extended Mix)",
+  "artist": "Daniel Portman",
+  "research_date": "2026-02-19",
+  "thesis": "Express ivory as disciplined luminous architecture: dark progressive foundations carve space for polished warm-white statements and measured geometric returns.",
+  "artist_branding": {
+    "summary": "Daniel Portman visuals align with polished progressive-house control: driving but elegant phrasing, symmetric room architecture, and careful escalation over long form rather than chaotic effect spam.",
+    "visual_cues": [
+      "Clean lane-based geometry with recurring center/downstage anchors",
+      "Dark foundational states supporting selective bright ivory revelations",
+      "Phrase-disciplined pacing where contrast is structural, not random"
+    ],
+    "do_not_copy": [
+      "Do not duplicate exact cover design assets, promo typography, or one-to-one cueing from official campaign videos."
+    ]
+  },
+  "song_title_inspiration": {
+    "keywords": [
+      "ivory",
+      "stone",
+      "polish",
+      "luminous"
+    ],
+    "motifs": [
+      "Geometry motif: column-like beam stacks and mirrored routes that lock to center phrases",
+      "Color motif: steel-indigo body with ivory-white crests and restrained amber warmth",
+      "Movement motif: 4-beat quantized repositioning with inclusion bursts during peak phrases"
+    ]
+  },
+  "visual_direction": {
+    "color_story": "Begin in deep indigo and teal-steel tones, then graduate into ivory-white peaks with occasional amber support to preserve warmth and depth.",
+    "motion_story": "Maintain bar-quantized movement discipline while increasing route complexity and speed in build/drop transitions.",
+    "staging_story": "PAR layers provide structural bedrock while mover lanes narrate the stone-to-light journey through repeated geometric callbacks."
+  },
+  "style_constraints": {
+    "must_include": [
+      "Bar-quantized mover routing with repeatable geometric signatures",
+      "Distinct ivory-white payoff zones contrasted against darker phrase beds",
+      "At least one inclusion relationship phrase where PAR pulse and mover phrase interlock"
+    ],
+    "avoid": [
+      "Extended rainbow effects that conflict with ivory identity",
+      "Overdense strobe usage that obscures melodic phrasing",
+      "Frequent motif resets that break long-form progressive coherence"
+    ]
+  },
+  "brand_alignment_score": 4.4,
+  "sources": [
+    {
+      "title": "Daniel Portman Official Website",
+      "url": "https://www.danielportman.com/",
+      "year": 2026,
+      "category": "artist_branding",
+      "note": "Primary artist branding and official profile context."
+    },
+    {
+      "title": "Daniel Portman SoundCloud tracks",
+      "url": "https://soundcloud.com/daniel-portman/tracks",
+      "year": 2026,
+      "category": "artist_branding",
+      "note": "Artist release feed and stylistic continuity reference."
+    },
+    {
+      "title": "Ivory (Extended Mix) Beatport search",
+      "url": "https://www.beatport.com/search?q=Daniel%20Portman%20Ivory%20Extended%20Mix",
+      "year": 2025,
+      "category": "song_specific",
+      "note": "Track metadata lookup for catalog and mix identification."
+    },
+    {
+      "title": "Ivory (Extended Mix) discovery on YouTube",
+      "url": "https://www.youtube.com/results?search_query=Daniel+Portman+Ivory+Extended+Mix",
+      "year": 2025,
+      "category": "song_specific",
+      "note": "Cross-check of naming and listener-facing arrangement references."
+    },
+    {
+      "title": "Architectural lighting inspiration query",
+      "url": "https://www.google.com/search?q=architectural+beam+lighting+design",
+      "year": 2024,
+      "category": "visual_reference",
+      "note": "Reference for clean geometric lane logic and symmetry-led staging."
+    },
+    {
+      "title": "Ivory texture and palette moodboard query",
+      "url": "https://www.google.com/search?q=ivory+stone+texture+lighting+palette",
+      "year": 2026,
+      "category": "visual_reference",
+      "note": "Supplemental palette reference for stone-like tonal language and highlights."
+    }
+  ]
+}

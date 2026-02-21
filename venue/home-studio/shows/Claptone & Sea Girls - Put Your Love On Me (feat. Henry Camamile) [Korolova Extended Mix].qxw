@@ -1,0 +1,1380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Workspace>
+<Workspace xmlns="http://www.qlcplus.org/Workspace" CurrentWindow="VC">
+ <Creator>
+  <Name>Q Light Controller Plus</Name>
+  <Version>5.0.1</Version>
+  <Author>Ben Wilson</Author>
+ </Creator>
+ <Engine>
+  <InputOutputMap>
+   <BeatGenerator BeatType="Internal" BPM="125"/>
+   <Universe Name="Universe 1" ID="0">
+    <Output Plugin="ArtNet" UID="10.0.0.7" Line="0"/>
+   </Universe>
+  </InputOutputMap>
+  <Fixture>
+   <Manufacturer>Generic</Manufacturer>
+   <Model>Beam Spot Wash 3 in 1</Model>
+   <Mode>20 channel</Mode>
+   <ID>1</ID>
+   <Name>Beam Spot Wash 3 in 1</Name>
+   <Universe>0</Universe>
+   <Address>144</Address>
+   <Channels>20</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Chauvet</Manufacturer>
+   <Model>4BAR</Model>
+   <Mode>15 Channel</Mode>
+   <ID>2</ID>
+   <Name>4BAR</Name>
+   <Universe>0</Universe>
+   <Address>0</Address>
+   <Channels>15</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Generic</Manufacturer>
+   <Model>Nausea Inducer 3000</Model>
+   <Mode>19 channel</Mode>
+   <ID>3</ID>
+   <Name>Nausea Inducer 3000</Name>
+   <Universe>0</Universe>
+   <Address>240</Address>
+   <Channels>19</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Generic</Manufacturer>
+   <Model>Profile Knockoff</Model>
+   <Mode>14 channel</Mode>
+   <ID>4</ID>
+   <Name>Profile Knockoff</Name>
+   <Universe>0</Universe>
+   <Address>192</Address>
+   <Channels>14</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Missyee</Manufacturer>
+   <Model>36 RGB LED</Model>
+   <Mode>7 channel</Mode>
+   <ID>5</ID>
+   <Name>36 RGB LED</Name>
+   <Universe>0</Universe>
+   <Address>48</Address>
+   <Channels>7</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Missyee</Manufacturer>
+   <Model>36 RGB LED</Model>
+   <Mode>7 channel</Mode>
+   <ID>6</ID>
+   <Name>36 RGB LED #2</Name>
+   <Universe>0</Universe>
+   <Address>56</Address>
+   <Channels>7</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Generic</Manufacturer>
+   <Model>Sharpy Knockoff</Model>
+   <Mode>18 channel</Mode>
+   <ID>8</ID>
+   <Name>Sharpy Knockoff</Name>
+   <Universe>0</Universe>
+   <Address>96</Address>
+   <Channels>18</Channels>
+  </Fixture>
+  <Function ID="0" Type="Scene" Name="Blackout" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,64,3,145,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,6,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="1" Type="Scene" Name="Intro" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,177,1,0,2,19,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,210,13,0,14,0,15,128,16,8,17,116,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,96,2,0,3,44,4,18,5,0,6,44,7,18,8,0,9,44,10,18,11,0,12,44,13,18,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,38,6,0,7,8,8,3,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,29,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,48,1,14,2,6,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,48,1,14,2,6,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,0,2,0,3,0,4,0,5,190,6,252,7,130,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="2" Type="Scene" Name="Intro" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,200,13,0,14,0,15,128,16,8,17,119,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,99,2,0,3,59,4,24,5,0,6,59,7,24,8,0,9,59,10,24,11,0,12,59,13,24,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,39,6,0,7,11,8,4,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,31,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,49,1,19,2,8,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,49,1,19,2,8,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,157,1,0,2,0,3,0,4,0,5,180,6,252,7,134,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="3" Type="Scene" Name="Intro" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,170,1,0,2,23,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,191,13,0,14,0,15,128,16,8,17,126,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,106,2,0,3,74,4,30,5,0,6,74,7,30,8,0,9,74,10,30,11,0,12,74,13,30,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,43,6,0,7,14,8,5,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,33,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,53,1,24,2,10,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,53,1,24,2,10,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,170,1,0,2,0,3,0,4,0,5,171,6,252,7,141,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="4" Type="Scene" Name="Intro" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,180,1,0,2,86,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,181,13,0,14,0,15,128,16,8,17,118,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,98,2,0,3,89,4,36,5,0,6,89,7,36,8,0,9,89,10,36,11,0,12,89,13,36,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,39,6,0,7,17,8,7,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,30,1,0,2,91,3,30,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,49,1,29,2,12,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,49,1,29,2,12,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,73,2,0,3,0,4,0,5,161,6,252,7,133,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="5" Type="Scene" Name="Intro" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,172,13,0,14,0,15,128,16,8,17,150,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,130,2,0,3,104,4,42,5,0,6,104,7,42,8,0,9,104,10,42,11,0,12,104,13,42,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,55,6,0,7,19,8,8,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,42,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,65,1,34,2,14,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,65,1,34,2,14,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,73,2,0,3,0,4,0,5,152,6,252,7,166,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="6" Type="Scene" Name="Intro" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,189,1,0,2,29,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,163,13,0,14,0,15,128,16,8,17,156,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,136,2,0,3,119,4,48,5,0,6,119,7,48,8,0,9,119,10,48,11,0,12,119,13,48,14,0</FixtureVal>
+   <FixtureVal ID="3">0,80,1,64,2,64,3,64,4,0,5,58,6,0,7,22,8,9,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,45,1,0,2,64,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,68,1,38,2,16,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,68,1,38,2,16,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,149,1,5,2,0,3,0,4,0,5,143,6,252,7,173,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="7" Type="Scene" Name="Intro" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,170,1,0,2,23,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,153,13,0,14,0,15,128,16,8,17,161,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,141,2,0,3,134,4,54,5,0,6,134,7,54,8,0,9,134,10,54,11,0,12,134,13,54,14,0</FixtureVal>
+   <FixtureVal ID="3">0,176,1,64,2,64,3,64,4,0,5,60,6,0,7,25,8,10,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,47,1,0,2,64,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,70,1,43,2,18,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,70,1,43,2,18,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,170,1,0,2,0,3,0,4,0,5,133,6,252,7,178,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="8" Type="Scene" Name="Intro" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,189,1,0,2,29,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,144,13,0,14,0,15,128,16,8,17,169,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,149,2,0,3,149,4,61,5,0,6,149,7,61,8,0,9,149,10,61,11,0,12,149,13,61,14,0</FixtureVal>
+   <FixtureVal ID="3">0,80,1,64,2,64,3,64,4,0,5,64,6,0,7,28,8,11,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,50,1,0,2,50,3,165,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,74,1,48,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,74,1,48,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,6,2,0,3,0,4,0,5,124,6,252,7,187,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="9" Type="Scene" Name="Intro" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,170,1,0,2,23,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,134,13,0,14,0,15,128,16,8,17,176,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,156,2,0,3,164,4,67,5,0,6,164,7,67,8,0,9,164,10,67,11,0,12,164,13,67,14,0</FixtureVal>
+   <FixtureVal ID="3">0,176,1,64,2,64,3,64,4,0,5,68,6,0,7,31,8,13,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,53,1,0,2,110,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,78,1,53,2,22,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,78,1,53,2,22,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,6,2,0,3,0,4,0,5,114,6,252,7,194,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="10" Type="Scene" Name="Intro" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,125,13,0,14,0,15,128,16,8,17,184,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,164,2,0,3,179,4,73,5,0,6,179,7,73,8,0,9,179,10,73,11,0,12,179,13,73,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,72,6,0,7,34,8,14,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,56,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,82,1,58,2,24,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,82,1,58,2,24,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,157,1,0,2,0,3,0,4,0,5,105,6,252,7,202,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="11" Type="Scene" Name="Intro" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,116,13,0,14,0,15,128,16,8,17,181,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,161,2,0,3,194,4,79,5,0,6,194,7,79,8,0,9,194,10,79,11,0,12,194,13,79,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,70,6,0,7,37,8,15,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,55,1,0,2,64,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,80,1,63,2,26,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,80,1,63,2,26,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,6,2,0,3,0,4,0,5,96,6,252,7,199,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="12" Type="Scene" Name="Intro" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,177,1,0,2,19,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,106,13,0,14,0,15,128,16,8,17,151,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,131,2,0,3,209,4,85,5,0,6,209,7,85,8,0,9,209,10,85,11,0,12,209,13,85,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,55,6,0,7,39,8,16,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,43,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,65,1,68,2,28,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,65,1,68,2,28,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,0,2,0,3,0,4,0,5,86,6,252,7,167,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="13" Type="Scene" Name="V1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,100,13,0,14,0,15,128,16,8,17,107,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,87,2,0,3,220,4,90,5,0,6,220,7,90,8,0,9,220,10,90,11,0,12,220,13,90,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,33,6,0,7,50,8,20,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,26,1,0,2,64,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,43,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,43,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,6,2,0,3,0,4,0,5,80,6,252,7,121,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="14" Type="Scene" Name="V1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,189,1,0,2,29,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,100,13,0,14,0,15,128,16,8,17,102,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,82,2,0,3,220,4,90,5,0,6,220,7,90,8,0,9,220,10,90,11,0,12,220,13,90,14,0</FixtureVal>
+   <FixtureVal ID="3">0,80,1,64,2,64,3,64,4,0,5,31,6,0,7,50,8,20,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,24,1,0,2,50,3,165,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,41,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,41,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,6,2,0,3,0,4,0,5,80,6,252,7,116,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="15" Type="Scene" Name="V1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,189,1,0,2,29,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,100,13,0,14,0,15,128,16,8,17,104,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,84,2,0,3,220,4,90,5,0,6,220,7,90,8,0,9,220,10,90,11,0,12,220,13,90,14,0</FixtureVal>
+   <FixtureVal ID="3">0,80,1,64,2,64,3,64,4,0,5,32,6,0,7,50,8,20,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,25,1,0,2,50,3,165,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,42,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,42,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,170,1,0,2,0,3,0,4,0,5,80,6,252,7,117,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="16" Type="Scene" Name="V1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,100,13,0,14,0,15,128,16,8,17,102,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,82,2,0,3,220,4,90,5,0,6,220,7,90,8,0,9,220,10,90,11,0,12,220,13,90,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,31,6,0,7,50,8,20,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,24,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,41,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,41,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,157,1,0,2,0,3,0,4,0,5,80,6,252,7,115,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="17" Type="Scene" Name="V1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,170,1,0,2,23,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,100,13,0,14,0,15,128,16,8,17,109,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,89,2,0,3,220,4,90,5,0,6,220,7,90,8,0,9,220,10,90,11,0,12,220,13,90,14,0</FixtureVal>
+   <FixtureVal ID="3">0,176,1,64,2,64,3,64,4,0,5,34,6,0,7,50,8,20,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,27,1,0,2,110,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,44,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,44,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,149,1,5,2,0,3,0,4,0,5,80,6,252,7,123,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="18" Type="Scene" Name="V1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,170,1,0,2,23,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,100,13,0,14,0,15,128,16,8,17,101,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,81,2,0,3,220,4,90,5,0,6,220,7,90,8,0,9,220,10,90,11,0,12,220,13,90,14,0</FixtureVal>
+   <FixtureVal ID="3">0,176,1,64,2,64,3,64,4,0,5,30,6,0,7,50,8,20,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,23,1,0,2,110,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,40,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,40,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,6,2,0,3,0,4,0,5,80,6,252,7,114,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="19" Type="Scene" Name="V1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,181,1,0,2,21,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,100,13,0,14,0,15,128,16,8,17,104,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,84,2,0,3,220,4,90,5,0,6,220,7,90,8,0,9,220,10,90,11,0,12,220,13,90,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,32,6,0,7,50,8,20,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,25,1,0,2,52,3,136,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,42,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,42,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,157,1,0,2,0,3,0,4,0,5,80,6,252,7,118,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="20" Type="Scene" Name="V1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,177,1,0,2,19,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,100,13,0,14,0,15,128,16,8,17,100,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,80,2,0,3,220,4,90,5,0,6,220,7,90,8,0,9,220,10,90,11,0,12,220,13,90,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,30,6,0,7,50,8,20,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,23,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,40,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,40,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,0,2,0,3,0,4,0,5,80,6,252,7,114,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="21" Type="Scene" Name="Ch1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,80,13,0,14,0,15,128,16,8,17,133,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,113,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,46,6,0,7,50,8,20,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,36,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,56,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,56,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,73,2,0,3,0,4,0,5,60,6,252,7,148,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="22" Type="Scene" Name="Ch1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,170,1,0,2,23,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,80,13,0,14,0,15,128,16,8,17,118,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,98,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,39,6,0,7,50,8,20,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,30,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,49,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,49,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,170,1,0,2,0,3,0,4,0,5,60,6,252,7,132,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="23" Type="Scene" Name="Ch1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,80,13,0,14,0,15,128,16,8,17,126,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,106,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,43,6,0,7,50,8,20,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,33,1,0,2,64,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,53,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,53,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,6,2,0,3,0,4,0,5,60,6,252,7,141,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="24" Type="Scene" Name="Ch1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,189,1,0,2,29,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,80,13,0,14,0,15,128,16,8,17,118,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,98,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,80,1,64,2,64,3,64,4,0,5,39,6,0,7,50,8,20,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,30,1,0,2,64,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,49,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,49,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,149,1,5,2,0,3,0,4,0,5,60,6,252,7,132,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="25" Type="Scene" Name="Ch1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,170,1,0,2,23,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,80,13,0,14,0,15,128,16,8,17,134,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,114,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,176,1,64,2,64,3,64,4,0,5,47,6,0,7,50,8,20,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,36,1,0,2,64,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,57,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,57,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,170,1,0,2,0,3,0,4,0,5,60,6,252,7,149,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="26" Type="Scene" Name="Ch1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,180,1,0,2,86,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,80,13,0,14,0,15,128,16,8,17,118,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,98,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,39,6,0,7,50,8,20,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,30,1,0,2,91,3,30,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,49,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,49,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,73,2,0,3,0,4,0,5,60,6,252,7,133,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="27" Type="Scene" Name="Ch1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,80,13,0,14,0,15,128,16,8,17,112,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,92,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,36,6,0,7,50,8,20,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,28,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,46,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,46,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,157,1,0,2,0,3,0,4,0,5,60,6,252,7,126,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="28" Type="Scene" Name="Ch1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,189,1,0,2,29,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,80,13,0,14,0,15,128,16,8,17,98,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,78,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,80,1,64,2,64,3,64,4,0,5,29,6,0,7,50,8,20,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,22,1,0,2,50,3,165,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,39,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,39,1,50,2,20,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,6,2,0,3,0,4,0,5,60,6,252,7,111,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="29" Type="Scene" Name="Drop1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,48,13,128,14,200,15,128,16,8,17,173,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,153,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,66,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,51,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,76,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,76,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,73,2,0,3,0,4,0,5,28,6,252,7,190,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="30" Type="Scene" Name="Drop1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,170,1,0,2,23,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,42,13,128,14,200,15,128,16,8,17,203,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,183,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,81,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,63,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,91,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,91,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,170,1,0,2,0,3,0,4,0,5,22,6,252,7,222,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="31" Type="Scene" Name="Drop1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,43,13,128,14,200,15,128,16,8,17,206,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,186,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,83,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,64,1,0,2,64,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,93,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,93,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,6,2,0,3,0,4,0,5,23,6,252,7,225,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="32" Type="Scene" Name="Drop1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,189,1,0,2,29,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,46,13,128,14,200,15,128,16,8,17,189,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,169,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,80,1,64,2,64,3,64,4,0,5,74,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,58,1,0,2,64,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,84,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,84,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,149,1,5,2,0,3,0,4,0,5,26,6,252,7,207,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="33" Type="Scene" Name="Drop1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,170,1,0,2,23,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,43,13,128,14,200,15,128,16,8,17,196,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,176,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,176,1,64,2,64,3,64,4,0,5,78,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,60,1,0,2,64,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,88,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,88,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,170,1,0,2,0,3,0,4,0,5,23,6,252,7,215,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="34" Type="Scene" Name="Drop1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,42,13,128,14,200,15,128,16,8,17,199,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,179,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,79,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,62,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,89,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,89,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,157,1,0,2,0,3,0,4,0,5,22,6,252,7,218,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="35" Type="Scene" Name="Drop1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,189,1,0,2,29,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,43,13,128,14,200,15,128,16,8,17,207,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,187,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,80,1,64,2,64,3,64,4,0,5,83,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,65,1,0,2,50,3,165,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,93,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,93,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,6,2,0,3,0,4,0,5,23,6,252,7,226,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="36" Type="Scene" Name="Drop1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,170,1,0,2,23,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,45,13,128,14,200,15,128,16,8,17,192,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,172,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,176,1,64,2,64,3,64,4,0,5,76,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,59,1,0,2,110,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,86,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,86,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,6,2,0,3,0,4,0,5,25,6,252,7,211,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="37" Type="Scene" Name="Drop1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,189,1,0,2,29,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,44,13,128,14,200,15,128,16,8,17,194,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,174,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,80,1,64,2,64,3,64,4,0,5,77,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,60,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,87,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,87,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,73,2,0,3,0,4,0,5,24,6,252,7,213,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="38" Type="Scene" Name="Drop1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,170,1,0,2,23,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,44,13,128,14,200,15,128,16,8,17,202,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,182,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,176,1,64,2,64,3,64,4,0,5,81,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,63,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,91,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,91,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,73,2,0,3,0,4,0,5,24,6,252,7,221,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="39" Type="Scene" Name="Drop1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,180,1,0,2,86,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,42,13,128,14,200,15,128,16,8,17,205,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,185,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,82,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,64,1,0,2,91,3,30,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,92,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,92,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,73,2,0,3,0,4,0,5,22,6,252,7,224,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="40" Type="Scene" Name="Drop1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,196,1,0,2,25,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,46,13,128,14,200,15,128,16,8,17,191,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,171,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,75,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,58,1,0,2,64,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,85,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,85,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,73,2,0,3,0,4,0,5,26,6,252,7,209,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="41" Type="Scene" Name="Drop1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,189,1,0,2,29,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,43,13,128,14,200,15,128,16,8,17,195,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,175,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,80,1,64,2,64,3,64,4,0,5,77,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,60,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,87,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,87,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,157,1,0,2,0,3,0,4,0,5,23,6,252,7,214,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="42" Type="Scene" Name="Drop1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,181,1,0,2,21,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,43,13,128,14,200,15,128,16,8,17,201,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,181,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,176,1,64,2,64,3,64,4,0,5,80,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,62,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,90,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,90,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,170,1,0,2,0,3,0,4,0,5,23,6,252,7,220,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="43" Type="Scene" Name="Drop1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,189,1,0,2,29,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,45,13,128,14,200,15,128,16,8,17,167,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,147,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,80,1,64,2,64,3,64,4,0,5,63,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,49,1,0,2,50,3,165,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,73,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,73,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,170,1,0,2,0,3,0,4,0,5,25,6,252,7,184,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="44" Type="Scene" Name="Drop1" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,170,1,0,2,23,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,44,13,128,14,200,15,128,16,8,17,147,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,127,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,176,1,64,2,64,3,64,4,0,5,53,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,41,1,0,2,110,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,63,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,63,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,149,1,5,2,0,3,0,4,0,5,24,6,252,7,163,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="45" Type="Scene" Name="PostDrop" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,170,1,0,2,23,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,50,13,128,14,200,15,128,16,8,17,198,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,178,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,79,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,61,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,89,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,89,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,170,1,0,2,0,3,0,4,0,5,30,6,252,7,216,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="46" Type="Scene" Name="PostDrop" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,50,13,128,14,200,15,128,16,8,17,198,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,178,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,79,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,61,1,0,2,64,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,89,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,89,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,6,2,0,3,0,4,0,5,30,6,252,7,217,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="47" Type="Scene" Name="PostDrop" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,50,13,128,14,200,15,128,16,8,17,201,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,181,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,80,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,62,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,90,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,90,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,73,2,0,3,0,4,0,5,30,6,252,7,220,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="48" Type="Scene" Name="PostDrop" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,189,1,0,2,29,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,50,13,128,14,200,15,128,16,8,17,193,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,173,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,80,1,64,2,64,3,64,4,0,5,76,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,59,1,0,2,64,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,86,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,86,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,149,1,5,2,0,3,0,4,0,5,30,6,252,7,212,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="49" Type="Scene" Name="PostDrop" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,180,1,0,2,86,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,50,13,128,14,200,15,128,16,8,17,200,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,180,2,0,3,120,4,20,5,80,6,120,7,20,8,80,9,120,10,20,11,80,12,120,13,20,14,80</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,80,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,62,1,0,2,91,3,30,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,90,1,90,2,0,3,150,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,90,1,90,2,0,3,150,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,73,2,0,3,0,4,0,5,30,6,252,7,219,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="50" Type="Scene" Name="PostDrop" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,170,1,0,2,23,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,50,13,128,14,200,15,128,16,8,17,198,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,178,2,0,3,120,4,20,5,80,6,120,7,20,8,80,9,120,10,20,11,80,12,120,13,20,14,80</FixtureVal>
+   <FixtureVal ID="3">0,176,1,64,2,64,3,64,4,0,5,79,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,61,1,0,2,64,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,89,1,90,2,0,3,150,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,89,1,90,2,0,3,150,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,170,1,0,2,0,3,0,4,0,5,30,6,252,7,216,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="51" Type="Scene" Name="PostDrop" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,189,1,0,2,29,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,50,13,128,14,200,15,128,16,8,17,200,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,180,2,0,3,120,4,20,5,80,6,120,7,20,8,80,9,120,10,20,11,80,12,120,13,20,14,80</FixtureVal>
+   <FixtureVal ID="3">0,80,1,64,2,64,3,64,4,0,5,80,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,62,1,0,2,50,3,165,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,90,1,90,2,0,3,150,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,90,1,90,2,0,3,150,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,6,2,0,3,0,4,0,5,30,6,252,7,219,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="52" Type="Scene" Name="PostDrop" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,170,1,0,2,23,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,50,13,128,14,200,15,128,16,8,17,184,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,164,2,0,3,120,4,20,5,80,6,120,7,20,8,80,9,120,10,20,11,80,12,120,13,20,14,80</FixtureVal>
+   <FixtureVal ID="3">0,176,1,64,2,64,3,64,4,0,5,72,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,56,1,0,2,110,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,82,1,90,2,0,3,150,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,82,1,90,2,0,3,150,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,6,2,0,3,0,4,0,5,30,6,252,7,202,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="53" Type="Scene" Name="V2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,100,13,0,14,0,15,128,16,8,17,171,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,151,2,0,3,120,4,20,5,80,6,120,7,20,8,80,9,120,10,20,11,80,12,120,13,20,14,80</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,65,6,0,7,40,8,0,9,80,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,51,1,0,2,64,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,75,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,75,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,6,2,0,3,0,4,0,5,80,6,252,7,188,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="54" Type="Scene" Name="V2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,189,1,0,2,29,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,100,13,0,14,0,15,128,16,8,17,163,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,143,2,0,3,120,4,20,5,80,6,120,7,20,8,80,9,120,10,20,11,80,12,120,13,20,14,80</FixtureVal>
+   <FixtureVal ID="3">0,80,1,64,2,64,3,64,4,0,5,61,6,0,7,40,8,0,9,80,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,47,1,0,2,50,3,165,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,71,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,71,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,6,2,0,3,0,4,0,5,80,6,252,7,179,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="55" Type="Scene" Name="V2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,189,1,0,2,29,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,100,13,0,14,0,15,128,16,8,17,159,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,139,2,0,3,120,4,20,5,80,6,120,7,20,8,80,9,120,10,20,11,80,12,120,13,20,14,80</FixtureVal>
+   <FixtureVal ID="3">0,80,1,64,2,64,3,64,4,0,5,59,6,0,7,40,8,0,9,80,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,46,1,0,2,50,3,165,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,69,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,69,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,170,1,0,2,0,3,0,4,0,5,80,6,252,7,176,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="56" Type="Scene" Name="V2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,100,13,0,14,0,15,128,16,8,17,159,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,139,2,0,3,120,4,20,5,80,6,120,7,20,8,80,9,120,10,20,11,80,12,120,13,20,14,80</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,59,6,0,7,40,8,0,9,80,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,46,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,69,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,69,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,157,1,0,2,0,3,0,4,0,5,80,6,252,7,176,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="57" Type="Scene" Name="V2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,170,1,0,2,23,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,100,13,0,14,0,15,128,16,8,17,167,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,147,2,0,3,120,4,20,5,80,6,120,7,20,8,80,9,120,10,20,11,80,12,120,13,20,14,80</FixtureVal>
+   <FixtureVal ID="3">0,176,1,64,2,64,3,64,4,0,5,63,6,0,7,40,8,0,9,80,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,49,1,0,2,110,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,73,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,73,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,149,1,5,2,0,3,0,4,0,5,80,6,252,7,184,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="58" Type="Scene" Name="V2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,170,1,0,2,23,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,100,13,0,14,0,15,128,16,8,17,165,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,145,2,0,3,120,4,20,5,80,6,120,7,20,8,80,9,120,10,20,11,80,12,120,13,20,14,80</FixtureVal>
+   <FixtureVal ID="3">0,176,1,64,2,64,3,64,4,0,5,62,6,0,7,40,8,0,9,80,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,48,1,0,2,110,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,72,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,72,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,6,2,0,3,0,4,0,5,80,6,252,7,182,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="59" Type="Scene" Name="V2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,181,1,0,2,21,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,100,13,0,14,0,15,128,16,8,17,163,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,143,2,0,3,120,4,20,5,80,6,120,7,20,8,80,9,120,10,20,11,80,12,120,13,20,14,80</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,61,6,0,7,40,8,0,9,80,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,47,1,0,2,52,3,136,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,71,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,71,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,157,1,0,2,0,3,0,4,0,5,80,6,252,7,179,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="60" Type="Scene" Name="V2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,177,1,0,2,19,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,100,13,0,14,0,15,128,16,8,17,95,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,75,2,0,3,120,4,20,5,80,6,120,7,20,8,80,9,120,10,20,11,80,12,120,13,20,14,80</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,27,6,0,7,40,8,0,9,80,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,21,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,37,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,37,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,0,2,0,3,0,4,0,5,80,6,252,7,108,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="61" Type="Scene" Name="Ch2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,80,13,128,14,200,15,128,16,8,17,118,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,98,2,0,3,120,4,20,5,80,6,120,7,20,8,80,9,120,10,20,11,80,12,120,13,20,14,80</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,39,6,0,7,90,8,0,9,150,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,30,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,49,1,90,2,0,3,150,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,49,1,90,2,0,3,150,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,73,2,0,3,0,4,0,5,60,6,252,7,132,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="62" Type="Scene" Name="Ch2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,170,1,0,2,23,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,80,13,128,14,200,15,128,16,8,17,107,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,87,2,0,3,120,4,20,5,80,6,120,7,20,8,80,9,120,10,20,11,80,12,120,13,20,14,80</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,33,6,0,7,90,8,0,9,150,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,26,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,43,1,90,2,0,3,150,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,43,1,90,2,0,3,150,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,170,1,0,2,0,3,0,4,0,5,60,6,252,7,121,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="63" Type="Scene" Name="Ch2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,80,13,128,14,200,15,128,16,8,17,121,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,101,2,0,3,120,4,20,5,80,6,120,7,20,8,80,9,120,10,20,11,80,12,120,13,20,14,80</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,40,6,0,7,90,8,0,9,150,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,31,1,0,2,64,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,50,1,90,2,0,3,150,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,50,1,90,2,0,3,150,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,6,2,0,3,0,4,0,5,60,6,252,7,135,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="64" Type="Scene" Name="Ch2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,189,1,0,2,29,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,80,13,128,14,200,15,128,16,8,17,115,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,95,2,0,3,120,4,20,5,80,6,120,7,20,8,80,9,120,10,20,11,80,12,120,13,20,14,80</FixtureVal>
+   <FixtureVal ID="3">0,80,1,64,2,64,3,64,4,0,5,37,6,0,7,90,8,0,9,150,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,29,1,0,2,64,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,47,1,90,2,0,3,150,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,47,1,90,2,0,3,150,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,149,1,5,2,0,3,0,4,0,5,60,6,252,7,130,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="65" Type="Scene" Name="Ch2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,170,1,0,2,23,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,80,13,128,14,200,15,128,16,8,17,131,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,111,2,0,3,120,4,20,5,80,6,120,7,20,8,80,9,120,10,20,11,80,12,120,13,20,14,80</FixtureVal>
+   <FixtureVal ID="3">0,176,1,64,2,64,3,64,4,0,5,45,6,0,7,90,8,0,9,150,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,35,1,0,2,64,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,55,1,90,2,0,3,150,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,55,1,90,2,0,3,150,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,170,1,0,2,0,3,0,4,0,5,60,6,252,7,147,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="66" Type="Scene" Name="Ch2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,180,1,0,2,86,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,80,13,128,14,200,15,128,16,8,17,123,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,103,2,0,3,120,4,20,5,80,6,120,7,20,8,80,9,120,10,20,11,80,12,120,13,20,14,80</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,41,6,0,7,90,8,0,9,150,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,32,1,0,2,91,3,30,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,51,1,90,2,0,3,150,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,51,1,90,2,0,3,150,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,73,2,0,3,0,4,0,5,60,6,252,7,138,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="67" Type="Scene" Name="Ch2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,80,13,128,14,200,15,128,16,8,17,115,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,95,2,0,3,120,4,20,5,80,6,120,7,20,8,80,9,120,10,20,11,80,12,120,13,20,14,80</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,37,6,0,7,90,8,0,9,150,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,29,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,47,1,90,2,0,3,150,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,47,1,90,2,0,3,150,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,157,1,0,2,0,3,0,4,0,5,60,6,252,7,129,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="68" Type="Scene" Name="Ch2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,189,1,0,2,29,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,80,13,128,14,200,15,128,16,8,17,98,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,78,2,0,3,120,4,20,5,80,6,120,7,20,8,80,9,120,10,20,11,80,12,120,13,20,14,80</FixtureVal>
+   <FixtureVal ID="3">0,80,1,64,2,64,3,64,4,0,5,29,6,0,7,90,8,0,9,150,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,22,1,0,2,50,3,165,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,39,1,90,2,0,3,150,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,39,1,90,2,0,3,150,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,6,2,0,3,0,4,0,5,60,6,252,7,111,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="69" Type="Scene" Name="Drop2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,40,13,128,14,200,15,128,16,8,17,173,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,153,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,66,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,52,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,76,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,76,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,73,2,0,3,0,4,0,5,20,6,252,7,191,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="70" Type="Scene" Name="Drop2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,170,1,0,2,23,3,0,4,0,5,0,6,0,7,0,8,50,9,0,10,0,11,0,12,40,13,128,14,200,15,128,16,8,17,198,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,178,2,0,3,90,4,0,5,150,6,90,7,0,8,150,9,90,10,0,11,150,12,90,13,0,14,150</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,79,6,0,7,90,8,0,9,150,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,61,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,89,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,89,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,170,1,0,2,0,3,0,4,0,5,20,6,252,7,217,8,50,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="71" Type="Scene" Name="Drop2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,40,13,128,14,200,15,128,16,8,17,203,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,183,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,81,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,63,1,0,2,64,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,91,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,91,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,6,2,0,3,0,4,0,5,20,6,252,7,222,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="72" Type="Scene" Name="Drop2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,189,1,0,2,29,3,0,4,0,5,0,6,0,7,0,8,50,9,0,10,0,11,0,12,40,13,128,14,200,15,128,16,8,17,194,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,174,2,0,3,90,4,0,5,150,6,90,7,0,8,150,9,90,10,0,11,150,12,90,13,0,14,150</FixtureVal>
+   <FixtureVal ID="3">0,80,1,64,2,64,3,64,4,0,5,77,6,0,7,90,8,0,9,150,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,60,1,0,2,64,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,87,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,87,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,149,1,5,2,0,3,0,4,0,5,20,6,252,7,212,8,50,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="73" Type="Scene" Name="Drop2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,170,1,0,2,23,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,40,13,128,14,200,15,128,16,8,17,198,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,178,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,176,1,64,2,64,3,64,4,0,5,79,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,61,1,0,2,64,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,89,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,89,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,170,1,0,2,0,3,0,4,0,5,20,6,252,7,217,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="74" Type="Scene" Name="Drop2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,50,9,0,10,0,11,0,12,40,13,128,14,200,15,128,16,8,17,199,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,179,2,0,3,90,4,0,5,150,6,90,7,0,8,150,9,90,10,0,11,150,12,90,13,0,14,150</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,79,6,0,7,90,8,0,9,150,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,62,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,89,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,89,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,157,1,0,2,0,3,0,4,0,5,20,6,252,7,218,8,50,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="75" Type="Scene" Name="Drop2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,189,1,0,2,29,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,40,13,128,14,200,15,128,16,8,17,204,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,184,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,80,1,64,2,64,3,64,4,0,5,82,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,63,1,0,2,50,3,165,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,92,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,92,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,6,2,0,3,0,4,0,5,20,6,252,7,223,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="76" Type="Scene" Name="Drop2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,170,1,0,2,23,3,0,4,0,5,0,6,0,7,0,8,50,9,0,10,0,11,0,12,40,13,128,14,200,15,128,16,8,17,196,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,176,2,0,3,90,4,0,5,150,6,90,7,0,8,150,9,90,10,0,11,150,12,90,13,0,14,150</FixtureVal>
+   <FixtureVal ID="3">0,176,1,64,2,64,3,64,4,0,5,78,6,0,7,90,8,0,9,150,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,60,1,0,2,110,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,88,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,88,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,6,2,0,3,0,4,0,5,20,6,252,7,214,8,50,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="77" Type="Scene" Name="Drop2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,189,1,0,2,29,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,40,13,128,14,200,15,128,16,8,17,201,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,181,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,80,1,64,2,64,3,64,4,0,5,80,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,62,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,90,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,90,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,73,2,0,3,0,4,0,5,20,6,252,7,220,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="78" Type="Scene" Name="Drop2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,170,1,0,2,23,3,0,4,0,5,0,6,0,7,0,8,50,9,0,10,0,11,0,12,40,13,128,14,200,15,128,16,8,17,202,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,182,2,0,3,90,4,0,5,150,6,90,7,0,8,150,9,90,10,0,11,150,12,90,13,0,14,150</FixtureVal>
+   <FixtureVal ID="3">0,176,1,64,2,64,3,64,4,0,5,81,6,0,7,90,8,0,9,150,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,63,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,91,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,91,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,73,2,0,3,0,4,0,5,20,6,252,7,221,8,50,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="79" Type="Scene" Name="Drop2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,180,1,0,2,86,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,40,13,128,14,200,15,128,16,8,17,201,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,181,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,80,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,62,1,0,2,91,3,30,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,90,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,90,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,73,2,0,3,0,4,0,5,20,6,252,7,220,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="80" Type="Scene" Name="Drop2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,196,1,0,2,25,3,0,4,0,5,0,6,0,7,0,8,50,9,0,10,0,11,0,12,40,13,128,14,200,15,128,16,8,17,193,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,173,2,0,3,90,4,0,5,150,6,90,7,0,8,150,9,90,10,0,11,150,12,90,13,0,14,150</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,76,6,0,7,90,8,0,9,150,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,59,1,0,2,64,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,86,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,86,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,73,2,0,3,0,4,0,5,20,6,252,7,212,8,50,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="81" Type="Scene" Name="Drop2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,189,1,0,2,29,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,40,13,128,14,200,15,128,16,8,17,198,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,178,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,80,1,64,2,64,3,64,4,0,5,79,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,61,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,89,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,89,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,157,1,0,2,0,3,0,4,0,5,20,6,252,7,216,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="82" Type="Scene" Name="Drop2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,181,1,0,2,21,3,0,4,0,5,0,6,0,7,0,8,50,9,0,10,0,11,0,12,40,13,128,14,200,15,128,16,8,17,198,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,178,2,0,3,90,4,0,5,150,6,90,7,0,8,150,9,90,10,0,11,150,12,90,13,0,14,150</FixtureVal>
+   <FixtureVal ID="3">0,176,1,64,2,64,3,64,4,0,5,79,6,0,7,90,8,0,9,150,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,61,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,89,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,89,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,170,1,0,2,0,3,0,4,0,5,20,6,252,7,217,8,50,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="83" Type="Scene" Name="Drop2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,189,1,0,2,29,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,40,13,128,14,200,15,128,16,8,17,148,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,128,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,80,1,64,2,64,3,64,4,0,5,54,6,0,7,220,8,90,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,42,1,0,2,50,3,165,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,64,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,64,1,220,2,90,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,170,1,0,2,0,3,0,4,0,5,20,6,252,7,164,8,80,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="84" Type="Scene" Name="Drop2" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,170,1,0,2,23,3,0,4,0,5,0,6,0,7,0,8,50,9,0,10,0,11,0,12,40,13,128,14,200,15,128,16,8,17,147,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,127,2,0,3,90,4,0,5,150,6,90,7,0,8,150,9,90,10,0,11,150,12,90,13,0,14,150</FixtureVal>
+   <FixtureVal ID="3">0,176,1,64,2,64,3,64,4,0,5,53,6,0,7,90,8,0,9,150,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,41,1,0,2,110,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,63,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,63,1,40,2,0,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,149,1,5,2,0,3,0,4,0,5,20,6,252,7,163,8,50,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="85" Type="Scene" Name="Climax" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,20,13,128,14,200,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,148,2,0,3,255,4,220,5,160,6,255,7,220,8,160,9,255,10,220,11,160,12,255,13,220,14,160</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,64,6,0,7,255,8,220,9,160,10,0,11,0,12,0,13,0,14,255,15,255,16,255,17,72,18,0</FixtureVal>
+   <FixtureVal ID="4">0,200,1,0,2,0,3,123,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,74,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,74,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,73,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="86" Type="Scene" Name="Climax" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,170,1,0,2,23,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,20,13,128,14,200,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,183,2,0,3,255,4,220,5,160,6,255,7,220,8,160,9,255,10,220,11,160,12,255,13,220,14,160</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,81,6,0,7,255,8,220,9,160,10,0,11,0,12,0,13,0,14,255,15,255,16,255,17,72,18,0</FixtureVal>
+   <FixtureVal ID="4">0,200,1,0,2,0,3,123,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,91,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,91,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,170,1,0,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="87" Type="Scene" Name="Climax" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,20,13,128,14,200,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,180,2,0,3,255,4,220,5,160,6,255,7,220,8,160,9,255,10,220,11,160,12,255,13,220,14,160</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,80,6,0,7,255,8,220,9,160,10,0,11,0,12,0,13,0,14,255,15,255,16,255,17,72,18,0</FixtureVal>
+   <FixtureVal ID="4">0,200,1,0,2,64,3,145,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,90,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,90,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,6,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="88" Type="Scene" Name="Climax" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,189,1,0,2,29,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,20,13,128,14,200,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,177,2,0,3,255,4,220,5,160,6,255,7,220,8,160,9,255,10,220,11,160,12,255,13,220,14,160</FixtureVal>
+   <FixtureVal ID="3">0,80,1,64,2,64,3,64,4,0,5,78,6,0,7,255,8,220,9,160,10,0,11,0,12,0,13,0,14,255,15,255,16,255,17,72,18,0</FixtureVal>
+   <FixtureVal ID="4">0,200,1,0,2,64,3,145,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,88,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,88,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,149,1,5,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="89" Type="Scene" Name="Climax" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,180,1,0,2,86,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,20,13,128,14,200,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,175,2,0,3,255,4,220,5,160,6,255,7,220,8,160,9,255,10,220,11,160,12,255,13,220,14,160</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,77,6,0,7,255,8,220,9,160,10,0,11,0,12,0,13,0,14,255,15,255,16,255,17,72,18,0</FixtureVal>
+   <FixtureVal ID="4">0,200,1,0,2,91,3,30,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,87,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,87,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,73,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="90" Type="Scene" Name="Climax" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,170,1,0,2,23,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,20,13,128,14,200,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,183,2,0,3,255,4,220,5,160,6,255,7,220,8,160,9,255,10,220,11,160,12,255,13,220,14,160</FixtureVal>
+   <FixtureVal ID="3">0,176,1,64,2,64,3,64,4,0,5,81,6,0,7,255,8,220,9,160,10,0,11,0,12,0,13,0,14,255,15,255,16,255,17,72,18,0</FixtureVal>
+   <FixtureVal ID="4">0,200,1,0,2,64,3,145,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,91,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,91,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,170,1,0,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="91" Type="Scene" Name="Climax" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,20,13,128,14,200,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,180,2,0,3,255,4,220,5,160,6,255,7,220,8,160,9,255,10,220,11,160,12,255,13,220,14,160</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,80,6,0,7,255,8,220,9,160,10,0,11,0,12,0,13,0,14,255,15,255,16,255,17,72,18,0</FixtureVal>
+   <FixtureVal ID="4">0,200,1,0,2,0,3,123,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,90,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,90,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,157,1,0,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="92" Type="Scene" Name="Climax" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,189,1,0,2,29,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,20,13,128,14,200,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,179,2,0,3,255,4,220,5,160,6,255,7,220,8,160,9,255,10,220,11,160,12,255,13,220,14,160</FixtureVal>
+   <FixtureVal ID="3">0,80,1,64,2,64,3,64,4,0,5,79,6,0,7,255,8,220,9,160,10,0,11,0,12,0,13,0,14,255,15,255,16,255,17,72,18,0</FixtureVal>
+   <FixtureVal ID="4">0,200,1,0,2,50,3,165,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,89,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,89,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,6,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="93" Type="Scene" Name="Climax" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,170,1,0,2,23,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,20,13,128,14,200,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,172,2,0,3,255,4,220,5,160,6,255,7,220,8,160,9,255,10,220,11,160,12,255,13,220,14,160</FixtureVal>
+   <FixtureVal ID="3">0,176,1,64,2,64,3,64,4,0,5,76,6,0,7,255,8,220,9,160,10,0,11,0,12,0,13,0,14,255,15,255,16,255,17,72,18,0</FixtureVal>
+   <FixtureVal ID="4">0,200,1,0,2,110,3,145,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,86,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,86,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,6,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="94" Type="Scene" Name="Climax" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,189,1,0,2,29,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,20,13,128,14,200,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,188,2,0,3,255,4,220,5,160,6,255,7,220,8,160,9,255,10,220,11,160,12,255,13,220,14,160</FixtureVal>
+   <FixtureVal ID="3">0,80,1,64,2,64,3,64,4,0,5,84,6,0,7,255,8,220,9,160,10,0,11,0,12,0,13,0,14,255,15,255,16,255,17,72,18,0</FixtureVal>
+   <FixtureVal ID="4">0,200,1,0,2,0,3,123,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,94,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,94,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,73,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="95" Type="Scene" Name="Climax" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,170,1,0,2,23,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,20,13,128,14,200,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,182,2,0,3,255,4,220,5,160,6,255,7,220,8,160,9,255,10,220,11,160,12,255,13,220,14,160</FixtureVal>
+   <FixtureVal ID="3">0,176,1,64,2,64,3,64,4,0,5,81,6,0,7,255,8,220,9,160,10,0,11,0,12,0,13,0,14,255,15,255,16,255,17,72,18,0</FixtureVal>
+   <FixtureVal ID="4">0,200,1,0,2,0,3,123,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,91,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,91,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,73,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="96" Type="Scene" Name="Climax" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,196,1,0,2,25,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,20,13,128,14,200,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,177,2,0,3,255,4,220,5,160,6,255,7,220,8,160,9,255,10,220,11,160,12,255,13,220,14,160</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,78,6,0,7,255,8,220,9,160,10,0,11,0,12,0,13,0,14,255,15,255,16,255,17,72,18,0</FixtureVal>
+   <FixtureVal ID="4">0,200,1,0,2,64,3,145,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,88,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,88,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,73,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="97" Type="Scene" Name="Climax" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,189,1,0,2,29,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,20,13,128,14,200,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,184,2,0,3,255,4,220,5,160,6,255,7,220,8,160,9,255,10,220,11,160,12,255,13,220,14,160</FixtureVal>
+   <FixtureVal ID="3">0,80,1,64,2,64,3,64,4,0,5,82,6,0,7,255,8,220,9,160,10,0,11,0,12,0,13,0,14,255,15,255,16,255,17,72,18,0</FixtureVal>
+   <FixtureVal ID="4">0,200,1,0,2,0,3,123,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,92,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,92,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,157,1,0,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="98" Type="Scene" Name="Climax" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,181,1,0,2,21,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,20,13,128,14,200,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,184,2,0,3,255,4,220,5,160,6,255,7,220,8,160,9,255,10,220,11,160,12,255,13,220,14,160</FixtureVal>
+   <FixtureVal ID="3">0,176,1,64,2,64,3,64,4,0,5,82,6,0,7,255,8,220,9,160,10,0,11,0,12,0,13,0,14,255,15,255,16,255,17,72,18,0</FixtureVal>
+   <FixtureVal ID="4">0,200,1,0,2,0,3,123,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,92,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,92,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,170,1,0,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="99" Type="Scene" Name="Climax" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,189,1,0,2,29,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,20,13,128,14,200,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,177,2,0,3,255,4,220,5,160,6,255,7,220,8,160,9,255,10,220,11,160,12,255,13,220,14,160</FixtureVal>
+   <FixtureVal ID="3">0,80,1,64,2,64,3,64,4,0,5,78,6,0,7,255,8,220,9,160,10,0,11,0,12,0,13,0,14,255,15,255,16,255,17,72,18,0</FixtureVal>
+   <FixtureVal ID="4">0,200,1,0,2,50,3,165,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,88,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,88,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,170,1,0,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="100" Type="Scene" Name="Climax" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,170,1,0,2,23,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,20,13,128,14,200,15,128,16,8,17,255,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,168,2,0,3,255,4,220,5,160,6,255,7,220,8,160,9,255,10,220,11,160,12,255,13,220,14,160</FixtureVal>
+   <FixtureVal ID="3">0,176,1,64,2,64,3,64,4,0,5,74,6,0,7,255,8,220,9,160,10,0,11,0,12,0,13,0,14,255,15,255,16,255,17,72,18,0</FixtureVal>
+   <FixtureVal ID="4">0,200,1,0,2,110,3,145,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,84,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,84,1,255,2,220,3,160,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,149,1,5,2,0,3,0,4,0,5,0,6,252,7,255,8,0,9,0,10,0,11,128,12,200,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="101" Type="Scene" Name="Outro" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,20,13,0,14,0,15,128,16,8,17,183,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,163,2,0,3,255,4,220,5,160,6,255,7,220,8,160,9,255,10,220,11,160,12,255,13,220,14,160</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,71,6,0,7,255,8,220,9,160,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,55,1,0,2,0,3,123,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,81,1,127,2,110,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,81,1,127,2,110,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,73,2,0,3,0,4,0,5,0,6,252,7,201,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="102" Type="Scene" Name="Outro" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,170,1,0,2,23,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,33,13,0,14,0,15,128,16,8,17,170,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,150,2,0,3,255,4,220,5,160,6,255,7,220,8,160,9,255,10,220,11,160,12,255,13,220,14,160</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,65,6,0,7,234,8,202,9,147,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,50,1,0,2,0,3,123,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,75,1,127,2,110,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,75,1,127,2,110,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,170,1,0,2,0,3,0,4,0,5,13,6,252,7,187,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="103" Type="Scene" Name="Outro" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,46,13,0,14,0,15,128,16,8,17,158,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,138,2,0,3,255,4,220,5,160,6,255,7,220,8,160,9,255,10,220,11,160,12,255,13,220,14,160</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,59,6,0,7,214,8,185,9,134,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,46,1,0,2,64,3,145,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,69,1,127,2,110,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,69,1,127,2,110,3,80,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,6,2,0,3,0,4,0,5,26,6,252,7,175,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="104" Type="Scene" Name="Outro" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,60,13,0,14,0,15,128,16,8,17,147,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,127,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,53,6,0,7,182,8,106,9,7,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,41,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,63,1,120,2,70,3,5,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,63,1,120,2,70,3,5,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,157,1,0,2,0,3,0,4,0,5,40,6,252,7,162,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="105" Type="Scene" Name="Outro" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,177,1,0,2,19,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,73,13,0,14,0,15,128,16,8,17,135,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,115,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,47,6,0,7,163,8,95,9,6,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,37,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,57,1,120,2,70,3,5,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,57,1,120,2,70,3,5,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,0,2,0,3,0,4,0,5,53,6,252,7,150,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="106" Type="Scene" Name="Outro" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,189,1,0,2,29,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,86,13,0,14,0,15,128,16,8,17,125,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,105,2,0,3,240,4,140,5,10,6,240,7,140,8,10,9,240,10,140,11,10,12,240,13,140,14,10</FixtureVal>
+   <FixtureVal ID="3">0,80,1,64,2,64,3,64,4,0,5,42,6,0,7,144,8,84,9,6,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,33,1,0,2,50,3,165,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,52,1,120,2,70,3,5,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,52,1,120,2,70,3,5,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,6,2,0,3,0,4,0,5,66,6,252,7,140,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="107" Type="Scene" Name="Outro" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,100,13,0,14,0,15,128,16,8,17,112,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,92,2,0,3,220,4,90,5,0,6,220,7,90,8,0,9,220,10,90,11,0,12,220,13,90,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,36,6,0,7,115,8,47,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,28,1,0,2,64,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,46,1,110,2,45,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,46,1,110,2,45,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,6,2,0,3,0,4,0,5,80,6,252,7,126,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="108" Type="Scene" Name="Outro" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,181,1,0,2,21,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,113,13,0,14,0,15,128,16,8,17,102,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,82,2,0,3,220,4,90,5,0,6,220,7,90,8,0,9,220,10,90,11,0,12,220,13,90,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,31,6,0,7,97,8,40,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,24,1,0,2,52,3,136,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,41,1,110,2,45,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,41,1,110,2,45,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,157,1,0,2,0,3,0,4,0,5,93,6,252,7,116,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="109" Type="Scene" Name="Outro" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,177,1,0,2,19,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,126,13,0,14,0,15,128,16,8,17,84,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,64,2,0,3,220,4,90,5,0,6,220,7,90,8,0,9,220,10,90,11,0,12,220,13,90,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,22,6,0,7,80,8,32,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,17,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,32,1,110,2,45,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,32,1,110,2,45,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,0,2,0,3,0,4,0,5,106,6,252,7,97,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="110" Type="Scene" Name="Outro" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,140,13,0,14,0,15,128,16,8,17,74,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,54,2,0,3,15,4,5,5,0,6,15,7,5,8,0,9,15,10,5,11,0,12,15,13,5,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,17,6,0,7,4,8,1,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,13,1,0,2,64,3,145,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,27,1,7,2,2,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,27,1,7,2,2,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,6,2,0,3,0,4,0,5,120,6,252,7,86,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="111" Type="Scene" Name="Outro" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,177,1,0,2,19,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,153,13,0,14,0,15,128,16,8,17,64,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,44,2,0,3,15,4,5,5,0,6,15,7,5,8,0,9,15,10,5,11,0,12,15,13,5,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,12,6,0,7,3,8,1,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,9,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,22,1,7,2,2,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,22,1,7,2,2,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,0,2,0,3,0,4,0,5,133,6,252,7,75,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="112" Type="Scene" Name="Outro" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,177,1,0,2,19,3,0,4,0,5,0,6,0,7,0,8,26,9,0,10,0,11,0,12,166,13,0,14,0,15,128,16,8,17,54,18,0,19,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,34,2,0,3,15,4,5,5,0,6,15,7,5,8,0,9,15,10,5,11,0,12,15,13,5,14,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,7,6,0,7,1,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,5,1,0,2,0,3,123,4,0,5,25,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,17,1,7,2,2,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="6">0,17,1,7,2,2,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="8">0,153,1,0,2,0,3,0,4,0,5,146,6,252,7,65,8,80,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
+  </Function>
+  <Function ID="113" Type="Chaser" Name="Put Your Love On Me - Full Show" Path="Put Your Love On Me">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <Direction>Forward</Direction>
+   <RunOrder>SingleShot</RunOrder>
+   <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="PerStep"/>
+   <Step Number="0" FadeIn="3840" Hold="0" FadeOut="0">1</Step>
+   <Step Number="1" FadeIn="3840" Hold="0" FadeOut="0">2</Step>
+   <Step Number="2" FadeIn="3840" Hold="0" FadeOut="0">3</Step>
+   <Step Number="3" FadeIn="3840" Hold="0" FadeOut="0">4</Step>
+   <Step Number="4" FadeIn="3840" Hold="0" FadeOut="0">5</Step>
+   <Step Number="5" FadeIn="3840" Hold="0" FadeOut="0">6</Step>
+   <Step Number="6" FadeIn="3840" Hold="0" FadeOut="0">7</Step>
+   <Step Number="7" FadeIn="3840" Hold="0" FadeOut="0">8</Step>
+   <Step Number="8" FadeIn="3840" Hold="0" FadeOut="0">9</Step>
+   <Step Number="9" FadeIn="3840" Hold="0" FadeOut="0">10</Step>
+   <Step Number="10" FadeIn="3840" Hold="0" FadeOut="0">11</Step>
+   <Step Number="11" FadeIn="1920" Hold="0" FadeOut="0">12</Step>
+   <Step Number="12" FadeIn="3840" Hold="0" FadeOut="0">13</Step>
+   <Step Number="13" FadeIn="3840" Hold="0" FadeOut="0">14</Step>
+   <Step Number="14" FadeIn="3840" Hold="0" FadeOut="0">15</Step>
+   <Step Number="15" FadeIn="3840" Hold="0" FadeOut="0">16</Step>
+   <Step Number="16" FadeIn="3840" Hold="0" FadeOut="0">17</Step>
+   <Step Number="17" FadeIn="3840" Hold="0" FadeOut="0">18</Step>
+   <Step Number="18" FadeIn="3840" Hold="0" FadeOut="0">19</Step>
+   <Step Number="19" FadeIn="3840" Hold="0" FadeOut="0">20</Step>
+   <Step Number="20" FadeIn="3840" Hold="0" FadeOut="0">21</Step>
+   <Step Number="21" FadeIn="3840" Hold="0" FadeOut="0">22</Step>
+   <Step Number="22" FadeIn="3840" Hold="0" FadeOut="0">23</Step>
+   <Step Number="23" FadeIn="3840" Hold="0" FadeOut="0">24</Step>
+   <Step Number="24" FadeIn="3840" Hold="0" FadeOut="0">25</Step>
+   <Step Number="25" FadeIn="3840" Hold="0" FadeOut="0">26</Step>
+   <Step Number="26" FadeIn="3840" Hold="0" FadeOut="0">27</Step>
+   <Step Number="27" FadeIn="3840" Hold="0" FadeOut="0">28</Step>
+   <Step Number="28" FadeIn="1920" Hold="0" FadeOut="0">29</Step>
+   <Step Number="29" FadeIn="1920" Hold="0" FadeOut="0">30</Step>
+   <Step Number="30" FadeIn="1920" Hold="0" FadeOut="0">31</Step>
+   <Step Number="31" FadeIn="1920" Hold="0" FadeOut="0">32</Step>
+   <Step Number="32" FadeIn="1920" Hold="0" FadeOut="0">33</Step>
+   <Step Number="33" FadeIn="1920" Hold="0" FadeOut="0">34</Step>
+   <Step Number="34" FadeIn="1920" Hold="0" FadeOut="0">35</Step>
+   <Step Number="35" FadeIn="1920" Hold="0" FadeOut="0">36</Step>
+   <Step Number="36" FadeIn="1920" Hold="0" FadeOut="0">37</Step>
+   <Step Number="37" FadeIn="1920" Hold="0" FadeOut="0">38</Step>
+   <Step Number="38" FadeIn="1920" Hold="0" FadeOut="0">39</Step>
+   <Step Number="39" FadeIn="1920" Hold="0" FadeOut="0">40</Step>
+   <Step Number="40" FadeIn="1920" Hold="0" FadeOut="0">41</Step>
+   <Step Number="41" FadeIn="1920" Hold="0" FadeOut="0">42</Step>
+   <Step Number="42" FadeIn="1920" Hold="0" FadeOut="0">43</Step>
+   <Step Number="43" FadeIn="1920" Hold="0" FadeOut="0">44</Step>
+   <Step Number="44" FadeIn="1920" Hold="0" FadeOut="0">45</Step>
+   <Step Number="45" FadeIn="1920" Hold="0" FadeOut="0">46</Step>
+   <Step Number="46" FadeIn="1920" Hold="0" FadeOut="0">47</Step>
+   <Step Number="47" FadeIn="1920" Hold="0" FadeOut="0">48</Step>
+   <Step Number="48" FadeIn="1920" Hold="0" FadeOut="0">49</Step>
+   <Step Number="49" FadeIn="1920" Hold="0" FadeOut="0">50</Step>
+   <Step Number="50" FadeIn="1920" Hold="0" FadeOut="0">51</Step>
+   <Step Number="51" FadeIn="1920" Hold="0" FadeOut="0">52</Step>
+   <Step Number="52" FadeIn="3840" Hold="0" FadeOut="0">53</Step>
+   <Step Number="53" FadeIn="3840" Hold="0" FadeOut="0">54</Step>
+   <Step Number="54" FadeIn="3840" Hold="0" FadeOut="0">55</Step>
+   <Step Number="55" FadeIn="3840" Hold="0" FadeOut="0">56</Step>
+   <Step Number="56" FadeIn="3840" Hold="0" FadeOut="0">57</Step>
+   <Step Number="57" FadeIn="3840" Hold="0" FadeOut="0">58</Step>
+   <Step Number="58" FadeIn="3840" Hold="0" FadeOut="0">59</Step>
+   <Step Number="59" FadeIn="3840" Hold="0" FadeOut="0">60</Step>
+   <Step Number="60" FadeIn="3840" Hold="0" FadeOut="0">61</Step>
+   <Step Number="61" FadeIn="3840" Hold="0" FadeOut="0">62</Step>
+   <Step Number="62" FadeIn="3840" Hold="0" FadeOut="0">63</Step>
+   <Step Number="63" FadeIn="3840" Hold="0" FadeOut="0">64</Step>
+   <Step Number="64" FadeIn="3840" Hold="0" FadeOut="0">65</Step>
+   <Step Number="65" FadeIn="3840" Hold="0" FadeOut="0">66</Step>
+   <Step Number="66" FadeIn="3840" Hold="0" FadeOut="0">67</Step>
+   <Step Number="67" FadeIn="3840" Hold="0" FadeOut="0">68</Step>
+   <Step Number="68" FadeIn="1920" Hold="0" FadeOut="0">69</Step>
+   <Step Number="69" FadeIn="1920" Hold="0" FadeOut="0">70</Step>
+   <Step Number="70" FadeIn="1920" Hold="0" FadeOut="0">71</Step>
+   <Step Number="71" FadeIn="1920" Hold="0" FadeOut="0">72</Step>
+   <Step Number="72" FadeIn="1920" Hold="0" FadeOut="0">73</Step>
+   <Step Number="73" FadeIn="1920" Hold="0" FadeOut="0">74</Step>
+   <Step Number="74" FadeIn="1920" Hold="0" FadeOut="0">75</Step>
+   <Step Number="75" FadeIn="1920" Hold="0" FadeOut="0">76</Step>
+   <Step Number="76" FadeIn="1920" Hold="0" FadeOut="0">77</Step>
+   <Step Number="77" FadeIn="1920" Hold="0" FadeOut="0">78</Step>
+   <Step Number="78" FadeIn="1920" Hold="0" FadeOut="0">79</Step>
+   <Step Number="79" FadeIn="1920" Hold="0" FadeOut="0">80</Step>
+   <Step Number="80" FadeIn="1920" Hold="0" FadeOut="0">81</Step>
+   <Step Number="81" FadeIn="1920" Hold="0" FadeOut="0">82</Step>
+   <Step Number="82" FadeIn="1920" Hold="0" FadeOut="0">83</Step>
+   <Step Number="83" FadeIn="1920" Hold="0" FadeOut="0">84</Step>
+   <Step Number="84" FadeIn="1920" Hold="0" FadeOut="0">85</Step>
+   <Step Number="85" FadeIn="1920" Hold="0" FadeOut="0">86</Step>
+   <Step Number="86" FadeIn="1920" Hold="0" FadeOut="0">87</Step>
+   <Step Number="87" FadeIn="1920" Hold="0" FadeOut="0">88</Step>
+   <Step Number="88" FadeIn="1920" Hold="0" FadeOut="0">89</Step>
+   <Step Number="89" FadeIn="1920" Hold="0" FadeOut="0">90</Step>
+   <Step Number="90" FadeIn="1920" Hold="0" FadeOut="0">91</Step>
+   <Step Number="91" FadeIn="1920" Hold="0" FadeOut="0">92</Step>
+   <Step Number="92" FadeIn="1920" Hold="0" FadeOut="0">93</Step>
+   <Step Number="93" FadeIn="1920" Hold="0" FadeOut="0">94</Step>
+   <Step Number="94" FadeIn="1920" Hold="0" FadeOut="0">95</Step>
+   <Step Number="95" FadeIn="1920" Hold="0" FadeOut="0">96</Step>
+   <Step Number="96" FadeIn="1920" Hold="0" FadeOut="0">97</Step>
+   <Step Number="97" FadeIn="1920" Hold="0" FadeOut="0">98</Step>
+   <Step Number="98" FadeIn="1920" Hold="0" FadeOut="0">99</Step>
+   <Step Number="99" FadeIn="1920" Hold="0" FadeOut="0">100</Step>
+   <Step Number="100" FadeIn="3840" Hold="0" FadeOut="0">101</Step>
+   <Step Number="101" FadeIn="3840" Hold="0" FadeOut="0">102</Step>
+   <Step Number="102" FadeIn="3840" Hold="0" FadeOut="0">103</Step>
+   <Step Number="103" FadeIn="3840" Hold="0" FadeOut="0">104</Step>
+   <Step Number="104" FadeIn="3840" Hold="0" FadeOut="0">105</Step>
+   <Step Number="105" FadeIn="3840" Hold="0" FadeOut="0">106</Step>
+   <Step Number="106" FadeIn="3840" Hold="0" FadeOut="0">107</Step>
+   <Step Number="107" FadeIn="3840" Hold="0" FadeOut="0">108</Step>
+   <Step Number="108" FadeIn="3840" Hold="0" FadeOut="0">109</Step>
+   <Step Number="109" FadeIn="3840" Hold="0" FadeOut="0">110</Step>
+   <Step Number="110" FadeIn="3840" Hold="0" FadeOut="0">111</Step>
+   <Step Number="111" FadeIn="3840" Hold="0" FadeOut="0">112</Step>
+  </Function>
+ </Engine>
+ <VirtualConsole>
+  <Frame Caption="">
+   <Appearance>
+    <FrameStyle>None</FrameStyle>
+    <ForegroundColor>Default</ForegroundColor>
+    <BackgroundColor>Default</BackgroundColor>
+    <BackgroundImage>None</BackgroundImage>
+    <Font>Default</Font>
+   </Appearance>
+   <Button Caption="Put Your Love On Me - Full Show" ID="0" Icon="">
+    <WindowState Visible="True" X="10" Y="10" Width="470" Height="80"/>
+    <Appearance>
+     <BackgroundColor>#22AA22</BackgroundColor>
+    </Appearance>
+    <Function ID="113"/>
+    <Action>Toggle</Action>
+   </Button>
+   <Button Caption="BLACKOUT" ID="1" Icon="">
+    <WindowState Visible="True" X="10" Y="100" Width="470" Height="80"/>
+    <Appearance>
+     <BackgroundColor>#FF0000</BackgroundColor>
+    </Appearance>
+    <Function ID="0"/>
+    <Action>Toggle</Action>
+   </Button>
+  </Frame>
+  <Properties>
+   <Size Width="1920" Height="1080"/>
+   <GrandMaster ChannelMode="Intensity" ValueMode="Reduce" SliderMode="Normal"/>
+  </Properties>
+ </VirtualConsole>
+ <Monitor DisplayMode="0" ShowLabels="0">
+  <Font>Arial,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1</Font>
+  <ChannelStyle>0</ChannelStyle>
+  <ValueStyle>0</ValueStyle>
+  <Grid Width="5" Height="3" Depth="5" Units="0"/>
+  <StageItem>0</StageItem>
+  <FxItem ID="1" XPos="386.582" YPos="1000" ZPos="287.18"/>
+  <FxItem ID="2" XPos="1961.2" YPos="1000" ZPos="386.889"/>
+  <FxItem ID="3" XPos="3355.38" YPos="1000" ZPos="335.202"/>
+  <FxItem ID="4" XPos="2342.48" YPos="1000" ZPos="4250.46"/>
+  <FxItem ID="5" XPos="25.06" YPos="1000" ZPos="1519.79"/>
+  <FxItem ID="6" XPos="22.4348" YPos="1000" ZPos="1012.91"/>
+  <FxItem ID="8" XPos="4341.8" YPos="1000" ZPos="345.539"/>
+ </Monitor>
+</Workspace>

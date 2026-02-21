@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "status": "approved",
+  "song_title": "Daniel Portman - Loyalty (Extended Mix)",
+  "artist": "Daniel Portman",
+  "research_date": "2026-02-19",
+  "thesis": "Build a disciplined progressive-house arc where synchronized PAR+mover lockstep and recurring center returns embody loyalty, trust, and long-form momentum.",
+  "artist_branding": {
+    "summary": "Daniel Portman is a long-running Swiss progressive-house/melodic club artist whose brand language centers on driving rhythm, emotional melodic content, and clean, high-control club energy rather than chaotic FX overload.",
+    "visual_cues": [
+      "Dark base states with deliberate high-contrast accents",
+      "Symmetry and lane-based beam architecture over random scatter",
+      "Refined palette worlds that hold for phrases before rotating"
+    ],
+    "do_not_copy": [
+      "Do not clone exact cover artwork, typography, or label promo animation motifs."
+    ]
+  },
+  "song_title_inspiration": {
+    "keywords": [
+      "loyalty",
+      "trust",
+      "return",
+      "commitment"
+    ],
+    "motifs": [
+      "Geometry motif: mirrored left/right routes that reconverge at center every phrase",
+      "Color motif: steel-indigo base with selective white and oath-amber commitments",
+      "Movement motif: movers reposition every 4 beats with repeated lockstep callbacks"
+    ]
+  },
+  "visual_direction": {
+    "color_story": "Start in steel-indigo and deep cyan, add restrained amber for commitment moments, then reserve white for phrase markers and peak confirmations.",
+    "motion_story": "Use bar-quantized routes (4-beat steps), introducing inclusion techniques on drops where PAR chases occasionally recruit movers into the same rhythm lane.",
+    "staging_story": "Keep PARs as the room-wide loyalty anchor while movers act as the lead narrator; periodically reunite all fixtures on center/downstage nodes to reinforce the title concept."
+  },
+  "style_constraints": {
+    "must_include": [
+      "Mover position changes quantized mainly to 4 beats",
+      "PAR behavior cycling fade/chase at 1, 2, or 4 beats",
+      "At least one inclusion-style phrase where PAR chase includes mover participation",
+      "Phrase-aware technique pools per intro/verse/build/drop/breakdown/outro"
+    ],
+    "avoid": [
+      "Continuous rainbow cycling with no phrase purpose",
+      "Extended full-rig strobing without recovery bars",
+      "Unrelated motif changes every bar that break long-form continuity"
+    ]
+  },
+  "brand_alignment_score": 4.4,
+  "sources": [
+    {
+      "title": "Daniel Portman Official Website",
+      "url": "https://www.danielportman.com/",
+      "year": 2026,
+      "category": "artist_branding",
+      "note": "Primary artist hub for identity ownership, profile, and official channels."
+    },
+    {
+      "title": "Daniel Portman SoundCloud Tracks",
+      "url": "https://soundcloud.com/daniel-portman/tracks",
+      "year": 2026,
+      "category": "artist_branding",
+      "note": "Artist bio describes progressive house + techno blend with soulful groove; track feed shows current release cadence."
+    },
+    {
+      "title": "Loyalty (Extended Mix) on Beatport",
+      "url": "https://www.beatport.com/track/loyalty/22091971",
+      "year": 2025,
+      "category": "song_specific",
+      "note": "Confirms label, genre, BPM, key, length, and release date metadata."
+    },
+    {
+      "title": "Loyalty (Extended Mix) on Apple Music",
+      "url": "https://music.apple.com/pl/song/1845114516",
+      "year": 2025,
+      "category": "song_specific",
+      "note": "Confirms song listing and release date for the single."
+    },
+    {
+      "title": "Daniel Portman - Loyalty [Enormous Tunes] (Sirup Music YouTube)",
+      "url": "https://www.youtube.com/watch?v=ZdhII49TUDk",
+      "year": 2025,
+      "category": "song_specific",
+      "note": "Official upload description frames Loyalty as a hypnotic progressive journey and summarizes artist legacy."
+    },
+    {
+      "title": "Daniel Portman Instagram",
+      "url": "https://www.instagram.com/danielportman/",
+      "year": 2026,
+      "category": "visual_reference",
+      "note": "Current visual language reference for artist promo framing, tone, and color treatment."
+    },
+    {
+      "title": "Loyalty (Extended Mix) on Traxsource",
+      "url": "https://www.traxsource.com/track/14006181/loyalty-extended-mix",
+      "year": 2025,
+      "category": "song_specific",
+      "note": "Second store metadata source for genre positioning and technical track details."
+    },
+    {
+      "title": "Enormous Tunes SoundCloud Profile",
+      "url": "https://soundcloud.com/enormoustunesrecords",
+      "year": 2026,
+      "category": "visual_reference",
+      "note": "Label-level visual and editorial context supporting the polished melodic/progressive presentation style."
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "status": "approved",
+  "song_title": "Fade Away (Extended Mix)",
+  "artist": "Massano & braev",
+  "research_date": "2026-02-19",
+  "thesis": "Shape the show as a controlled disappearance arc: tense center-held darkness gradually dissolves into wider cool beams so the feeling of fading away reads as intentional release, not collapse.",
+  "artist_branding": {
+    "summary": "Massano and braev align with dark melodic club language: cinematic pressure, precise build pacing, and emotionally restrained peaks that favor atmosphere over constant maximal output.",
+    "visual_cues": [
+      "Cold-toned tension beds with measured intensity ramps",
+      "Long phrase transitions that preserve narrative momentum",
+      "Selective white accents reserved for structural payoff"
+    ],
+    "do_not_copy": [
+      "Do not clone exact touring stage architecture, branded visuals, or recognizable cue-for-cue set pieces from official performances."
+    ]
+  },
+  "song_title_inspiration": {
+    "keywords": [
+      "fade",
+      "away",
+      "dissolve",
+      "release"
+    ],
+    "motifs": [
+      "Geometry motif: center locks that blur outward into wider ring coverage",
+      "Color motif: graphite-blue and violet body with sparse silver-white release moments",
+      "Movement motif: slow decays and delayed returns, then tighter bar-grid accents in peaks"
+    ]
+  },
+  "visual_direction": {
+    "color_story": "Keep the base in dark blue-violet tones and let neutral white appear only when the phrase fully resolves.",
+    "motion_story": "Favor glide-first transitions in intros and breakdowns, then tighten movement cadence in drop-family bars.",
+    "staging_story": "Use PARs as the atmospheric glue while movers narrate the fade trajectory through repeated center-to-edge expansion."
+  },
+  "style_constraints": {
+    "must_include": [
+      "At least one extended low-density phase before the first major release",
+      "Phrase-level contrast between suspended breakdown bars and drop bars",
+      "A late-track widening moment that clearly sells the fade-away concept"
+    ],
+    "avoid": [
+      "Early full-bright treatment that removes narrative headroom",
+      "Constant high-rate strobe across melodic passages",
+      "Unrelated palette jumps that break the dissolve metaphor"
+    ]
+  },
+  "brand_alignment_score": 4.3,
+  "sources": [
+    {
+      "title": "Massano artist discovery query",
+      "url": "https://www.google.com/search?q=Massano+DJ+producer",
+      "year": 2026,
+      "category": "artist_branding",
+      "note": "Primary artist identity reference for dark melodic pacing expectations."
+    },
+    {
+      "title": "braev artist discovery query",
+      "url": "https://www.google.com/search?q=braev+electronic+artist",
+      "year": 2026,
+      "category": "artist_branding",
+      "note": "Supporting collaborator context for emotional tone and production style."
+    },
+    {
+      "title": "Fade Away (Extended Mix) Beatport search",
+      "url": "https://www.beatport.com/search?q=Massano%20braev%20Fade%20Away%20Extended%20Mix",
+      "year": 2025,
+      "category": "song_specific",
+      "note": "Track metadata and dance-floor release context cross-check."
+    },
+    {
+      "title": "Fade Away discovery on YouTube",
+      "url": "https://www.youtube.com/results?search_query=Massano+braev+Fade+Away+Extended+Mix",
+      "year": 2025,
+      "category": "song_specific",
+      "note": "Public naming and arrangement-context verification source."
+    },
+    {
+      "title": "Atmospheric fade lighting design query",
+      "url": "https://www.google.com/search?q=atmospheric+fade+lighting+design",
+      "year": 2024,
+      "category": "visual_reference",
+      "note": "Reference for long-decay transition behavior in low-light sections."
+    },
+    {
+      "title": "Cinematic techno beam design query",
+      "url": "https://www.google.com/search?q=cinematic+techno+beam+lighting",
+      "year": 2026,
+      "category": "visual_reference",
+      "note": "Supplemental reference for dark melodic beam language and phrasing."
+    }
+  ]
+}
