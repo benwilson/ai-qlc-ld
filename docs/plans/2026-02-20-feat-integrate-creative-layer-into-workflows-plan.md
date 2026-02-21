@@ -2,6 +2,8 @@
 title: Integrate Creative Layer Into Workflows
 type: feat
 date: 2026-02-20
+status: completed
+completed_date: 2026-02-20
 ---
 
 # Integrate Creative Layer Into Workflows

@@ -1562,12 +1562,23 @@ def _beat_ms(bpm: float, beats: int) -> int:
 
 
 def _transition_blackout(bpm, duration_beats, exit_style, **_kw):
-    """Full blackout for N beats. Used by: blackout_slingshot, dead_air."""
+    """Full blackout for N beats. Used by: blackout_slingshot."""
     s = scene("T:Blackout", *blackout_all(), path="Transitions")
     if exit_style == "smooth":
         timing = [(_beat_ms(bpm, duration_beats), 0)]
     else:
         timing = [(0, _beat_ms(bpm, duration_beats))]
+    return [s], timing
+
+
+def _transition_dead_air(bpm, duration_beats, exit_style, **_kw):
+    """Dim all to 10-20% for N beats, no movement. Movers parked dark."""
+    s = scene("T:Dead Air",
+              dark_sharpy(), dark_bsw(), dark_profile(), dark_ni3k(),
+              fourbar_solid(20, 15, 30),
+              *miss_both(15, 10, 25),
+              path="Transitions")
+    timing = [(_beat_ms(bpm, duration_beats), 0)]
     return [s], timing
 
 
@@ -1602,17 +1613,23 @@ def _transition_strobe_burst(bpm, duration_beats, exit_style, **_kw):
 def _transition_freeze_decay(bpm, duration_beats, exit_style, last_scene=None, **_kw):
     """Hold last frame, then dim/park movers over duration.
 
-    If last_scene is provided, uses it as the hold. Otherwise uses a dim scene.
+    If last_scene is provided, holds it for half the duration then crossfades
+    to a dim scene. Otherwise just crossfades to dim over the full duration.
     """
-    # Dim scene: pars at 20%, movers parked at DSC
-    s = scene("T:Freeze Decay",
-              dark_sharpy(), dark_bsw(), dark_profile(), dark_ni3k(),
-              fourbar_solid(30, 30, 30),
-              *miss_both(20, 20, 20),
-              path="Transitions")
-    # Smooth crossfade into the dim state
+    s_dim = scene("T:Freeze Decay",
+                  dark_sharpy(), dark_bsw(), dark_profile(), dark_ni3k(),
+                  fourbar_solid(30, 30, 30),
+                  *miss_both(20, 20, 20),
+                  path="Transitions")
+    if last_scene is not None:
+        hold_beats = max(1, duration_beats // 2)
+        fade_beats = duration_beats - hold_beats
+        return ([last_scene, s_dim],
+                [(0, _beat_ms(bpm, hold_beats)),
+                 (_beat_ms(bpm, fade_beats), 0)])
+    # No last_scene — smooth crossfade into the dim state
     timing = [(_beat_ms(bpm, duration_beats), 0)]
-    return [s], timing
+    return [s_dim], timing
 
 
 def _transition_color_swap(bpm, duration_beats, exit_style, palette=None, **_kw):
@@ -1832,17 +1849,32 @@ def _transition_fade_to_black(bpm, duration_beats, exit_style, **_kw):
     return [s], timing
 
 
-def _transition_freeze_hold(bpm, duration_beats, exit_style, **_kw):
-    """Fade to black. The 'freeze hold' is the previous scene holding."""
+def _transition_freeze_hold(bpm, duration_beats, exit_style, last_scene=None, **_kw):
+    """Hold last frame for half duration, then fade to black over remaining half.
+
+    If last_scene is provided, reproduces it as the hold phase.
+    Otherwise uses a dim scene as the hold.
+    """
+    hold_beats = max(1, duration_beats // 2)
+    fade_beats = duration_beats - hold_beats
+    if last_scene is not None:
+        s_hold = last_scene
+    else:
+        s_hold = scene("T:Freeze Hold",
+                       dark_sharpy(), dark_bsw(), dark_profile(), dark_ni3k(),
+                       fourbar_solid(30, 30, 30),
+                       *miss_both(20, 20, 20),
+                       path="Transitions")
     s_black = scene("T:Freeze Hold End", *blackout_all(), path="Transitions")
-    timing = [(_beat_ms(bpm, duration_beats), 0)]
-    return [s_black], timing
+    return ([s_hold, s_black],
+            [(0, _beat_ms(bpm, hold_beats)),
+             (_beat_ms(bpm, fade_beats), 0)])
 
 
 # Map transition types to factory functions
 _TRANSITION_FACTORIES = {
     "blackout_slingshot": _transition_blackout,
-    "dead_air": _transition_blackout,
+    "dead_air": _transition_dead_air,
     "white_flash": _transition_white_flash,
     "strobe_burst": _transition_strobe_burst,
     "freeze_decay": _transition_freeze_decay,
