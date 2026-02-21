@@ -85,9 +85,9 @@
   </Head>
  </Mode>
  <Physical>
-  <Bulb Type="" Lumens="0" ColourTemperature="0"/>
+  <Bulb Type="LED" Lumens="5500" ColourTemperature="6500"/>
   <Dimensions Weight="0" Width="0" Height="0" Depth="0"/>
-  <Lens Name="Other" DegreesMin="0" DegreesMax="19"/>
+  <Lens Name="Other" DegreesMin="5" DegreesMax="25"/>
   <Focus Type="Head" PanMax="540" TiltMax="270"/>
   <Technical PowerConsumption="0" DmxConnector="3-pin"/>
  </Physical>

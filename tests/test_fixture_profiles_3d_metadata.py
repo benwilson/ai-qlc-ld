@@ -37,6 +37,13 @@ def _head_channels(mode: ET.Element) -> list[int]:
     return [int(ch.text.strip()) for ch in head.findall("q:Channel", NS)]
 
 
+def _all_head_channels(mode: ET.Element) -> list[list[int]]:
+    return [
+        [int(ch.text.strip()) for ch in head.findall("q:Channel", NS)]
+        for head in mode.findall("q:Head", NS)
+    ]
+
+
 class FixtureProfiles3DMetadataTests(unittest.TestCase):
     def test_active_modes_have_head_definitions(self):
         for fx in FIXTURE_DEFS:
@@ -76,6 +83,18 @@ class FixtureProfiles3DMetadataTests(unittest.TestCase):
             self.assertEqual(focus.attrib.get("PanMax"), pan_max)
             self.assertEqual(focus.attrib.get("TiltMax"), tilt_max)
 
+    def test_all_fixture_physical_sections_have_nonzero_lumens(self):
+        for model_name in MODEL_TO_FILE:
+            root = _load_fixture_root(model_name)
+            bulb = root.find("q:Physical/q:Bulb", NS)
+            self.assertIsNotNone(bulb, msg=f"{model_name} missing Physical/Bulb")
+            lumens = int(bulb.attrib.get("Lumens", "0"))
+            self.assertGreater(
+                lumens,
+                0,
+                msg=f"{model_name} should provide nonzero lumens for 3D rendering",
+            )
+
     def test_specific_head_channel_sets(self):
         sharpy_root = _load_fixture_root("Sharpy Knockoff")
         sharpy_mode = _find_mode(sharpy_root, "18 channel")
@@ -100,7 +119,19 @@ class FixtureProfiles3DMetadataTests(unittest.TestCase):
 
         missyee_root = _load_fixture_root("36 RGB LED")
         missyee_mode = _find_mode(missyee_root, "7 channel")
-        self.assertEqual(_head_channels(missyee_mode), [1, 2, 3])
+        self.assertEqual(_head_channels(missyee_mode), [0, 1, 2, 3, 4])
+
+        bar_root = _load_fixture_root("4BAR")
+        bar_mode = _find_mode(bar_root, "15 Channel")
+        self.assertEqual(
+            _all_head_channels(bar_mode),
+            [
+                [1, 2, 3, 4, 5],
+                [1, 2, 6, 7, 8],
+                [1, 2, 9, 10, 11],
+                [1, 2, 12, 13, 14],
+            ],
+        )
 
     def test_profile_strobe_is_open_at_zero(self):
         root = _load_fixture_root("Profile Knockoff")
@@ -120,6 +151,50 @@ class FixtureProfiles3DMetadataTests(unittest.TestCase):
         self.assertEqual(caps[1].attrib.get("Min"), "1")
         self.assertEqual(caps[1].attrib.get("Max"), "255")
         self.assertEqual(caps[1].attrib.get("Preset"), "StrobeSlowToFast")
+
+    def test_par_strobes_have_explicit_open_at_zero(self):
+        fixtures_and_channels = [
+            ("4BAR", "Strobe"),
+            ("36 RGB LED", "Strobe"),
+        ]
+        for model_name, channel_name in fixtures_and_channels:
+            root = _load_fixture_root(model_name)
+            channel = None
+            for candidate in root.findall("q:Channel", NS):
+                if candidate.attrib.get("Name") == channel_name:
+                    channel = candidate
+                    break
+            self.assertIsNotNone(channel, msg=f"{model_name} missing {channel_name}")
+            caps = channel.findall("q:Capability", NS)
+            self.assertGreaterEqual(len(caps), 1, msg=f"{model_name} {channel_name} missing capabilities")
+            first = caps[0]
+            self.assertEqual(first.attrib.get("Min"), "0")
+            self.assertEqual(first.attrib.get("Max"), "0")
+            self.assertEqual(first.attrib.get("Preset"), "ShutterOpen")
+
+    def test_bsw_active_color_slots_are_resolved_for_3d(self):
+        root = _load_fixture_root("Beam Spot Wash 3 in 1")
+        color = None
+        for channel in root.findall("q:Channel", NS):
+            if channel.attrib.get("Name") == "Color":
+                color = channel
+                break
+        self.assertIsNotNone(color, msg="BSW color channel not found")
+
+        expected_caps = {
+            ("19", "21"): ("ColorMacro", "#ff0000"),
+            ("43", "45"): ("ColorMacro", "#0000ff"),
+        }
+        seen = {}
+        for cap in color.findall("q:Capability", NS):
+            key = (cap.attrib.get("Min"), cap.attrib.get("Max"))
+            if key in expected_caps:
+                seen[key] = (cap.attrib.get("Preset"), cap.attrib.get("Res1"))
+        self.assertEqual(
+            seen,
+            expected_caps,
+            msg="BSW red/blue wheel slots should resolve to explicit colors in 3D",
+        )
 
 
 if __name__ == "__main__":

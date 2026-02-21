@@ -65,15 +65,15 @@
   <Group Byte="0">Colour</Group>
   <Capability Min="0" Max="15" Preset="ColorMacro" Res1="#ffffff">White</Capability>
   <Capability Min="16" Max="18">White/Red</Capability>
-  <Capability Min="19" Max="21">Red</Capability>
+  <Capability Min="19" Max="21" Preset="ColorMacro" Res1="#ff0000">Red</Capability>
   <Capability Min="22" Max="24">Red/Orange</Capability>
   <Capability Min="25" Max="27">Orange</Capability>
   <Capability Min="28" Max="30">OrangeYellow</Capability>
   <Capability Min="31" Max="33">Yellow</Capability>
   <Capability Min="34" Max="36">Yellow/Green</Capability>
-  <Capability Min="37" Max="39">Green</Capability>
+  <Capability Min="37" Max="39" Preset="ColorMacro" Res1="#00ff00">Green</Capability>
   <Capability Min="40" Max="42">Green/Blue</Capability>
-  <Capability Min="43" Max="45">Blue</Capability>
+  <Capability Min="43" Max="45" Preset="ColorMacro" Res1="#0000ff">Blue</Capability>
   <Capability Min="46" Max="48">Blue/Mag</Capability>
   <Capability Min="49" Max="51">Mag</Capability>
   <Capability Min="52" Max="54">Mag/Teal</Capability>
@@ -243,7 +243,7 @@
   </Head>
  </Mode>
  <Physical>
-  <Bulb Type="LED 150W" Lumens="0" ColourTemperature="0"/>
+  <Bulb Type="LED 150W" Lumens="6000" ColourTemperature="7000"/>
   <Dimensions Weight="12" Width="290" Height="452" Depth="256"/>
   <Lens Name="Other" DegreesMin="2" DegreesMax="28"/>
   <Focus Type="Head" PanMax="540" TiltMax="270"/>

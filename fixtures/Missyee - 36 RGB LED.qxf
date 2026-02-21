@@ -13,7 +13,11 @@
  <Channel Name="Red" Preset="IntensityRed"/>
  <Channel Name="Green" Preset="IntensityGreen"/>
  <Channel Name="Blue" Preset="IntensityBlue"/>
- <Channel Name="Strobe" Preset="ShutterStrobeSlowFast"/>
+ <Channel Name="Strobe">
+  <Group Byte="0">Shutter</Group>
+  <Capability Min="0" Max="0" Preset="ShutterOpen">Open</Capability>
+  <Capability Min="1" Max="255" Preset="StrobeSlowToFast">Strobe slow to fast</Capability>
+ </Channel>
  <Channel Name="Effect">
   <Group Byte="0">Effect</Group>
   <Capability Min="0" Max="10">Manual (CH1-CH5)</Capability>
@@ -33,15 +37,17 @@
   <Channel Number="5">Effect</Channel>
   <Channel Number="6">Color mode</Channel>
   <Head>
+   <Channel>0</Channel>
    <Channel>1</Channel>
    <Channel>2</Channel>
    <Channel>3</Channel>
+   <Channel>4</Channel>
   </Head>
  </Mode>
  <Physical>
-  <Bulb Type="LED" Lumens="0" ColourTemperature="0"/>
+  <Bulb Type="LED" Lumens="900" ColourTemperature="5600"/>
   <Dimensions Weight="0" Width="16" Height="0" Depth="0"/>
-  <Lens Name="Other" DegreesMin="0" DegreesMax="0"/>
+  <Lens Name="Other" DegreesMin="20" DegreesMax="45"/>
   <Focus Type="Fixed" PanMax="0" TiltMax="0"/>
   <Technical PowerConsumption="0" DmxConnector="3-pin"/>
  </Physical>

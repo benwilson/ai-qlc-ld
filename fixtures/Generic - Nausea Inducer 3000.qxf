@@ -35,9 +35,9 @@
  <Channel Name="Dimmer" Preset="IntensityDimmer"/>
  <Channel Name="Strobe">
   <Group Byte="0">Shutter</Group>
-  <Capability Min="0" Max="9">On</Capability>
-  <Capability Min="10" Max="249">Strobe (slow to fast)</Capability>
-  <Capability Min="250" Max="255">On</Capability>
+  <Capability Min="0" Max="9" Preset="ShutterOpen">On</Capability>
+  <Capability Min="10" Max="249" Preset="StrobeSlowToFast">Strobe (slow to fast)</Capability>
+  <Capability Min="250" Max="255" Preset="ShutterOpen">On</Capability>
  </Channel>
  <Channel Name="Red" Preset="IntensityRed"/>
  <Channel Name="Green" Preset="IntensityGreen"/>
@@ -129,9 +129,9 @@
   </Head>
  </Mode>
  <Physical>
-  <Bulb Type="LED" Lumens="0" ColourTemperature="0"/>
+  <Bulb Type="LED" Lumens="2500" ColourTemperature="6500"/>
   <Dimensions Weight="0" Width="0" Height="0" Depth="0"/>
-  <Lens Name="Other" DegreesMin="0" DegreesMax="0"/>
+  <Lens Name="Other" DegreesMin="3" DegreesMax="25"/>
   <Focus Type="Barrel" PanMax="540" TiltMax="0"/>
   <Technical PowerConsumption="0" DmxConnector="3-pin and 5-pin"/>
  </Physical>
