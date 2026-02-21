@@ -1,0 +1,294 @@
+{
+  "meta": {
+    "schema_version": 1,
+    "updated_on": "2026-02-19",
+    "source": "references/creativity.md",
+    "canonical": true
+  },
+  "phrase_map": {
+    "intro": {
+      "mover_mode": "slow geometry (4b/8b)",
+      "par_mode": "fade 4b/8b",
+      "coordination_pool": [
+        "INT-001",
+        "INT-013",
+        "INT-033",
+        "INT-036",
+        "INT-063",
+        "INT-069"
+      ]
+    },
+    "verse_groove": {
+      "mover_mode": "structured routes (4b)",
+      "par_mode": "fade/chase 2b",
+      "coordination_pool": [
+        "INT-005",
+        "INT-011",
+        "INT-041",
+        "INT-047",
+        "INT-066",
+        "INT-075"
+      ]
+    },
+    "build": {
+      "mover_mode": "density lift, transform add",
+      "par_mode": "chase density increase 2b->1b",
+      "coordination_pool": [
+        "INT-020",
+        "INT-035",
+        "INT-044",
+        "INT-058",
+        "INT-072",
+        "INT-086"
+      ]
+    },
+    "drop": {
+      "mover_mode": "high-contrast pattern windows",
+      "par_mode": "1b chase with controlled burst accents",
+      "coordination_pool": [
+        "INT-021",
+        "INT-027",
+        "INT-051",
+        "INT-056",
+        "INT-081",
+        "INT-088"
+      ]
+    },
+    "breakdown": {
+      "mover_mode": "canopy or slow sweeps",
+      "par_mode": "long fades 4b/8b",
+      "coordination_pool": [
+        "INT-014",
+        "INT-019",
+        "INT-033",
+        "INT-060",
+        "INT-071",
+        "INT-074"
+      ]
+    },
+    "outro": {
+      "mover_mode": "simplify and reduce movement planes",
+      "par_mode": "fade-out or sparse chase",
+      "coordination_pool": [
+        "INT-006",
+        "INT-018",
+        "INT-039",
+        "INT-055",
+        "INT-070",
+        "INT-089"
+      ]
+    }
+  },
+  "fill_handling_rules": [
+    "If phrase analyzer flags a fill or transition up to 4 beats, use one short inclusion technique from `INT-021..INT-030`, `INT-051..INT-060`, or `INT-081..INT-090`.",
+    "Immediately return to the section base look after the fill.",
+    "Keep fill effects to 1-2 bars maximum."
+  ],
+  "contrast_rules": {
+    "min_changed_dimensions_on_phrase_change": 2,
+    "candidate_plan_count": 3,
+    "dimensions": [
+      "position",
+      "rhythm",
+      "color",
+      "intensity",
+      "effect_density"
+    ]
+  },
+  "mover_pattern_grammar": {
+    "transforms": [
+      "mirror",
+      "invert",
+      "phase_shift",
+      "expand",
+      "compress",
+      "reverse"
+    ],
+    "base_route_source": "coordination-techniques.techniques[].starter_combo"
+  },
+  "uniqueness_constraints": {
+    "no_same_mover_route_within": "64_bars",
+    "no_same_par_pattern_within": "32_bars",
+    "no_same_palette_within": "3_sections",
+    "include_density_peak_per_song": "1_to_3",
+    "mandatory_reset_after_peak": "4_bars"
+  },
+  "show_builder_template": {
+    "step_1": "choose_palette_world (P-001..P-048)",
+    "step_2": "choose_mover_route_family (R001..R064)",
+    "step_3": "choose_par_base (fade/chase 1b|2b|4b)",
+    "step_4": "assign_coordination_ids (INT-001..INT-090)",
+    "step_5": "map_to_phrase_blocks (intro/verse/build/drop/break/outro)",
+    "step_6": "run_safety_budget_check",
+    "step_7": "export_and_tag (energy, style, complexity)"
+  },
+  "transition_events": {
+    "energy_map": {
+      "intro": "low",
+      "verse_groove": "mid",
+      "build": "high",
+      "drop": "high",
+      "breakdown": "low",
+      "outro": "low"
+    },
+    "pools": {
+      "low_to_low": ["dead_air", "slow_dissolve"],
+      "low_to_mid": ["color_swap", "position_snap", "par_ladder"],
+      "low_to_high": ["blackout_slingshot", "white_flash", "strobe_burst"],
+      "mid_to_mid": ["color_swap", "position_snap", "slow_dissolve"],
+      "mid_to_high": ["compression_snap", "ladder_build", "par_convergence"],
+      "high_to_low": ["freeze_decay", "pulse_to_glow", "dim_dissolve"],
+      "high_to_high": ["color_inversion", "stutter_gate", "chase_cancel"],
+      "same_to_same": ["slow_dissolve", "color_swap", "position_snap"],
+      "build_to_drop": ["blackout_slingshot", "white_flash", "freeze_burst", "stutter_resolve"],
+      "end_of_show": ["fade_to_black", "freeze_hold"]
+    },
+    "event_schema": {
+      "blackout_slingshot": {
+        "duration_beats": 1,
+        "description": "Full cut to black for 1 beat, then snap return with all beams",
+        "fixtures": "all",
+        "exit_style": "snap"
+      },
+      "white_flash": {
+        "duration_beats": 1,
+        "description": "All fixtures flash white for 1 beat, then snap to new palette",
+        "fixtures": "all",
+        "exit_style": "snap"
+      },
+      "freeze_decay": {
+        "duration_beats": 4,
+        "description": "Hold last frame, fade pars to 20% over 2 beats, movers crossfade to DSC over 4 beats",
+        "fixtures": "all",
+        "exit_style": "smooth"
+      },
+      "color_inversion": {
+        "duration_beats": 1,
+        "description": "Swap warm/cool across all fixtures on beat 1",
+        "fixtures": "pars+movers",
+        "exit_style": "snap"
+      },
+      "stutter_gate": {
+        "duration_beats": 2,
+        "description": "Rapid on/off strobing at 1/4 beat for 2 beats, then hold",
+        "fixtures": "pars",
+        "exit_style": "snap"
+      },
+      "dead_air": {
+        "duration_beats": 2,
+        "description": "Dim all to 10-20% for 2 beats, no movement",
+        "fixtures": "all",
+        "exit_style": "smooth"
+      },
+      "pulse_to_glow": {
+        "duration_beats": 4,
+        "description": "Rhythmic par pulse decays from beat-level to static over 4 beats",
+        "fixtures": "pars",
+        "exit_style": "smooth"
+      },
+      "slow_dissolve": {
+        "duration_beats": 4,
+        "description": "4-beat crossfade between old and new looks, no hard edge",
+        "fixtures": "all",
+        "exit_style": "smooth"
+      },
+      "color_swap": {
+        "duration_beats": 1,
+        "description": "All fixtures snap to a contrasting color on beat 1",
+        "fixtures": "pars+movers",
+        "exit_style": "snap"
+      },
+      "position_snap": {
+        "duration_beats": 1,
+        "description": "Movers snap to DSC on beat 1, pars hold",
+        "fixtures": "movers",
+        "exit_style": "snap"
+      },
+      "par_ladder": {
+        "duration_beats": 2,
+        "description": "Pars light up sequentially L-to-R over 2 beats",
+        "fixtures": "pars",
+        "exit_style": "snap"
+      },
+      "strobe_burst": {
+        "duration_beats": 1,
+        "description": "All strobes fire for 1 beat, then snap to new look",
+        "fixtures": "all",
+        "exit_style": "snap"
+      },
+      "compression_snap": {
+        "duration_beats": 1,
+        "description": "All fixtures dim to 30% for half a beat, then snap full bright",
+        "fixtures": "all",
+        "exit_style": "snap"
+      },
+      "ladder_build": {
+        "duration_beats": 2,
+        "description": "Fixtures light up one by one over 2 beats from pars to movers",
+        "fixtures": "all",
+        "exit_style": "snap"
+      },
+      "par_convergence": {
+        "duration_beats": 2,
+        "description": "Outer pars fade in, converging to center par wash over 2 beats",
+        "fixtures": "pars",
+        "exit_style": "smooth"
+      },
+      "dim_dissolve": {
+        "duration_beats": 2,
+        "description": "Smooth dim to 20% over 2 beats, movers park DSC",
+        "fixtures": "all",
+        "exit_style": "smooth"
+      },
+      "freeze_burst": {
+        "duration_beats": 1,
+        "description": "Hold last frame for half beat, then strobe burst into new look",
+        "fixtures": "all",
+        "exit_style": "snap"
+      },
+      "stutter_resolve": {
+        "duration_beats": 2,
+        "description": "Rapid strobe for 1.5 beats, then hard snap to full drop look",
+        "fixtures": "all",
+        "exit_style": "snap"
+      },
+      "chase_cancel": {
+        "duration_beats": 1,
+        "description": "Abrupt stop of all movement, 1-beat hold at current positions",
+        "fixtures": "all",
+        "exit_style": "snap"
+      },
+      "fade_to_black": {
+        "duration_beats": 4,
+        "description": "All fixtures smooth fade to black over 4 beats",
+        "fixtures": "all",
+        "exit_style": "smooth"
+      },
+      "freeze_hold": {
+        "duration_beats": 4,
+        "description": "Hold last frame for 2 beats, then fade to black over 2 beats",
+        "fixtures": "all",
+        "exit_style": "smooth"
+      }
+    },
+    "cooldown": 3,
+    "variety_rule": "no same transition type within 3 segment boundaries",
+    "escalation_restricted": ["strobe_burst", "freeze_burst", "stutter_resolve"],
+    "max_duration_fraction": 0.25
+  },
+  "beat_reactivity": {
+    "intro":        {"par_min": "2bar", "mover_min": "4bar", "accent_layer": "none"},
+    "verse_groove": {"par_min": "2beat", "mover_min": "2bar", "accent_layer": "bar_downbeat"},
+    "build":        {"par_min": "beat", "mover_min": "bar", "accent_layer": "beat"},
+    "drop":         {"par_min": "beat", "mover_min": "bar", "accent_layer": "sub_beat"},
+    "breakdown":    {"par_min": "bar", "mover_min": "4bar", "accent_layer": "none"},
+    "outro":        {"par_min": "2bar", "mover_min": "4bar", "accent_layer": "none"}
+  },
+  "accent_type_pools": [
+    "par_intensity_pulse",
+    "par_color_snap",
+    "mover_micro_shift",
+    "strobe_hit",
+    "dimmer_breathe"
+  ]
+}

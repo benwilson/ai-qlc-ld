@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "updated_on": "2026-02-19",
+  "canonical_root": "references/data",
+  "source_documents": [
+    "references/creativity.md"
+  ],
+  "catalogs": {
+    "coordination_techniques": "references/data/coordination-techniques.json",
+    "palettes": "references/data/palettes.json",
+    "designers": "references/data/designers.json",
+    "designer_techniques": "references/data/designer-techniques.json",
+    "phrase_rules": "references/data/phrase-rules.json"
+  },
+  "counts": {
+    "coordination_techniques": 90,
+    "palettes": 48,
+    "designers": 30,
+    "designer_techniques": 30,
+    "phrase_buckets": 6
+  }
+}

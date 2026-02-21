@@ -1,0 +1,728 @@
+{
+  "meta": {
+    "schema_version": 1,
+    "updated_on": "2026-02-19",
+    "source": "references/creativity.md",
+    "canonical": true
+  },
+  "usage_rules": [
+    "PAR fixtures should usually hold the dominant `world color`.",
+    "Movers should carry contrast accents, targets, and white punctuation.",
+    "For high-BPM content, simplify palettes rather than adding more colors.",
+    "A 2-color system plus white often reads better than 5-color chaos."
+  ],
+  "transition_recipes": [
+    "`cool -> warm`: lower saturation first, then shift hue over 2-4 bars.",
+    "`warm -> cool`: keep intensity stable while hue rotates; avoid simultaneous dim drop.",
+    "`mono -> dual-tone`: introduce second color in movers first, then PARs.",
+    "`dual-tone -> mono`: remove accent color from PARs first, keep mover accents briefly.",
+    "`color -> white impact`: max 1 beat full-white before returning to color world."
+  ],
+  "selection_rules": {
+    "by_energy": {
+      "energy_1_2": [
+        "P-003",
+        "P-007",
+        "P-019",
+        "P-016"
+      ],
+      "energy_3": [
+        "P-005",
+        "P-010",
+        "P-014",
+        "P-018"
+      ],
+      "energy_4_5": [
+        "P-001",
+        "P-002",
+        "P-015",
+        "P-023",
+        "P-024"
+      ]
+    },
+    "notes": [
+      "For long sets, rotate palette family every 2-4 songs, not every section."
+    ]
+  },
+  "rotation_rules": [
+    "Keep one palette world for 16-32 bars before rotating.",
+    "Rotate by `temperature` first (warm/cool), then by `hue`.",
+    "Do not introduce more than one new accent color per 8 bars.",
+    "Use white hits as punctuation, not as constant base.",
+    "Prefer 2-color + white systems for drop readability."
+  ],
+  "palettes": [
+    {
+      "id": "P-001",
+      "name": "Neon Cyan Drive",
+      "source_section": "14",
+      "hex": [
+        "#00E5FF",
+        "#007CFF",
+        "#E6F9FF"
+      ],
+      "base": "cyan/blue",
+      "accent": "cool white blades",
+      "hit": "white",
+      "best_for": "progressive house, trance"
+    },
+    {
+      "id": "P-002",
+      "name": "Infrared Techno",
+      "source_section": "14",
+      "hex": [
+        "#FF2A2A",
+        "#8B0000",
+        "#FFEAEA"
+      ],
+      "base": "deep red",
+      "accent": "white cuts",
+      "hit": "desaturated white-red",
+      "best_for": "hard techno, industrial"
+    },
+    {
+      "id": "P-003",
+      "name": "Void Indigo",
+      "source_section": "14",
+      "hex": [
+        "#1B1464",
+        "#3A2A9E",
+        "#B8B8FF"
+      ],
+      "base": "indigo",
+      "accent": "violet highlights",
+      "hit": "pale ice",
+      "best_for": "melodic techno, dark intros"
+    },
+    {
+      "id": "P-004",
+      "name": "Toxic Lime",
+      "source_section": "14",
+      "hex": [
+        "#B7FF00",
+        "#4D8F00",
+        "#F1FFD1"
+      ],
+      "base": "acid lime",
+      "accent": "dark green shadow",
+      "hit": "pale lime-white",
+      "best_for": "bass house, electro"
+    },
+    {
+      "id": "P-005",
+      "name": "Amber + Steel",
+      "source_section": "14",
+      "hex": [
+        "#FFB347",
+        "#2F5D8A",
+        "#F5F8FF"
+      ],
+      "base": "amber",
+      "accent": "steel blue",
+      "hit": "cool white",
+      "best_for": "organic house, melodic breakdowns"
+    },
+    {
+      "id": "P-006",
+      "name": "Magenta Voltage",
+      "source_section": "14",
+      "hex": [
+        "#FF00A8",
+        "#7A0C5E",
+        "#FFD6F3"
+      ],
+      "base": "magenta",
+      "accent": "deep wine",
+      "hit": "pink-white",
+      "best_for": "synthwave, electro-pop EDM"
+    },
+    {
+      "id": "P-007",
+      "name": "Arctic Mint",
+      "source_section": "14",
+      "hex": [
+        "#8FFFE2",
+        "#00C9A7",
+        "#EFFFFA"
+      ],
+      "base": "mint wash",
+      "accent": "teal cuts",
+      "hit": "cold white",
+      "best_for": "chill electronic, downtempo"
+    },
+    {
+      "id": "P-008",
+      "name": "Ultraviolet Core",
+      "source_section": "14",
+      "hex": [
+        "#6A00FF",
+        "#2A005F",
+        "#DCC7FF"
+      ],
+      "base": "violet",
+      "accent": "indigo",
+      "hit": "pale lilac",
+      "best_for": "psytrance, melodic techno"
+    },
+    {
+      "id": "P-009",
+      "name": "Carbon White",
+      "source_section": "14",
+      "hex": [
+        "#0D0D0D",
+        "#FFFFFF",
+        "#7F7F7F"
+      ],
+      "base": "near-black",
+      "accent": "sharp white",
+      "hit": "full white",
+      "best_for": "minimal techno, dramatic drops"
+    },
+    {
+      "id": "P-010",
+      "name": "Sunset Circuit",
+      "source_section": "14",
+      "hex": [
+        "#FF6B35",
+        "#FFB238",
+        "#5A2A83"
+      ],
+      "base": "orange/amber",
+      "accent": "violet",
+      "hit": "warm white",
+      "best_for": "house, disco-edm crossovers"
+    },
+    {
+      "id": "P-011",
+      "name": "Oceanic Pulse",
+      "source_section": "14",
+      "hex": [
+        "#005377",
+        "#00A6D6",
+        "#C2F3FF"
+      ],
+      "base": "deep ocean blue",
+      "accent": "cyan pulse",
+      "hit": "ice white",
+      "best_for": "progressive, trance"
+    },
+    {
+      "id": "P-012",
+      "name": "Crimson Orbit",
+      "source_section": "14",
+      "hex": [
+        "#D90429",
+        "#4A0010",
+        "#FFD9E0"
+      ],
+      "base": "crimson",
+      "accent": "black-red shadow",
+      "hit": "pale pink-white",
+      "best_for": "cinematic drops"
+    },
+    {
+      "id": "P-013",
+      "name": "Emerald Alloy",
+      "source_section": "14",
+      "hex": [
+        "#00A86B",
+        "#005F3B",
+        "#D9FFE9"
+      ],
+      "base": "emerald",
+      "accent": "dark green",
+      "hit": "mint white",
+      "best_for": "groovy house, afro-electronic"
+    },
+    {
+      "id": "P-014",
+      "name": "Electric Lavender",
+      "source_section": "14",
+      "hex": [
+        "#B76DFF",
+        "#6B2CBF",
+        "#F2E7FF"
+      ],
+      "base": "lavender",
+      "accent": "rich purple",
+      "hit": "lilac-white",
+      "best_for": "vocal trance, euphoric sections"
+    },
+    {
+      "id": "P-015",
+      "name": "Ruby + Cyan Clash",
+      "source_section": "14",
+      "hex": [
+        "#E63946",
+        "#00D1FF",
+        "#F1F8FF"
+      ],
+      "base": "ruby or cyan blocks",
+      "accent": "opposing color for movers",
+      "hit": "white",
+      "best_for": "high-contrast festival drops"
+    },
+    {
+      "id": "P-016",
+      "name": "Mono Blue Discipline",
+      "source_section": "14",
+      "hex": [
+        "#0D3B66",
+        "#1D5FA2",
+        "#9DCBFF"
+      ],
+      "base": "single blue family",
+      "accent": "lighter blue highlights",
+      "hit": "cool white",
+      "best_for": "techno, long DJ journeys"
+    },
+    {
+      "id": "P-017",
+      "name": "Laser Greenline",
+      "source_section": "14",
+      "hex": [
+        "#39FF14",
+        "#0F5A00",
+        "#E8FFD9"
+      ],
+      "base": "black/low",
+      "accent": "neon green lines",
+      "hit": "acid white",
+      "best_for": "psy, tech trance"
+    },
+    {
+      "id": "P-018",
+      "name": "Desert Copper",
+      "source_section": "14",
+      "hex": [
+        "#B87333",
+        "#E09A5E",
+        "#253046"
+      ],
+      "base": "copper amber",
+      "accent": "slate blue",
+      "hit": "warm white",
+      "best_for": "organic and melodic transitions"
+    },
+    {
+      "id": "P-019",
+      "name": "Polar Night",
+      "source_section": "14",
+      "hex": [
+        "#102542",
+        "#1B3B6F",
+        "#DDEBFF"
+      ],
+      "base": "midnight blue",
+      "accent": "steel",
+      "hit": "icy white",
+      "best_for": "intros, breakdowns"
+    },
+    {
+      "id": "P-020",
+      "name": "Pulse Pink + Indigo",
+      "source_section": "14",
+      "hex": [
+        "#FF4DA6",
+        "#2D1E5F",
+        "#FBE7FF"
+      ],
+      "base": "indigo",
+      "accent": "hot pink pulses",
+      "hit": "pink-white",
+      "best_for": "future bass, melodic drops"
+    },
+    {
+      "id": "P-021",
+      "name": "Gold + Void",
+      "source_section": "14",
+      "hex": [
+        "#FFCC66",
+        "#3A2A00",
+        "#FFF5D6"
+      ],
+      "base": "dim gold",
+      "accent": "shadow amber-brown",
+      "hit": "gold-white",
+      "best_for": "anthem choruses"
+    },
+    {
+      "id": "P-022",
+      "name": "Bronze + Teal",
+      "source_section": "14",
+      "hex": [
+        "#8C4A2F",
+        "#0D8B8B",
+        "#D9F7F7"
+      ],
+      "base": "bronze warmth",
+      "accent": "teal blades",
+      "hit": "neutral white",
+      "best_for": "hybrid electronic/world textures"
+    },
+    {
+      "id": "P-023",
+      "name": "Cherry Storm",
+      "source_section": "14",
+      "hex": [
+        "#FF1744",
+        "#650019",
+        "#FFE4EB"
+      ],
+      "base": "dark cherry",
+      "accent": "bright cherry hits",
+      "hit": "white-pink",
+      "best_for": "high impact electro"
+    },
+    {
+      "id": "P-024",
+      "name": "Ice and Fire",
+      "source_section": "14",
+      "hex": [
+        "#00C2FF",
+        "#FF4D00",
+        "#F6FBFF"
+      ],
+      "base": "split warm/cool",
+      "accent": "whichever side is not base",
+      "hit": "bright white",
+      "best_for": "drops and fake-drop reveals"
+    },
+    {
+      "id": "P-025",
+      "name": "Midnight Cyan Steel",
+      "source_section": "35",
+      "hex": [
+        "#003B5C",
+        "#00AFC4",
+        "#DCEBFF"
+      ],
+      "base": "deep cyan-blue",
+      "accent": "steel/ice beams",
+      "hit": "cool white",
+      "best_for": "progressive house, late-night groove"
+    },
+    {
+      "id": "P-026",
+      "name": "Laser Lime Charcoal",
+      "source_section": "35",
+      "hex": [
+        "#A6FF00",
+        "#2C2C2C",
+        "#EFFFCC"
+      ],
+      "base": "charcoal low fill",
+      "accent": "acid-lime traces",
+      "hit": "pale lime-white",
+      "best_for": "techno, acid sets"
+    },
+    {
+      "id": "P-027",
+      "name": "Amber Dust Indigo",
+      "source_section": "35",
+      "hex": [
+        "#D98C3A",
+        "#2E2A68",
+        "#FFF0D9"
+      ],
+      "base": "warm amber haze",
+      "accent": "indigo sweeps",
+      "hit": "warm white",
+      "best_for": "melodic transitions"
+    },
+    {
+      "id": "P-028",
+      "name": "Arctic White Teal",
+      "source_section": "35",
+      "hex": [
+        "#EAFBFF",
+        "#00B3A4",
+        "#124E66"
+      ],
+      "base": "cold white wash",
+      "accent": "teal and dark aqua",
+      "hit": "pure white",
+      "best_for": "breakdowns, vocal sections"
+    },
+    {
+      "id": "P-029",
+      "name": "Crimson Smoke",
+      "source_section": "35",
+      "hex": [
+        "#B3122F",
+        "#3A0B16",
+        "#FFE3E9"
+      ],
+      "base": "dark crimson",
+      "accent": "rose-white hits",
+      "hit": "white-pink",
+      "best_for": "heavy drops, cinematic moments"
+    },
+    {
+      "id": "P-030",
+      "name": "Magenta Ice Blue",
+      "source_section": "35",
+      "hex": [
+        "#E5008A",
+        "#5DA9E9",
+        "#F3E8FF"
+      ],
+      "base": "magenta",
+      "accent": "ice-blue blades",
+      "hit": "lilac-white",
+      "best_for": "electro-pop EDM"
+    },
+    {
+      "id": "P-031",
+      "name": "Deep Violet Silver",
+      "source_section": "35",
+      "hex": [
+        "#3D1A78",
+        "#8B78E6",
+        "#E8E8F5"
+      ],
+      "base": "deep violet",
+      "accent": "silver-lilac beams",
+      "hit": "cool silver-white",
+      "best_for": "trance lifts"
+    },
+    {
+      "id": "P-032",
+      "name": "Cobalt Fire",
+      "source_section": "35",
+      "hex": [
+        "#0D47A1",
+        "#FF5A1F",
+        "#EAF2FF"
+      ],
+      "base": "cobalt",
+      "accent": "fire-orange accents",
+      "hit": "crisp white",
+      "best_for": "big room drop callouts"
+    },
+    {
+      "id": "P-033",
+      "name": "Mono Slate White",
+      "source_section": "35",
+      "hex": [
+        "#1E2A38",
+        "#4D647D",
+        "#F8FBFF"
+      ],
+      "base": "slate monochrome",
+      "accent": "lighter slate beams",
+      "hit": "white",
+      "best_for": "minimal techno, long-form DJ sets"
+    },
+    {
+      "id": "P-034",
+      "name": "Emerald Gold",
+      "source_section": "35",
+      "hex": [
+        "#009B77",
+        "#C8A646",
+        "#F4FFE8"
+      ],
+      "base": "emerald",
+      "accent": "gold highlights",
+      "hit": "pale gold-white",
+      "best_for": "afro/organic electronic"
+    },
+    {
+      "id": "P-035",
+      "name": "Neon Peach Purple",
+      "source_section": "35",
+      "hex": [
+        "#FF8A65",
+        "#6A1B9A",
+        "#FFE9E1"
+      ],
+      "base": "neon peach",
+      "accent": "deep purple",
+      "hit": "warm white",
+      "best_for": "future house and crossover pop EDM"
+    },
+    {
+      "id": "P-036",
+      "name": "Petrol Blue Copper",
+      "source_section": "35",
+      "hex": [
+        "#0F4C5C",
+        "#B66A3D",
+        "#E7F5F8"
+      ],
+      "base": "petrol blue",
+      "accent": "copper sweeps",
+      "hit": "neutral white",
+      "best_for": "moody progressive sections"
+    },
+    {
+      "id": "P-037",
+      "name": "Ruby Violet Ice",
+      "source_section": "35",
+      "hex": [
+        "#9B1B30",
+        "#4A2C8A",
+        "#EAF1FF"
+      ],
+      "base": "ruby",
+      "accent": "violet",
+      "hit": "ice white",
+      "best_for": "dramatic build/drop contrasts"
+    },
+    {
+      "id": "P-038",
+      "name": "Acid Yellow Navy",
+      "source_section": "35",
+      "hex": [
+        "#E8FF1A",
+        "#102A43",
+        "#FFFEDC"
+      ],
+      "base": "navy base field",
+      "accent": "acid yellow scans",
+      "hit": "yellow-white",
+      "best_for": "warehouse techno accents"
+    },
+    {
+      "id": "P-039",
+      "name": "Sunset Rose Cobalt",
+      "source_section": "35",
+      "hex": [
+        "#FF5C8A",
+        "#174EA6",
+        "#FFE3EC"
+      ],
+      "base": "sunset rose",
+      "accent": "cobalt cuts",
+      "hit": "soft white",
+      "best_for": "euphoric melodic house"
+    },
+    {
+      "id": "P-040",
+      "name": "Infra Blue Mint",
+      "source_section": "35",
+      "hex": [
+        "#16213E",
+        "#00D2B5",
+        "#E9FFFA"
+      ],
+      "base": "infrared blue darkness",
+      "accent": "mint pulses",
+      "hit": "cold mint-white",
+      "best_for": "deep and hypnotic sections"
+    },
+    {
+      "id": "P-041",
+      "name": "Steel Blue Amber",
+      "source_section": "35",
+      "hex": [
+        "#3F72AF",
+        "#E09F3E",
+        "#F5F9FF"
+      ],
+      "base": "steel blue",
+      "accent": "amber punctuation",
+      "hit": "neutral white",
+      "best_for": "dynamic groove shifts"
+    },
+    {
+      "id": "P-042",
+      "name": "Graphite UV",
+      "source_section": "35",
+      "hex": [
+        "#1A1A1A",
+        "#7F00FF",
+        "#EEDCFF"
+      ],
+      "base": "graphite low world",
+      "accent": "ultraviolet beams",
+      "hit": "violet-white",
+      "best_for": "dark club intros"
+    },
+    {
+      "id": "P-043",
+      "name": "Solar Orange Cyan",
+      "source_section": "35",
+      "hex": [
+        "#FF7A00",
+        "#00B7C2",
+        "#FFF1D9"
+      ],
+      "base": "solar orange",
+      "accent": "cyan opposition",
+      "hit": "warm white",
+      "best_for": "high-impact chorus moments"
+    },
+    {
+      "id": "P-044",
+      "name": "Mint Violet Black",
+      "source_section": "35",
+      "hex": [
+        "#9CFFD6",
+        "#7B4BFF",
+        "#0A0A0A"
+      ],
+      "base": "black + mint texture",
+      "accent": "violet sweeps",
+      "hit": "white-mint",
+      "best_for": "experimental electronic"
+    },
+    {
+      "id": "P-045",
+      "name": "Pearl White Split",
+      "source_section": "35",
+      "hex": [
+        "#F7F7F2",
+        "#00A8FF",
+        "#FF3366"
+      ],
+      "base": "pearl white canopy",
+      "accent": "alternating cyan/magenta",
+      "hit": "full white",
+      "best_for": "anthem drops"
+    },
+    {
+      "id": "P-046",
+      "name": "Scarlet Indigo",
+      "source_section": "35",
+      "hex": [
+        "#E63946",
+        "#2B2D82",
+        "#FFE5E8"
+      ],
+      "base": "indigo field",
+      "accent": "scarlet hits",
+      "hit": "pink-white",
+      "best_for": "tension-release sequences"
+    },
+    {
+      "id": "P-047",
+      "name": "Copper Orchid",
+      "source_section": "35",
+      "hex": [
+        "#B87333",
+        "#B565D9",
+        "#FFF3EA"
+      ],
+      "base": "copper glow",
+      "accent": "orchid beams",
+      "hit": "warm pastel white",
+      "best_for": "melodic breakdowns"
+    },
+    {
+      "id": "P-048",
+      "name": "Glacier Indigo",
+      "source_section": "35",
+      "hex": [
+        "#8FD3FF",
+        "#243B7C",
+        "#F3FAFF"
+      ],
+      "base": "glacier blue",
+      "accent": "indigo structure",
+      "hit": "icy white",
+      "best_for": "closing journeys and outros"
+    }
+  ]
+}

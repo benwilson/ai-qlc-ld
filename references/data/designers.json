@@ -1,0 +1,232 @@
+{
+  "meta": {
+    "schema_version": 1,
+    "updated_on": "2026-02-19",
+    "source": "references/creativity.md",
+    "canonical": true
+  },
+  "prompt_template": {
+    "input": [
+      "ld_id",
+      "track_energy_profile",
+      "phrase_map"
+    ],
+    "output": [
+      "3 signature looks inspired by ld_id",
+      "2 anti-look rules (what to avoid)",
+      "1 hybrid look blending with house style"
+    ]
+  },
+  "designers": [
+    {
+      "id": "LD-001",
+      "name": "Kyle Kegan",
+      "anchor_context": "ODESZA tour profiles",
+      "study_focus": "Contrast between huge scenic geometry and song-specific details",
+      "transfer_rule": "Force at least one macro look and one detail look per 16 bars"
+    },
+    {
+      "id": "LD-002",
+      "name": "Andy Hurst",
+      "anchor_context": "Swedish House Mafia festival/tour context",
+      "study_focus": "Clean, strong beam architecture under high-energy tracks",
+      "transfer_rule": "Use fewer directions at once; prioritize bold readable beam lanes"
+    },
+    {
+      "id": "LD-003",
+      "name": "Ross Chapple",
+      "anchor_context": "Eric Prydz HOLO context",
+      "study_focus": "Visual hierarchy with layered disciplines",
+      "transfer_rule": "Assign leader/follower roles per section and swap deliberately"
+    },
+    {
+      "id": "LD-004",
+      "name": "Erik Mahowald",
+      "anchor_context": "deadmau5 Retro5pective",
+      "study_focus": "Large timecoded structure with musical punctuation",
+      "transfer_rule": "Keep drop punctuation windows short, then return to groove motion"
+    },
+    {
+      "id": "LD-005",
+      "name": "Alex Ares",
+      "anchor_context": "deadmau5 Cube era context",
+      "study_focus": "Geometry-first framing and object-centric staging",
+      "transfer_rule": "Route movers around one virtual stage object per section"
+    },
+    {
+      "id": "LD-006",
+      "name": "Gabe Fraboni",
+      "anchor_context": "Martin Garrix production profile",
+      "study_focus": "Pop-precise cue punctuation merged with festival scale",
+      "transfer_rule": "Add repeatable accent tokens on phrase starts and fills"
+    },
+    {
+      "id": "LD-007",
+      "name": "Steve Lieberman",
+      "anchor_context": "EDC/Calvin Harris context",
+      "study_focus": "Arena-scale consistency and spectacle pacing",
+      "transfer_rule": "Rotate complexity density: simple, medium, dense, release"
+    },
+    {
+      "id": "LD-008",
+      "name": "Patrick Dierson",
+      "anchor_context": "Ultra main stage technical profile",
+      "study_focus": "Robustness under massive rig/system pressure",
+      "transfer_rule": "Keep fallback looks for each section if fixtures are missing"
+    },
+    {
+      "id": "LD-009",
+      "name": "Richard Milstein",
+      "anchor_context": "Ultra creative direction context",
+      "study_focus": "Coherent visual language across many artists",
+      "transfer_rule": "Define a per-show visual thesis (2 colors + 1 geometry family)"
+    },
+    {
+      "id": "LD-010",
+      "name": "Ray Steinman",
+      "anchor_context": "Ultra technical production context",
+      "study_focus": "Reliability at festival scale",
+      "transfer_rule": "Prefer modular cue blocks over fragile one-off sequences"
+    },
+    {
+      "id": "LD-011",
+      "name": "Liam Tomaszewski",
+      "anchor_context": "SHM visual direction context",
+      "study_focus": "Tight alignment of narrative and lighting structure",
+      "transfer_rule": "Map emotional arc first, then assign pattern families"
+    },
+    {
+      "id": "LD-012",
+      "name": "Ed Warren",
+      "anchor_context": "four tet/fred again../skrillex profile",
+      "study_focus": "Playful high/low intensity alternation",
+      "transfer_rule": "Intentionally insert restrained bars after dense peaks"
+    },
+    {
+      "id": "LD-013",
+      "name": "Marc Heinz",
+      "anchor_context": "Armin van Buuren production profile",
+      "study_focus": "Long-form trance phrasing and lift design",
+      "transfer_rule": "Use multi-bar lift ladders before peak drops"
+    },
+    {
+      "id": "LD-014",
+      "name": "Matt Smith",
+      "anchor_context": "RUFUS DU SOL production context",
+      "study_focus": "Textural atmospherics and emotional transitions",
+      "transfer_rule": "Use slower PAR fade worlds in breakdowns, not constant chase"
+    },
+    {
+      "id": "LD-015",
+      "name": "Romain Pissenem",
+      "anchor_context": "David Guetta / large EDM productions",
+      "study_focus": "Monumental framing and high-impact moments",
+      "transfer_rule": "Reserve full-rig inclusion techniques for major phrase markers"
+    },
+    {
+      "id": "LD-016",
+      "name": "Tom Edwards",
+      "anchor_context": "Jamie xx In Waves (Alexandra Palace)",
+      "study_focus": "Projection-first language plus mirrorball punctuation and crowd-immersive flow",
+      "transfer_rule": "Pair mover geometry with projection line direction, then punctuate with one practical \"special\" moment"
+    },
+    {
+      "id": "LD-017",
+      "name": "Tim Fawkes",
+      "anchor_context": "The Prodigy at Glastonbury 2025",
+      "study_focus": "Pod-based tilting strobe waves balanced for live and broadcast readability",
+      "transfer_rule": "Alternate high-intensity pod wave windows with recovery bars to avoid constant visual fatigue"
+    },
+    {
+      "id": "LD-018",
+      "name": "Haydn Cruickshank",
+      "anchor_context": "Underworld tour methodology",
+      "study_focus": "Timing-first live operation and video-light intensity harmonization",
+      "transfer_rule": "Keep fixture maps simple and generate variation from timing, phrase rhythm, and intensity interplay"
+    },
+    {
+      "id": "LD-019",
+      "name": "Andre Beekmans",
+      "anchor_context": "Amsterdam Music Festival (AMF)",
+      "study_focus": "Repeating branded geometry to scale arenas into nightclub energy",
+      "transfer_rule": "Repeat one signature shape across stage and crowd planes with limited but high-impact motion cues"
+    },
+    {
+      "id": "LD-020",
+      "name": "Sam Tozer",
+      "anchor_context": "Axwell & Ingrosso / SHM context",
+      "study_focus": "Logo-shaped stage framing and aggressive audience immersion from bars/strobes",
+      "transfer_rule": "Build one recognizable shape family, then vary density and pixel logic inside that frame"
+    },
+    {
+      "id": "LD-021",
+      "name": "Rob Lister",
+      "anchor_context": "DJ Snake Paris Zenith",
+      "study_focus": "Concentric rings + matrix grids + automation tilt/pitch for object-centered architecture",
+      "transfer_rule": "Drive movers as geometric objects first (rings, grids), then add PAR support as contour and punctuation"
+    },
+    {
+      "id": "LD-022",
+      "name": "Pascal Bach",
+      "anchor_context": "Afterlife Dubai concept",
+      "study_focus": "Massive beam arrays behaving like one organic object",
+      "transfer_rule": "Treat large mover arrays as a single organism with long-form phase evolution over rapid chaos"
+    },
+    {
+      "id": "LD-023",
+      "name": "Adam Smith",
+      "anchor_context": "The Chemical Brothers arena show",
+      "study_focus": "Strobe walls as musical lead voice rather than constant background",
+      "transfer_rule": "Reserve dense strobe-wall states for phrase climaxes and route back to color-rich intermediate looks"
+    },
+    {
+      "id": "LD-024",
+      "name": "Marcus Lyall",
+      "anchor_context": "The Chemical Brothers arena show",
+      "study_focus": "Laddered grid architecture with lift-in/lift-out reveal timing",
+      "transfer_rule": "Use vertical reveal/collapse geometry to mark phrase transitions and create depth changes"
+    },
+    {
+      "id": "LD-025",
+      "name": "Toby Dennis",
+      "anchor_context": "The Chemical Brothers technical design",
+      "study_focus": "Cell-level fixture repurposing for shape/texture density",
+      "transfer_rule": "Build cell-mode shape libraries so one fixture family can switch between wash, strobe, and texture roles"
+    },
+    {
+      "id": "LD-026",
+      "name": "Alex Hesse",
+      "anchor_context": "Axwell & Ingrosso programming collaboration",
+      "study_focus": "Co-programming discipline across lighting, pyro, laser, and video",
+      "transfer_rule": "Predefine \"integration windows\" where lighting density leaves deliberate space for pyro/laser accents"
+    },
+    {
+      "id": "LD-027",
+      "name": "Rane Renshaw",
+      "anchor_context": "Club/festival programming practice",
+      "study_focus": "Rig calibration and orientation discipline under dense fixture counts",
+      "transfer_rule": "Run alignment and orientation checks before creative layers to keep spatial effects repeatable"
+    },
+    {
+      "id": "LD-028",
+      "name": "Victor Sanchez",
+      "anchor_context": "Ultra RESISTANCE guest-LD context",
+      "study_focus": "Warm-white contrast plates inside RGB-heavy rigs",
+      "transfer_rule": "Use warm-white plate moments as periodic contrast anchors against saturated color worlds"
+    },
+    {
+      "id": "LD-029",
+      "name": "Zach Delzotti",
+      "anchor_context": "Ultra RESISTANCE L2/program role",
+      "study_focus": "Universe-efficient mode planning with retained eye-candy",
+      "transfer_rule": "Use reduced channel modes on support fixtures and full modes only where phrase detail demands it"
+    },
+    {
+      "id": "LD-030",
+      "name": "Josh Spodick",
+      "anchor_context": "Ultra main-stage programming context",
+      "study_focus": "High-fixture-count matrix organization with fast guest handoff",
+      "transfer_rule": "Separate macro architecture pages from per-artist detail pages for rapid, stable festival transitions"
+    }
+  ]
+}

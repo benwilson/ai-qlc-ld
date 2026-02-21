@@ -1,0 +1,1413 @@
+{
+  "meta": {
+    "schema_version": 1,
+    "updated_on": "2026-02-19",
+    "source": "references/creativity.md",
+    "canonical": true
+  },
+  "selection_model": {
+    "dominant_pack_count_range": [
+      1,
+      2
+    ],
+    "contrast_pack_count": 1,
+    "pack_cooldown_shows": 3,
+    "selection_note": "Pick 1-2 dominant packs per show and inject one contrast pack for tension windows."
+  },
+  "packs": [
+    {
+      "id": "DTP-001",
+      "ld_id": "LD-002",
+      "name": "Beam Lanes",
+      "focus": "Clean architectural lanes with readable direction reversals.",
+      "phrase_targets": [
+        "verse_groove",
+        "build",
+        "drop"
+      ],
+      "mover_ideas": [
+        "Hold movers in 2-3 lane families and reverse every 8 bars.",
+        "Mirror opposing lanes on phrase boundaries for clear architecture.",
+        "Expand lane width only at major drop entries."
+      ],
+      "par_ideas": [
+        "Run lane-matched 1b or 2b chase during energy moments.",
+        "Inject beat-1 phrase marker flashes every 4 bars.",
+        "Reset to 4-beat fade after high-density windows."
+      ],
+      "preferred_transforms": [
+        "mirror",
+        "reverse",
+        "compress"
+      ],
+      "preferred_par_modes": [
+        "blink1",
+        "blink2",
+        "fade4"
+      ],
+      "preferred_relationships": [
+        "unison",
+        "counterpoint"
+      ],
+      "anti_rules": [
+        "Do not scatter movers across unrelated targets in the same bar.",
+        "Avoid long strobe blocks without recovery bars."
+      ],
+      "tags": [
+        "beam",
+        "lanes",
+        "clean",
+        "architecture",
+        "readable"
+      ]
+    },
+    {
+      "id": "DTP-002",
+      "ld_id": "LD-006",
+      "name": "Accent Tokens",
+      "focus": "Precise phrase punctuation over stable base motion.",
+      "phrase_targets": [
+        "intro",
+        "verse_groove",
+        "build",
+        "drop"
+      ],
+      "mover_ideas": [
+        "Keep a stable 4-beat mover route and inject one-beat punctuation hits.",
+        "Use phrase-start accents as repeatable tokens for recognition.",
+        "Reserve full route swaps for section boundaries."
+      ],
+      "par_ideas": [
+        "Run 2-beat chase in groove bars and compress to 1-beat on accents.",
+        "Use a phrase marker hit on beat 1 for structural clarity.",
+        "Alternate chase and fade bars to keep tokens special."
+      ],
+      "preferred_transforms": [
+        "compress",
+        "phase_shift",
+        "mirror"
+      ],
+      "preferred_par_modes": [
+        "blink2",
+        "blink1",
+        "fade4"
+      ],
+      "preferred_relationships": [
+        "unison",
+        "inclusion"
+      ],
+      "anti_rules": [
+        "Do not fire accent tokens every bar.",
+        "Avoid changing both color world and geometry on every accent."
+      ],
+      "tags": [
+        "accent",
+        "token",
+        "punctuation",
+        "phrase",
+        "festival"
+      ]
+    },
+    {
+      "id": "DTP-003",
+      "ld_id": "LD-003",
+      "name": "Leader Follower Swap",
+      "focus": "Intentional fixture hierarchy with controlled role swaps.",
+      "phrase_targets": [
+        "verse_groove",
+        "build",
+        "drop",
+        "breakdown"
+      ],
+      "mover_ideas": [
+        "Assign one mover family as leader for 4 bars, then handoff.",
+        "Use phase-shifted follower paths to preserve hierarchy.",
+        "Swap leader role only at phrase boundaries."
+      ],
+      "par_ideas": [
+        "PAR chase follows leader in unison blocks.",
+        "Follower bars use counterpoint chase direction.",
+        "Use 4-beat fades in transitional handoff bars."
+      ],
+      "preferred_transforms": [
+        "phase_shift",
+        "mirror",
+        "reverse"
+      ],
+      "preferred_par_modes": [
+        "blink2",
+        "fade4",
+        "blink1"
+      ],
+      "preferred_relationships": [
+        "counterpoint",
+        "unison"
+      ],
+      "anti_rules": [
+        "Do not run all fixtures as co-leads for long spans.",
+        "Avoid random leader swaps inside the same phrase."
+      ],
+      "tags": [
+        "leader",
+        "follower",
+        "hierarchy",
+        "handoff",
+        "layered"
+      ]
+    },
+    {
+      "id": "DTP-004",
+      "ld_id": "LD-004",
+      "name": "Punctuation Windows",
+      "focus": "Short burst windows around structural punctuation.",
+      "phrase_targets": [
+        "build",
+        "drop"
+      ],
+      "mover_ideas": [
+        "Maintain steady route flow outside punctuation windows.",
+        "Trigger one-bar snap burst windows before and after drops.",
+        "Return to groove trajectory immediately after punctuation."
+      ],
+      "par_ideas": [
+        "Shift fade->chase only during 1-2 bar punctuation windows.",
+        "Use dense 1-beat chase inside windows and reset to 2/4-beat after.",
+        "Phrase-end bars should resolve with reduced chase density."
+      ],
+      "preferred_transforms": [
+        "reverse",
+        "compress",
+        "invert"
+      ],
+      "preferred_par_modes": [
+        "blink1",
+        "blink2",
+        "fade4"
+      ],
+      "preferred_relationships": [
+        "inclusion",
+        "unison"
+      ],
+      "anti_rules": [
+        "Do not leave burst mode active for full sections.",
+        "Avoid stacking strobes and inclusion effects for more than 2 bars."
+      ],
+      "tags": [
+        "punctuation",
+        "burst",
+        "window",
+        "timecode",
+        "drop"
+      ]
+    },
+    {
+      "id": "DTP-005",
+      "ld_id": "LD-005",
+      "name": "Object Orbit",
+      "focus": "Geometry-first orbit around a virtual stage object.",
+      "phrase_targets": [
+        "intro",
+        "verse_groove",
+        "build",
+        "drop"
+      ],
+      "mover_ideas": [
+        "Anchor routes around one object target per section (DJ/center/ceiling).",
+        "Use mirror and phase-shift to build orbital layers.",
+        "Expand orbit radius only in climax phrases."
+      ],
+      "par_ideas": [
+        "Pair PAR ring chase with orbit direction.",
+        "Invert ring direction during contrast windows.",
+        "Use 4-beat fade orbit breath in intros and breakdowns."
+      ],
+      "preferred_transforms": [
+        "expand",
+        "phase_shift",
+        "mirror"
+      ],
+      "preferred_par_modes": [
+        "blink2",
+        "fade4",
+        "blink1"
+      ],
+      "preferred_relationships": [
+        "unison",
+        "inclusion"
+      ],
+      "anti_rules": [
+        "Do not jump orbit anchor points every bar.",
+        "Avoid mixing unrelated orbit centers in one phrase."
+      ],
+      "tags": [
+        "object",
+        "orbit",
+        "geometry",
+        "center",
+        "framing"
+      ]
+    },
+    {
+      "id": "DTP-006",
+      "ld_id": "LD-007",
+      "name": "Density Cycle",
+      "focus": "Simple -> medium -> dense -> release pacing loops.",
+      "phrase_targets": [
+        "verse_groove",
+        "build",
+        "drop",
+        "outro"
+      ],
+      "mover_ideas": [
+        "Keep base routes simple, then add transform layers in stages.",
+        "Peak density should last only 4-8 bars before release.",
+        "Use release bars with reduced transform count."
+      ],
+      "par_ideas": [
+        "Cycle chase timing 4b -> 2b -> 1b -> fade reset.",
+        "Use release bars with long fade and low chase activity.",
+        "Keep dense chase packets tied to phrase peaks."
+      ],
+      "preferred_transforms": [
+        "compress",
+        "reverse",
+        "mirror"
+      ],
+      "preferred_par_modes": [
+        "fade4",
+        "blink2",
+        "blink1"
+      ],
+      "preferred_relationships": [
+        "unison",
+        "counterpoint"
+      ],
+      "anti_rules": [
+        "Do not keep maximum density active across entire songs.",
+        "Avoid release bars with aggressive chase/strobe carryover."
+      ],
+      "tags": [
+        "density",
+        "cycle",
+        "pacing",
+        "arena",
+        "release"
+      ]
+    },
+    {
+      "id": "DTP-007",
+      "ld_id": "LD-009",
+      "name": "Thesis Discipline",
+      "focus": "Single visual language with controlled variation.",
+      "phrase_targets": [
+        "intro",
+        "verse_groove",
+        "build",
+        "drop",
+        "outro"
+      ],
+      "mover_ideas": [
+        "Stay inside one geometry family for full show coherence.",
+        "Use transform changes instead of route family jumps.",
+        "Reserve one secondary geometry only for contrast markers."
+      ],
+      "par_ideas": [
+        "Keep chase topology stable within each phrase bucket.",
+        "Change chase topology only at phrase boundaries.",
+        "Use fade bars to reset before major topology shifts."
+      ],
+      "preferred_transforms": [
+        "mirror",
+        "phase_shift",
+        "compress"
+      ],
+      "preferred_par_modes": [
+        "blink2",
+        "fade4",
+        "blink4"
+      ],
+      "preferred_relationships": [
+        "unison",
+        "counterpoint"
+      ],
+      "anti_rules": [
+        "Do not mix many unrelated chase topologies in one section.",
+        "Avoid random geometry flips without phrase context."
+      ],
+      "tags": [
+        "thesis",
+        "coherence",
+        "language",
+        "discipline",
+        "festival"
+      ]
+    },
+    {
+      "id": "DTP-008",
+      "ld_id": "LD-010",
+      "name": "Modular Blocks",
+      "focus": "Robust reusable cue modules with deterministic chaining.",
+      "phrase_targets": [
+        "verse_groove",
+        "build",
+        "drop",
+        "breakdown"
+      ],
+      "mover_ideas": [
+        "Build 4-bar mover modules and chain them per phrase.",
+        "Use module A/B alternation for long-form variation.",
+        "Fallback to neutral module at transitions."
+      ],
+      "par_ideas": [
+        "Run relay chase blocks synchronized to module boundaries.",
+        "Use 2-beat chase by default, 1-beat only in climax modules.",
+        "Insert fade reset module every third dense block."
+      ],
+      "preferred_transforms": [
+        "mirror",
+        "reverse",
+        "phase_shift"
+      ],
+      "preferred_par_modes": [
+        "blink2",
+        "blink1",
+        "fade4"
+      ],
+      "preferred_relationships": [
+        "counterpoint",
+        "unison"
+      ],
+      "anti_rules": [
+        "Do not create fragile one-off blocks with no fallback.",
+        "Avoid dense module chaining without reset bars."
+      ],
+      "tags": [
+        "modular",
+        "block",
+        "robust",
+        "reliable",
+        "technical"
+      ]
+    },
+    {
+      "id": "DTP-009",
+      "ld_id": "LD-011",
+      "name": "Narrative Sweep",
+      "focus": "Wide-to-tight narrative travel across sections.",
+      "phrase_targets": [
+        "intro",
+        "build",
+        "drop",
+        "breakdown"
+      ],
+      "mover_ideas": [
+        "Start wide perimeter sweeps, then collapse to center focus.",
+        "Use inverse collapse in emotional release phrases.",
+        "Tie sweep width changes to phrase transitions."
+      ],
+      "par_ideas": [
+        "Perimeter chase during wide phases.",
+        "Center-weighted chase during tight phases.",
+        "Use 4-beat fades while reshaping spatial focus."
+      ],
+      "preferred_transforms": [
+        "expand",
+        "compress",
+        "mirror"
+      ],
+      "preferred_par_modes": [
+        "blink2",
+        "fade4",
+        "blink1"
+      ],
+      "preferred_relationships": [
+        "counterpoint",
+        "unison"
+      ],
+      "anti_rules": [
+        "Do not collapse and expand every bar.",
+        "Avoid spatial focus moves that conflict with phrase direction."
+      ],
+      "tags": [
+        "narrative",
+        "wide",
+        "tight",
+        "arc",
+        "emotional"
+      ]
+    },
+    {
+      "id": "DTP-010",
+      "ld_id": "LD-012",
+      "name": "High Low Alternation",
+      "focus": "Playful alternating planes and intensity depth.",
+      "phrase_targets": [
+        "verse_groove",
+        "build",
+        "drop"
+      ],
+      "mover_ideas": [
+        "Alternate high-plane and low-plane route ownership by bar.",
+        "Use parity logic (odd/even bars) for predictable playfulness.",
+        "Reverse plane ownership at phrase boundaries."
+      ],
+      "par_ideas": [
+        "Alternate blink/fade behavior by bar parity.",
+        "Use low-plane bars for 2-beat chase and high-plane bars for 1-beat hits.",
+        "Insert fade breath bars every 8 bars."
+      ],
+      "preferred_transforms": [
+        "invert",
+        "reverse",
+        "phase_shift"
+      ],
+      "preferred_par_modes": [
+        "blink2",
+        "blink1",
+        "fade4"
+      ],
+      "preferred_relationships": [
+        "counterpoint",
+        "inclusion"
+      ],
+      "anti_rules": [
+        "Do not stack high and low peaks in the same beat continuously.",
+        "Avoid parity patterns that drift off phrase grid."
+      ],
+      "tags": [
+        "high",
+        "low",
+        "alternation",
+        "playful",
+        "contrast"
+      ]
+    },
+    {
+      "id": "DTP-011",
+      "ld_id": "LD-013",
+      "name": "Lift Ladder",
+      "focus": "Multi-bar lift ladders before peak moments.",
+      "phrase_targets": [
+        "build",
+        "drop"
+      ],
+      "mover_ideas": [
+        "Increase tilt/height in ladder steps every 2 bars.",
+        "Add transform complexity as ladder climbs.",
+        "Resolve ladder on drop with clear geometry reset."
+      ],
+      "par_ideas": [
+        "Compress chase timing 4b -> 2b -> 1b through the lift.",
+        "Use beat-1 punctuation on ladder steps.",
+        "Immediately release to calmer chase after peak punctuation."
+      ],
+      "preferred_transforms": [
+        "expand",
+        "phase_shift",
+        "mirror"
+      ],
+      "preferred_par_modes": [
+        "fade4",
+        "blink2",
+        "blink1"
+      ],
+      "preferred_relationships": [
+        "unison",
+        "inclusion"
+      ],
+      "anti_rules": [
+        "Do not skip ladder progression steps before drops.",
+        "Avoid endless 1-beat chase after ladder completion."
+      ],
+      "tags": [
+        "lift",
+        "ladder",
+        "trance",
+        "build",
+        "peak"
+      ]
+    },
+    {
+      "id": "DTP-012",
+      "ld_id": "LD-014",
+      "name": "Atmospheric Weave",
+      "focus": "Textural movement and emotional transitions.",
+      "phrase_targets": [
+        "intro",
+        "breakdown",
+        "outro",
+        "verse_groove"
+      ],
+      "mover_ideas": [
+        "Use slow canopy sweeps and soft cross-weaves.",
+        "Keep transforms subtle and low-frequency in emotional sections.",
+        "Introduce one high-contrast transform only near phrase exits."
+      ],
+      "par_ideas": [
+        "Favor 4-beat and 8-beat fade worlds in low-energy phrases.",
+        "Add sparse chase punctuation at transition points.",
+        "Keep chase density restrained during atmospheric arcs."
+      ],
+      "preferred_transforms": [
+        "mirror",
+        "phase_shift",
+        "compress"
+      ],
+      "preferred_par_modes": [
+        "fade8",
+        "fade4",
+        "blink2"
+      ],
+      "preferred_relationships": [
+        "unison",
+        "counterpoint"
+      ],
+      "anti_rules": [
+        "Do not over-strobe in atmospheric sections.",
+        "Avoid constant 1-beat chase in breakdowns."
+      ],
+      "tags": [
+        "atmospheric",
+        "texture",
+        "emotional",
+        "fade",
+        "cinematic"
+      ]
+    },
+    {
+      "id": "DTP-013",
+      "ld_id": "LD-015",
+      "name": "Monument Markers",
+      "focus": "Monumental framing with controlled high-impact markers.",
+      "phrase_targets": [
+        "build",
+        "drop",
+        "outro"
+      ],
+      "mover_ideas": [
+        "Keep large framing routes stable through phrase bodies.",
+        "Trigger full-rig inclusion only on major phrase markers.",
+        "Use immediate post-marker simplification for readability."
+      ],
+      "par_ideas": [
+        "Run 1-beat chase packets only at major markers.",
+        "Use 2-beat chase or fade between markers.",
+        "Reserve white-hit punctuation for structural moments."
+      ],
+      "preferred_transforms": [
+        "expand",
+        "mirror",
+        "reverse"
+      ],
+      "preferred_par_modes": [
+        "blink1",
+        "blink2",
+        "fade4"
+      ],
+      "preferred_relationships": [
+        "inclusion",
+        "unison"
+      ],
+      "anti_rules": [
+        "Do not keep full-rig inclusion active for long sections.",
+        "Avoid frequent white-hit markers outside structural points."
+      ],
+      "tags": [
+        "monumental",
+        "marker",
+        "impact",
+        "framing",
+        "mainstage"
+      ]
+    },
+    {
+      "id": "DTP-014",
+      "ld_id": "LD-001",
+      "name": "Macro Detail Contrast",
+      "focus": "Alternate macro architecture and micro detail focus.",
+      "phrase_targets": [
+        "intro",
+        "verse_groove",
+        "build",
+        "drop"
+      ],
+      "mover_ideas": [
+        "Run macro sweeps for 8 bars, then switch to detail targets.",
+        "Use detail bars to emphasize single-point trajectories.",
+        "Re-expand to macro shape at phrase transitions."
+      ],
+      "par_ideas": [
+        "Use all-head chase in macro bars.",
+        "Switch to pair or split chases in detail bars.",
+        "Use fade bridges when moving between macro and detail modes."
+      ],
+      "preferred_transforms": [
+        "expand",
+        "compress",
+        "phase_shift"
+      ],
+      "preferred_par_modes": [
+        "blink2",
+        "blink4",
+        "fade4"
+      ],
+      "preferred_relationships": [
+        "unison",
+        "counterpoint"
+      ],
+      "anti_rules": [
+        "Do not stay in detail mode for entire drops.",
+        "Avoid macro/detail flips faster than 4-bar windows."
+      ],
+      "tags": [
+        "macro",
+        "detail",
+        "contrast",
+        "geometry",
+        "odesza"
+      ]
+    },
+    {
+      "id": "DTP-015",
+      "ld_id": "LD-008",
+      "name": "Fallback Resilience",
+      "focus": "Technically resilient patterning with graceful degradation.",
+      "phrase_targets": [
+        "verse_groove",
+        "build",
+        "drop",
+        "breakdown",
+        "outro"
+      ],
+      "mover_ideas": [
+        "Use primary and fallback route options with equivalent intent.",
+        "Prefer mirrored transforms that survive fixture loss.",
+        "Reduce transform depth when density gets unstable."
+      ],
+      "par_ideas": [
+        "Use chase patterns that can degrade from 4-head to 2-head cleanly.",
+        "Prefer 2-beat default chase with optional 1-beat accents.",
+        "Include predictable fade recovery bars after dense moments."
+      ],
+      "preferred_transforms": [
+        "mirror",
+        "compress",
+        "reverse"
+      ],
+      "preferred_par_modes": [
+        "blink2",
+        "fade4",
+        "blink1"
+      ],
+      "preferred_relationships": [
+        "unison",
+        "counterpoint"
+      ],
+      "anti_rules": [
+        "Do not depend on single-fixture gimmicks for core moments.",
+        "Avoid fragile one-shot sequences with no fallback state."
+      ],
+      "tags": [
+        "fallback",
+        "resilience",
+        "robust",
+        "festival",
+        "technical"
+      ]
+    },
+    {
+      "id": "DTP-016",
+      "ld_id": "LD-016",
+      "name": "Projection Coupled Geometry",
+      "focus": "Mover geometry that tracks projection language without visual conflict.",
+      "phrase_targets": [
+        "verse_groove",
+        "build",
+        "breakdown"
+      ],
+      "mover_ideas": [
+        "Align route direction with projection line direction for 4-8 bar blocks.",
+        "Use mirror-hold punctuation to frame practical specials.",
+        "Switch to compressed geometry only at phrase transitions."
+      ],
+      "par_ideas": [
+        "Keep PAR chase sparse while projection complexity is high.",
+        "Use 2-beat chase in groove bars and 4/8-beat fades in visual-reset bars.",
+        "Reserve 1-beat punctuation for projection dropout windows."
+      ],
+      "preferred_transforms": [
+        "mirror",
+        "phase_shift",
+        "compress"
+      ],
+      "preferred_par_modes": [
+        "blink2",
+        "fade4",
+        "fade8"
+      ],
+      "preferred_relationships": [
+        "unison",
+        "counterpoint"
+      ],
+      "anti_rules": [
+        "Do not run maximum projection motion and maximum mover motion at the same time.",
+        "Avoid dense PAR chase under intricate projection storytelling sections."
+      ],
+      "tags": [
+        "projection",
+        "geometry",
+        "practical",
+        "jamie_xx",
+        "integration"
+      ]
+    },
+    {
+      "id": "DTP-017",
+      "ld_id": "LD-017",
+      "name": "Pod Wave Assault",
+      "focus": "Tilting pod wave energy with strict recovery pacing.",
+      "phrase_targets": [
+        "build",
+        "drop"
+      ],
+      "mover_ideas": [
+        "Drive movers in directional wave packets lasting 1-2 bars.",
+        "Use alternating high-angle and low-angle wave ownership each bar.",
+        "Reset to a stable architecture immediately after dense wave bursts."
+      ],
+      "par_ideas": [
+        "Run 1-beat chase attacks during wave peaks.",
+        "Use 2-beat chases on transition bars to hold momentum without overloading.",
+        "Insert 4-beat fade recovery bars after every 4-8 bars of heavy attack."
+      ],
+      "preferred_transforms": [
+        "expand",
+        "reverse",
+        "phase_shift"
+      ],
+      "preferred_par_modes": [
+        "blink1",
+        "blink2",
+        "fade4"
+      ],
+      "preferred_relationships": [
+        "inclusion",
+        "unison"
+      ],
+      "anti_rules": [
+        "Do not keep high-intensity wave attacks active for entire drops.",
+        "Avoid stacking repeated white strobe waves without color recovery."
+      ],
+      "tags": [
+        "pod",
+        "wave",
+        "strobe",
+        "prodigy",
+        "impact"
+      ]
+    },
+    {
+      "id": "DTP-018",
+      "ld_id": "LD-018",
+      "name": "Timing First Busk",
+      "focus": "Live timing intelligence over constant geometric mutation.",
+      "phrase_targets": [
+        "intro",
+        "verse_groove",
+        "breakdown",
+        "outro"
+      ],
+      "mover_ideas": [
+        "Hold route families longer and vary timing/parity instead of position spam.",
+        "Use phrase edges for deliberate transform changes, not mid-phrase randomization.",
+        "Prioritize rhythmic clarity over fixture-count spectacle."
+      ],
+      "par_ideas": [
+        "Run restrained fade worlds as the default in lower-energy phrases.",
+        "Use 2-beat chase inserts only when arrangement density increases.",
+        "Keep chase topology stable for at least 8 bars before rotating."
+      ],
+      "preferred_transforms": [
+        "mirror",
+        "compress",
+        "phase_shift"
+      ],
+      "preferred_par_modes": [
+        "fade8",
+        "fade4",
+        "blink2"
+      ],
+      "preferred_relationships": [
+        "unison",
+        "counterpoint"
+      ],
+      "anti_rules": [
+        "Do not force visual density increases when musical density is flat.",
+        "Avoid rapid route replacement that breaks live-busk readability."
+      ],
+      "tags": [
+        "timing",
+        "busk",
+        "underworld",
+        "restraint",
+        "rhythm"
+      ]
+    },
+    {
+      "id": "DTP-019",
+      "ld_id": "LD-019",
+      "name": "Distributed Brand Anchors",
+      "focus": "Repeat one iconic geometry across multiple stage planes.",
+      "phrase_targets": [
+        "verse_groove",
+        "build",
+        "drop",
+        "outro"
+      ],
+      "mover_ideas": [
+        "Duplicate one signature shape in center, wing, and audience-facing lanes.",
+        "Use mirrored anchor changes every 8 bars for controlled progression.",
+        "Expand anchor radius only at major phrase markers."
+      ],
+      "par_ideas": [
+        "Contour chases should reinforce the selected shape boundary.",
+        "Use 2-beat chase for continuity and 1-beat hits only on anchor flips.",
+        "Use fade bars to reset before introducing a new anchor variant."
+      ],
+      "preferred_transforms": [
+        "mirror",
+        "expand",
+        "reverse"
+      ],
+      "preferred_par_modes": [
+        "blink2",
+        "blink4",
+        "fade4"
+      ],
+      "preferred_relationships": [
+        "unison",
+        "inclusion"
+      ],
+      "anti_rules": [
+        "Do not introduce multiple unrelated hero shapes in one section.",
+        "Avoid frequent shape-family switches that dilute brand identity."
+      ],
+      "tags": [
+        "brand",
+        "anchor",
+        "shape",
+        "amf",
+        "cohesion"
+      ]
+    },
+    {
+      "id": "DTP-020",
+      "ld_id": "LD-020",
+      "name": "Logo Frame Attack",
+      "focus": "Symmetric logo-frame architecture with audience attack windows.",
+      "phrase_targets": [
+        "verse_groove",
+        "build",
+        "drop"
+      ],
+      "mover_ideas": [
+        "Keep movers inside a logo-derived frame and vary depth by bar.",
+        "Use pixel-rich fixtures for frame-edge acceleration in build phrases.",
+        "Snap to symmetric centerline on phrase downbeats for signature identity."
+      ],
+      "par_ideas": [
+        "Use 1-beat chase bursts aimed down audience lanes during peaks.",
+        "Default to 2-beat chase around frame edges during groove sections.",
+        "Insert fade resets before major crowd-attack windows."
+      ],
+      "preferred_transforms": [
+        "mirror",
+        "compress",
+        "phase_shift"
+      ],
+      "preferred_par_modes": [
+        "blink1",
+        "blink2",
+        "fade4"
+      ],
+      "preferred_relationships": [
+        "inclusion",
+        "unison"
+      ],
+      "anti_rules": [
+        "Do not break frame symmetry randomly inside phrase bodies.",
+        "Avoid continuous audience attack looks without stage-focused relief."
+      ],
+      "tags": [
+        "logo",
+        "frame",
+        "axwell",
+        "shm",
+        "crowd"
+      ]
+    },
+    {
+      "id": "DTP-021",
+      "ld_id": "LD-021",
+      "name": "Concentric Sun Matrix",
+      "focus": "Object-centric ring and matrix interplay for mover/PAR cohesion.",
+      "phrase_targets": [
+        "verse_groove",
+        "build",
+        "drop"
+      ],
+      "mover_ideas": [
+        "Drive ring-based mover routes with clear clockwise/counterclockwise phases.",
+        "Use matrix intersection points as cue punctuation targets.",
+        "Change ring radius at phrase boundaries, not every bar."
+      ],
+      "par_ideas": [
+        "Run arc-follow chases that trace ring edges.",
+        "Use 1-beat contour hits only when mover rings swap direction.",
+        "Use 4-beat fades during geometric reset bars."
+      ],
+      "preferred_transforms": [
+        "expand",
+        "mirror",
+        "reverse"
+      ],
+      "preferred_par_modes": [
+        "blink2",
+        "blink1",
+        "fade4"
+      ],
+      "preferred_relationships": [
+        "unison",
+        "counterpoint"
+      ],
+      "anti_rules": [
+        "Do not run unrelated linear chases against circular mover architecture.",
+        "Avoid radius changes that happen faster than one bar."
+      ],
+      "tags": [
+        "concentric",
+        "matrix",
+        "rings",
+        "dj_snake",
+        "geometry"
+      ]
+    },
+    {
+      "id": "DTP-022",
+      "ld_id": "LD-022",
+      "name": "Organic Beam Organism",
+      "focus": "Large mover arrays behaving as one evolving beam organism.",
+      "phrase_targets": [
+        "intro",
+        "build",
+        "breakdown",
+        "drop"
+      ],
+      "mover_ideas": [
+        "Treat multi-fixture arrays as one macro object with phased sub-cells.",
+        "Use long-form phase evolution over 8-16 bars.",
+        "Apply only one major transform shift per phrase block."
+      ],
+      "par_ideas": [
+        "Use restrained fade layers beneath beam-organism movement.",
+        "Apply short chase punctuation as phrase entry markers only.",
+        "Keep PAR movement simple when array complexity is high."
+      ],
+      "preferred_transforms": [
+        "phase_shift",
+        "expand",
+        "invert"
+      ],
+      "preferred_par_modes": [
+        "fade8",
+        "fade4",
+        "blink2"
+      ],
+      "preferred_relationships": [
+        "unison",
+        "counterpoint"
+      ],
+      "anti_rules": [
+        "Do not split one-organism arrays into unrelated motion islands mid-phrase.",
+        "Avoid high-rate chase density while long-form organic sweeps are active."
+      ],
+      "tags": [
+        "afterlife",
+        "organic",
+        "beam",
+        "array",
+        "long_form"
+      ]
+    },
+    {
+      "id": "DTP-023",
+      "ld_id": "LD-023",
+      "name": "Strobe Wall Lead Voice",
+      "focus": "Strobe matrix as phrase-leading instrument with controlled returns.",
+      "phrase_targets": [
+        "build",
+        "drop"
+      ],
+      "mover_ideas": [
+        "Hold architectural mover positions while strobe wall carries peak phrasing.",
+        "Use geometric re-entry moves directly after strobe climaxes.",
+        "Limit mover transform count during strobe-dominant bars."
+      ],
+      "par_ideas": [
+        "Morph saturated PAR looks into strobe-led accents at phrase peaks.",
+        "Use short 1-beat strobe packets, then recover with 2/4-beat color chase.",
+        "Keep one color anchor active during strobe transitions for continuity."
+      ],
+      "preferred_transforms": [
+        "compress",
+        "reverse",
+        "mirror"
+      ],
+      "preferred_par_modes": [
+        "blink1",
+        "blink2",
+        "fade4"
+      ],
+      "preferred_relationships": [
+        "inclusion",
+        "counterpoint"
+      ],
+      "anti_rules": [
+        "Do not keep strobe-wall output at peak across entire sections.",
+        "Avoid dropping all color anchors during repeated strobe peaks."
+      ],
+      "tags": [
+        "chemical_brothers",
+        "strobe_wall",
+        "climax",
+        "matrix",
+        "contrast"
+      ]
+    },
+    {
+      "id": "DTP-024",
+      "ld_id": "LD-024",
+      "name": "Winched Grid Morph",
+      "focus": "Lift/collapse grid reveals as phrase architecture markers.",
+      "phrase_targets": [
+        "intro",
+        "build",
+        "drop",
+        "outro"
+      ],
+      "mover_ideas": [
+        "Use vertical depth changes to signal section transitions.",
+        "Run stable geometry while transitioning grid height.",
+        "Time morph endpoints to phrase downbeats for clean arrival."
+      ],
+      "par_ideas": [
+        "Use ladder-step chase acceleration as grids move.",
+        "Switch to 4-beat fades on grid settle bars.",
+        "Use brief 1-beat punctuation at height-change completion points."
+      ],
+      "preferred_transforms": [
+        "expand",
+        "compress",
+        "reverse"
+      ],
+      "preferred_par_modes": [
+        "blink2",
+        "fade4",
+        "blink1"
+      ],
+      "preferred_relationships": [
+        "unison",
+        "inclusion"
+      ],
+      "anti_rules": [
+        "Do not trigger constant vertical morphs without settled groove bars.",
+        "Avoid mismatching lift timing and phrase boundaries."
+      ],
+      "tags": [
+        "winch",
+        "grid",
+        "reveal",
+        "depth",
+        "arena"
+      ]
+    },
+    {
+      "id": "DTP-025",
+      "ld_id": "LD-025",
+      "name": "Four Cell Texture Engine",
+      "focus": "Cell-mode fixture programming for texture-rich variation.",
+      "phrase_targets": [
+        "verse_groove",
+        "build",
+        "breakdown"
+      ],
+      "mover_ideas": [
+        "Partition fixture cells into alternating motion groups.",
+        "Rotate active cell groups every 4 bars to maintain novelty.",
+        "Use inverted cell ownership in contrast phrases."
+      ],
+      "par_ideas": [
+        "Run cell-subset chases before full-fixture chases.",
+        "Use fade-based cell blooms in atmospheric sections.",
+        "Use 1-beat full-cell unison only for phrase punctuation."
+      ],
+      "preferred_transforms": [
+        "phase_shift",
+        "mirror",
+        "invert"
+      ],
+      "preferred_par_modes": [
+        "blink2",
+        "fade4",
+        "fade8"
+      ],
+      "preferred_relationships": [
+        "counterpoint",
+        "unison"
+      ],
+      "anti_rules": [
+        "Do not activate all cells at full density for long windows.",
+        "Avoid random cell remaps without barline alignment."
+      ],
+      "tags": [
+        "cell_mode",
+        "texture",
+        "repurpose",
+        "modular",
+        "technical"
+      ]
+    },
+    {
+      "id": "DTP-026",
+      "ld_id": "LD-026",
+      "name": "Pyro Laser Windows",
+      "focus": "Lighting phrasing that leaves deliberate space for FX integration.",
+      "phrase_targets": [
+        "build",
+        "drop"
+      ],
+      "mover_ideas": [
+        "Define pre-FX and post-FX lighting windows around key hits.",
+        "Use geometry holds immediately before pyro/laser impacts.",
+        "Resume route movement one beat after the FX hit for readability."
+      ],
+      "par_ideas": [
+        "Reduce chase density in pre-FX bars to create contrast.",
+        "Use short beat-synced PAR blasts to frame FX hits.",
+        "Return to 2-beat chase during post-hit stabilization."
+      ],
+      "preferred_transforms": [
+        "compress",
+        "mirror",
+        "reverse"
+      ],
+      "preferred_par_modes": [
+        "blink1",
+        "blink2",
+        "fade4"
+      ],
+      "preferred_relationships": [
+        "inclusion",
+        "unison"
+      ],
+      "anti_rules": [
+        "Do not mask pyro/laser moments with simultaneous maximum lighting chaos.",
+        "Avoid FX hits with no visual lead-in or release bars."
+      ],
+      "tags": [
+        "pyro",
+        "laser",
+        "integration",
+        "window",
+        "timing"
+      ]
+    },
+    {
+      "id": "DTP-027",
+      "ld_id": "LD-027",
+      "name": "Calibration Locked Geometry",
+      "focus": "Orientation-safe patterning for repeatable club/festival deployments.",
+      "phrase_targets": [
+        "intro",
+        "verse_groove",
+        "build"
+      ],
+      "mover_ideas": [
+        "Build symmetric route templates that tolerate small rig variance.",
+        "Validate pan/tilt baselines before high-complexity layers.",
+        "Use mirrored correction bars at phrase starts."
+      ],
+      "par_ideas": [
+        "Use standard diagnostic chase templates during transitions.",
+        "Default to 2/4-beat chases while alignment confidence is low.",
+        "Escalate to 1-beat patterns only after stable alignment bars."
+      ],
+      "preferred_transforms": [
+        "mirror",
+        "reverse",
+        "compress"
+      ],
+      "preferred_par_modes": [
+        "fade4",
+        "blink2",
+        "fade8"
+      ],
+      "preferred_relationships": [
+        "unison",
+        "counterpoint"
+      ],
+      "anti_rules": [
+        "Do not deploy asymmetric hero looks before verifying fixture orientation.",
+        "Avoid combining high-speed pan effects with uncertain focus alignment."
+      ],
+      "tags": [
+        "calibration",
+        "orientation",
+        "repeatable",
+        "club",
+        "rigging"
+      ]
+    },
+    {
+      "id": "DTP-028",
+      "ld_id": "LD-028",
+      "name": "Warm White Contrast Plate",
+      "focus": "Warm-white contrast anchors inside saturated RGB worlds.",
+      "phrase_targets": [
+        "build",
+        "drop",
+        "breakdown",
+        "outro"
+      ],
+      "mover_ideas": [
+        "Keep saturated movement worlds, then insert short warm-white plate moments.",
+        "Use plate moments to reset visual fatigue before next color peak.",
+        "Tie plate timing to phrase boundaries every 8-16 bars."
+      ],
+      "par_ideas": [
+        "Run RGB chase through phrase bodies and switch to warm-white hits on markers.",
+        "Use 1-beat warm plate accents followed by 2/4-beat color recovery.",
+        "Avoid extended warm-only states in high-energy sections."
+      ],
+      "preferred_transforms": [
+        "invert",
+        "mirror",
+        "compress"
+      ],
+      "preferred_par_modes": [
+        "blink2",
+        "blink1",
+        "fade4"
+      ],
+      "preferred_relationships": [
+        "counterpoint",
+        "unison"
+      ],
+      "anti_rules": [
+        "Do not overuse warm-white plates until they lose contrast value.",
+        "Avoid abrupt warm/cool swaps without an intensity bridge."
+      ],
+      "tags": [
+        "warm_white",
+        "contrast",
+        "plates",
+        "color_reset",
+        "festival"
+      ]
+    },
+    {
+      "id": "DTP-029",
+      "ld_id": "LD-029",
+      "name": "Universe Efficient Eye Candy",
+      "focus": "Channel-mode economy while preserving headline phrase detail.",
+      "phrase_targets": [
+        "verse_groove",
+        "build",
+        "drop",
+        "breakdown"
+      ],
+      "mover_ideas": [
+        "Assign detail-heavy transforms to hero fixtures only.",
+        "Keep support fixtures in lower-complexity mirrored behaviors.",
+        "Switch hero groups by phrase to spread detail ownership."
+      ],
+      "par_ideas": [
+        "Run broad 2-beat chase on support PARs as baseline.",
+        "Inject 1-beat detail bursts through hero fixture subsets.",
+        "Use 4-beat fade resets after dense hero windows."
+      ],
+      "preferred_transforms": [
+        "mirror",
+        "phase_shift",
+        "compress"
+      ],
+      "preferred_par_modes": [
+        "blink2",
+        "fade4",
+        "blink1"
+      ],
+      "preferred_relationships": [
+        "unison",
+        "counterpoint"
+      ],
+      "anti_rules": [
+        "Do not run all fixtures at maximum channel complexity simultaneously.",
+        "Avoid hero detail bursts longer than phrase punctuation windows."
+      ],
+      "tags": [
+        "universe",
+        "efficiency",
+        "hero_fixtures",
+        "detail",
+        "scalable"
+      ]
+    },
+    {
+      "id": "DTP-030",
+      "ld_id": "LD-030",
+      "name": "Handoff Safe Matrix Architecture",
+      "focus": "Festival-grade architecture that supports rapid artist handoffs.",
+      "phrase_targets": [
+        "verse_groove",
+        "build",
+        "drop",
+        "outro"
+      ],
+      "mover_ideas": [
+        "Keep shared macro pages stable across all songs.",
+        "Layer artist-specific detail routes on top of macro templates.",
+        "Use one-bar neutral handoff buffers between detail families."
+      ],
+      "par_ideas": [
+        "Maintain a shared baseline chase for all set segments.",
+        "Inject artist-specific chase deltas only in designated windows.",
+        "Return to baseline chase after each detail window for reliability."
+      ],
+      "preferred_transforms": [
+        "mirror",
+        "reverse",
+        "phase_shift"
+      ],
+      "preferred_par_modes": [
+        "blink2",
+        "blink1",
+        "fade4"
+      ],
+      "preferred_relationships": [
+        "unison",
+        "inclusion"
+      ],
+      "anti_rules": [
+        "Do not hide macro safety looks behind fragile per-artist pages.",
+        "Avoid abrupt look jumps with no neutral handoff frame."
+      ],
+      "tags": [
+        "handoff",
+        "festival",
+        "matrix",
+        "macro",
+        "reliability"
+      ]
+    }
+  ]
+}
