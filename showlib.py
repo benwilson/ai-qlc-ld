@@ -26,7 +26,13 @@ import os
 import re
 import xml.etree.ElementTree as ET
 from xml.sax.saxutils import escape
-from typing import List, Tuple, Dict, Optional, Any
+from typing import List, Tuple, Dict, Optional, Any, Sequence
+
+_PHRASE_PLANNER_CACHE: Dict[str, Any] = {}
+_VENUE_PROFILE_CACHE: Dict[Tuple[str, str], Any] = {}
+_FOCUS_POSITION_CACHE: Dict[Tuple[str, str], Any] = {}
+_DESIGNER_PACK_MEMORY_CACHE: Dict[str, Dict[str, Any]] = {}
+_DESIGNER_PACK_MEMORY_SEEN_SHOWS: set[Tuple[str, str]] = set()
 
 # =============================================================================
 # FIXTURE CONSTANTS
@@ -816,6 +822,568 @@ def print_structure(structure: list, bpm: int):
 
 
 # =============================================================================
+# PHRASE-AWARE PLANNING WRAPPERS
+# =============================================================================
+
+def get_phrase_planner(project_root: Optional[str] = None):
+    """Return cached phrase planner loaded from references/data catalogs.
+
+    This keeps showlib as a thin integration point while phrase logic lives in
+    qlc_runtime.phrase_planner.
+    """
+    root = os.path.abspath(project_root or os.path.dirname(os.path.abspath(__file__)))
+    planner = _PHRASE_PLANNER_CACHE.get(root)
+    if planner is None:
+        from qlc_runtime.phrase_planner import PhraseAwarePlanner
+
+        planner = PhraseAwarePlanner.from_project_defaults(root)
+        _PHRASE_PLANNER_CACHE[root] = planner
+    return planner
+
+
+def classify_phrase(
+    segment_label: str,
+    rms: float,
+    sub: float,
+    high: float,
+    progress: float,
+    project_root: Optional[str] = None,
+) -> str:
+    """Classify a segment/bar into canonical phrase buckets."""
+    planner = get_phrase_planner(project_root)
+    return planner.classify_phrase(
+        segment_label=segment_label,
+        rms=rms,
+        sub=sub,
+        high=high,
+        progress=progress,
+    )
+
+
+def _dedupe_preserve(items: Sequence[str]) -> List[str]:
+    out: List[str] = []
+    seen: set[str] = set()
+    for raw in items:
+        text = str(raw).strip()
+        if not text:
+            continue
+        key = text.lower()
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(text)
+    return out
+
+
+def _clean_creative_text(value: Any) -> str:
+    text = str(value or "").strip()
+    if not text:
+        return ""
+    lowered = text.lower()
+    if lowered in {"todo", "tbd", "na", "n/a", "none", "null"}:
+        return ""
+    if "todo" in lowered or "example.com" in lowered:
+        return ""
+    return text
+
+
+def _clean_creative_list(value: Any) -> List[str]:
+    if not isinstance(value, list):
+        return []
+    return _dedupe_preserve(
+        [
+            text
+            for text in (_clean_creative_text(item) for item in value)
+            if text
+        ]
+    )
+
+
+def build_creative_context(
+    brief: Optional[Dict[str, Any]],
+    song_stem: Optional[str] = None,
+) -> Dict[str, Any]:
+    """Build normalized brand tokens + creative directives from a research brief.
+
+    Use this once per generator and pass:
+    - context["brand_tokens"] -> pick_phrase_technique(..., brand_tokens=...)
+    - context["creative_directives"] -> pick_phrase_technique(..., creative_directives=...)
+    """
+    payload = brief if isinstance(brief, dict) else {}
+
+    song_title = (
+        _clean_creative_text(payload.get("song_title", ""))
+        or _clean_creative_text(song_stem or "")
+    )
+    artist = _clean_creative_text(payload.get("artist", ""))
+    thesis = _clean_creative_text(payload.get("thesis", ""))
+
+    branding = payload.get("artist_branding")
+    if not isinstance(branding, dict):
+        branding = {}
+    branding_summary = _clean_creative_text(branding.get("summary", ""))
+    visual_cues = _clean_creative_list(branding.get("visual_cues"))
+    do_not_copy = _clean_creative_list(branding.get("do_not_copy"))
+
+    title_inspo = payload.get("song_title_inspiration")
+    if not isinstance(title_inspo, dict):
+        title_inspo = {}
+    title_keywords = _clean_creative_list(title_inspo.get("keywords"))
+    title_motifs = _clean_creative_list(title_inspo.get("motifs"))
+
+    visual_direction = payload.get("visual_direction")
+    if not isinstance(visual_direction, dict):
+        visual_direction = {}
+    color_story = _clean_creative_text(visual_direction.get("color_story", ""))
+    motion_story = _clean_creative_text(visual_direction.get("motion_story", ""))
+    staging_story = _clean_creative_text(visual_direction.get("staging_story", ""))
+    direction_notes = [row for row in (color_story, motion_story, staging_story) if row]
+
+    style_constraints = payload.get("style_constraints")
+    if not isinstance(style_constraints, dict):
+        style_constraints = {}
+    must_include = _clean_creative_list(style_constraints.get("must_include"))
+    avoid = _clean_creative_list(style_constraints.get("avoid"))
+
+    raw_score = payload.get("brand_alignment_score")
+    try:
+        alignment_score = float(raw_score)
+    except Exception:
+        alignment_score = 0.0
+    alignment_score = max(0.0, min(5.0, alignment_score))
+    alignment_weight = round(0.45 + (0.55 * (alignment_score / 5.0)), 4)
+
+    brand_tokens = _dedupe_preserve(
+        [
+            token
+            for token in (
+                artist,
+                song_title,
+                thesis,
+                branding_summary,
+                *visual_cues,
+                *title_keywords,
+                *title_motifs,
+                *direction_notes,
+                *must_include,
+            )
+            if token
+        ]
+    )
+
+    creative_directives = {
+        "must_include": must_include,
+        "avoid": avoid,
+        "do_not_copy": do_not_copy,
+        "direction_notes": direction_notes,
+        "branding_notes": [token for token in (branding_summary, *visual_cues) if token],
+        "thesis": thesis,
+        "brand_alignment_score": alignment_score,
+        "brand_alignment_weight": alignment_weight,
+    }
+
+    return {
+        "brand_tokens": brand_tokens,
+        "creative_directives": creative_directives,
+    }
+
+
+def _designer_pack_memory_path(project_root: Optional[str] = None) -> str:
+    root = os.path.abspath(project_root or os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(root, "references", "data", "designer-pack-memory.json")
+
+
+def _load_designer_pack_memory(project_root: Optional[str] = None) -> Dict[str, Any]:
+    root = os.path.abspath(project_root or os.path.dirname(os.path.abspath(__file__)))
+    cached = _DESIGNER_PACK_MEMORY_CACHE.get(root)
+    if cached is not None:
+        return cached
+
+    path = _designer_pack_memory_path(root)
+    payload: Dict[str, Any]
+    if os.path.exists(path):
+        try:
+            import json
+
+            with open(path, "r", encoding="utf-8") as handle:
+                payload = json.loads(handle.read())
+        except Exception:
+            payload = {}
+    else:
+        payload = {}
+
+    usage = payload.get("usage")
+    if not isinstance(usage, dict):
+        usage = {}
+    recent = payload.get("recent")
+    if not isinstance(recent, list):
+        recent = []
+
+    out = {"usage": usage, "recent": [str(token) for token in recent if str(token).strip()]}
+    _DESIGNER_PACK_MEMORY_CACHE[root] = out
+    return out
+
+
+def _save_designer_pack_memory(project_root: Optional[str], payload: Dict[str, Any]) -> None:
+    root = os.path.abspath(project_root or os.path.dirname(os.path.abspath(__file__)))
+    path = _designer_pack_memory_path(root)
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    import json
+
+    with open(path, "w", encoding="utf-8") as handle:
+        handle.write(json.dumps(payload, indent=2, ensure_ascii=True) + "\n")
+    _DESIGNER_PACK_MEMORY_CACHE[root] = payload
+
+
+def _record_designer_pack_usage_once(
+    show_key: Optional[str],
+    pack_ids: List[str],
+    project_root: Optional[str] = None,
+) -> None:
+    key = str(show_key or "").strip()
+    if not key:
+        return
+
+    root = os.path.abspath(project_root or os.path.dirname(os.path.abspath(__file__)))
+    seen_key = (root, key)
+    if seen_key in _DESIGNER_PACK_MEMORY_SEEN_SHOWS:
+        return
+    _DESIGNER_PACK_MEMORY_SEEN_SHOWS.add(seen_key)
+
+    memory = _load_designer_pack_memory(root)
+    usage = memory.setdefault("usage", {})
+    if not isinstance(usage, dict):
+        usage = {}
+        memory["usage"] = usage
+    recent = memory.setdefault("recent", [])
+    if not isinstance(recent, list):
+        recent = []
+        memory["recent"] = recent
+
+    for pack_id in pack_ids:
+        token = str(pack_id).strip()
+        if not token:
+            continue
+        usage[token] = int(usage.get(token, 0)) + 1
+        recent.append(token)
+
+    if len(recent) > 512:
+        del recent[:-512]
+    _save_designer_pack_memory(root, memory)
+
+
+def pick_phrase_technique(
+    phrase: str,
+    segment_index: int,
+    global_bar: int,
+    usage: Optional[Dict[str, int]] = None,
+    recent: Optional[List[str]] = None,
+    cooldown: int = 2,
+    previous_plan: Optional[Dict[str, Any]] = None,
+    brand_tokens: Optional[List[str]] = None,
+    candidate_count: int = 3,
+    creative_directives: Optional[Dict[str, Any]] = None,
+    show_key: Optional[str] = None,
+    pack_usage: Optional[Dict[str, int]] = None,
+    pack_recent: Optional[List[str]] = None,
+    pack_cooldown: int = 3,
+    project_root: Optional[str] = None,
+) -> Dict[str, Any]:
+    """Choose the top scored coordination technique for a phrase bucket.
+
+    Planner evaluates multiple candidates (default=3) and returns rank-1 plan.
+    """
+    effective_pack_usage = pack_usage
+    effective_pack_recent = pack_recent
+    if effective_pack_usage is None or effective_pack_recent is None:
+        memory = _load_designer_pack_memory(project_root)
+        if effective_pack_usage is None:
+            effective_pack_usage = memory.get("usage", {})
+        if effective_pack_recent is None:
+            effective_pack_recent = memory.get("recent", [])
+
+    planner = get_phrase_planner(project_root)
+    planned = planner.pick_technique(
+        phrase=phrase,
+        segment_index=segment_index,
+        global_bar=global_bar,
+        usage=usage,
+        recent=recent,
+        cooldown=cooldown,
+        previous=previous_plan,
+        brand_tokens=brand_tokens,
+        candidate_count=candidate_count,
+        creative_directives=creative_directives,
+        show_key=show_key,
+        pack_usage=effective_pack_usage,
+        pack_recent=effective_pack_recent,
+        pack_cooldown=pack_cooldown,
+    )
+
+    if show_key:
+        selected = planner.select_show_designer_packs(
+            show_key=show_key,
+            brand_tokens=brand_tokens,
+            creative_directives=creative_directives,
+            pack_usage=effective_pack_usage,
+            pack_recent=effective_pack_recent,
+            pack_cooldown=pack_cooldown,
+        )
+        pack_ids = [row["id"] for row in selected.get("dominant", [])]
+        contrast = selected.get("contrast")
+        if isinstance(contrast, dict):
+            pack_ids.append(str(contrast.get("id", "")).strip())
+        _record_designer_pack_usage_once(
+            show_key=show_key,
+            pack_ids=[token for token in pack_ids if token],
+            project_root=project_root,
+        )
+
+    return _serialize_planned_phrase_technique(planned)
+
+
+def pick_phrase_technique_candidates(
+    phrase: str,
+    segment_index: int,
+    global_bar: int,
+    usage: Optional[Dict[str, int]] = None,
+    recent: Optional[List[str]] = None,
+    cooldown: int = 2,
+    previous_plan: Optional[Dict[str, Any]] = None,
+    brand_tokens: Optional[List[str]] = None,
+    candidate_count: int = 3,
+    creative_directives: Optional[Dict[str, Any]] = None,
+    show_key: Optional[str] = None,
+    pack_usage: Optional[Dict[str, int]] = None,
+    pack_recent: Optional[List[str]] = None,
+    pack_cooldown: int = 3,
+    project_root: Optional[str] = None,
+) -> List[Dict[str, Any]]:
+    """Return scored phrase-technique candidates, best-first."""
+    effective_pack_usage = pack_usage
+    effective_pack_recent = pack_recent
+    if effective_pack_usage is None or effective_pack_recent is None:
+        memory = _load_designer_pack_memory(project_root)
+        if effective_pack_usage is None:
+            effective_pack_usage = memory.get("usage", {})
+        if effective_pack_recent is None:
+            effective_pack_recent = memory.get("recent", [])
+
+    planner = get_phrase_planner(project_root)
+    planned_rows = planner.plan_candidates(
+        phrase=phrase,
+        segment_index=segment_index,
+        global_bar=global_bar,
+        usage=usage,
+        recent=recent,
+        cooldown=cooldown,
+        previous=previous_plan,
+        brand_tokens=brand_tokens,
+        candidate_count=candidate_count,
+        creative_directives=creative_directives,
+        show_key=show_key,
+        pack_usage=effective_pack_usage,
+        pack_recent=effective_pack_recent,
+        pack_cooldown=pack_cooldown,
+    )
+    return [_serialize_planned_phrase_technique(row) for row in planned_rows]
+
+
+def pick_show_designer_packs(
+    show_key: Optional[str] = None,
+    brand_tokens: Optional[List[str]] = None,
+    creative_directives: Optional[Dict[str, Any]] = None,
+    pack_usage: Optional[Dict[str, int]] = None,
+    pack_recent: Optional[List[str]] = None,
+    pack_cooldown: int = 3,
+    project_root: Optional[str] = None,
+) -> Dict[str, Any]:
+    """Return dominant + contrast designer technical packs for a show."""
+    effective_pack_usage = pack_usage
+    effective_pack_recent = pack_recent
+    if effective_pack_usage is None or effective_pack_recent is None:
+        memory = _load_designer_pack_memory(project_root)
+        if effective_pack_usage is None:
+            effective_pack_usage = memory.get("usage", {})
+        if effective_pack_recent is None:
+            effective_pack_recent = memory.get("recent", [])
+
+    planner = get_phrase_planner(project_root)
+    return planner.select_show_designer_packs(
+        show_key=show_key,
+        brand_tokens=brand_tokens,
+        creative_directives=creative_directives,
+        pack_usage=effective_pack_usage,
+        pack_recent=effective_pack_recent,
+        pack_cooldown=pack_cooldown,
+    )
+
+
+def _serialize_planned_phrase_technique(planned: Any) -> Dict[str, Any]:
+    return {
+        "phrase": planned.phrase,
+        "id": planned.technique_id,
+        "name": planned.technique_name,
+        "relationship": planned.relationship,
+        "timing": {
+            "mover_beats": planned.timing.mover_beats,
+            "par_beats": planned.timing.par_beats,
+            "par_style": planned.timing.par_style,
+        },
+        "mover_pattern": {
+            "base_route": planned.mover_pattern.base_route,
+            "transforms": list(planned.mover_pattern.transforms),
+            "phase_shift_beats": planned.mover_pattern.phase_shift_beats,
+            "signature": planned.mover_pattern.signature,
+        },
+        "dimensions": dict(planned.dimensions),
+        "score": {
+            "novelty": planned.score.novelty,
+            "coherence": planned.score.coherence,
+            "brand_fit": planned.score.brand_fit,
+            "creative_fit": planned.score.creative_fit,
+            "phrase_fit": planned.score.phrase_fit,
+            "total": planned.score.total,
+        },
+        "designer_pack": {
+            "id": planned.designer_pack_id,
+            "name": planned.designer_pack_name,
+            "ld_id": planned.designer_ld_id,
+            "role": planned.designer_role,
+            "phrase_targeted": bool(planned.designer_phrase_targeted),
+        },
+        "candidate_rank": planned.candidate_rank,
+        "candidate_count": planned.candidate_count,
+        "changed_dimensions": list(planned.changed_dimensions),
+        "contrast_enforced": bool(planned.contrast_enforced),
+        "beat_reactivity": {
+            "par_min": planned.beat_reactivity.par_min,
+            "mover_min": planned.beat_reactivity.mover_min,
+            "accent_layer": planned.beat_reactivity.accent_layer,
+            "accent_type": planned.beat_reactivity.accent_type,
+        } if planned.beat_reactivity else None,
+    }
+
+
+def mover_family_from_phrase(
+    phrase: str,
+    relationship: str,
+    rms: float,
+    sub: float,
+) -> str:
+    """Map phrase + technique relationship into local mover family buckets."""
+    from qlc_runtime.phrase_planner import family_from_phrase_and_relationship
+
+    return family_from_phrase_and_relationship(
+        phrase=phrase,
+        relationship=relationship,
+        rms=rms,
+        sub=sub,
+    )
+
+
+def par_mode_from_phrase_timing(
+    par_beats: int,
+    par_style: str,
+    phrase: str,
+    seg_bar_idx: int,
+) -> str:
+    """Map abstract technique timing into local PAR mode keys."""
+    from qlc_runtime.phrase_planner import TechniqueTiming, par_mode_from_timing
+
+    timing = TechniqueTiming(
+        mover_beats=4,
+        par_beats=par_beats,
+        par_style=par_style,
+    )
+    return par_mode_from_timing(
+        timing=timing,
+        phrase=phrase,
+        seg_bar_idx=seg_bar_idx,
+    )
+
+
+def load_venue_profile(
+    project_root: Optional[str] = None,
+    venue_dir: Optional[str] = None,
+) -> Dict[str, Any]:
+    """Load and validate venue-specific creativity profile.
+
+    Profiles live under venue/<name>/references/creative-profile.json.
+    """
+    root = os.path.abspath(project_root or os.path.dirname(os.path.abspath(__file__)))
+    vkey = venue_dir or "__auto__"
+    cache_key = (root, vkey)
+
+    profile = _VENUE_PROFILE_CACHE.get(cache_key)
+    if profile is not None:
+        return profile
+
+    from qlc_runtime.venue_profile import load_and_validate_venue_profile
+
+    profile = load_and_validate_venue_profile(project_root=root, venue_dir=venue_dir)
+    _VENUE_PROFILE_CACHE[cache_key] = profile
+    return profile
+
+
+def load_focus_position_tuples(
+    project_root: Optional[str] = None,
+    venue_dir: Optional[str] = None,
+    include_composites: bool = True,
+) -> Dict[str, Tuple[int, int, int, int, int, int, int]]:
+    """Load canonical mover position tuples from venue focus-positions.md."""
+    root = os.path.abspath(project_root or os.path.dirname(os.path.abspath(__file__)))
+    vkey = venue_dir or "__auto__"
+    cache_key = (root, vkey)
+
+    cached = _FOCUS_POSITION_CACHE.get(cache_key)
+    if cached is not None and include_composites:
+        return cached
+
+    from qlc_runtime.focus_positions import load_focus_position_tuples as _load
+
+    positions = _load(
+        project_root=root,
+        venue_dir=venue_dir,
+        include_composites=include_composites,
+    )
+
+    if include_composites:
+        _FOCUS_POSITION_CACHE[cache_key] = positions
+    return positions
+
+
+def require_research_brief(
+    song_stem: str,
+    project_root: Optional[str] = None,
+    venue_dir: Optional[str] = None,
+) -> Dict[str, Any]:
+    """Enforce artist/song branding research before generating a show.
+
+    If a brief does not exist, a draft stub is auto-created and validation
+    raises with instructions to complete/approve it.
+    """
+    root = os.path.abspath(project_root or os.path.dirname(os.path.abspath(__file__)))
+    from qlc_runtime.research_gate import load_and_validate_brief
+
+    venue_profile = load_venue_profile(project_root=root, venue_dir=venue_dir)
+
+    try:
+        brief = load_and_validate_brief(
+            song_title=song_stem,
+            project_root=root,
+            venue_dir=venue_dir,
+        )
+        brief["_meta"]["venue_profile_json"] = venue_profile["_meta"]["profile_json"]
+        return brief
+    except Exception as exc:
+        raise RuntimeError(
+            f"Research brief validation failed for {song_stem!r}: {exc}. "
+            "Fill <venue>/shows/notes/<song-slug>.json and set status='approved'."
+        ) from exc
+
+
+# =============================================================================
 # VENUE TEMPLATE GENERATOR
 # =============================================================================
 
@@ -893,6 +1461,408 @@ def generate_venue_template(venue_dir: str, bpm: int = 128):
     )
 
     print(f"  Fixtures: {', '.join(fx['name'] for fx in placed_defs)}")
+
+
+# =============================================================================
+# SEGMENT TRANSITION HELPERS
+# =============================================================================
+
+def plan_segment_transition(
+    prev_phrase: Optional[str],
+    next_phrase: Optional[str],
+    prev_energy: float,
+    next_energy: float,
+    segment_index: int,
+    total_segments: int,
+    recent_transitions: Optional[List[str]] = None,
+    show_key: str = "",
+    end_of_show: bool = False,
+    prev_segment_beats: int = 32,
+    next_segment_beats: int = 32,
+    project_root: Optional[str] = None,
+) -> Optional[Dict[str, Any]]:
+    """Plan a transition event for a segment boundary.
+
+    Thin wrapper around PhraseAwarePlanner.plan_transition().
+    Returns a serialized dict or None if no transition config exists.
+    """
+    planner = get_phrase_planner(project_root)
+    event = planner.plan_transition(
+        prev_phrase=prev_phrase,
+        next_phrase=next_phrase,
+        prev_energy=prev_energy,
+        next_energy=next_energy,
+        segment_index=segment_index,
+        total_segments=total_segments,
+        recent_transitions=recent_transitions,
+        show_key=show_key,
+        end_of_show=end_of_show,
+        prev_segment_beats=prev_segment_beats,
+        next_segment_beats=next_segment_beats,
+    )
+    if event is None:
+        return None
+    return {
+        "type": event.transition_type,
+        "duration_beats": event.duration_beats,
+        "fixtures": event.fixtures,
+        "exit_style": event.exit_style,
+        "description": event.description,
+        "pool_key": event.pool_key,
+        "segment_index": event.segment_index,
+        "end_of_show": event.end_of_show,
+    }
+
+
+def build_transition_scenes(
+    transition: Optional[Dict[str, Any]],
+    bpm: float,
+    pos_tuples: Optional[Dict[str, Any]] = None,
+    palette: Optional[Tuple[int, int, int]] = None,
+    last_scene: Optional[dict] = None,
+) -> Tuple[List[dict], List[Tuple[int, int]]]:
+    """Build scene(s) and timing for a transition event.
+
+    Dispatcher that routes to the correct scene factory based on
+    transition["type"]. Generators call this one function.
+
+    Args:
+        transition: Dict from plan_segment_transition(), or None.
+        bpm: Show BPM for timing calculations.
+        pos_tuples: Dict of position name -> (pan, tilt) tuples (optional).
+        palette: RGB tuple for color-based transitions (optional).
+        last_scene: Previous scene dict for freeze/hold transitions (optional).
+
+    Returns:
+        (scenes, timing) — scenes to extend into the scene list,
+        timing entries for the chaser. Empty lists if transition is None.
+    """
+    if transition is None:
+        return [], []
+
+    t_type = transition.get("type", "")
+    duration_beats = int(transition.get("duration_beats", 1))
+    exit_style = transition.get("exit_style", "snap")
+
+    factory = _TRANSITION_FACTORIES.get(t_type)
+    if factory is not None:
+        return factory(bpm=bpm, duration_beats=duration_beats,
+                       exit_style=exit_style, pos_tuples=pos_tuples,
+                       palette=palette, last_scene=last_scene)
+
+    # Unknown transition type: fall back to a 1-beat blackout
+    return _transition_blackout(bpm=bpm, duration_beats=duration_beats,
+                                exit_style=exit_style, pos_tuples=pos_tuples,
+                                palette=palette, last_scene=last_scene)
+
+
+def _beat_ms(bpm: float, beats: int) -> int:
+    """Milliseconds for N beats at given BPM."""
+    return round((60000 / bpm) * beats)
+
+
+def _transition_blackout(bpm, duration_beats, exit_style, **_kw):
+    """Full blackout for N beats. Used by: blackout_slingshot, dead_air."""
+    s = scene("T:Blackout", *blackout_all(), path="Transitions")
+    if exit_style == "smooth":
+        timing = [(_beat_ms(bpm, duration_beats), 0)]
+    else:
+        timing = [(0, _beat_ms(bpm, duration_beats))]
+    return [s], timing
+
+
+def _transition_white_flash(bpm, duration_beats, exit_style, palette=None, **_kw):
+    """All fixtures flash white for N beats."""
+    s = scene("T:White Flash",
+              sharpy(dim=255, strobe=SHARPY_OPEN, color7=0),
+              bsw(dim=255, shutter=BSW_SHUT_OPEN, color=BSW_WHITE),
+              profile(dim=255, color=0),
+              fourbar_solid(255, 255, 255),
+              *miss_both(255, 255, 255),
+              ni3k(dim=255, r=255, g=255, b=255, w=255, halo=H_RGB),
+              path="Transitions")
+    timing = [(0, _beat_ms(bpm, duration_beats))]
+    return [s], timing
+
+
+def _transition_strobe_burst(bpm, duration_beats, exit_style, **_kw):
+    """All strobes fire for N beats."""
+    s = scene("T:Strobe Burst",
+              sharpy(dim=255, strobe=SHARPY_STROBE_FAST, color7=0),
+              bsw(dim=255, shutter=BSW_SHUT_STROBE_FAST, color=BSW_WHITE),
+              profile(dim=255, strobe=200),
+              fourbar_solid(255, 255, 255, strobe=200),
+              *miss_both(255, 255, 255, strobe=200),
+              ni3k(dim=255, r=255, g=255, b=255, w=255, halo=H_RGB),
+              path="Transitions")
+    timing = [(0, _beat_ms(bpm, duration_beats))]
+    return [s], timing
+
+
+def _transition_freeze_decay(bpm, duration_beats, exit_style, last_scene=None, **_kw):
+    """Hold last frame, then dim/park movers over duration.
+
+    If last_scene is provided, uses it as the hold. Otherwise uses a dim scene.
+    """
+    # Dim scene: pars at 20%, movers parked at DSC
+    s = scene("T:Freeze Decay",
+              dark_sharpy(), dark_bsw(), dark_profile(), dark_ni3k(),
+              fourbar_solid(30, 30, 30),
+              *miss_both(20, 20, 20),
+              path="Transitions")
+    # Smooth crossfade into the dim state
+    timing = [(_beat_ms(bpm, duration_beats), 0)]
+    return [s], timing
+
+
+def _transition_color_swap(bpm, duration_beats, exit_style, palette=None, **_kw):
+    """All fixtures snap to a contrasting color on beat 1."""
+    r, g, b = palette if palette else (0, 180, 255)
+    # Invert the palette for contrast
+    ir, ig, ib = 255 - r, 255 - g, 255 - b
+    s = scene("T:Color Swap",
+              sharpy(dim=200, strobe=SHARPY_OPEN),
+              bsw(dim=200, shutter=BSW_SHUT_OPEN),
+              profile(dim=200),
+              fourbar_solid(ir, ig, ib),
+              *miss_both(ir, ig, ib),
+              ni3k(dim=200, r=ir, g=ig, b=ib),
+              path="Transitions")
+    timing = [(0, _beat_ms(bpm, duration_beats))]
+    return [s], timing
+
+
+def _transition_color_inversion(bpm, duration_beats, exit_style, palette=None, **_kw):
+    """Swap warm/cool across all fixtures."""
+    # Same implementation as color_swap — generators differentiate via palette
+    return _transition_color_swap(bpm=bpm, duration_beats=duration_beats,
+                                   exit_style=exit_style, palette=palette)
+
+
+def _transition_position_snap(bpm, duration_beats, exit_style, **_kw):
+    """Movers snap to DSC, pars hold."""
+    s = scene("T:Position Snap",
+              sharpy(dim=200, strobe=SHARPY_OPEN),
+              bsw(dim=200, shutter=BSW_SHUT_OPEN),
+              profile(dim=200),
+              path="Transitions")
+    timing = [(0, _beat_ms(bpm, duration_beats))]
+    return [s], timing
+
+
+def _transition_slow_dissolve(bpm, duration_beats, exit_style, **_kw):
+    """Smooth crossfade — dim scene acts as a midpoint between old and new looks."""
+    s = scene("T:Dissolve Mid",
+              sharpy(dim=120, strobe=SHARPY_OPEN),
+              bsw(dim=120, shutter=BSW_SHUT_OPEN),
+              profile(dim=120),
+              fourbar_solid(80, 80, 80),
+              *miss_both(60, 60, 60),
+              ni3k(dim=100, r=60, g=60, b=60),
+              path="Transitions")
+    timing = [(_beat_ms(bpm, duration_beats), 0)]
+    return [s], timing
+
+
+def _transition_par_ladder(bpm, duration_beats, exit_style, palette=None, **_kw):
+    """Pars light up sequentially L-to-R over duration.
+
+    Creates 2 half-steps: left pars then right pars.
+    """
+    r, g, b = palette if palette else (0, 100, 255)
+    half_beats = max(1, duration_beats // 2)
+    s1 = scene("T:Par Ladder 1",
+               fourbar_solid(0, 0, 0),
+               miss1(r, g, b),
+               miss2(0, 0, 0),
+               dark_sharpy(), dark_bsw(), dark_profile(), dark_ni3k(),
+               path="Transitions")
+    s2 = scene("T:Par Ladder 2",
+               fourbar_solid(r, g, b),
+               *miss_both(r, g, b),
+               dark_sharpy(), dark_bsw(), dark_profile(), dark_ni3k(),
+               path="Transitions")
+    t1 = (0, _beat_ms(bpm, half_beats))
+    t2 = (0, _beat_ms(bpm, duration_beats - half_beats))
+    return [s1, s2], [t1, t2]
+
+
+def _transition_stutter_gate(bpm, duration_beats, exit_style, **_kw):
+    """Rapid par strobe for N beats."""
+    s = scene("T:Stutter Gate",
+              fourbar_solid(255, 255, 255, strobe=220),
+              *miss_both(255, 255, 255, strobe=220),
+              dark_sharpy(), dark_bsw(), dark_profile(), dark_ni3k(),
+              path="Transitions")
+    timing = [(0, _beat_ms(bpm, duration_beats))]
+    return [s], timing
+
+
+def _transition_pulse_to_glow(bpm, duration_beats, exit_style, palette=None, **_kw):
+    """Rhythmic par pulse decays to static glow."""
+    r, g, b = palette if palette else (60, 40, 120)
+    s = scene("T:Pulse to Glow",
+              fourbar_solid(r, g, b),
+              *miss_both(r // 2, g // 2, b // 2),
+              dark_sharpy(), dark_bsw(), dark_profile(), dark_ni3k(),
+              path="Transitions")
+    timing = [(_beat_ms(bpm, duration_beats), 0)]
+    return [s], timing
+
+
+def _transition_compression_snap(bpm, duration_beats, exit_style, **_kw):
+    """Dim to 30% for half a beat, then snap full bright."""
+    half = max(1, duration_beats // 2)
+    s_dim = scene("T:Compress Dim",
+                  sharpy(dim=80, strobe=SHARPY_OPEN),
+                  bsw(dim=80, shutter=BSW_SHUT_OPEN),
+                  profile(dim=80),
+                  fourbar_solid(80, 80, 80),
+                  *miss_both(60, 60, 60),
+                  ni3k(dim=80, r=80, g=80, b=80),
+                  path="Transitions")
+    s_bright = scene("T:Compress Snap",
+                     sharpy(dim=255, strobe=SHARPY_OPEN),
+                     bsw(dim=255, shutter=BSW_SHUT_OPEN),
+                     profile(dim=255),
+                     fourbar_solid(255, 255, 255),
+                     *miss_both(255, 255, 255),
+                     ni3k(dim=255, r=255, g=255, b=255),
+                     path="Transitions")
+    t1 = (0, _beat_ms(bpm, half))
+    t2 = (0, _beat_ms(bpm, duration_beats - half))
+    return [s_dim, s_bright], [t1, t2]
+
+
+def _transition_ladder_build(bpm, duration_beats, exit_style, palette=None, **_kw):
+    """Fixtures light up one by one from pars to movers."""
+    r, g, b = palette if palette else (0, 80, 200)
+    half = max(1, duration_beats // 2)
+    s1 = scene("T:Ladder Pars",
+               fourbar_solid(r, g, b),
+               *miss_both(r, g, b),
+               dark_sharpy(), dark_bsw(), dark_profile(), dark_ni3k(),
+               path="Transitions")
+    s2 = scene("T:Ladder Full",
+               sharpy(dim=200, strobe=SHARPY_OPEN),
+               bsw(dim=200, shutter=BSW_SHUT_OPEN),
+               profile(dim=200),
+               fourbar_solid(r, g, b),
+               *miss_both(r, g, b),
+               ni3k(dim=180, r=r, g=g, b=b),
+               path="Transitions")
+    t1 = (0, _beat_ms(bpm, half))
+    t2 = (0, _beat_ms(bpm, duration_beats - half))
+    return [s1, s2], [t1, t2]
+
+
+def _transition_par_convergence(bpm, duration_beats, exit_style, palette=None, **_kw):
+    """Outer pars fade in, converging to center wash."""
+    r, g, b = palette if palette else (0, 100, 200)
+    s = scene("T:Par Convergence",
+              fourbar_solid(r, g, b),
+              *miss_both(r, g, b),
+              dark_sharpy(), dark_bsw(), dark_profile(), dark_ni3k(),
+              path="Transitions")
+    timing = [(_beat_ms(bpm, duration_beats), 0)]
+    return [s], timing
+
+
+def _transition_dim_dissolve(bpm, duration_beats, exit_style, **_kw):
+    """Smooth dim to 20%, movers park DSC."""
+    s = scene("T:Dim Dissolve",
+              sharpy(dim=50, strobe=SHARPY_OPEN),
+              bsw(dim=50, shutter=BSW_SHUT_OPEN),
+              profile(dim=50),
+              fourbar_solid(40, 40, 40),
+              *miss_both(30, 30, 30),
+              ni3k(dim=40, r=30, g=30, b=30),
+              path="Transitions")
+    timing = [(_beat_ms(bpm, duration_beats), 0)]
+    return [s], timing
+
+
+def _transition_freeze_burst(bpm, duration_beats, exit_style, **_kw):
+    """Strobe burst into new look. The 'freeze' is the previous scene holding."""
+    s_burst = scene("T:Freeze Burst",
+                    sharpy(dim=255, strobe=SHARPY_STROBE_FAST),
+                    bsw(dim=255, shutter=BSW_SHUT_STROBE_FAST),
+                    profile(dim=255, strobe=200),
+                    fourbar_solid(255, 255, 255, strobe=200),
+                    *miss_both(255, 255, 255, strobe=200),
+                    ni3k(dim=255, r=255, g=255, b=255, halo=H_RGB),
+                    path="Transitions")
+    timing = [(0, _beat_ms(bpm, duration_beats))]
+    return [s_burst], timing
+
+
+def _transition_stutter_resolve(bpm, duration_beats, exit_style, **_kw):
+    """Rapid strobe then hard snap to new look."""
+    strobe_beats = max(1, duration_beats - 1)
+    s_strobe = scene("T:Stutter Strobe",
+                     sharpy(dim=255, strobe=SHARPY_STROBE_FAST),
+                     bsw(dim=255, shutter=BSW_SHUT_STROBE_FAST),
+                     profile(dim=255, strobe=200),
+                     fourbar_solid(255, 255, 255, strobe=200),
+                     *miss_both(255, 255, 255, strobe=200),
+                     ni3k(dim=255, r=255, g=255, b=255),
+                     path="Transitions")
+    timing = [(0, _beat_ms(bpm, strobe_beats))]
+    return [s_strobe], timing
+
+
+def _transition_chase_cancel(bpm, duration_beats, exit_style, **_kw):
+    """Abrupt stop — all movers freeze, dim pars slightly."""
+    s = scene("T:Chase Cancel",
+              sharpy(dim=180, strobe=SHARPY_OPEN),
+              bsw(dim=180, shutter=BSW_SHUT_OPEN),
+              profile(dim=180),
+              fourbar_solid(140, 140, 140),
+              *miss_both(100, 100, 100),
+              ni3k(dim=150, r=100, g=100, b=100),
+              path="Transitions")
+    timing = [(0, _beat_ms(bpm, duration_beats))]
+    return [s], timing
+
+
+def _transition_fade_to_black(bpm, duration_beats, exit_style, **_kw):
+    """Smooth fade to black over N beats."""
+    s = scene("T:Fade to Black", *blackout_all(), path="Transitions")
+    timing = [(_beat_ms(bpm, duration_beats), 0)]
+    return [s], timing
+
+
+def _transition_freeze_hold(bpm, duration_beats, exit_style, **_kw):
+    """Fade to black. The 'freeze hold' is the previous scene holding."""
+    s_black = scene("T:Freeze Hold End", *blackout_all(), path="Transitions")
+    timing = [(_beat_ms(bpm, duration_beats), 0)]
+    return [s_black], timing
+
+
+# Map transition types to factory functions
+_TRANSITION_FACTORIES = {
+    "blackout_slingshot": _transition_blackout,
+    "dead_air": _transition_blackout,
+    "white_flash": _transition_white_flash,
+    "strobe_burst": _transition_strobe_burst,
+    "freeze_decay": _transition_freeze_decay,
+    "color_swap": _transition_color_swap,
+    "color_inversion": _transition_color_inversion,
+    "position_snap": _transition_position_snap,
+    "slow_dissolve": _transition_slow_dissolve,
+    "par_ladder": _transition_par_ladder,
+    "stutter_gate": _transition_stutter_gate,
+    "pulse_to_glow": _transition_pulse_to_glow,
+    "compression_snap": _transition_compression_snap,
+    "ladder_build": _transition_ladder_build,
+    "par_convergence": _transition_par_convergence,
+    "dim_dissolve": _transition_dim_dissolve,
+    "freeze_burst": _transition_freeze_burst,
+    "stutter_resolve": _transition_stutter_resolve,
+    "chase_cancel": _transition_chase_cancel,
+    "fade_to_black": _transition_fade_to_black,
+    "freeze_hold": _transition_freeze_hold,
+}
 
 
 if __name__ == "__main__":
