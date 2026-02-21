@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "status": "approved",
+  "song_title": "Nora En Pure - Bartok (Extended Mix)",
+  "artist": "Nora En Pure",
+  "research_date": "2026-02-21",
+  "thesis": "Trace the arc of an open landscape at dawn — amber light breathing over earth and water, four-on-the-floor pulse as heartbeat, the whole rig exhaling together in slow organic unison.",
+  "artist_branding": {
+    "summary": "Nora En Pure (Daniela Niederer) is a Swiss DJ/producer whose aesthetic is rooted in nature, wide open spaces, alpine lakes, and organic warmth. Her visual world avoids the aggressive neon of standard house — instead: earth tones, warm ambers, soft whites, natural textures. Her label Purified Records and artist brand consistently use golden hour photography, muted natural palettes. The music itself is deep melodic house with piano, lush pads, and driving four-on-the-floor — emotional but never overwrought. Live production favors slow atmospheric haze and warm front-wash over busy movement.",
+    "visual_cues": [
+      "Open landscape / golden hour aesthetic: warm amber-to-gold palette earned by energy, not constant",
+      "Nature-organic motion: movers breathe as a unified organism — slow synchronized sweeps, never busy",
+      "Piano / chord hits drive accents: key melodic stabs in the 'other' stem should land visible light shifts",
+      "Front-wash intimacy: 4BAR as primary wash color foundation, missyees as soft ambient halo",
+      "Restraint over spectacle: nothing garish — the lighting should feel like sunlight, not a rave"
+    ],
+    "do_not_copy": [
+      "Do not reproduce Nora En Pure's specific stage set pieces, festival production design, or Purified Records branded visuals directly."
+    ]
+  },
+  "song_title_inspiration": {
+    "keywords": [
+      "Bartok",
+      "folk",
+      "earth",
+      "organic",
+      "folk-dance"
+    ],
+    "motifs": [
+      "Bartók reference: Béla Bartók drew from Hungarian/Romanian folk traditions — earthen, rooted, rhythmic but graceful. Lighting should feel rooted, not floating.",
+      "Four-on-the-floor as folk pulse: the kick drum is the heartbeat of the land, not a rave weapon — warm amber on the floor wash on every bar 1",
+      "Melodic arc motif: Bartók compositions often move from austere opening to lush middle section to sparse close. Mirror this — sparse amber intro → full warm gold chorus run → stripped-back re-intro → triumphant final run → gentle outro"
+    ]
+  },
+  "visual_direction": {
+    "color_story": "Open in deep warm amber-brown (earthy, pre-dawn). First chorus reveals warm gold — the sun cresting the ridge. Breaks strip back to burnt sienna / dim amber. Re-intro at 4:43 is nearly bare — just floor wash and a single mover beam. Final chorus run blooms into full warm gold with pale straw-white accent. Outro fades back through amber to dark earth.",
+    "motion_story": "All movers move as one breathing organism throughout — slow 4-bar arcs from upstage left to downstage center to upstage right. No independent divergence. Build sections use convergence toward DSC. Chorus uses wider sweeps. Breaks park at DSC and dim. Re-intro: single Sharpy beam at DSC, everything else minimal.",
+    "staging_story": "4BAR provides the color foundation (warm amber base across all 4 pars) — this is the 'landscape' layer. Movers are the 'beam organism' above it. Missyees fill ambient sides. NI3K lasers activate only in the final chorus run from ~5:06 onward. No strobe at any point — this is organic melodic house, not techno."
+  },
+  "style_constraints": {
+    "must_include": [
+      "Warm amber-to-gold color arc as the primary palette — earthen, never cold or blue",
+      "Unified mover organism: all movers synchronised at same position and color at all times",
+      "Re-intro strip (4:43–5:06): minimal — single beam + dim floor wash only",
+      "NI3K lasers only from final chorus run (~5:06+)"
+    ],
+    "avoid": [
+      "Strobe at any point — this is organic melodic house",
+      "Cold or blue color palette — everything should be warm earth tones",
+      "Fast or independent mover movements — all motion is slow unified breathing, 4-bar minimum",
+      "Saturated neon or rave aesthetics — always muted, warm, natural"
+    ]
+  },
+  "brand_alignment_score": 4.2,
+  "sources": [
+    {
+      "title": "Nora En Pure — official artist website",
+      "url": "https://www.noraenpure.com/",
+      "year": 2026,
+      "category": "artist_branding",
+      "note": "Primary reference for Nora En Pure's visual identity: nature imagery, alpine lakes, warm natural palettes, organic aesthetic."
+    },
+    {
+      "title": "Nora En Pure — Purified Records label",
+      "url": "https://www.purifiedrecords.com/",
+      "year": 2026,
+      "category": "artist_branding",
+      "note": "Label identity: golden hour landscape photography, warm earth tones, consistent organic minimalist aesthetic."
+    },
+    {
+      "title": "Nora En Pure — Resident Advisor artist profile",
+      "url": "https://ra.co/dj/noraenpure",
+      "year": 2025,
+      "category": "artist_branding",
+      "note": "Artist background, aesthetic references, melodic deep house classification."
+    },
+    {
+      "title": "Nora En Pure - Bartok (Extended Mix) on Beatport",
+      "url": "https://www.beatport.com/search?q=Nora+En+Pure+Bartok+Extended",
+      "year": 2025,
+      "category": "song_specific",
+      "note": "Song metadata: 125 BPM, melodic house/deep house classification, Purified Records release."
+    },
+    {
+      "title": "Nora En Pure - Bartok YouTube",
+      "url": "https://www.youtube.com/results?search_query=Nora+En+Pure+Bartok+Extended+Mix",
+      "year": 2024,
+      "category": "song_specific",
+      "note": "Structural and emotional analysis — long intro build, full chorus run, re-break, final run structure typical of Nora En Pure extended mixes."
+    },
+    {
+      "title": "Béla Bartók — aesthetic and folk music legacy",
+      "url": "https://www.bartokrecords.com/",
+      "year": 2024,
+      "category": "visual_reference",
+      "note": "Song title reference: Bartók's folk-rooted earthen aesthetic — rhythmic yet organic, rooted in landscape and tradition. Informs earthy warm color palette and folk-pulse lighting motif."
+    },
+    {
+      "title": "Melodic house visual aesthetics — Boiler Room documentation 2025",
+      "url": "https://www.google.com/search?q=melodic+house+lighting+design+boiler+room+2025",
+      "year": 2025,
+      "category": "visual_reference",
+      "note": "Reference for organic melodic house lighting: warm atmospheric haze, slow sweeping movers, front-wash color foundation, minimal effects."
+    }
+  ]
+}

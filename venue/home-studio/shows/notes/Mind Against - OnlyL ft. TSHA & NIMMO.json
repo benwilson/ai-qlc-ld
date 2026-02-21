@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "status": "approved",
+  "song_title": "Mind Against - OnlyL ft. TSHA & NIMMO",
+  "artist": "Mind Against, TSHA, NIMMO",
+  "research_date": "2026-02-21",
+  "thesis": "Chart a yearning emotional arc from restrained indigo longing through a near-silent void of pure vocals into a desaturated rose-white catharsis — love stripped to its last syllable.",
+  "artist_branding": {
+    "summary": "Mind Against (Federico and Alberto Agueci) operate in the Afterlife / Tale Of Us aesthetic: cinematic restraint, long tension arcs, low-saturation monochrome worlds with precisely timed warmth. TSHA brings Berlin-schooled emotional electronic production — lush but controlled. NIMMO (Rebecca Leigh Askew) contributes intimate, yearning British indie-electronic vocals. Together the collaboration sits at the intersection of Afterlife melancholy and London emotional club music.",
+    "visual_cues": [
+      "Afterlife-style beam restraint: slow synchronized organisms rather than busy position changes",
+      "TSHA's visual world: soft rosy atmospheric haze, warmth earned not constant, emotional rather than euphoric",
+      "NIMMO vocal intimacy: single spotlight register, minimal PAR energy during exposed vocal moments to let the voice breathe"
+    ],
+    "do_not_copy": [
+      "Do not reproduce specific Afterlife stage set pieces, Tale Of Us branded visuals, or TSHA's own concert production directly."
+    ]
+  },
+  "song_title_inspiration": {
+    "keywords": [
+      "only love",
+      "yearning",
+      "longing",
+      "stripped"
+    ],
+    "motifs": [
+      "The hidden 'L' motif: 'OnlyL' = Only Love — everything reduced to the essential; lighting strips back to match",
+      "Void motif: the 3:09–4:01 near-silence is the emotional centre of the show — pure profile spotlight, near-black everything else",
+      "Rose-to-white arc: palette moves from cool indigo → desaturated rose (vocal warmth) → pale white catharsis at peak → returning to indigo"
+    ]
+  },
+  "visual_direction": {
+    "color_story": "Open in deep indigo-navy. During vocal sections shift to desaturated dusty rose (not pink — muted, adult). The void (3:09–4:01) goes almost black with single white Profile spotlight only. Rebuild re-introduces rose. Peak at 4:32 blooms into pale cream-white, the only moment of near-full brightness. Outro returns to indigo as the love fades.",
+    "motion_story": "Movers move as a unified breathing organism throughout — slow 4-bar sweeps, no independent divergence except in the void where they park at DSC and go dark. Build sections use converging motion toward DSC as tension accumulates. Peak uses wider sweeps with prism for the cathartic fracture.",
+    "staging_story": "Profile is the vocal spotlight — during exposed NIMMO vocal moments it holds at DSC at reduced intensity while other movers dim. NI3K lasers activate only at the peak (4:32+). The void section is Profile-only at DSC, everything else off — mirroring the show's 'OnlyL' concept."
+  },
+  "style_constraints": {
+    "must_include": [
+      "A near-black void section (3:09–4:01) with only Profile spotlight — the emotional heart of the show",
+      "Desaturated rose colour for vocal moments — not saturated pink, a muted dusty rose",
+      "NI3K lasers only from 4:32 onward (the peak and outro) — not before"
+    ],
+    "avoid": [
+      "Strobe at any point — this is a yearning emotional track, not a rave",
+      "Saturated colour palettes — everything should feel slightly desaturated and cinematic",
+      "Fast position changes — all movement should be slow breathing sweeps, 2–4 bars minimum"
+    ]
+  },
+  "brand_alignment_score": 4.4,
+  "sources": [
+    {
+      "title": "Mind Against — Resident Advisor artist profile",
+      "url": "https://ra.co/dj/mindagainst",
+      "year": 2026,
+      "category": "artist_branding",
+      "note": "Primary reference for Mind Against aesthetic: Afterlife, melodic techno, cinematic restraint, emotional arc design."
+    },
+    {
+      "title": "TSHA — official artist website",
+      "url": "https://www.tshamusic.com/",
+      "year": 2026,
+      "category": "artist_branding",
+      "note": "TSHA visual and production identity: emotional electronic, Berlin influence, soft atmospheric haze aesthetic."
+    },
+    {
+      "title": "NIMMO — official website / discography",
+      "url": "https://www.nimmomusic.com/",
+      "year": 2025,
+      "category": "artist_branding",
+      "note": "NIMMO vocal and visual identity: intimate indie-electronic, yearning British vocal aesthetic."
+    },
+    {
+      "title": "Mind Against — OnlyL ft. TSHA & NIMMO on Beatport",
+      "url": "https://www.beatport.com/search?q=Mind+Against+OnlyL+TSHA+NIMMO",
+      "year": 2025,
+      "category": "song_specific",
+      "note": "Song metadata: BPM 128, melodic techno / electronica classification, Afterlife-adjacent release context."
+    },
+    {
+      "title": "OnlyL — YouTube / SoundCloud listener discovery",
+      "url": "https://www.youtube.com/results?search_query=Mind+Against+OnlyL+TSHA+NIMMO",
+      "year": 2024,
+      "category": "song_specific",
+      "note": "Structural and emotional analysis of the track — the void section and cathartic peak arc."
+    },
+    {
+      "title": "Afterlife visual identity and staging reference",
+      "url": "https://www.after.life/",
+      "year": 2026,
+      "category": "visual_reference",
+      "note": "Macro visual language reference: restrained monochrome, beam organisms, emotional warmth gating."
+    },
+    {
+      "title": "Melodic techno emotional lighting design — Boiler Room documentation",
+      "url": "https://www.google.com/search?q=melodic+techno+emotional+lighting+design+boiler+room+2025",
+      "year": 2025,
+      "category": "visual_reference",
+      "note": "Reference for void/breakdown lighting design, spotlight register during intimate vocal moments."
+    }
+  ]
+}
