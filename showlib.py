@@ -187,7 +187,7 @@ PROF_SPIN   = 160   # Medium rotation speed
 # Each returns a tuple of (fixture_id, [(ch, val), ...])
 # =============================================================================
 
-def sharpy(pan=0, tilt=0, color7=0, gobo=0,
+def sharpy(pan=158, tilt=6, color7=0, gobo=0,
            prism1=0, p1r=0, prism2=0, p2r=0,
            frost=0, focus=128, strobe=SHARPY_OPEN, dim=255,
            colormacro=0):
@@ -227,7 +227,7 @@ def bsw(pan=177, tilt=19, color=0, gobo1=0, gobo2=0, g2rot=0,
         (15,focus),(16,shutter),(17,dim),(18,0),(19,0)
     ])
 
-def profile(pan=0, tilt=0, color=0, gobo=0, gobo1=0, g1rot=0,
+def profile(pan=64, tilt=145, color=0, gobo=0, gobo1=0, g1rot=0,
             prism=0, focus=128, strobe=PROFILE_STROBE_OFF, dim=255):
     """Profile Knockoff - 14ch mode (ID 4, addr 192)
 
