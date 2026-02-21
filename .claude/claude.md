@@ -398,6 +398,16 @@ Learned from QLC+ re-saving workspace files. Follow these exactly to avoid needi
 - Read safe pan/tilt ranges from the venue's `focus-positions.md` — they're listed in the movers table per fixture.
 - When user says "never point behind," define all positions within those bounds and verify each one.
 
+### Special Positions Are Required
+- Every show generator must use **special positions** from the venue's focus-positions.md — not just the 9 grid positions (C/SL/SR/DSC/DSL/DSR/USL/USR/USC).
+- Read the venue's `special_zones` keys from `creative-profile.json` (e.g. `DJ`, `DANCE`, `DISCO_BALL`, `CEIL`) and the Specials/Effects sections of `focus-positions.md`.
+- Use at least 1–2 special positions in any show with high-energy sections. Placement guide:
+  - `DJ` — mid-drop focus back to performer; build peaks; "look at me" moments
+  - `DANCE` — audience/dance-floor shots at drops and energy-out moments
+  - `DISCO_BALL` — catharsis/reveal moments (beams scatter off the ball into the room)
+  - `CEIL` — dramatic overhead shafts at sustained peaks or tension builds
+- Special positions are loaded automatically by `load_focus_position_tuples()` — just use the key string in your position list.
+
 ### Scene Dedup Behavior
 - Beat-level shows (1 scene per beat) with varied NI3K tilt modulation typically produce 0 dedup hits because the tilt math (`beat % N * offset`) creates unique values per beat. Dedup is more effective when sections reuse identical looks (e.g., repeated bar patterns, common blackout scenes).
 

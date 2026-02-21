@@ -26,6 +26,16 @@ Use this workflow to produce repeatable, high-quality song shows with venue port
      - `brand_tokens=CREATIVE["brand_tokens"]`
      - `creative_directives=CREATIVE["creative_directives"]`
    - Make PAR and mover behavior coordinated (together or call-and-response).
+   - **Use special positions** from the venue's focus-positions.md — not just the 9 area
+     positions (C/SL/SR/DSC/etc). The venue profile defines `special_zones` keys (e.g.
+     `DJ`, `DANCE`, `DISCO_BALL`, `CEIL`). Use them at intentional moments:
+     - `DJ` — build peaks, "look at the performer" moments, mid-drop focus shift
+     - `DANCE` — audience floor shots, energy-out moments at drops
+     - `DISCO_BALL` — catharsis/reveal moments (beams scatter off ball into room)
+     - `CEIL` — dramatic overhead shafts for sustained peaks or builds
+     Read the venue's `focus-positions.md` Specials and Effects sections to identify
+     available keys before writing position lists. At least 1–2 special positions
+     should appear in every show that has high-energy sections.
 6. Generate show:
    `python3 "venue/<name>/generators/<Artist - Song>.py"`
 7. Validate project invariants after creative data or generator edits:
