@@ -251,15 +251,18 @@ BSW_ACC_C  = BSW_TEAL
 PF_BASE_C  = PROF_BLUE
 PF_ACC_C   = PROF_TEAL
 
+PALETTE = build_phrase_palette(
+    base_rgb=BASE_COLOR, accent_rgb=ACCENT_COLOR, hit_rgb=HIT_COLOR,
+    sh_base=SH_BASE, sh_accent=SH_ACCENT, sh_hit=SH_ACCENT,
+    bsw_base=BSW_BASE_C, bsw_accent=BSW_ACC_C, bsw_hit=BSW_ACC_C,
+    pf_base=PF_BASE_C, pf_accent=PF_ACC_C, pf_hit=PF_ACC_C,
+)
+
 # =============================================================================
 # POSITIONS
 # =============================================================================
 
 POS = load_focus_position_tuples(project_root=PROJECT_ROOT, venue_dir=VENUE_DIR)
-
-# Position sweep sequences (customize for show movement)
-SWEEP_WIDE = ["DSC", "SR", "C", "SL", "DSC"]
-SWEEP_TIGHT = ["C", "DSC", "C", "USC"]
 
 # =============================================================================
 # SECTIONS — auto-derived from analysis segments
@@ -291,54 +294,36 @@ def cached(key, fn):
     return cache[key]
 
 
-def atmo(name, pos_key, energy, frost=180,
-         s_color=SH_BASE, b_color=BSW_BASE_C, p_color=PF_BASE_C,
-         par=BASE_COLOR, miss=DIM_COLOR,
-         ni_rgb=BASE_COLOR, halo=H_OFF,
-         s_dim=None, b_dim=None, p_dim=None, par_m=None,
-         prism=False, lasers=False):
-    \"\"\"Generic atmosphere scene — customize palette at call site.\"\"\"
-    sd = s_dim if s_dim is not None else e2d(energy, 40, 230)
-    bd = b_dim if b_dim is not None else e2d(energy, 30, 210)
-    pd = p_dim if p_dim is not None else e2d(energy * 0.5, 20, 140)
-    pm = par_m if par_m is not None else e2d(energy, 15, 200)
-    nd = e2d(energy * 0.45, 15, 160)
-
-    return scene(name,
-        *mover_look(pos_key, POS, colors=(s_color, b_color, p_color),
-                    dims=(sd, bd, pd), frost=(frost, min(255, frost)),
-                    prism=prism, focus=128),
-        *par_look("solid", par, master=pm, miss_color=miss, miss_master=pm // 3),
-        ni3k_look(pos_key, POS, rgb=ni_rgb, dim=nd, halo=halo, lasers=lasers),
-        path=folder)
-
 # =============================================================================
 # SECTION BUILDERS — dispatched by energy level
 # =============================================================================
 
 def build_low(sec):
-    \"\"\"Low energy: intro/breakdown/outro — dynamic step size from phrase planner.\"\"\"
+    \"\"\"Low energy: intro/breakdown/outro — phrase-aware scene factory.\"\"\"
     t, t_end = sec["start"], sec["end"]
     bar = BAR_MS / 1000
-    total = max(0.1, t_end - t)
     n = 0
     step_bars = 4
 
     while t < t_end - 0.3:
         next_t = min(t + bar * step_bars, t_end)
-        prog = (t - sec["start"]) / total
         energy = avg_energy(e_rms, t, next_t)
-        dim_f = max(0.1, 0.3 + 0.4 * energy)
-
-        sid = cached(f"low_{{sec['idx']}}_{{n}}", lambda: atmo(
-            f"{{sec['name']}} {{n}}", "DSC", energy * dim_f, 220,
-            par=tuple(int(c * dim_f) for c in BASE_COLOR),
-            miss=NOTHING, halo=H_OFF,
-            s_dim=int(60 * dim_f), b_dim=int(40 * dim_f), p_dim=int(25 * dim_f),
-            par_m=int(80 * dim_f)))
-
         bars_here = max(0.25, (next_t - t) / bar)
+        bars_remaining = max(0, (t_end - next_t) / bar)
+        progress = t / max(1.0, beats[-1])
+
         timing, technique = phrase_step_timing(t, next_t, bars_here)
+        phrase = technique.get("phrase", "intro")
+
+        style = resolve_phrase_style(phrase, energy, technique=technique,
+                                     song_progress=progress,
+                                     bars_left=bars_remaining)
+        pos_key = pick_sweep_position(style["pos_style"], n, POS)
+
+        sid = cached(f"low_{{sec['idx']}}_{{n}}", lambda: render_phrase_scene(
+            f"{{sec['name']}} {{n}}", style, pos_key, POS, PALETTE,
+            beat_idx=n, path=folder))
+
         br = technique.get("beat_reactivity") or {{}}
         step_bars = reactivity_to_bars(br.get("mover_min", "4bar"))
         steps.append((sid, timing))
@@ -347,26 +332,31 @@ def build_low(sec):
 
 
 def build_mid(sec):
-    \"\"\"Mid energy: verse/build — dynamic step size from phrase planner.\"\"\"
+    \"\"\"Mid energy: verse/build — phrase-aware scene factory.\"\"\"
     t, t_end = sec["start"], sec["end"]
     bar = BAR_MS / 1000
-    positions = SWEEP_TIGHT
     n = 0
     step_bars = 2
 
     while t < t_end - 0.3:
         next_t = min(t + bar * step_bars, t_end)
         energy = avg_energy(e_rms, t, next_t)
-        pos = positions[n % len(positions)]
-
-        sid = cached(f"mid_{{sec['idx']}}_{{n}}", lambda: atmo(
-            f"{{sec['name']}} {{n}}", pos, energy, 160,
-            s_color=SH_BASE, b_color=BSW_BASE_C, p_color=PF_BASE_C,
-            par=ACCENT_COLOR, miss=DIM_COLOR,
-            ni_rgb=BASE_COLOR, halo=H_BLU))
-
         bars_here = max(0.25, (next_t - t) / bar)
+        bars_remaining = max(0, (t_end - next_t) / bar)
+        progress = t / max(1.0, beats[-1])
+
         timing, technique = phrase_step_timing(t, next_t, bars_here)
+        phrase = technique.get("phrase", "verse_groove")
+
+        style = resolve_phrase_style(phrase, energy, technique=technique,
+                                     song_progress=progress,
+                                     bars_left=bars_remaining)
+        pos_key = pick_sweep_position(style["pos_style"], n, POS)
+
+        sid = cached(f"mid_{{sec['idx']}}_{{n}}", lambda: render_phrase_scene(
+            f"{{sec['name']}} {{n}}", style, pos_key, POS, PALETTE,
+            beat_idx=n, path=folder))
+
         br = technique.get("beat_reactivity") or {{}}
         step_bars = reactivity_to_bars(br.get("mover_min", "2bar"))
         steps.append((sid, timing))
@@ -375,31 +365,31 @@ def build_mid(sec):
 
 
 def build_high(sec):
-    \"\"\"High energy: chorus/drop — dynamic step size from phrase planner, prism, sweep.\"\"\"
+    \"\"\"High energy: chorus/drop — phrase-aware scene factory.\"\"\"
     t, t_end = sec["start"], sec["end"]
     bar = BAR_MS / 1000
-    positions = SWEEP_WIDE
     n = 0
     step_bars = 2
 
     while t < t_end - 0.3:
         next_t = min(t + bar * step_bars, t_end)
         energy = avg_energy(e_rms, t, next_t)
-        pos = positions[n % len(positions)]
-        has_vocal = vocal_present(t, next_t)
-
-        s_col = SH_ACCENT if has_vocal else SH_BASE
-        par_c = HIT_COLOR if energy > 0.85 else ACCENT_COLOR
-
-        sid = cached(f"high_{{sec['idx']}}_{{n}}", lambda: atmo(
-            f"{{sec['name']}} {{n}}", pos, energy, int(140 - 60 * energy),
-            s_color=s_col, b_color=BSW_ACC_C, p_color=PF_ACC_C,
-            par=par_c, miss=ACCENT_COLOR,
-            ni_rgb=ACCENT_COLOR, halo=H_CYN,
-            prism=(energy > 0.7)))
-
         bars_here = max(0.25, (next_t - t) / bar)
+        bars_remaining = max(0, (t_end - next_t) / bar)
+        progress = t / max(1.0, beats[-1])
+
         timing, technique = phrase_step_timing(t, next_t, bars_here)
+        phrase = technique.get("phrase", "drop")
+
+        style = resolve_phrase_style(phrase, energy, technique=technique,
+                                     song_progress=progress,
+                                     bars_left=bars_remaining)
+        pos_key = pick_sweep_position(style["pos_style"], n, POS)
+
+        sid = cached(f"high_{{sec['idx']}}_{{n}}", lambda: render_phrase_scene(
+            f"{{sec['name']}} {{n}}", style, pos_key, POS, PALETTE,
+            beat_idx=n, path=folder))
+
         br = technique.get("beat_reactivity") or {{}}
         step_bars = reactivity_to_bars(br.get("mover_min", "bar"))
         steps.append((sid, timing))

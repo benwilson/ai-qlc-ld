@@ -534,6 +534,282 @@ def ni3k_look(pos_key, pos_tuples,
 
 
 # =============================================================================
+# PHRASE-DRIVEN SCENE API
+# =============================================================================
+
+# Bridge planner PAR modes (blink*/fade*) to par_look() modes (solid/pairs/gradient/chase)
+PLANNER_TO_PAR_LOOK: Dict[str, str] = {
+    "blink1": "chase", "blink2": "chase", "blink4": "chase",
+    "fade4": "gradient", "fade8": "solid",
+}
+
+# Fallback visual ranges per phrase class — used when no technique is provided
+PHRASE_DEFAULTS: Dict[str, Any] = {
+    "intro": {
+        "dim": (15, 80), "frost": (200, 240), "prism_gate": None,
+        "laser_gate": None, "strobe_gate": None, "halo_tier": "off",
+        "ni3k_dim": (0, 30), "ni3k_tilt": "static",
+        "pos_style": "static", "par_mode": "solid", "miss": "off",
+    },
+    "verse_groove": {
+        "dim": (40, 160), "frost": (160, 200), "prism_gate": None,
+        "laser_gate": None, "strobe_gate": None, "halo_tier": "base",
+        "ni3k_dim": (15, 80), "ni3k_tilt": "static",
+        "pos_style": "tight", "par_mode": "pairs", "miss": "dim",
+    },
+    "build": {
+        "dim": (60, 200), "frost": (120, 180), "prism_gate": 0.7,
+        "laser_gate": None, "strobe_gate": 0.85, "halo_tier": "accent",
+        "ni3k_dim": (40, 120), "ni3k_tilt": "spread",
+        "pos_style": "converge", "par_mode": "gradient", "miss": "accent",
+    },
+    "drop": {
+        "dim": (150, 255), "frost": (80, 140), "prism_gate": 0.5,
+        "laser_gate": 0.75, "strobe_gate": 0.8, "halo_tier": "hit",
+        "ni3k_dim": (100, 200), "ni3k_tilt": "spin",
+        "pos_style": "wide", "par_mode": "chase", "miss": "full",
+    },
+    "breakdown": {
+        "dim": (20, 100), "frost": (180, 240), "prism_gate": None,
+        "laser_gate": None, "strobe_gate": None, "halo_tier": "off",
+        "ni3k_dim": (10, 50), "ni3k_tilt": "static",
+        "pos_style": "static", "par_mode": "solid", "miss": "off",
+    },
+    "outro": {
+        "dim": (10, 60), "frost": (200, 240), "prism_gate": None,
+        "laser_gate": None, "strobe_gate": None, "halo_tier": "off",
+        "ni3k_dim": (0, 25), "ni3k_tilt": "static",
+        "pos_style": "static", "par_mode": "solid", "miss": "off",
+    },
+}
+
+# Named sweep patterns — list of position keys to cycle through
+SWEEP_PATTERNS: Dict[str, List[str]] = {
+    "static":   ["DSC"],
+    "tight":    ["SL", "C", "SR", "C"],
+    "converge": ["USL", "DSL", "DSC", "DSR", "USR", "DSC"],
+    "wide":     ["USL", "DSR", "USR", "DSL", "DSC", "USC"],
+}
+
+
+def resolve_phrase_style(phrase: str, energy: float,
+                         technique: Optional[Dict[str, Any]] = None,
+                         song_progress: float = 0.5,
+                         bars_left: Optional[float] = None) -> Dict[str, Any]:
+    """Resolve phrase + energy + technique into concrete visual parameters.
+
+    Args:
+        phrase: One of the 6 phrase classes from classify_phrase()
+        energy: 0.0-1.0 RMS energy for this step
+        technique: Optional serialized PlannedTechnique dict
+        song_progress: 0.0-1.0 position in song (for laser gating)
+        bars_left: Bars remaining in current section (for end-of-section effects).
+                   None means unknown — disables "last N bars" behaviors.
+
+    Returns:
+        dict with resolved keys: dim, frost, prism, lasers, strobe, halo_tier,
+        ni3k_dim, ni3k_tilt, pos_style, par_mode, miss_level, color_tier, mover_family
+    """
+    vis = PHRASE_DEFAULTS.get(phrase, PHRASE_DEFAULTS["verse_groove"])
+
+    dim_lo, dim_hi = vis["dim"]
+    frost_lo, frost_hi = vis["frost"]
+    ni3k_lo, ni3k_hi = vis["ni3k_dim"]
+    prism_gate = vis["prism_gate"]
+    laser_gate = vis["laser_gate"]
+    strobe_gate = vis["strobe_gate"]
+    pos_style = vis["pos_style"]
+    par_mode = vis["par_mode"]
+    mover_family = "atmospheric" if phrase in ("intro", "breakdown", "outro") else "geometric"
+
+    if technique:
+        dims = technique.get("dimensions", {})
+        intensity = dims.get("intensity", "medium")
+        density = dims.get("effect_density", "low")
+
+        boost = {"low": 0.0, "medium": 0.0, "rising": 0.15, "peak": 0.25}
+        dim_lo += int((dim_hi - dim_lo) * boost.get(intensity, 0))
+
+        if density in ("high", "peak"):
+            if prism_gate is not None:
+                prism_gate = prism_gate * 0.8
+            if strobe_gate is not None:
+                strobe_gate = strobe_gate * 0.85
+
+        rel = technique.get("relationship", "")
+        if rel:
+            mover_family = mover_family_from_phrase(phrase, rel, energy, energy)
+
+        t_timing = technique.get("timing", {})
+        par_beats = t_timing.get("par_beats", 4)
+        par_style = t_timing.get("par_style", "solid")
+        if par_beats and par_style:
+            planner_mode = par_mode_from_phrase_timing(par_beats, par_style, phrase, 0)
+            par_mode = PLANNER_TO_PAR_LOOK.get(planner_mode, par_mode)
+
+        mp = technique.get("mover_pattern", {})
+        transforms = mp.get("transforms", [])
+        if transforms:
+            if any(t in ("mirror", "phase_shift", "expand") for t in transforms):
+                pos_style = "wide"
+            elif "compress" in transforms:
+                pos_style = "tight"
+
+    dim = int(dim_lo + (dim_hi - dim_lo) * energy)
+    frost = int(frost_hi - (frost_hi - frost_lo) * energy)
+    ni3k_dim = int(ni3k_lo + (ni3k_hi - ni3k_lo) * energy)
+
+    prism = (prism_gate is not None and energy > prism_gate)
+    lasers = (laser_gate is not None and energy > laser_gate and song_progress > 0.5)
+    strobe = (strobe_gate is not None and energy > strobe_gate)
+
+    if bars_left is not None:
+        if phrase == "build" and bars_left <= 4 and prism_gate is not None:
+            prism = True
+        if phrase == "build" and bars_left <= 2 and strobe_gate is not None:
+            strobe = True
+
+    if energy >= 0.65:
+        color_tier = "hit"
+    elif energy >= 0.35:
+        color_tier = "accent"
+    else:
+        color_tier = "base"
+
+    return {
+        "dim": dim, "frost": frost, "prism": prism, "lasers": lasers,
+        "strobe": strobe, "halo_tier": vis["halo_tier"],
+        "ni3k_dim": ni3k_dim, "ni3k_tilt": vis["ni3k_tilt"],
+        "pos_style": pos_style, "par_mode": par_mode,
+        "miss_level": vis["miss"], "color_tier": color_tier,
+        "mover_family": mover_family,
+    }
+
+
+def render_phrase_scene(name: str, style: Dict[str, Any],
+                        pos_key: str, pos_tuples: Dict[str, Any],
+                        palette: Dict[str, Any],
+                        beat_idx: int = 0, path: str = "") -> Dict[str, Any]:
+    """Assemble a scene from a resolved style dict + palette.
+
+    Args:
+        name: Scene name
+        style: Dict from resolve_phrase_style()
+        pos_key: Position name for movers (e.g. "DSC", "SL")
+        pos_tuples: Dict from load_focus_position_tuples()
+        palette: Dict with "base", "accent", "hit" tiers (from build_phrase_palette())
+        beat_idx: Step counter for chase cycling
+        path: QLC+ function tree folder
+    """
+    tier = palette[style["color_tier"]]
+
+    if style["strobe"]:
+        s_strobe, b_shutter = SHARPY_STROBE_MED, BSW_SHUT_STROBE_SLOW
+    else:
+        s_strobe, b_shutter = SHARPY_OPEN, BSW_SHUT_OPEN
+
+    halo_map = {
+        "off": H_OFF, "base": H_BLU, "accent": H_CYN,
+        "hit": H_RGB, "fading": H_OFF,
+    }
+    halo = halo_map.get(style["halo_tier"], H_OFF)
+
+    miss_map = {
+        "off":    (0, (0, 0, 0)),
+        "dim":    (60,  tier.get("miss_rgb", (0, 0, 0))),
+        "accent": (150, tier.get("miss_rgb", (0, 0, 0))),
+        "full":   (255, tier.get("miss_rgb", (0, 0, 0))),
+    }
+    miss_master, miss_color = miss_map.get(style["miss_level"], (0, (0, 0, 0)))
+
+    family = style.get("mover_family", "geometric")
+    FAMILY_RATIOS: Dict[str, Tuple[float, float, float]] = {
+        "atmospheric": (0.8, 0.7, 0.5),
+        "geometric":   (1.0, 0.85, 0.6),
+        "snap":        (1.0, 0.6, 0.6),
+    }
+    sr, br, pr = FAMILY_RATIOS.get(family, (1.0, 0.85, 0.6))
+
+    return scene(name,
+        *mover_look(pos_key, pos_tuples,
+                    colors=(tier.get("sharpy", 0), tier.get("bsw", 0),
+                            tier.get("profile", 0)),
+                    dims=(int(style["dim"] * sr), int(style["dim"] * br),
+                          int(style["dim"] * pr)),
+                    frost=(style["frost"], min(255, style["frost"])),
+                    prism=style["prism"], focus=128,
+                    strobes=(s_strobe, b_shutter, PROFILE_STROBE_OFF)),
+        *par_look(style["par_mode"], tier.get("par_rgb", (0, 0, 0)),
+                  master=int(style["dim"] * 0.8),
+                  miss_color=miss_color, miss_master=miss_master,
+                  beat_idx=beat_idx),
+        ni3k_look(pos_key, pos_tuples,
+                  rgb=tier.get("ni3k_rgb", (0, 0, 0)), dim=style["ni3k_dim"],
+                  halo=halo, lasers=style["lasers"],
+                  tilt_mode=style["ni3k_tilt"]),
+        path=path)
+
+
+def phrase_scene(name: str, phrase: str, energy: float,
+                 pos_key: str, pos_tuples: Dict[str, Any], palette: Dict[str, Any],
+                 technique: Optional[Dict[str, Any]] = None,
+                 song_progress: float = 0.5, bars_left: Optional[float] = None,
+                 beat_idx: int = 0, path: str = "", **overrides) -> Dict[str, Any]:
+    """Build a complete scene driven by phrase type and energy level.
+
+    Combines resolve_phrase_style() + render_phrase_scene().
+    **overrides apply to the resolved style dict before rendering.
+    """
+    style = resolve_phrase_style(phrase, energy, technique=technique,
+                                 song_progress=song_progress, bars_left=bars_left)
+    style.update(overrides)
+    return render_phrase_scene(name, style, pos_key, pos_tuples, palette,
+                               beat_idx=beat_idx, path=path)
+
+
+def build_phrase_palette(base_rgb: Tuple[int, int, int],
+                         accent_rgb: Tuple[int, int, int],
+                         hit_rgb: Tuple[int, int, int],
+                         sh_base: int = 0, sh_accent: int = 0, sh_hit: int = 0,
+                         bsw_base: int = 0, bsw_accent: int = 0, bsw_hit: int = 0,
+                         pf_base: int = 0, pf_accent: int = 0,
+                         pf_hit: int = 0) -> Dict[str, Any]:
+    """Build a 3-tier palette dict for phrase_scene() / render_phrase_scene().
+
+    Generator authors define concrete colors from the research brief's color story.
+    This helper structures them for energy-tier selection.
+    """
+    return {
+        "base": {
+            "sharpy": sh_base, "bsw": bsw_base, "profile": pf_base,
+            "par_rgb": base_rgb, "miss_rgb": base_rgb, "ni3k_rgb": base_rgb,
+        },
+        "accent": {
+            "sharpy": sh_accent, "bsw": bsw_accent, "profile": pf_accent,
+            "par_rgb": accent_rgb, "miss_rgb": accent_rgb, "ni3k_rgb": accent_rgb,
+        },
+        "hit": {
+            "sharpy": sh_hit, "bsw": bsw_hit, "profile": pf_hit,
+            "par_rgb": hit_rgb, "miss_rgb": hit_rgb, "ni3k_rgb": hit_rgb,
+        },
+    }
+
+
+def pick_sweep_position(pos_style: str, step_idx: int,
+                        pos_tuples: Dict[str, Any]) -> str:
+    """Return a position key from the sweep pattern for this step.
+
+    Filters pattern to positions that exist in pos_tuples.
+    Falls back to first available position if none match.
+    """
+    pattern = SWEEP_PATTERNS.get(pos_style, SWEEP_PATTERNS["tight"])
+    available = [k for k in pattern if k in pos_tuples]
+    if not available:
+        available = list(pos_tuples.keys())[:1] or ["DSC"]
+    return available[step_idx % len(available)]
+
+
+# =============================================================================
 # CHASER TIMING HELPERS
 # =============================================================================
 
