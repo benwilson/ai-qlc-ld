@@ -1,8 +1,8 @@
 # Venue Research Briefs
 
 Research briefs for `home-studio` live in this folder as:
-- `<song-slug>.json` (machine-validated; required by generators)
-- `<song-slug>.md` (human notes)
+- `<Song Name>.json` (machine-validated; required by generators)
+- `<Song Name>.md` (human notes)
 
 Generator enforcement reads from:
 - `venue/home-studio/shows/notes/`

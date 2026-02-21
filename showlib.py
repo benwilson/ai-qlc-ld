@@ -1884,7 +1884,7 @@ def require_research_brief(
     except Exception as exc:
         raise RuntimeError(
             f"Research brief validation failed for {song_stem!r}: {exc}. "
-            "Fill <venue>/shows/notes/<song-slug>.json and set status='approved'."
+            "Fill <venue>/shows/notes/<Song Name>.json and set status='approved'."
         ) from exc
 
 

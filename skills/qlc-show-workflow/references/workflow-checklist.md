@@ -17,8 +17,8 @@ python3 scripts/show_workflow.py scaffold --song "Artist - Song" --venue venue/h
 ## 2) Complete Research Brief
 
 Brief files:
-- `venue/<name>/shows/notes/<song-slug>.json`
-- `venue/<name>/shows/notes/<song-slug>.md`
+- `venue/<name>/shows/notes/<Song Name>.json`
+- `venue/<name>/shows/notes/<Song Name>.md`
 
 Required focus:
 - artist branding and visual language

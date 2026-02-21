@@ -8,7 +8,7 @@ Each song generator must load an approved research brief that captures:
 - final creative thesis
 
 Briefs are stored per venue under:
-  venue/<venue-name>/shows/notes/<song-slug>.json
+  venue/<venue-name>/shows/notes/<Song Name>.json
 """
 
 from __future__ import annotations
@@ -76,7 +76,7 @@ def resolve_brief_paths(
     venue_dir: Optional[str | Path] = None,
 ) -> Tuple[Path, Path]:
     brief_dir = resolve_brief_dir(project_root=project_root, venue_dir=venue_dir)
-    base = slugify_song(song_title)
+    base = song_title.strip()
     return brief_dir / f"{base}.json", brief_dir / f"{base}.md"
 
 

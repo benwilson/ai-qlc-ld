@@ -287,7 +287,7 @@ Use $qlc-show-workflow to build a full show for "Artist - Song" in venue/home-st
 
 Before generation, each venue should have:
 - `venue/<name>/references/creative-profile.json` (validated venue mapping layer)
-- `venue/<name>/shows/notes/<song-slug>.json` (approved research brief)
+- `venue/<name>/shows/notes/<Song Name>.json` (approved research brief)
 - Research-gated generators should load positions via `load_focus_position_tuples(...)` (no static `POS` maps)
 - Phrase-aware generators should derive `BRAND_TOKENS` + `CREATIVE_DIRECTIVES` with `build_creative_context(...)` and pass both into `pick_phrase_technique(...)`
 

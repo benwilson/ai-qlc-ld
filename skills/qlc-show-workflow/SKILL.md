@@ -13,7 +13,7 @@ Use this workflow to produce repeatable, high-quality song shows with venue port
 2. Run scaffold:
    `python3 scripts/show_workflow.py scaffold --song "<Artist - Song>" --venue <venue-dir>`
 3. If the brief is draft/missing:
-   - Create/update `venue/<name>/shows/notes/<song-slug>.json` and `.md`.
+   - Create/update `venue/<name>/shows/notes/<Song Name>.json` and `.md`.
    - Include artist branding, song-title motifs, creative thesis, and sources.
    - Set `status` to `approved`.
 4. Validate briefs:
