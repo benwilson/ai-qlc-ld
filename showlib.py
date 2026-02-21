@@ -23,6 +23,7 @@ Usage:
 """
 
 import os
+import math
 import re
 import xml.etree.ElementTree as ET
 from xml.sax.saxutils import escape
@@ -409,6 +410,130 @@ def scene(name: str, *fixtures, path: str = "Show") -> dict:
     return {"name": name, "path": path, "fixtures": flat}
 
 # =============================================================================
+# SCENE LOOK HELPERS
+# =============================================================================
+
+
+def mover_look(pos_key, pos_tuples,
+               colors=(0, 0, 0),
+               dims=(255, 255, 255),
+               frost=(0, 0),
+               prism=False, focus=128,
+               strobes=None):
+    """All 3 movers aimed at a named position. Returns [sharpy, bsw, profile] list.
+
+    Args:
+        pos_key: Position name from focus-positions.md (e.g. "DSC", "SL")
+        pos_tuples: Dict of name -> 7-tuple from load_focus_position_tuples()
+        colors: (sharpy_colormacro, bsw_color, profile_color) — color wheel values
+        dims: (sharpy_dim, bsw_dim, profile_dim)
+        frost: (sharpy_frost, bsw_frost)
+        prism: Enable prism on Sharpy + BSW
+        focus: Focus value for all 3 movers
+        strobes: (sharpy_strobe, bsw_shutter, profile_strobe) or None for defaults
+    """
+    p = pos_tuples.get(pos_key, pos_tuples.get("C", next(iter(pos_tuples.values()))))
+    sp, st, bp, bt, pp, pt, _ni_pan = p
+
+    s_col, b_col, p_col = colors
+    s_dim, b_dim, p_dim = dims
+    s_frost, b_frost = frost
+
+    if strobes is None:
+        s_strobe, b_shutter, p_strobe = SHARPY_OPEN, BSW_SHUT_OPEN, PROFILE_STROBE_OFF
+    else:
+        s_strobe, b_shutter, p_strobe = strobes
+
+    pv = 128 if prism else 0
+    pr = 200 if prism else 0
+
+    return [
+        sharpy(pan=sp, tilt=st, colormacro=s_col, dim=s_dim, frost=s_frost,
+               strobe=s_strobe, focus=focus, prism1=pv, p1r=pr),
+        bsw(pan=bp, tilt=bt, color=b_col, dim=b_dim, frost=b_frost,
+            shutter=b_shutter, focus=focus, prism=pv, prot=pr),
+        profile(pan=pp, tilt=pt, color=p_col, dim=p_dim,
+                strobe=p_strobe, focus=focus),
+    ]
+
+
+def par_look(mode, color_a, color_b=None, master=255, strobe=0,
+             miss_color=None, miss_master=None, beat_idx=0):
+    """PAR fixtures in a given mode. Returns [fourbar, miss1, miss2] list.
+
+    Modes: "solid", "pairs", "gradient", "chase"
+    - "chase" cycles through 6 units (4BAR P1-P4 + miss1 + miss2) using
+      beat_idx % 6. Active unit at full color, others at 1/4 brightness.
+    """
+    color_b = color_b or color_a
+    mc = miss_color or color_a
+    mm = miss_master if miss_master is not None else master
+
+    if mode == "pairs":
+        return [
+            fourbar_pairs(*color_a, *color_b, master=master, strobe=strobe),
+            miss1(*color_a, master=mm, strobe=strobe),
+            miss2(*color_b, master=mm, strobe=strobe),
+        ]
+    if mode == "gradient":
+        return [
+            fourbar_gradient(*color_a, *color_b, master=master, strobe=strobe),
+            miss1(*color_a, master=mm, strobe=strobe),
+            miss2(*color_b, master=mm, strobe=strobe),
+        ]
+    if mode == "chase":
+        active = beat_idx % 6
+        ra, ga, ba = color_a
+        qr, qg, qb = ra // 4, ga // 4, ba // 4
+        pars = [(qr, qg, qb)] * 4
+        if active < 4:
+            pars[active] = (ra, ga, ba)
+        fb = fourbar(*pars[0], *pars[1], *pars[2], *pars[3],
+                     master=master, strobe=strobe)
+        m1_c = color_a if active == 4 else (qr, qg, qb)
+        m2_c = color_a if active == 5 else (qr, qg, qb)
+        return [fb,
+                miss1(*m1_c, master=mm, strobe=strobe),
+                miss2(*m2_c, master=mm, strobe=strobe)]
+
+    # Default: "solid"
+    return [
+        fourbar_solid(*color_a, master=master, strobe=strobe),
+        miss1(*mc, master=mm, strobe=strobe),
+        miss2(*mc, master=mm, strobe=strobe),
+    ]
+
+
+def ni3k_look(pos_key, pos_tuples,
+              rgb=(255, 255, 255), dim=200,
+              halo=H_OFF, lasers=False,
+              tilt_mode="static",
+              tilt_values=(64, 64, 64),
+              strobe=0, w=0):
+    """NI3K fixture. Returns single fixture tuple (not a list).
+
+    tilt_mode: "static" (use tilt_values), "spread" (arms fan out), "spin" (rotation range)
+    """
+    p = pos_tuples.get(pos_key, pos_tuples.get("C", next(iter(pos_tuples.values()))))
+    ni_pan = p[6]
+
+    r, g, b = rgb
+    lr = LASER_ON if lasers else LASER_OFF
+
+    if tilt_mode == "spread":
+        t1, t2, t3 = 40, 64, 88
+    elif tilt_mode == "spin":
+        t1, t2, t3 = 160, 180, 200
+    else:
+        t1, t2, t3 = tilt_values
+
+    return ni3k(pan=ni_pan, t1=t1, t2=t2, t3=t3,
+                r=r, g=g, b=b, w=w,
+                halo=halo, rl=lr, gl=lr, bl=lr,
+                dim=dim, strobe=strobe)
+
+
+# =============================================================================
 # CHASER TIMING HELPERS
 # =============================================================================
 
@@ -435,6 +560,182 @@ def hold(bpm: float, bars: float = 1) -> Tuple[int, int]:
     """Instant change, hold for N bars. Returns (FadeIn, Hold)."""
     ms = bpm_to_ms(bpm, bars * 4)
     return (0, ms)
+
+# =============================================================================
+# BEAT REACTIVITY
+# =============================================================================
+
+REACTIVITY_BARS = {"beat": 0.25, "2beat": 0.5, "bar": 1, "2bar": 2, "4bar": 4}
+
+
+def reactivity_to_bars(mover_min):
+    """Convert beat_reactivity mover_min string to bar count."""
+    return REACTIVITY_BARS.get(mover_min, 2)
+
+
+# =============================================================================
+# SHOW LINTING
+# =============================================================================
+
+_MOVER_DIM_CH = {FX_SHARPY: 7, FX_BSW: 17, FX_PROFILE: 0}
+_MOVER_POS_CH = {
+    FX_SHARPY: (0, 1),
+    FX_BSW: (0, 2),
+    FX_PROFILE: (2, 3),
+}
+
+DEFAULT_LINT = {
+    "mover_dim_floor": 30,
+    "solo_mover_max_run": 2,
+    "static_pos_max_run": 3,
+    "step_max_bars": 2.5,
+    "par_inactive_max_run": 4,
+    "ni3k_absent_max_pct": 0.25,
+}
+
+
+def _scene_ch(scene_dict, fixture_id, channel):
+    """Extract a channel value from a scene's fixture data. Returns None if not found."""
+    for fid, channels in scene_dict.get("fixtures", []):
+        if fid == fixture_id:
+            for ch, val in channels:
+                if ch == channel:
+                    return val
+    return None
+
+
+def _find_runs(flags, max_run):
+    """Find runs of True values in flags exceeding max_run. Returns [(start, end)]."""
+    runs = []
+    start = None
+    for i, flag in enumerate(flags):
+        if flag:
+            if start is None:
+                start = i
+        else:
+            if start is not None and (i - start) > max_run:
+                runs.append((start, i - 1))
+            start = None
+    if start is not None and (len(flags) - start) > max_run:
+        runs.append((start, len(flags) - 1))
+    return runs
+
+
+def validate_show(scenes, chasers, bpm=128, strict=False, lint=None):
+    """Analyze chasers for liveliness issues. Returns list of warning strings.
+
+    Checks per chaser:
+    - SOLO_MOVER: runs of steps with <2 active movers
+    - STATIC_POS: runs of steps where all active movers hold position
+    - LONG_STEP: individual steps exceeding bar limit
+    - PAR_OFF: runs of steps with all pars inactive
+    - NI3K_OFF: fraction of steps with NI3K dark
+    """
+    cfg = dict(DEFAULT_LINT)
+    if lint:
+        cfg.update(lint)
+    warnings = []
+    bar_ms = bpm_to_ms(bpm, 4)
+
+    for ch in (chasers or []):
+        name = ch["name"]
+        scene_ids = ch["scene_ids"]
+        timing_list = ch["timing"]
+        num_steps = len(scene_ids)
+        if num_steps == 0:
+            continue
+
+        # Pre-resolve scenes
+        step_scenes = []
+        for sid in scene_ids:
+            if 0 <= sid < len(scenes):
+                step_scenes.append(scenes[sid])
+            else:
+                step_scenes.append({"name": "?", "fixtures": []})
+
+        # --- Check 1: Solo mover ---
+        solo_flags = []
+        for sc in step_scenes:
+            active = 0
+            for fx_id, dim_ch in _MOVER_DIM_CH.items():
+                val = _scene_ch(sc, fx_id, dim_ch)
+                if val is not None and val > cfg["mover_dim_floor"]:
+                    active += 1
+            solo_flags.append(active < 2)
+
+        for s, e in _find_runs(solo_flags, cfg["solo_mover_max_run"]):
+            count = e - s + 1
+            warnings.append(
+                f'SOLO_MOVER: "{name}" steps {s}-{e} ({count} steps) have <2 active movers'
+            )
+
+        # --- Check 2: Static position ---
+        prev_positions = None
+        static_flags = []
+        for sc in step_scenes:
+            positions = {}
+            for fx_id, (pan_ch, tilt_ch) in _MOVER_POS_CH.items():
+                dim_ch = _MOVER_DIM_CH[fx_id]
+                dim_val = _scene_ch(sc, fx_id, dim_ch)
+                if dim_val is not None and dim_val > cfg["mover_dim_floor"]:
+                    pan = _scene_ch(sc, fx_id, pan_ch)
+                    tilt = _scene_ch(sc, fx_id, tilt_ch)
+                    positions[fx_id] = (pan, tilt)
+
+            if prev_positions is not None and positions and positions == prev_positions:
+                static_flags.append(True)
+            else:
+                static_flags.append(False)
+            prev_positions = positions
+
+        for s, e in _find_runs(static_flags, cfg["static_pos_max_run"]):
+            count = e - s + 1
+            warnings.append(
+                f'STATIC_POS: "{name}" steps {s}-{e} ({count} steps) all movers at same position'
+            )
+
+        # --- Check 3: Long step ---
+        for i, (fi, ho) in enumerate(timing_list):
+            duration_bars = (fi + ho) / max(1, bar_ms)
+            if duration_bars > cfg["step_max_bars"]:
+                warnings.append(
+                    f'LONG_STEP: "{name}" step {i} is {duration_bars:.1f} bars (limit {cfg["step_max_bars"]})'
+                )
+
+        # --- Check 4: Par inactive ---
+        par_flags = []
+        for sc in step_scenes:
+            bar_master = _scene_ch(sc, FX_4BAR, 1)
+            m1_master = _scene_ch(sc, FX_MISS1, 0)
+            m2_master = _scene_ch(sc, FX_MISS2, 0)
+            all_off = True
+            for val in (bar_master, m1_master, m2_master):
+                if val is not None and val >= 20:
+                    all_off = False
+                    break
+            par_flags.append(all_off)
+
+        for s, e in _find_runs(par_flags, cfg["par_inactive_max_run"]):
+            count = e - s + 1
+            warnings.append(
+                f'PAR_OFF: "{name}" steps {s}-{e} ({count} steps) pars inactive'
+            )
+
+        # --- Check 5: NI3K absent ---
+        ni3k_dark = 0
+        for sc in step_scenes:
+            dim_val = _scene_ch(sc, FX_NI3K, 5)
+            if dim_val is None or dim_val == 0:
+                ni3k_dark += 1
+        if num_steps > 0:
+            pct = ni3k_dark / num_steps
+            if pct > cfg["ni3k_absent_max_pct"]:
+                warnings.append(
+                    f'NI3K_OFF: "{name}" NI3K dark for {pct:.0%} of steps (limit {cfg["ni3k_absent_max_pct"]:.0%})'
+                )
+
+    return warnings
+
 
 # =============================================================================
 # WORKSPACE XML GENERATION
@@ -504,11 +805,188 @@ def _xml_text(value: Any) -> str:
     return escape(str(value))
 
 
+def _format_monitor_coord(value: float) -> str:
+    """Format monitor coordinates with stable precision for QLC XML."""
+    text = f"{value:.3f}".rstrip("0").rstrip(".")
+    return text if text else "0"
+
+
+def _build_fixture_lookup(fixture_defs: Sequence[dict]) -> Dict[str, List[dict]]:
+    """Build case-insensitive lookup from fixture model/name to fixture defs."""
+    lookup: Dict[str, List[dict]] = {}
+    for fx in fixture_defs:
+        for key in (str(fx["model"]).strip().lower(), str(fx["name"]).strip().lower()):
+            entries = lookup.setdefault(key, [])
+            if fx["id"] not in [e["id"] for e in entries]:
+                entries.append(fx)
+    return lookup
+
+
+def _parse_plot_fixture_rows(
+    plot_content: str,
+) -> List[Tuple[str, str, float, float, float, str]]:
+    """Parse fixture rows from a venue plot table."""
+    rows: List[Tuple[str, str, float, float, float, str]] = []
+    pattern = re.compile(
+        r"^\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|\s*(-?\d+(?:\.\d+)?)\s*\|\s*(-?\d+(?:\.\d+)?)\s*\|\s*(-?\d+(?:\.\d+)?)\s*\|\s*([^|]+?)\s*\|",
+        re.MULTILINE,
+    )
+    for match in pattern.finditer(plot_content):
+        name, fixture_type, x_raw, y_raw, z_raw, orientation = match.groups()
+        try:
+            x_val = float(x_raw)
+            y_val = float(y_raw)
+            z_val = float(z_raw)
+        except ValueError:
+            continue
+        rows.append(
+            (
+                name.strip(),
+                fixture_type.strip(),
+                x_val,
+                y_val,
+                z_val,
+                orientation.strip(),
+            )
+        )
+    return rows
+
+
+def _parse_plot_dimensions(plot_content: str) -> Optional[Tuple[float, float, float]]:
+    """Parse (width_x, depth_z, height_y) in meters from venue plot."""
+    pattern = re.compile(
+        r"^\|\s*(Width\s*\(X\)|Depth\s*\(Z\)|Height\s*\(Y\))\s*\|\s*(-?\d+(?:\.\d+)?)\s*\|",
+        re.IGNORECASE | re.MULTILINE,
+    )
+    parsed: Dict[str, float] = {}
+    for label, value in pattern.findall(plot_content):
+        key = label.strip().lower()
+        parsed[key] = float(value)
+
+    width = parsed.get("width (x)")
+    depth = parsed.get("depth (z)")
+    height = parsed.get("height (y)")
+    if width is None or depth is None or height is None:
+        return None
+    return (width, depth, height)
+
+
+def _match_plot_rows_to_fixture_defs(
+    fixture_rows: Sequence[Tuple[str, str, float, float, float, str]],
+    fixture_defs: Sequence[dict],
+) -> List[Tuple[int, float, float, float]]:
+    """Match plot rows to fixture defs, preserving row order."""
+    from collections import Counter
+
+    lookup = _build_fixture_lookup(fixture_defs)
+    type_counts: Counter = Counter()
+    matches: List[Tuple[int, float, float, float]] = []
+
+    for name, fixture_type, x_val, y_val, z_val, _orientation in fixture_rows:
+        fixture_key = fixture_type.strip().lower()
+        name_key = name.strip().lower()
+
+        entries = lookup.get(fixture_key)
+        count_key = fixture_key
+        if not entries:
+            entries = lookup.get(name_key)
+            count_key = name_key
+        if not entries:
+            continue
+
+        idx = min(type_counts[count_key], len(entries) - 1)
+        matches.append((entries[idx]["id"], x_val, y_val, z_val))
+        type_counts[count_key] += 1
+
+    return matches
+
+
+def _grid_from_dimensions(
+    dimensions: Optional[Tuple[float, float, float]]
+) -> Optional[Tuple[int, int, int]]:
+    """Build monitor grid dimensions from plot meters using ceil()."""
+    if dimensions is None:
+        return None
+
+    width_x, depth_z, height_y = dimensions
+    return (
+        max(1, int(math.ceil(width_x))),
+        max(1, int(math.ceil(height_y))),
+        max(1, int(math.ceil(depth_z))),
+    )
+
+
+def _infer_venue_dir_from_workspace_path(
+    filename: str, venue_dir: Optional[str]
+) -> Optional[str]:
+    """Resolve venue directory from explicit arg or workspace output path."""
+    if venue_dir:
+        return os.path.abspath(venue_dir)
+
+    candidate = os.path.abspath(os.path.join(os.path.dirname(filename), os.pardir))
+    plot_path = os.path.join(candidate, "plot.md")
+    if os.path.isfile(plot_path):
+        return candidate
+    return None
+
+
+def _build_monitor_layout_from_plot(
+    venue_dir: str,
+    fixture_defs: Sequence[dict],
+) -> Tuple[Optional[List[Tuple[int, str, str, str]]], Optional[Tuple[int, int, int]]]:
+    """Return plot-derived monitor positions and grid dimensions for a venue."""
+    plot_path = os.path.join(venue_dir, "plot.md")
+    if not os.path.isfile(plot_path):
+        return (None, None)
+
+    try:
+        with open(plot_path, encoding="utf-8") as handle:
+            plot_content = handle.read()
+    except OSError:
+        return (None, None)
+
+    dimensions = _parse_plot_dimensions(plot_content)
+    if dimensions is None:
+        return (None, None)
+    width_x, _depth_z, _height_y = dimensions
+
+    fixture_rows = _parse_plot_fixture_rows(plot_content)
+    if not fixture_rows:
+        return (None, _grid_from_dimensions(dimensions))
+
+    matches = _match_plot_rows_to_fixture_defs(fixture_rows, fixture_defs)
+    if not matches:
+        return (None, _grid_from_dimensions(dimensions))
+
+    allowed_ids = {int(fx["id"]) for fx in fixture_defs}
+    stage_positions: List[Tuple[int, str, str, str]] = []
+    for fixture_id, x_m, y_m, z_m in matches:
+        if fixture_id not in allowed_ids:
+            continue
+        x_pos = (width_x - x_m) * 1000.0
+        y_pos = y_m * 1000.0
+        z_pos = z_m * 1000.0
+        stage_positions.append(
+            (
+                fixture_id,
+                _format_monitor_coord(x_pos),
+                _format_monitor_coord(y_pos),
+                _format_monitor_coord(z_pos),
+            )
+        )
+
+    if not stage_positions:
+        return (None, _grid_from_dimensions(dimensions))
+
+    return (stage_positions, _grid_from_dimensions(dimensions))
+
+
 def write_workspace(filename: str, scenes: List[dict], chasers: List[dict] = None,
                     bpm: int = 174, artnet_ip: str = "10.0.0.7",
                     vc_buttons: List[dict] = None,
                     fixture_defs: Optional[List[dict]] = None,
-                    stage_positions: Optional[List[Tuple[int, str, str, str]]] = None):
+                    stage_positions: Optional[List[Tuple[int, str, str, str]]] = None,
+                    venue_dir: Optional[str] = None):
     """Write a complete QLC+ 5.0.1 workspace file.
 
     Args:
@@ -521,11 +999,37 @@ def write_workspace(filename: str, scenes: List[dict], chasers: List[dict] = Non
                     a button for each chaser + blackout.
         fixture_defs: Optional fixture definitions override (defaults to FIXTURE_DEFS)
         stage_positions: Optional monitor stage positions override
-                         (defaults to STAGE_POSITIONS)
+                         (defaults to venue plot or STAGE_POSITIONS)
+        venue_dir: Optional venue directory containing plot.md used to derive
+                   monitor positions/grid when stage_positions is omitted.
     """
     chasers = chasers or []
+
+    # Show lint
+    warnings = validate_show(scenes, chasers, bpm=bpm)
+    if warnings:
+        print(f"\n  SHOW LINT ({len(warnings)} warnings):")
+        for w in warnings:
+            print(f"    - {w}")
+        print()
+
     fixture_defs = fixture_defs if fixture_defs is not None else FIXTURE_DEFS
-    stage_positions = stage_positions if stage_positions is not None else STAGE_POSITIONS
+
+    resolved_stage_positions = stage_positions
+    grid_dimensions = (5, 3, 5)
+    if resolved_stage_positions is None:
+        resolved_venue_dir = _infer_venue_dir_from_workspace_path(filename, venue_dir)
+        if resolved_venue_dir:
+            plot_positions, plot_grid = _build_monitor_layout_from_plot(
+                resolved_venue_dir, fixture_defs
+            )
+            if plot_grid is not None:
+                grid_dimensions = plot_grid
+            if plot_positions:
+                resolved_stage_positions = plot_positions
+
+    if resolved_stage_positions is None:
+        resolved_stage_positions = STAGE_POSITIONS
 
     # Assign function IDs: scenes get 0..N-1, chasers get N..N+M-1
     next_id = len(scenes)
@@ -655,9 +1159,10 @@ def write_workspace(filename: str, scenes: List[dict], chasers: List[dict] = Non
     L('  <Font>Arial,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1</Font>')
     L('  <ChannelStyle>0</ChannelStyle>')
     L('  <ValueStyle>0</ValueStyle>')
-    L('  <Grid Width="5" Height="3" Depth="5" Units="0"/>')
+    grid_w, grid_h, grid_d = grid_dimensions
+    L(f'  <Grid Width="{grid_w}" Height="{grid_h}" Depth="{grid_d}" Units="0"/>')
     L('  <StageItem>0</StageItem>')
-    for fid, x, y_pos, z in stage_positions:
+    for fid, x, y_pos, z in resolved_stage_positions:
         L(f'  <FxItem ID="{fid}" XPos="{x}" YPos="{y_pos}" ZPos="{z}"/>')
     L(' </Monitor>')
     L('</Workspace>')
@@ -1405,34 +1910,9 @@ def generate_venue_template(venue_dir: str, bpm: int = 128):
     with open(plot_path) as f:
         plot_content = f.read()
 
-    # Parse fixture table rows: | Name | Type | X | Y | Z | Orientation |
-    fixture_rows = re.findall(
-        r'^\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|\s*[\d.]+\s*\|\s*[\d.]+\s*\|\s*[\d.]+\s*\|\s*([^|]+?)\s*\|',
-        plot_content, re.MULTILINE
-    )
-
-    # Build lookup from model/name to list of FIXTURE_DEFS entries
-    # (multiple fixtures can share a model, e.g. two Missyee pars)
-    model_lookup: Dict[str, List[dict]] = {}
-    for fx in FIXTURE_DEFS:
-        for key in [fx["model"].lower(), fx["name"].lower()]:
-            entries = model_lookup.setdefault(key, [])
-            if fx["id"] not in [e["id"] for e in entries]:
-                entries.append(fx)
-
-    # Match plot fixture types to FIXTURE_DEFS
-    # Count how many of each type appear in the plot to pull the right
-    # number of fixtures from FIXTURE_DEFS
-    from collections import Counter
-    type_counts: Counter = Counter()
-    placed_fixture_ids = set()
-    for name, ftype, orientation in fixture_rows:
-        ftype_lower = ftype.strip().lower()
-        if ftype_lower in model_lookup:
-            entries = model_lookup[ftype_lower]
-            idx = min(type_counts[ftype_lower], len(entries) - 1)
-            placed_fixture_ids.add(entries[idx]["id"])
-            type_counts[ftype_lower] += 1
+    fixture_rows = _parse_plot_fixture_rows(plot_content)
+    matched = _match_plot_rows_to_fixture_defs(fixture_rows, FIXTURE_DEFS)
+    placed_fixture_ids = {fixture_id for fixture_id, _x, _y, _z in matched}
 
     if not placed_fixture_ids:
         print(f"Warning: No known fixtures found in {plot_path}")
@@ -1450,14 +1930,13 @@ def generate_venue_template(venue_dir: str, bpm: int = 128):
     scenes = [scene("BLACKOUT", *blackout_fixtures)]
     output_path = os.path.join(shows_dir, "Template-Base.qxw")
 
-    filtered_positions = [p for p in STAGE_POSITIONS if p[0] in placed_fixture_ids]
     write_workspace(
         output_path,
         scenes,
         [],
         bpm=bpm,
         fixture_defs=placed_defs,
-        stage_positions=filtered_positions,
+        venue_dir=venue_dir,
     )
 
     print(f"  Fixtures: {', '.join(fx['name'] for fx in placed_defs)}")

@@ -32,6 +32,11 @@
   <Channel Number="4">Strobe</Channel>
   <Channel Number="5">Effect</Channel>
   <Channel Number="6">Color mode</Channel>
+  <Head>
+   <Channel>1</Channel>
+   <Channel>2</Channel>
+   <Channel>3</Channel>
+  </Head>
  </Mode>
  <Physical>
   <Bulb Type="LED" Lumens="0" ColourTemperature="0"/>

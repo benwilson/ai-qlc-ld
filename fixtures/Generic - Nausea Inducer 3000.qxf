@@ -114,12 +114,25 @@
   <Channel Number="16">Blue laser</Channel>
   <Channel Number="17">Halo LED effect</Channel>
   <Channel Number="18">Reset</Channel>
+  <Head>
+   <Channel>0</Channel>
+   <Channel>5</Channel>
+   <Channel>6</Channel>
+   <Channel>7</Channel>
+   <Channel>8</Channel>
+   <Channel>9</Channel>
+   <Channel>10</Channel>
+   <Channel>14</Channel>
+   <Channel>15</Channel>
+   <Channel>16</Channel>
+   <Channel>17</Channel>
+  </Head>
  </Mode>
  <Physical>
   <Bulb Type="LED" Lumens="0" ColourTemperature="0"/>
   <Dimensions Weight="0" Width="0" Height="0" Depth="0"/>
   <Lens Name="Other" DegreesMin="0" DegreesMax="0"/>
-  <Focus Type="Barrel" PanMax="0" TiltMax="0"/>
+  <Focus Type="Barrel" PanMax="540" TiltMax="0"/>
   <Technical PowerConsumption="0" DmxConnector="3-pin and 5-pin"/>
  </Physical>
 </FixtureDefinition>

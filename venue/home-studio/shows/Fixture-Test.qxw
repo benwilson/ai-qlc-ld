@@ -85,13 +85,13 @@
   </Fixture>
   <Function ID="0" Type="Scene" Name="BLACKOUT" Path="Utility">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0,19,0</FixtureVal>
+   <FixtureVal ID="1">0,179,1,0,2,27,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0,18,0,19,0</FixtureVal>
    <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0</FixtureVal>
-   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
-   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="3">0,128,1,64,2,64,3,64,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0,18,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,64,3,145,4,0,5,0,6,0,7,0,8,0,9,0,10,128,11,0,12,0,13,0</FixtureVal>
    <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
    <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
-   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,0,16,0,17,0</FixtureVal>
+   <FixtureVal ID="8">0,158,1,6,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,15,128,16,0,17,0</FixtureVal>
   </Function>
   <Function ID="1" Type="Scene" Name="4BAR: All White" Path="Tests/4BAR">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -903,14 +903,14 @@
   <Font>Arial,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1</Font>
   <ChannelStyle>0</ChannelStyle>
   <ValueStyle>0</ValueStyle>
-  <Grid Width="5" Height="3" Depth="5" Units="0"/>
+  <Grid Width="5" Height="5" Depth="7" Units="0"/>
   <StageItem>0</StageItem>
-  <FxItem ID="1" XPos="386.582" YPos="1000" ZPos="287.18"/>
-  <FxItem ID="2" XPos="1961.2" YPos="1000" ZPos="386.889"/>
-  <FxItem ID="3" XPos="3355.38" YPos="1000" ZPos="335.202"/>
-  <FxItem ID="4" XPos="2342.48" YPos="1000" ZPos="4250.46"/>
-  <FxItem ID="5" XPos="25.06" YPos="1000" ZPos="1519.79"/>
-  <FxItem ID="6" XPos="22.4348" YPos="1000" ZPos="1012.91"/>
-  <FxItem ID="8" XPos="4341.8" YPos="1000" ZPos="345.539"/>
+  <FxItem ID="8" XPos="3800" YPos="1500" ZPos="300"/>
+  <FxItem ID="3" XPos="3000" YPos="900" ZPos="300"/>
+  <FxItem ID="2" XPos="2200" YPos="1400" ZPos="200"/>
+  <FxItem ID="1" XPos="500" YPos="1500" ZPos="300"/>
+  <FxItem ID="5" XPos="100" YPos="2400" ZPos="1750"/>
+  <FxItem ID="6" XPos="100" YPos="2400" ZPos="2650"/>
+  <FxItem ID="4" XPos="2200" YPos="4000" ZPos="6500"/>
  </Monitor>
 </Workspace>

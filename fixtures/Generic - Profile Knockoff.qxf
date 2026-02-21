@@ -10,7 +10,11 @@
  <Model>Profile Knockoff</Model>
  <Type>Moving Head</Type>
  <Channel Name="Dimmer" Preset="IntensityMasterDimmer"/>
- <Channel Name="Strobe" Preset="ShutterStrobeSlowFast"/>
+ <Channel Name="Strobe">
+  <Group Byte="0">Shutter</Group>
+  <Capability Min="0" Max="0" Preset="ShutterOpen">Open</Capability>
+  <Capability Min="1" Max="255" Preset="StrobeSlowToFast">Strobe slow to fast</Capability>
+ </Channel>
  <Channel Name="Pan" Preset="PositionPan"/>
  <Channel Name="Tilt" Preset="PositionTilt"/>
  <Channel Name="Pan/Tilt speed" Preset="SpeedPanTiltSlowFast"/>
@@ -66,12 +70,25 @@
   <Channel Number="11">Pan fine</Channel>
   <Channel Number="12">Tilt fine</Channel>
   <Channel Number="13">Reset</Channel>
+  <Head>
+   <Channel>0</Channel>
+   <Channel>1</Channel>
+   <Channel>2</Channel>
+   <Channel>3</Channel>
+   <Channel>5</Channel>
+   <Channel>6</Channel>
+   <Channel>7</Channel>
+   <Channel>9</Channel>
+   <Channel>10</Channel>
+   <Channel>11</Channel>
+   <Channel>12</Channel>
+  </Head>
  </Mode>
  <Physical>
   <Bulb Type="" Lumens="0" ColourTemperature="0"/>
   <Dimensions Weight="0" Width="0" Height="0" Depth="0"/>
   <Lens Name="Other" DegreesMin="0" DegreesMax="19"/>
-  <Focus Type="Head" PanMax="0" TiltMax="0"/>
+  <Focus Type="Head" PanMax="540" TiltMax="270"/>
   <Technical PowerConsumption="0" DmxConnector="3-pin"/>
  </Physical>
 </FixtureDefinition>
