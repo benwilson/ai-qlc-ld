@@ -2,6 +2,8 @@
 *.flac
 *.mp3
 *.pyc
+__pycache__/
+.claude/settings.local.json
 .env
 .env.*
 !.env.example
